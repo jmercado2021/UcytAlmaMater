@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="e3859cef27224bb8a3ae5f7d65c18f81" Name="Diagram1">
+        <EntityTypeShape EntityType="SISCOMPModel.Articulo" Width="1.5" PointX="5.25" PointY="32.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SISCOMPModel.Autorizador" Width="1.5" PointX="5.25" PointY="29.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SISCOMPModel.Categoria_Articulo" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SISCOMPModel.Categoria_OCompra" Width="1.5" PointX="3" PointY="20.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SISCOMPModel.Color" Width="1.5" PointX="3" PointY="46.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SISCOMPModel.Empresa" Width="1.5" PointX="3" PointY="23.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SISCOMPModel.Estado" Width="1.5" PointX="0.75" PointY="21.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SISCOMPModel.EstadoOrden" Width="1.5" PointX="6" PointY="26.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SISCOMPModel.Marcas" Width="1.5" PointX="3" PointY="27.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SISCOMPModel.ModoPago" Width="1.5" PointX="3" PointY="30" IsExpanded="true" />
+        <EntityTypeShape EntityType="SISCOMPModel.Moneda" Width="1.5" PointX="3" PointY="32.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SISCOMPModel.Oficina" Width="1.5" PointX="3" PointY="35.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SISCOMPModel.OrdenCompraEncabezado" Width="1.5" PointX="8.25" PointY="26.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SISCOMPModel.Pais" Width="1.5" PointX="3" PointY="40" IsExpanded="true" />
+        <EntityTypeShape EntityType="SISCOMPModel.Proveedor" Width="1.5" PointX="8.25" PointY="34.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SISCOMPModel.sysdiagrams" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SISCOMPModel.TiposCambio" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SISCOMPModel.UnidadMedida" Width="1.5" PointX="3" PointY="42.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SISCOMPModel.OrdenCompraDetalle" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
+        <AssociationConnector Association="SISCOMPModel.FK_Articulo_CategoriaArticulo" ManuallyRouted="false" />
+        <AssociationConnector Association="SISCOMPModel.FK_Articulo_Color" ManuallyRouted="false" />
+        <AssociationConnector Association="SISCOMPModel.FK_Articulo_Estado" ManuallyRouted="false" />
+        <AssociationConnector Association="SISCOMPModel.FK_Articulo_Marcas" ManuallyRouted="false" />
+        <AssociationConnector Association="SISCOMPModel.FK_Articulo_Proveedor" ManuallyRouted="false" />
+        <AssociationConnector Association="SISCOMPModel.FK_Articulo_UnidadMedida" ManuallyRouted="false" />
+        <AssociationConnector Association="SISCOMPModel.FK_Autorizador_Estado" ManuallyRouted="false" />
+        <AssociationConnector Association="SISCOMPModel.FK_Autorizador_Oficina" ManuallyRouted="false" />
+        <AssociationConnector Association="SISCOMPModel.FK_Categoria_OCompra_Estado" ManuallyRouted="false" />
+        <AssociationConnector Association="SISCOMPModel.FK_OrdenCompraEncabezado_Categoria_OCompra" ManuallyRouted="false" />
+        <AssociationConnector Association="SISCOMPModel.FK_Empresa_Estado" ManuallyRouted="false" />
+        <AssociationConnector Association="SISCOMPModel.FK_Marcas_Estado" ManuallyRouted="false" />
+        <AssociationConnector Association="SISCOMPModel.FK_ModoPago_Estado" ManuallyRouted="false" />
+        <AssociationConnector Association="SISCOMPModel.FK_Moneda_Estado" ManuallyRouted="false" />
+        <AssociationConnector Association="SISCOMPModel.FK_Oficina_Estado" ManuallyRouted="false" />
+        <AssociationConnector Association="SISCOMPModel.FK_Pais_Estado" ManuallyRouted="false" />
+        <AssociationConnector Association="SISCOMPModel.FK_Proveedor_Estado" ManuallyRouted="false" />
+        <AssociationConnector Association="SISCOMPModel.FK_UnidadMedida_Estado" ManuallyRouted="false" />
+        <AssociationConnector Association="SISCOMPModel.FK_OrdenCompraEncabezado_EstadoOrden" ManuallyRouted="false" />
+        <AssociationConnector Association="SISCOMPModel.FK_OrdenCompraEncabezado_ModoPago" ManuallyRouted="false" />
+        <AssociationConnector Association="SISCOMPModel.FK_OrdenCompraEncabezado_Moneda" ManuallyRouted="false" />
+        <AssociationConnector Association="SISCOMPModel.FK_OrdenCompraEncabezado_OrdenCompraEncabezado" ManuallyRouted="false" />
+        <AssociationConnector Association="SISCOMPModel.FK_OrdenCompraEncabezado_Proveedor" ManuallyRouted="false" />
+        <AssociationConnector Association="SISCOMPModel.FK_Proveedor_Pais" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

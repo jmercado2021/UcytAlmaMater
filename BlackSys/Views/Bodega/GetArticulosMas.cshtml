@@ -1,0 +1,73 @@
+﻿@model List<BlackSys.Models.W_InventarioMas_Result>
+@{
+
+    Layout = null;
+}
+<head>
+    @*<link href="~/assets/Exportar Js/tableexport.css" rel="stylesheet" />*@
+
+    <link href="~/Content/DynaTables/jquery.dynatable.css" rel="stylesheet" />
+    <script src="~/Content/DynaTables/jquery.dynatable.js"></script>
+
+
+</head>
+<body>
+
+    <div class="modal-header">
+        <button class="btn btn-sm pull-right btn-danger" type="button" id="btnCloseModal" data-dismiss="modal">X</button>
+        @*<h2>Articulos</h2>*@
+    </div>
+
+    <form method="post" action="@Url.Action("ExportToExcelMas", "Bodega")">
+
+       
+            <input type="hidden" name="sucursal_id" id="sucursal_id" value="@ViewBag.SucId" class="form-control">
+            <input type="hidden" name="Clasificacion" value="@ViewBag.Clasificacion" id="Clasificacion" placeholder="Recibe contenido" class="form-control">
+
+            <button type="submit" class="button btn btn-primary">Exportar</button>
+        </form>
+        <div class="modal-body">
+
+            <div class="box-body">
+                <div class="table-responsive">
+                    <table class="table table-striped" id="my-tableDino23">
+                        <thead>
+                            <tr>
+                                <th>Linea</th>
+                                <th>Codigo</th>
+                                <th>Descripcion</th>
+
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td><a href="pages/examples/invoice.html">@Html.DisplayFor(modelItem => item.Fila)</a></td>
+                                    <td><a href="pages/examples/invoice.html">@Html.DisplayFor(modelItem => item.articulo_id)</a></td>
+                                    <td><a href="pages/examples/invoice.html">@Html.DisplayFor(modelItem => item.articulo_nombre)</a></td>
+                                    <td>@*<a href="pages/examples/invoice.html">@Html.DisplayFor(modelItem => item.Ventas_Costo)</a>*@</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+</body>
+
+
+<script>
+
+                $('#my-tableDino23').dynatable({
+                    table: {
+                        defaultColumnIdStyle: 'camelCase',
+                        buttons:
+                            'excelHtml5'
+
+                    }
+                });
+
+</script>

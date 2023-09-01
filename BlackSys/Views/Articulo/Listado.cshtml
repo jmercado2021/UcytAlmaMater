@@ -1,0 +1,76 @@
+﻿
+@{
+    ViewBag.Title = "Listado";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<head>
+
+
+    <link href="~/Content/DynaTables/jquery.dynatable.css" rel="stylesheet" />
+    <script src="~/Content/DynaTables/jquery.dynatable.js"></script>
+    <script src="~/Content/DynaTables/jquery.dynatableSinBuscador.js"></script>
+    <link href="~/assets/css/StyloByron.css" rel="stylesheet" />
+
+    <script src="~/Content/js/FiltrarTablaBusqueda.js"></script>
+    <link href="~/Content/plugins/Alertify/alertify.css" rel="stylesheet" />
+    <script src="~/Content/plugins/Alertify/alertify.js"></script>
+    <link href="~/Content/plugins/Alertify/alertify.min.css" rel="stylesheet" />
+
+    <link href="~/Content/css/CSS Personalizado/Botones.css" rel="stylesheet" />
+</head>
+<h2>Articulos</h2>
+
+
+<a href="" class="btn btn-circle btn-primary"><i class="fa fa-plus-square"></i> Agregar</a>
+<a class="btn btn-circle btn-primary"><i class="fa fa-pencil"></i> Editar</a>
+@*<a class="btn btn-circle btn-primary"><i class="fa fa-plus-square"></i> Agregar Articulo</a>*@
+<br />
+<br />
+<div class="box box-info">
+    @*<h2 class="box-title">Ordenes Express</h2>*@
+
+
+    <!-- /.box-header -->
+    <div class="box-body">
+        <input id="buscar" type="text" class="form-control" placeholder="Escriba algo para filtrar" />
+        <div class="table-responsive">
+
+
+            <table class="table table-striped" id="my-tableDino23">
+                <thead>
+                    <tr>
+                        <th>Codigo</th>
+                        <th>Descripicion</th>
+
+
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @*@foreach (var item in Model)
+                    {*@
+
+                        <tr>
+                           
+                                    <td>895412</td>
+                                    <td>PANADO ANTIGRIPAL</td>
+                                    
+                        </tr>
+
+
+
+                                @*}*@
+
+
+                </tbody>
+            </table>
+        </div>
+        <!-- /.table-responsive -->
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        $('#myTable').DataTable();
+    });
+
+</script>

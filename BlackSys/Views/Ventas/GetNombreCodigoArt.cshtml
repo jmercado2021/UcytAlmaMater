@@ -1,0 +1,118 @@
+﻿@model IEnumerable<BlackSys.Models.W_Ventas_ComprasClientes_Result>
+
+
+@{
+    ViewBag.Title = "GetNombreCodigoArt";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    @*Neccesarios para Exportar Js*@
+    <script src="~/assets/js/popper.min.js"></script>
+    <link href="~/assets/Exportar Js/tableexport.css" rel="stylesheet" />
+    @*<script src="~/Content/DynaTables/jquery-1.7.2.min.js"></script>*@
+    <script src="~/Content/DynaTables/jquery.dynatable.js"></script>
+    <link href="~/Content/DynaTables/jquery.dynatable.css" rel="stylesheet" />
+</head>
+<br />
+@*<strong class="box-title ">Buqueda de clientes en compra de articulos especificos</strong>*@
+
+    <div class="form-group">
+        @*<button type="button" class="btn btn-sm btn-success" data-toggle="modal" onclick="RenderActions('/Ventas/BuscarClientes')" data-target="#modalCreate">Buscar Articulo</button>
+        <button type="button" class="btn btn-sm btn-success"onclick="RenderActions('/Ventas/GetNombreCodigoArt')" >Consultar Registros</button>*@
+
+
+          
+                <div class="col-lg-12 col-md-4">
+                    <label>Codigo:</label> <label id="Articulo_Id">@ViewBag.Codigo</label>
+    
+                </div>
+
+                <div class="col-lg-12 col-md-4">
+                   
+                    <label>Descripcion:</label> <label>@ViewBag.Articulo_Nombre</label>
+                   
+                </div>
+          
+      
+    </div>
+<table class="table table-striped" id="my-tableDino23">
+    <thead>
+        <tr>
+            <th>Codigo</th>
+            <th>Cliente_Nombre</th>
+            <th>Cliente_Email</th>
+            <th>Cliente_Celular</th>
+            <th>Cliente_Telefono</th>
+            <th>Cantidad</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var item in Model)
+            {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.Cliente_Id)</td>
+
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Cliente_Nombre)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Cliente_Email)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Cliente_Celular)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Cliente_Telefono)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Cantidad)
+                </td>
+
+                <td></td>
+
+
+            </tr>
+        }
+
+    </tbody>
+</table>
+
+
+
+
+<script src="~/assets/Exportar Js/FileSaver.min.js"></script>
+<script src="~/assets/Exportar Js/Blob.min.js"></script>
+<script src="~/assets/Exportar Js/xls.core.min.js"></script>
+<script src="~/assets/Exportar Js/tableexport.js"></script>
+<script>
+                $("table").tableExport({
+                    formats: ["xlsx", "txt", "csv"], //Tipo de archivos a exportar ("xlsx","txt", "csv", "xls")
+                    position: 'button',  // Posicion que se muestran los botones puedes ser: (top, bottom)
+                    bootstrap: false,//Usar lo estilos de css de bootstrap para los botones (true, false)
+                    fileName: "Export",    //Nombre del archivo
+                });
+</script>
+
+
+<script>
+
+    $('#my-tableDino23').dynatable({
+        table: {
+            defaultColumnIdStyle: 'dashed'
+        }
+    });
+
+
+</script>
+
+
+

@@ -1,0 +1,52 @@
+﻿@model List<BlackSys.Models.Cliente>
+@{
+    ViewBag.Title = "BuscarClientesGeneral";
+    //Layout = "~/Views/Shared/_AdminLte.cshtml";
+}
+
+<table class="table table-striped" id="my-tableDino23">
+
+    @*<table id="example" class="cell-border" style="width:100%">*@
+    <thead>
+        <tr>
+            <th>Codigo</th>
+            <th>Descripcion</th>
+
+
+            @*<th>Visto
+
+
+
+                </th>*@
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.Cliente_Id)</td>
+
+
+                <td>
+                <td>@Html.DisplayFor(modelItem => item.Cliente_Nombre)</td>
+
+                <td>
+
+                    @*@Html.ActionLink("Seleccionar", "ComentariosTiket", new { id = item.Articulo_Id }, new { @class = "btn btn-info" })*@
+
+                    @*<button type="button" class="btn btn-info" data-toggle="modal" data-target="#modalCreate" onclick="RenderActions('/TblTicketEncabezado/Edit2/' + @item.NTicket)">Actualizara</button>*@
+                    @*</div>*@
+
+                </td>
+
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+
+
+

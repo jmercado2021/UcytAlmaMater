@@ -1,0 +1,165 @@
+﻿
+@{
+    ViewBag.Title = "Tiempos";
+    Layout = "~/Views/Shared/_AdminLte.cshtml";
+}
+
+<div class="container-fluid container-fullw bg-white">
+    <div class="row">
+        <div class="panel panel-white">
+            <div class="panel-heading">
+                <h2 id="sucursalTitle" class="panel-title text-color">Lista de Sucursales</h2>
+                <div id="toolbar-button" class="panel-tools">
+                    <button id="btnCargaMasiva" type="button" class="btn btn-dark-azure btn-sm pull-right flipInX animated" data-toggle="tooltip" data-placement="bottom" title="Subir Archivo"><i class="fa fa-upload"></i></button>
+                    <button id="btnEliminar" type="button" class="btn btn-dark-azure btn-sm pull-right flipInX animated" data-toggle="tooltip" data-placement="bottom" title="Eliminar"><i class="fa fa-trash"></i></button>
+                    <button id="btnEditar" type="button" class="btn btn-dark-azure btn-sm pull-right flipInX animated" data-toggle="tooltip" data-placement="bottom" title="Editar"><i class="fa fa-pencil"></i></button>
+                    <button id="btnShowPanelForm" type="button" class="btn btn-dark-azure btn-sm pull-right flipInX animated" data-toggle="tooltip" data-placement="bottom" title="Crear"><i class="fa fa-plus"></i></button>
+                    <button id="btnBuscarForm" type="button" class="btn btn-dark-azure btn-sm pull-right flipInX animated" data-toggle="tooltip" data-placement="bottom" title="Buscar"><i class="fa fa-search"></i></button>
+                    <button id="btnShowPanelTabla" type="button" class="btn btn-dark-azure btn-sm pull-right flipInX animated" data-toggle="tooltip" data-placement="bottom" title="Regresar"><i class="fa fa-reply"></i></button>
+                </div>
+            </div>
+            <div class="panel-body">
+
+                <div class="col-xs-12 col-sm-12 col-md-12" id="divBusqueda">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12">
+                            <div id="divClose">
+                                <div id="divCerrarBusqueda" class="pull-right">
+                                    <span id="btnCerrarBusqueda"><i class="fa fa-close"></i></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-6 col-md-6">
+                            <div id="divNombBusq">
+                                <div class="form-group">
+                                    <input type="text" class="form-control bfh-number" id="txtNombreBusqueda" pbusquedagen placeholder="Búsqueda General">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-6">
+                            <div id="divBtnBuscar">
+                                <button class="btn btn-default" id="btnBuscarGeneral" bbuscar type="button">Buscar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Table -->
+                <div class="row">
+                    <div>
+                        <table id="master-tabla" class="table-responsive col-xs-12">
+
+                            <thead>
+                                <tr>
+                                    <th>Suc_Destino</th>
+                                    <th>Bodega_Nombre</th>
+                                    <th>Cantidad</th>
+
+                                </tr>
+                            </thead>
+
+
+                            <tr>
+                                <td>dato</td>
+
+
+                                <td>dato</td>
+
+                                <td>dato</td>
+                                @*<td>
+
+
+                                        <button type="button" onclick="obtener()" class="boton">Listar</button>
+                                    </td>*@
+
+                            </tr>
+
+
+                        </table>
+                    </div>
+                </div>
+                <!-- Form -->
+
+            </div>
+        </div>
+    </div>
+</div>
+<div id="modal">
+
+</div>
+
+<div id="modalUpdateFila" class="col-xs-12 col-sm-12 col-md-12">
+    <div class="modal fade mdialTamanio" id="modalAgencia" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog" style="width: auto;">
+            <div class="modal-content">
+                <div class="modal-header modal-header-info">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-6 col-md-4">
+                            <label for="txtNombreProvMod">Proveedor:</label>
+                            <input type="text" class="form-control" name="txtNombreProvMod" id="txtNombreProvMod" data-minlength="1" maxlength="13" required>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-4">
+                            <label for="selectAgenciaModal">Agencia:</label>
+                            <select id="selectAgenciaModal" class="form-control" name="selectAgenciaModal"></select>
+                        </div>
+                        <div class="col-xs-12 colx-sm-6 col-md-4 hop">
+                            <label for="dias">Días: </label>
+                            <div class="form-group">
+                                <select class="btn dropdown-toggle selectpicker btn-default form-control text-left" id="dias" multiple="multiple" data-element="chDias">
+                                    <option value="L">Lunes</option>
+                                    <option value="K">Martes</option>
+                                    <option value="M">Miércoles</option>
+                                    <option value="J">Jueves</option>
+                                    <option value="V">Viernes</option>
+                                    <option value="S">Sábado</option>
+                                    <option value="D">Domingo</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="btnGuardarAgencias" class="btn btn-dark-azure btn-sm pull-right flipInX animated">Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@*<script src="~/Shared/lib/tableExport/tableExport.js"></script>
+    <script src="~/Shared/lib/tableExport/FileSaver.min.js"></script>
+    <script src="~/Shared/lib/tableExport/xlsx.core.min.js"></script>
+    <script src="~/Shared/lib/tableExport/jspdf.min.js"></script>
+    <script src="~/Shared/lib/tableExport/jspdf.plugin.autotable.js"></script>
+    <script src="~/Shared/lib/bootstrap-table/bootstrap-table.min.js"></script>
+    <script src="~/Shared/lib/bootstrap-table/locale/bootstrap-table-es-AR.min.js"></script>
+    <script src="~/Shared/lib/bootstrap-table/bootstrap-table-export.min.js"></script>
+    <script src="~/Shared/lib/clip-two/vendor/moment/moment.min.js"></script>
+    <script src="~/Shared/lib/clip-two/vendor/bootstrap-datetimepicker/bootstrap-datetimepicker.min.js"></script>
+    <script src="~/Shared/lib/clip-two/vendor/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
+    <script src="~/Shared/lib/clip-two/vendor/bootstrap-datepicker/locales/bootstrap-datepicker.es.min.js"></script>
+    <script src="~/Shared/lib/sweetalert/js/sweetalert.min.js"></script>
+    <script src="~/Shared/lib/clip-two/vendor/selectFx/classie.js"></script>
+    <script src="~/Shared/lib/clip-two/vendor/selectFx/selectFx.js"></script>
+    <script src="~/Shared/lib/bootstrap-validate/validator.min.js"></script>
+    <script src="~/Shared/lib/bootstrap-switch/js/bootstrap-switch.min.js"></script>
+    <script src="~/Shared/lib/multiple-select/js/bootstrap-multiselect.js"></script>
+    <script src="~/Shared/lib/OwlCarousel2-2.1.6/dist/owl.carousel.min.js"></script>
+    <script src="~/Shared/js/dist/sucursalController.min.js"></script>*@
+
+
+<script type="text/javascript">
+        var jq = $(document);
+
+        jq.ready(function () {
+            jq.find('.datepicker').datetimepicker({ format: 'DD/MM/YYYY', minDate: new Date(), useCurrent: false });
+        });
+
+</script>
+

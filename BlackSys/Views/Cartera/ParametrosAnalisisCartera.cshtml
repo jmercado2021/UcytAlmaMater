@@ -1,0 +1,280 @@
+﻿@*@model List<MiPrimerProyectoMVC.Model.W_ListaCadenas_Result>*@
+@{
+    ViewBag.Title = "ParametrosAnalisisCartera";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<head>
+
+
+    <link href="~/assets/css/jquerysctipttop.css" rel="stylesheet" />
+    <link href="~/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+
+    <link href="~/assets/css/bstree.css" rel="stylesheet" />
+    <!-- Minified Bootstrap CSS -->
+    <!-- Minified JS library -->
+
+    <script src="~/assets/js/jqueryTreeview.js"></script>
+    <!-- Minified Bootstrap JS -->
+
+
+
+</head>
+
+<body>
+
+
+
+    <form method="post" action="@Url.Action("ReporteAnalisisCartera","Cartera")">
+        <br />
+        <div class="btn-group">
+            <button type="button" class="btn btn-default" data-toggle="modal" data-target="#exampleModalLong">Ayuda</button>
+            <button type="submit" id="btnGrabar" class="btn btn-default">Generar</button>
+
+        </div>
+     
+        <div class="form-group">
+
+
+
+@* <button onclick="Busc()" class="msg-basico btn btn-info">Consultar Registros</button>*@
+            @*<button type="submit">Consultar</button>
+         <br />
+        @*</div>*@
+           
+            <div class="row">
+
+
+                <div class="col-6">
+                    <input id="bstree-data2" type="hidden" name="bstree-data" data-ancestors="ALS:IDF">
+                    <div id="mytree2" class="bstree">
+                        <ul>
+                            <li data-id="root" data-level="0">
+                                <br />
+                                <span>Super Farmacias Xolotlan</span>
+                                <ul>
+                                    <li data-id="ACL" data-level="1">
+                                        <span>Cadenas</span>
+                                        <ul>
+                                            @foreach (var item in Model)
+                                            {
+                                                @*<span class="text">@Html.DisplayFor(modelItem => item.OperadorNombre)           </span>*@
+                                                <li data-id="@item.Id" data-level="2"><span>@item.Descripcion</span></li>
+
+                                            }
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+
+                        </ul>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+        <script src="~/assets/js/popper.min.js"></script>
+        <script src="~/assets/js/jquery.bstree.js"></script>
+        <script src="~/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+
+
+
+
+        <input type="hidden" name="IdSucursal" id="IdSuc" placeholder="Recibe contenido" class="form-control">
+        <input type="hidden" name="Cadena" id="Cadena" placeholder="Recibe contenido" class="form-control">
+
+
+
+    </form>
+
+
+    <script>
+        $('document').ready(function () {
+            $hiddenInput = $('#bstree-data')
+            $('#mytree').bstree({
+                dataSource: $hiddenInput,
+                initValues: $hiddenInput.data('ancestors'),
+                onDataPush: function (values) {
+                    var def = '<strong class="pull-left">Values:&nbsp;</strong>'
+                    for (var i in values) {
+                        def += '<span class="pull-left">' + values[i] + '&nbsp;</span>'
+                    }
+                    $('#status').html(def),
+
+                    document.getElementById('IdSuc').value = values
+                },
+                updateNodeTitle: function (node, title) {
+                    return '[' + node.attr('data-id') + '] ' + title + ' (' + node.attr('data-level') + ')'
+                }
+            })
+        })
+    </script>
+
+    @*--scrip para el arbol Casas*@
+    <script>
+        $('document').ready(function () {
+            $hiddenInput = $('#bstree-data2')
+            $('#mytree2').bstree({
+                dataSource: $hiddenInput,
+                initValues: $hiddenInput.data('ancestors'),
+                onDataPush: function (values) {
+                    var def = '<strong class="pull-left">Values:&nbsp;</strong>'
+                    for (var i in values) {
+                        def += '<span class="pull-left">' + values[i] + '&nbsp;</span>'
+                    }
+                    $('#status2').html(def),
+
+                    document.getElementById('Cadena').value = values
+                },
+                updateNodeTitle: function (node, title) {
+                    return '[' + node.attr('data-id') + '] ' + title + ' (' + node.attr('data-level') + ')'
+                }
+            })
+        })
+    </script>
+</body>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-36251023-1']);
+  _gaq.push(['_setDomainName', 'jqueryscript.net']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+
+<script>
+
+    function EnviarCasa() {
+
+
+        //var dataObject = JSON.stringify({
+        //    'Sucursales': $('#uno').html()
+        //    //'name': $('#myName').val(),
+        //});
+
+        //var IdSuc = JSON.stringify({
+        //    'Sucursales': $('#uno').val()
+        //    //'name': $('#myName').val(),
+        //});
+
+        var IdSuc = $('#uno').val();
+        var IdCasa = $('#uno2').val();
+
+
+    $.ajax({
+        url: '/Ventas/ReporteCanjesReporte',
+        type: 'POST',
+        async: false,
+        dataType: 'text',
+        processData: false,
+        data: { IdSuc, IdCasa },
+        success: function (data) { }
+    });
+        }
+
+
+</script>
+
+<script>
+        function Busc() {
+            //var urls = $('#txtNombreBusqueda').attr('action'); // recupero la url de mi formulario -> localhost/miproyecto/public/agency/search
+            var IdSuc = $('#uno').val(); // recupero el dato de mi input para enviar a buscar a mi controlador
+            var IdCasa = $('#uno2').val();
+            var FechaIni = $('#FechaIni').val();
+            var FechaFin = $('#FechaFin').val();
+            $.ajax({
+                url: '/Ventas/ReporteCanjesReporte',
+                data: { IdSuc, IdCasa, FechaIni, FechaFin }, //Aqui tienes que enviar el objeto json
+                success: function () {
+
+                    location.href = "ReporteCanjesReporte/";
+                    console.log(ans);
+                },
+                error: function () {
+                    console.log('error');// solo ingresa a esta parte
+                }
+            });
+        };
+</script>
+
+<script type="text/javascript">
+$("#datetime").datetimepicker({
+    format: 'yyyy-mm-dd hh:ii'
+});
+</script>
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Ayuda al Usuario</h5>
+                <button type="button" class="close" data-nsdismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Genera un reporte del analisis de facturas vencidas por Clientes cadenas <br />
+                Procedimiento:<br />
+                1-Seleccionar la cadena  o marcar toddas en el cuadro Todas a la izquierda de Super farmacias Xolotlan Cadena               
+                2-Clic en el boton Generar
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Ok</button>
+                @* <button type="button" class="btn btn-primary">Save changes</button>*@
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<div class="modal modal-static fade" id="processing-modal" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="text-center">
+                    @*<img src="~/assets/images/loading.gif" class="icon" />*@
+                    <div class="spinner"></div>
+                    @*<img src="~/Content/dist/img/128x128.gif" />*@
+                    @*<img src="~/Imagenes/circulo espera.gif" />*@
+                    <h5><span class="modal-text center-block">Procesando, Espere por favor...<br />      </span></h5>
+                    <h5><span class="modal-text"><br />      </span></h5>
+                    <h5><span class="modal-text"><br />      </span></h5>
+                    <h5><span class="modal-text"><br />      </span></h5>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+        $("#btnGrabar").click("click", function () {
+            var md = $("#processing-modal");
+            md.modal('show');
+
+
+
+        });
+</script>

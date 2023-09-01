@@ -1,0 +1,75 @@
+﻿@model List <BlackSys.Models.W_DetalleFacturaImpresionLista_Result>
+@{
+    ViewBag.Title = "DetallarFacutar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    @*Neccesarios para Exportar Js*@
+    <script src="~/assets/js/popper.min.js"></script>
+    <link href="~/assets/Exportar Js/tableexport.css" rel="stylesheet" />
+</head>
+<table id="dtHorizontalVerticalExample" class="table table-striped table-bordered table-sm " cellspacing="0">
+
+    <thead>
+        <tr>
+            <th>Codigo</th>
+            <th>Descripcion</th>
+            <th>Cantidad</th>
+            <th>PrecioVenta</th>
+            <th>Descuento</th>
+            <th>IVA</th>
+            <th>Subtotal</th>
+            <th>Total</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var item in Model)
+            {
+            <tr>
+
+                <td> @Html.DisplayFor(modelItem => item.Articulo_Id)</td>
+                <td> @Html.DisplayFor(modelItem => item.Articulo_Nombre)</td>
+                <td>@Html.DisplayFor(modelItem => item.Cant)</td>
+                <td>@Html.DisplayFor(modelItem => item.PrecioVenta)</td>
+                <td>@Html.DisplayFor(modelItem => item.Descuento)</td>
+                <td>@Html.DisplayFor(modelItem => item.IVA)</td>
+                <td>@Html.DisplayFor(modelItem => item.Subtotal)</td>
+                <td>@Html.DisplayFor(modelItem => item.Total)</td>
+                <td></td>
+            
+
+            </tr>
+        }
+
+    </tbody>
+</table>
+
+
+
+
+
+
+<script src="~/assets/Exportar Js/FileSaver.min.js"></script>
+<script src="~/assets/Exportar Js/Blob.min.js"></script>
+<script src="~/assets/Exportar Js/xls.core.min.js"></script>
+<script src="~/assets/Exportar Js/tableexport.js"></script>
+
+
+
+
+
+<script>
+                $("table").tableExport({
+                    formats: ["xlsx", "txt", "csv"], //Tipo de archivos a exportar ("xlsx","txt", "csv", "xls")
+                    position: 'button',  // Posicion que se muestran los botones puedes ser: (top, bottom)
+                    bootstrap: false,//Usar lo estilos de css de bootstrap para los botones (true, false)
+                    fileName: "Export",    //Nombre del archivo
+                });
+</script>
+
+

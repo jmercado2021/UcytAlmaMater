@@ -1,0 +1,78 @@
+﻿@model List<MiPrimerProyectoMVC.Model.W_Existencias_Result1>
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    @*Neccesarios para Exportar Js*@
+    <script src="~/assets/js/popper.min.js"></script>
+    <link href="~/assets/Exportar Js/tableexport.css" rel="stylesheet" />
+
+</head>
+
+
+<div class="row">
+
+    <div class="col-md-12">
+
+        <table class="table table-striped" id="myTable" >
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Sucursal</th>
+                    @*<th>Bodega Id</th>*@
+                    <th>Bodega Nombre</th>
+                    @*<th>Descripcion</th>*@
+                    <th>Existencia</th>
+                    <th>Precio</th>
+                    <th>Costo</th>
+                    <th>Transito</th>
+                    <th>Vales</th>
+                    <th>PVD1</th>
+                    <th>PVD2</th>
+                    <th>PVD3</th>
+
+                </tr>
+            </thead>
+            <tbody>
+@foreach (var item in Model)
+            {
+    <tr>
+        <td>@Html.DisplayFor(modelItem => item.Suc_Id)</td>
+        <td>@Html.DisplayFor(modelItem => item.Sucursal_Nombre)</td>
+        @*<td>@Html.DisplayFor(modelItem => item.Bodega_Id)</td>*@
+        <td>@Html.DisplayFor(modelItem => item.Bodega_Nombre)</td>
+        @*<td>@Html.DisplayFor(modelItem => item.Articulo_Id)</td>
+        <td>@Html.DisplayFor(modelItem => item.Articulo_Nombre)</td>*@
+
+        <td>@Html.DisplayFor(modelItem => item.Existencia)</td>
+        <td>@Html.DisplayFor(modelItem => item.Precio)</td>
+        <td>@Html.DisplayFor(modelItem => item.Costo)</td>
+        <td>@Html.DisplayFor(modelItem => item.Comprometido)</td>
+
+        <td>@Html.DisplayFor(modelItem => item.Transito)</td>
+        <td>@Html.DisplayFor(modelItem => item.Vales)</td>
+        <td>@Html.DisplayFor(modelItem => item.PVD1)</td>
+        <td>@Html.DisplayFor(modelItem => item.PVD2)</td>
+        <td>@Html.DisplayFor(modelItem => item.PVD3)</td>
+       
+    </tr>
+}
+
+            </tbody>
+        </table>
+
+
+    </div>
+
+
+</div>
+
+<script>
+    $(document).ready(function () {
+        $('#myTable').DataTable();
+    });
+
+</script>
+
+

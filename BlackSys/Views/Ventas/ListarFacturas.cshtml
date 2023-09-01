@@ -1,0 +1,129 @@
+﻿@model List<BlackSys.Models.W_ListarFacturasCliente_Result>
+@{
+    ViewBag.Title = "ListarFacturas";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<head>
+  
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    @*Neccesarios para Exportar Js*@
+    <script src="~/assets/js/popper.min.js"></script>
+    <link href="~/assets/Exportar Js/tableexport.css" rel="stylesheet" />
+
+
+    <link href="~/Content/DynaTables/jquery.dynatable.css" rel="stylesheet" />
+    <script src="~/Content/DynaTables/jquery.dynatable.js"></script>
+
+    </head>
+
+
+    <br />
+
+    <div class="form-group">
+        @*<button type="button" class="btn btn-sm btn-success" onclick="RenderActions('/Ventas/FacturasPorCliente')">Buscar otro Cliente</button>*@
+        <button type="button" class="btn btn-sm btn-info"  onclick="location.href='@Url.Action("FacturasPorCliente", "Ventas")'">Buscar Otro Cliente</button>
+
+     
+        <div class="col-lg-12 col-md-4">
+            <label>Codigo:</label> <label>@ViewBag.ClienteCodigo</label>
+
+        </div>
+
+        <div class="col-lg-12 col-md-4">
+
+            <label>Descripcion:</label> <label>@ViewBag.clienteNombre</label>
+
+        </div>
+        
+           @*<label class="control-label" for="Nombre">Seleecione el Cliente a consultar</label>*@
+        @*<button></button>*@
+        @*@Html.DropDownList("Cliente", (IEnumerable<SelectListItem>)ViewBag.Cliente, null, new { id = "Cliente", @class = "form-control" })*@
+        <div class="help-block with-errors"></div>
+        <span id="span1"></span>
+    </div>
+    <label>Fecha de inicio:</label>
+    <input name="FechaIni" class="glyphicon-calendar" placeholder="26/05/2020 11:06:56 a. m." type="date" />
+    <label>Fecha de finalizacion:</label>
+    <input name="FechaFin" class="glyphicon-calendar" placeholder="26/05/2020 11:06:56 a. m." type="date" />
+
+    <br />
+
+
+    <div class="col-md-12">
+        <table class="table table-striped" id="my-tableDino23">
+
+            <thead>
+                <tr>
+                    <th>Tipo</th>
+                    <th>Factura N°</th>
+                    <th>Origen</th>
+                    <th>Fecha</th>
+                    <th>Sucursal</th>
+                    <th>Tipo Precio Cliente</th>
+                    <th>Monto Total</th>
+                    <th>Accion</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                @foreach (var item in Model)
+            {
+                    <tr>
+
+                        <td> @Html.DisplayFor(modelItem => item.Tipo)</td>
+                        <td> @Html.DisplayFor(modelItem => item.NumFac)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Origen)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Fecha)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Sucursal)</td>
+                        <td>@Html.DisplayFor(modelItem => item.TipoPrecio)</td>
+                        <td>@Html.DisplayFor(modelItem => item.MontoTotal)</td>
+
+                        <td>
+                            @Html.ActionLink("Consultar", "DetallarFacutar", "Ventas", new { Suc_Id = item.Suc_Id, Factura_Id = item.Factura_Id, Caja_Id = item.Caja_Id, TipoDoc_Id = item.TipoDoc_Id }, new { @class = "btn btn-info" })
+                        </td>
+                        <td></td>
+
+                    </tr>
+                }
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+
+
+
+
+    <script src="~/assets/Exportar Js/FileSaver.min.js"></script>
+    <script src="~/assets/Exportar Js/Blob.min.js"></script>
+    <script src="~/assets/Exportar Js/xls.core.min.js"></script>
+    <script src="~/assets/Exportar Js/tableexport.js"></script>
+
+
+    <script>
+        $("table").tableExport({
+            formats: ["xlsx", "txt", "csv"], //Tipo de archivos a exportar ("xlsx","txt", "csv", "xls")
+            position: 'button',  // Posicion que se muestran los botones puedes ser: (top, bottom)
+            bootstrap: false,//Usar lo estilos de css de bootstrap para los botones (true, false)
+            fileName: "Export",    //Nombre del archivo
+        });
+    </script>
+
+
+
+
+<script>
+
+        $('#my-tableDino23').dynatable({
+            table: {
+                defaultColumnIdStyle: 'dashed'
+            }
+        });
+
+
+</script>

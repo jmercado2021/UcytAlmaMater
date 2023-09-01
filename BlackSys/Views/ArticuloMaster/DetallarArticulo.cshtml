@@ -1,0 +1,506 @@
+﻿@model List<BlackSys.Models.W_ConsultarArticuloById_Result>
+@{
+    ViewBag.Title = "DetallarArticulo";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<head>
+    <link href="~/assets/css/bstree.css" rel="stylesheet" />
+    <script src="~/assets/js/jqueryTreeview.js"></script>
+    <link href="~/Content/css/CSS Personalizado/FunkyRadio.css" rel="stylesheet" />
+    <script src="~/Content/ScripByron/TblArticulo.js"></script>
+</head>
+<body>
+    <br>
+
+    <form method="post" action="@Url.Action("ActualizarArticulo")">
+
+        <div class="container">
+
+            <ul class="nav nav-tabs" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" data-toggle="tab" href="#Detalles">DETALLES</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#Precios">PRECIOS</a>
+                </li>
+
+            
+
+
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#Galeria">GALERIA</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#Menudeo">MENUDEO</a>
+                </li>
+            </ul>
+            <!-- Tab panes -->
+            <div class="tab-content">
+                @foreach (var item in Model)
+                {
+                    <div id="Detalles" class="container tab-pane active">
+                        <br>
+                        <div class="form form-bordered">
+
+                            <div class="row">
+
+                                <div class="col-md-6">
+                                    <span>Codigo:</span>
+                                    <input name="Codigo" id="Codigo" type="text" class="form-control" placeholder="Articulo Nombre" value="@item.Codigo" readonly>
+                                </div>
+                                <div class="col-md-6">
+                                    <span>Codigo Barra</span>
+                                    <input name="ArticuloBarra" type="text" class="form-control" placeholder="Codigo de Barra" value="@item.ArticuloBarra">
+                                </div>
+                            </div>
+                            <br />
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <span>ArticuloNombre:</span>
+                                    <input name="ArticuloNombre" type="text" class="form-control" placeholder="Nombre del Articulo" value="@item.ArticuloNombre">
+                                </div>
+
+                            </div>
+                            <br />
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <span>Es Suelto:</span>
+                                    <input type="text" class="form-control" placeholder="Username" value="@item.EsSuelto" readonly>
+                                </div>
+                            </div>
+                            <br />
+                            <div class="row">
+                                <div id="intro" class="col-md-6">
+                                    <span>Casa:</span>
+                                    @Html.DropDownList("Casa", (IEnumerable<SelectListItem>)ViewBag.Casa, null, new { @class = "form-control" })
+                                </div>
+                                <div id="intro" class="col-md-6">
+                                    <span>Departamento:</span>
+                                    @Html.DropDownList("DepartamentoId", (IEnumerable<SelectListItem>)ViewBag.Departamento, null, new { @class = "form-control" })
+                                </div>
+
+                            </div>
+                            <br />
+                            <div class="row">
+                                <div id="intro" class="col-md-6">
+                                    <span>Categoria:</span>
+                                    @Html.DropDownList("CategoriaId", (IEnumerable<SelectListItem>)ViewBag.Categoria, null, new { @class = "form-control" })
+                                </div>
+                                <div id="intro" class="col-md-6">
+                                    <span>Grupo Terapeutico:</span>
+                                    @Html.DropDownList("GrupoId", (IEnumerable<SelectListItem>)ViewBag.Grupo, null, new { @class = "form-control" })
+                                </div>
+
+                            </div>
+                            <br />
+                            <div class="row">
+                                <div id="intro" class="col-md-6">
+                                    <span>SubCategoria:</span>
+                                    @Html.DropDownList("SubCategoriaId", (IEnumerable<SelectListItem>)ViewBag.SubCategoria, null, new { @class = "form-control" })
+                                </div>
+                                <div id="intro" class="col-md-6">
+                                    <span>Tipo Uso:</span>
+                                    @Html.DropDownList("Articulo_Tipo_Uso", (IEnumerable<SelectListItem>)ViewBag.TipoUso, null, new { @class = "form-control" })
+                                </div>
+                            </div>
+                            <br />
+                            <div class="row">
+                                <div id="intro" class="col-md-6">
+                                    <span>Proveedor:</span>
+                                    @Html.DropDownList("ProveedorId", (IEnumerable<SelectListItem>)ViewBag.Proveedor, null, new { @class = "form-control" })
+                                </div>
+                                <div id="intro" class="col-md-6">
+                                    <span>Sustituto:</span>
+                                    @Html.DropDownList("Articulo_Sustituto_Id", (IEnumerable<SelectListItem>)ViewBag.Sustituto, null, new { @class = "form-control" })
+                                </div>
+                            </div>
+                            <br />
+
+
+                            <br />
+                            <h4> Descripcion Fisica</h4>
+                            <div class="row">
+                                <div id="intro" class="col-md-6">
+                                    <span>Color:</span>
+                                    <input name="Color" type="text" class="form-control" value="@item.Color">
+                                </div>
+                                <div id="intro" class="col-md-6">
+                                    <span>Tamaño:</span>
+                                    <input name="Tamaño" type="text" class="form-control" value="@item.Tamaño">
+                                </div>
+                            </div>
+                            <br />
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <span>Existencia:</span>
+                                    <input name="Existencia" type="text" class="form-control" value="@item.Existencia" readonly>
+                                </div>
+                                <div class="col-md-6">
+                                    <span>Cantidad Minima</span>
+                                    <input name="ArticuloCantidadMinima" value="@item.ArticuloCantidadMinima" type="text" class="form-control" placeholder="1" readonly>
+                                </div>
+                            </div>
+                            <br />
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <span>Factor de conversion:</span>
+                                    <input name="ArticuloFactorConv" type="text" class="form-control" value="@item.ArticuloFactorConv" readonly>
+                                </div>
+                                <div class="col-md-6">
+                                    <span>Unidad</span>
+                                    <input name="Articulo_Unidad" value="@item.Articulo_Unidad" type="text" class="form-control" readonly>
+                                </div>
+                            </div>
+                            <br />
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <span>Alto:</span>
+                                    <input name="Articulo_Alto" type="text" class="form-control" value="@item.Articulo_Alto">
+                                </div>
+                                <div class="col-md-6">
+                                    <span>Ancho:</span>
+                                    <input name="Articulo_Ancho" type="text" class="form-control" value="@item.Articulo_Ancho">
+                                </div>
+
+                            </div>
+                            <br />
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <span>Largo:</span>
+                                    <input name="Articulo_Largo" value="@item.Articulo_Largo" type="text" class="form-control">
+                                </div>
+                                @*<div class="col-md-6">
+                                        <span>Articulo_Express:</span>
+                                        <input name="Articulo_Express" type="text" value="@item.Articulo_Express" class="form-control">
+
+                                    </div>*@
+
+                            </div>
+                            <br />
+                            <div class="row">
+                                <div class="col-md-2">
+
+
+                                    <div class="col-md-2">
+                                        <div class="checkbox">
+                                            <span>Activo para la venta:</span>
+                                            <input type="checkbox" id="ArticuloActivoVenta" value="1" name="ArticuloActivoVenta" checked>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <span>Activo para compra:</span>
+                                    <div class="col-md-6 col-sm-2 col-md-2 hop">
+                                        <input name="ArticuloActivoCompra" id="ArticuloActivoCompra" value="1" type="checkbox" data-off-text="NO" data-on-color="success" data-on-text="SI" checked="checked" class="BSswitch switch-small">
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <span>Aplica Regalia:</span>
+                                    <div class="col-md-6 col-sm-2 col-md-2 hop">
+                                        <input name="Articulo_Aplica_Regalia" value="1" id="Articulo_Aplica_Regalia" type="checkbox" data-off-text="NO" data-on-color="success" data-on-text="SI" checked="checked" class="BSswitch switch-small">
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <span>Express:</span>
+                                    <br />
+                                    <div class="col-md-6 col-sm-2 col-md-2 hop">
+                                        <input name="Articulo_Express" value="1" id="Articulo_Express" type="checkbox" data-off-text="NO" data-on-color="success" data-on-text="SI" checked="checked" class="BSswitch switch-small">
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <span>Devuelve a Proveedor:</span>
+                                    <div class="col-md-6 col-sm-2 col-md-2 hop">
+                                        <input name="Articulo_Devuelve_Proveedor" value="1" id="Articulo_Devuelve_Proveedor" type="checkbox" data-off-text="NO" data-on-color="success" data-on-text="SI" checked="checked" class="BSswitch switch-small">
+                                    </div>
+                                </div>
+                            </div>
+                            <br />
+                            <div class="row">
+                                <div class="box-body pad col-md-9">
+                                    <span>Alerta de articulo</span>
+                                    <textarea name="ArticuloObservacion" class="textarea"
+                                              style="width: 100%; height: 100px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;">
+                                        @item.ArticuloObservacion
+                                    </textarea>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div id="Precios" class="container tab-pane fade">
+                        <br />
+                        <div class="form form-bordered">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <span>Costo Actual</span>
+                                    <input name="ArticuloCosto" value="@item.ArticuloCosto" type="text" class="form-control" readonly>
+                                </div>
+                                <div class="col-md-3">
+                                    <span>AritculoPrecio</span>
+                                    <input name="ArticuloPrecio" value="@item.ArticuloPrecio" type="text" class="form-control" readonly>
+                                </div>
+                                <div class="col-md-3" readonly>
+                                    <span>Ultimo Costo</span>
+                                    <input name="ArticuloCostoUlt" value="@item.ArticuloCostoUlt" type="text" class="form-control" readonly />
+                                </div>
+                                <div class="col-md-3">
+                                    <span>Costo Promedio</span>
+                                    <input name="ArticuloCostoProm" value="@item.ArticuloCostoProm" type="text" class="form-control" readonly />
+                                </div>
+                            </div>
+                            <br />
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <span>Limite de descuento 1</span>
+                                    <input name="ArticuloLimiteDesc" value="@item.ArticuloLimiteDesc" type="text" class="form-control">
+                                </div>
+                                <div class="col-md-3">
+                                    <span>Limite de descuento 2</span>
+                                    <input name="ArticuloLimiteDesc2" value="@item.ArticuloLimiteDesc2" type="text" class="form-control">
+                                </div>
+                                <div class="col-md-3">
+                                    <span>Limite de descuento 3</span>
+                                    <input name="ArticuloLimiteDesc3" value="@item.ArticuloLimiteDesc3" type="text" class="form-control">
+                                </div>
+                                <div class="col-md-3">
+                                    <span>Calculo Margen</span>
+                                    <input name="Articulo_Margen" value="@item.Articulo_Margen" type="text" class="form-control">
+                                </div>
+                            </div>
+                            <br />
+
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <span>Precio 1</span>
+                                    <input name="ArticuloPrecio1" type="text" class="form-control" value="@item.ArticuloPrecio1" />
+                                </div>
+                                <div class="col-md-2">
+                                    <span>Precio 2:</span>
+                                    <input name="ArticuloPrecio2" type="text" class="form-control" value="@item.ArticuloPrecio2" />
+                                </div>
+                                <div class="col-md-2">
+                                    <span>Precio 3:</span>
+                                    <input name="ArticuloPrecio3" type="text" class="form-control" value="@item.ArticuloPrecio3" />
+                                </div>
+                                <div class="col-md-2">
+                                    <span>Precio 4:</span>
+                                    <input name="ArticuloPrecio4" type="text" class="form-control" value="@item.ArticuloPrecio4" />
+                                </div>
+                                <div class="col-md-2">
+                                    <span>Precio 5:</span>
+                                    <input name="ArticuloPrecio5" type="text" class="form-control" value="@item.ArticuloPrecio5" />
+                                </div>
+                                <div class="col-md-2">
+                                    <span>Precio Fijo</span>
+                                    <input name="ArticuloPrecioFijo" type="text" class="form-control" value="@item.ArticuloPrecioFijo" />
+                                </div>
+                            </div>
+                            <br />
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <span>Limite de descuento</span>
+                                    <input name="ArticuloLimiteDesc" type="text" class="form-control" value="@item.ArticuloLimiteDesc" readonly>
+                                </div>
+                                <div class="col-md-3">
+                                    <span>Limite de descuento 2</span>
+                                    <input name="ArticuloLimiteDesc2" type="text" class="form-control" value="@item.ArticuloLimiteDesc2" placeholder="0.00" readonly>
+                                </div>
+                                <div class="col-md-3">
+                                    <span>Limite de descuento</span>
+                                    <input name="ArticuloLimiteDesc3" type="text" class="form-control" value="@item.ArticuloLimiteDesc3" placeholder="0.00" readonly>
+                                </div>
+
+                            </div>
+                            <br />
+                            @*<div class=" row">
+                                    <div class="col-md-6">
+
+                                        <input type="text" class="form-control" placeholder="Username" />
+                                    </div>
+                                </div>*@
+                            <br />
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <span>Paga Iva:</span>
+                                    <br />
+                                    <div class="col-md-6 col-sm-2 col-md-2 hop">
+                                        <input name="PagaIva" id="PagaIva" type="checkbox" value="1" data-off-text="NO" data-on-color="success" data-on-text="SI" checked="checked" class="BSswitch switch-small">
+
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <span>Sumar IVA a Precio:</span>
+                                    <div class="col-md-6 col-sm-2 col-md-2 hop">
+                                        <input name="SumaIvaPrecio" id="SumaIvaPrecio" value="1" type="checkbox" data-off-text="NO" data-on-color="success" data-on-text="SI" checked="checked" class="BSswitch switch-small">
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <span>Precio se calcula por Margen:</span>
+                                    <div class="col-md-6 col-sm-2 col-md-2 hop">
+                                        <input name="Articulo_Precio_x_Margen" id="Articulo_Precio_x_Margen" value="1" type="checkbox" data-off-text="NO" data-on-color="success" data-on-text="SI" checked="checked" class="BSswitch switch-small">
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <span>Venta Bajo Costo</span>
+                                    <div class="col-md-6 col-sm-2 col-md-2 hop">
+                                        <input name="ArticuloVentaBajoCosto" id="ArticuloVentaBajoCosto" value="1" type="checkbox" data-off-text="NO" data-on-color="success" data-on-text="SI" checked="checked" class="BSswitch switch-small">
+                                    </div>
+                                </div>
+                            </div>
+                            <br />
+                        </div>
+
+                    </div>
+
+
+                    <div id="Galeria" class="container tab-pane fade">
+                        @using (Html.BeginForm("ActualizarImagen", "ArticuloMaster", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                        {
+                            <div class="form-group">
+                                <label for="exampleInputFile">Subir imagen </label>
+                                <input type="file" name="file">
+                            </div>
+                            <button type="submit" class="btn-circle btn-primary">Actualizar Imagen</button>
+
+                            <input type="hidden" name="Codigo" value="@item.Codigo" />
+                        }
+                        @if (item.Articulo_image != null)
+                        {
+                            <div class="timeline-body">
+                                <img src='@Url.Action("RetrieveImage", "ArticuloMaster", new { Codigo = item.Codigo})' alt="" height=600 width=450 />
+                                @*<img src="http://placehold.it/150x100" alt="..." class="margin">
+                                    <img src="http://placehold.it/150x100" alt="..." class="margin">
+                                     <img src="http://placehold.it/150x100" alt="..." class="margin">*@
+                            </div>
+                        }
+
+                    </div>
+                    <div id="Menudeo" class="container tab-pane fade">
+                        <br />
+
+
+                        @*<form method="post" action="@Url.Action("GuardarSusititutoEquivalente","ArticuloMaster")">*@
+
+                        <div class="row">
+
+                            <div class="col-md-4">
+                                <span>Codigo Padre:</span>
+                                <input name="CodigoPadre" id="CodigoPadre" type="text" class="form-control" placeholder="Codigo Padre" value="@item.ArticuloCodigoPadre" readonly>
+                            </div>
+                            <div class="col-md-4">
+                                <span>Codigo Suelto:</span>
+                                <input name="CodigoSuelto" id="CodigoSuelto" type="text" class="form-control" placeholder="Codigo Suelto" value="@item.ArticuloCodigoHijo" readonly>
+                            </div>
+                            <div class="col-md-4">
+                                <span>Identificador:</span>
+                                <input name="Identificador" id="Identificador" type="text" class="form-control" placeholder="Identificador" value="@item.ArticuloCodCajaSuelto" readonly>
+                            </div>
+                            <div class="col-md-4">
+                                <span>Factor de conversion</span>
+                                <input name="Factor" id="Factor" type="text" class="form-control" placeholder="Factor" value="@item.ArticuloFactorConv">
+                            </div>
+
+                        </div>
+
+                        <br />
+                        <button class="btn btn-primary" type="button" onclick="CrearCodigoSuelto22()">Crear Codigo Suelto</button>
+
+                        <div id="partial2">
+
+                            @Html.Partial("CrearCodigoSuelto", (string)ViewBag.Mensaje)
+
+                        </div>
+
+
+                    </div>
+
+
+                        <div class="form-group">
+                            <a>  </a>  <button type="submit" class="btn btn-circle  btn-primary "><i class="fa fa-clipboard"></i> Guardar</button>
+                        </div>
+
+
+                        <script>
+
+                            if (@item.ArticuloActivoVenta > 0)
+                            { document.getElementById('ArticuloActivoVenta').checked = true }
+                            else {document.getElementById('ArticuloActivoVenta').checked = false}
+
+
+                            if (@item.ArticuloActivoCompra == 0)
+                            { document.getElementById('ArticuloActivoCompra').checked = false }
+                            else {document.getElementById('ArticuloActivoCompra').checked = true}
+
+                            if (@item.Articulo_Aplica_Regalia == 0)
+                            { document.getElementById('Articulo_Aplica_Regalia').checked = false }
+                            else {document.getElementById('Articulo_Aplica_Regalia').checked = true}
+
+                            if (@item.Articulo_Express == 0)
+                            { document.getElementById('Articulo_Express').checked = false }
+                            else {document.getElementById('Articulo_Express').checked = true}
+
+                            if (@item.Articulo_Devuelve_Proveedor > 0)
+                            { document.getElementById('Articulo_Devuelve_Proveedor').checked = true }
+                            else { document.getElementById('Articulo_Devuelve_Proveedor').checked = false }
+
+                            if (@item.Articulo_Suma_Iva > 0)
+                            { document.getElementById('Articulo_Devuelve_Proveedor').checked = true }
+                            else {document.getElementById('Articulo_Devuelve_Proveedor').checked = false}
+
+                            if (@item.Articulo_Precio_x_Margen > 0)
+                            { document.getElementById('Articulo_Precio_x_Margen').checked = true }
+                            else {document.getElementById('Articulo_Precio_x_Margen').checked = false}
+
+                            if (@item.ArticuloVentaBajoCosto > 0)
+                            { document.getElementById('ArticuloVentaBajoCosto').checked = true }
+                            else {document.getElementById('ArticuloVentaBajoCosto').checked = false}
+
+
+                            if (@item.IVABOL > 0)
+                            { document.getElementById('PagaIva').checked = true }
+                            else {document.getElementById('PagaIva').checked = false}
+                            //Condiciones para pasar el valor que debe mostrar el droplist
+                            document.getElementById('Casa').value = @item.CasaId;
+                            document.getElementById('DepartamentoId').value = @item.DepartamentoId;
+                            document.getElementById('CategoriaId').value = @item.CategoriaId;
+                            document.getElementById('GrupoId').value = @item.GrupoId;
+                            document.getElementById('SubCategoriaId').value = @item.SubCategoriaId;
+                            document.getElementById('ProveedorId').value = @item.ProveedorId
+                          document.getElementById('Articulo_Tipo_Uso').value = @item.Articulo_Tipo_Uso;
+
+                            document.getElementById('Articulo_Sustituto_Id').value = @item.Articulo_Sustituto_Id;
+
+
+
+                            @*document.getElementById('SustitutoId').value = @item.Articulo_Sustituto_Id;*@
+
+                        </script>
+                        }
+                    </div>
+
+        </div>
+
+
+
+        <script>
+            function CrearCodigoSuelto22() {  //FUNCION PARA CREAR EL CODIGO SUELTO. CARGAMOS LA VISTA PARCIAL PARA EL MENSAJE A MOSTRAR
+                var CodigoPadre = $("#Codigo").val();
+                var Factor = $("#Factor").val();
+
+                $("#partial2").load('@Url.Action("CrearCodigoSuelto")' + '?CodigoPadre=' + CodigoPadre + '&Factor=' + Factor);
+            };
+        </script>
+
+        <script>
+            $(document).ready(function () {
+                ValidarBotonCrearSuelto();
+            });
+
+        </script>
+    </form>
+</body>
+     
+
+

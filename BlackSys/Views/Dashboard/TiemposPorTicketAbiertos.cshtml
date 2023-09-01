@@ -1,0 +1,137 @@
+﻿@model List<MiPrimerProyectoMVC.Model.EntityTíemposPorTiketAbiertos_Result>
+@{
+    ViewBag.Title = "TiemposPorTicketAbiertos";
+    Layout = "~/Views/Shared/_AdminLte.cshtml";
+}
+<head>
+ 
+    <link href="~/Content/DynaTables/jquery.dynatable.css" rel="stylesheet" />
+    <script src="~/Content/DynaTables/jquery.dynatable.js"></script>
+
+
+</head>
+<br />
+
+
+
+@*<div class="panel-body col-md-12">*@
+@*<div id="contenedor" class="container">*@
+    <table class="table table-striped" id="my-tableDino23" >
+
+
+
+        <thead>
+            <tr style="width:10%">
+                <th>Estado</th>
+                <th>Accion</th>
+                <th>NTicket</th>
+                <th>Cliente</th>
+                <th>Estado</th>
+                <th>TipoProblema</th>
+                <th>Prioridad</th>
+                <th>Incidente</th>
+                <th>Operador Asignado</th>
+                <th>Transcurso</th>
+                <th>Fecha Inicio</th>
+               
+                
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    @{
+                        int Vist = Convert.ToInt32(item.Visto);
+                        if (Vist == 0)
+                        {
+                            <td>
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <i class="fa fa-envelope-o"></i>
+                                    <span class="label label-success">Nuevo</span>
+                                </a>
+                            </td>
+                        }
+                        else
+                        {
+                            <td>
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <i>Leido</i>
+                                    <span class="label label-success"></span>
+                                </a>
+                            </td>
+                        }
+                    }
+
+                   
+
+                    <td>
+
+                        @Html.ActionLink("Seguimiento", "ComentariosTiket", "TblTicketEncabezado", new { id = item.NTicket }, new { @class = "btn btn-info" })
+
+                        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#modalCreate" onclick="RenderActions('/TblTicketEncabezado/Edit2/' + @item.NTicket)">Actualizar</button>
+                        @*</div>*@
+
+                    </td>
+                    <td>CAS-@Html.DisplayFor(modelItem => item.NTicket)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Cliente)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Estado)</td>
+                    <td>@Html.DisplayFor(modelItem => item.TipoProblema)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Prioridad)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Incidente)</td>
+                    <td>@Html.DisplayFor(modelItem => item.OperadorInicia)</td>
+                    
+
+                    @{
+                        var PaDias = " Dias ";
+                        var Dias = (Convert.ToDouble(item.DuracionHoraTranscurridas) / 24);
+                        var Dias2 = Convert.ToInt32(Dias);
+
+
+                        if (Dias < 1)
+                        {
+                            <td class="mailbox-date"> @Html.DisplayFor(modelItem => item.DuracionHoraTranscurridas) horas  @Html.DisplayFor(modelItem => item.DuracionMinutoTranscurrido) Minutos </td>
+                        }
+
+                        if (Dias > 1)
+                        {
+                            <td class="mailbox-date"> @Dias2  @PaDias  @Html.DisplayFor(modelItem => item.DuracionHoraTranscurridas) Horas @Html.DisplayFor(modelItem => item.DuracionMinutoTranscurrido) Minutos </td>
+                        }
+                    }
+
+                    <td>@Html.DisplayFor(modelItem => item.FechaTicketInicio)</td>
+                  
+                  
+                </tr>
+
+
+
+
+                        }
+        </tbody>
+    </table>
+   
+    <script>
+
+        $('#my-tableDino23').dynatable({
+            table: {
+                defaultColumnIdStyle: 'dashed',
+                overflow: scroll
+            }
+        });
+
+
+    </script>
+
+<div id="modalCreate" class="modal fade" role="dialog" data-backdrop="false">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div id="OpenDialog" class="modal-body">
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+

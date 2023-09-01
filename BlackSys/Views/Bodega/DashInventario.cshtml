@@ -1,0 +1,480 @@
+﻿@model List<BlackSys.Models.W_EfectividadInventarioSuc_Result>
+    @{
+        ViewBag.Title = "DashInventario";
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+<head>
+    <script src="~/Scripts/Chart.min.js"></script>
+    <script src="~/Char/utils.js"></script>
+
+    <script src="~/assets/js/jqueryTreeview.js"></script>
+
+
+
+</head>
+
+<form method="post" action="@Url.Action("DashInventarioClasificacion", "Bodega")">
+<div class="row">
+    <div class="col-md-6">
+        <div class="box box-default">
+            <div class="box-header with-border">
+                <div id="canvas-holder">
+                    <canvas id="chart-area"></canvas>
+                </div>
+
+
+            </div>
+            <!-- /.footer -->
+        </div>
+    </div>
+    <div class="col-md-6">
+       
+        
+        <label style="position:absolute" >Clasificacion</label>
+
+            <div class="row col-md-3">
+
+             
+                <div class="funkyradio">
+
+                    <div class="funkyradio-success">
+                        <input value="A" type="radio" name="radio" id="radio1" />
+                        <label for="radio1">A-@ViewBag.contA</label>
+                    </div>
+                    <div class="funkyradio-success">
+                        <input value="B" type="radio" name="radio" id="radio2" />
+                        <label for="radio2">B-@ViewBag.contB</label>
+                    </div>
+                   
+
+                </div>
+           
+            </div>
+        <div class="row col-md-2">
+        </div>
+     
+            <div class="row col-md-3">
+                <div class="funkyradio">
+                    
+                    <div class="funkyradio-success">
+                        <input value="C" type="radio" name="radio" id="radio3" />
+                        <label for="radio3">C-@ViewBag.contC</label>
+                    </div>
+                   
+
+                </div>
+                <br />
+              
+
+            </div>
+      
+
+
+
+        </div>
+    
+   <div class="col-md-3">
+       <button type="submit" class="btn btn-primary">Consultar</button>
+   </div>
+</div>
+</form>
+
+<!-- /.box -->
+
+
+
+
+<input id="Alto" type="hidden" value=@ViewBag.Alto />
+<input id="Medio" type="hidden" value=@ViewBag.Medio />
+<input id="Bajo" type="hidden" value=@ViewBag.Bajo />
+
+
+    <!-- TABLE: LATEST ORDERS -->
+    <div class="box box-info">
+        <div class="box-header with-border">
+            <h3 class="box-title">Efectividad General</h3>
+
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body">
+            <div class="table-responsive">
+                <table id="example" class="display" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th>Clasificacion</th>
+                            <th>Id</th>
+                            <th>Sucursal</th>
+                            <th>Disponibilidad Articulo</th>
+                            <th>No Disponibilidad Articulo</th>
+                            <th>Eectividad_General</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td><a>@Html.DisplayFor(modelItem => item.clasificacion)</a></td>
+                                <td><a>@Html.DisplayFor(modelItem => item.sucursal_id)</a></td>
+                                <td><a>@Html.DisplayFor(modelItem => item.sucursal_nombre)</a></td>
+                                <td><a>@Html.DisplayFor(modelItem => item.invMas)</a></td>
+                                <td><a>@Html.DisplayFor(modelItem => item.InvMenos)</a></td>
+                                @if (item.EfectividadSucursal >= 90)
+                                {
+                                    <td><span class="label label-success">@Html.DisplayFor(modelItem => item.EfectividadSucursal)</span></td>
+                                }
+                                @if (item.EfectividadSucursal >= 80 && item.EfectividadSucursal < 90)
+                                {
+                                    <td><span class="label label-warning">@Html.DisplayFor(modelItem => item.EfectividadSucursal)</span></td>
+                                }
+
+                                @if (item.EfectividadSucursal < 80)
+                                {
+                                    <td><span class="label label-danger">@Html.DisplayFor(modelItem => item.EfectividadSucursal)</span></td>
+                                }
+
+                                <td>
+                                    <a data-toggle="modal" data-target="#modalCreate" href="@Url.Action("GetArticulosMas","Bodega",new { sucursal_id = item.sucursal_id, Clasificacion = item.clasificacion})" class="btn btn-primary edit-radicado" data_sucursal_id="@item.sucursal_id">
+                                        <span class="glyphicon glyphicon glyphicon glyphicon-plus" aria-hidden="true"></span>
+                                    </a>
+
+                                </td>
+                                <td>
+                                    <a data-toggle="modal" data-target="#modalCreate" href="@Url.Action("GetArticulosMenos","Bodega",new { sucursal_id = item.sucursal_id, Clasificacion = item.clasificacion})" class="btn btn-primary edit-radicado" data_sucursal_id="@item.sucursal_id">
+                                        <span class="glyphicon glyphicon glyphicon-minus" aria-hidden="true"></span>
+                                    </a>
+
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+<script>
+
+    jQuery(document).ready(function(){
+
+        jQuery('#modalCreate').on('hidden.bs.modal', function (e) {
+	    jQuery(this).removeData('bs.modal');
+	    jQuery(this).find('.modal-content').empty();
+	})
+
+    })
+
+</script>
+
+<div id="modalCreate" class="modal fade" role="dialog" data-backdrop="false">
+ 
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div id="OpenDialog" class="modal-body">
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+
+    jQuery(document).ready(function(){
+
+        jQuery('#modalCreate').on('hidden.bs.modal', function (e) {
+	    jQuery(this).removeData('bs.modal');
+	    jQuery(this).find('.modal-content').empty();
+	})
+
+    })
+
+</script>
+@*<div id="modalCreateMas" class="modal fade" role="dialog" data-backdrop="false">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div id="OpenDialog" class="modal-body">
+            </div>
+        </div>
+    </div>
+</div>*@
+
+    <!-- /.table-responsive -->
+<script>
+
+    function generateLabelsFromTable() {
+        var labels = [];
+
+        var rows = jQuery("tr");
+        rows.each(function (index) {
+            if (index != 0)  // we dont need first row of table
+            {
+                var cols = $(this).find("td");
+                labels.push(cols.first().text());
+            }
+        });
+        return labels;
+    }
+
+
+
+    var Alto = $('#Alto').val().trim();
+    var Medio = $('#Medio').val().trim();
+    var Bajo = $('#Bajo').val().trim();
+
+
+    var config = {
+        type: 'doughnut',
+        data: {
+            datasets: [{
+                data: [
+
+
+                    Alto,
+                    Medio,
+                    Bajo,
+                    //randomScalingFactor(),
+                ],
+                backgroundColor: [
+                    window.chartColors.blue,
+                        window.chartColors.yellow,
+                    window.chartColors.red,
+                    window.chartColors.orange,
+
+                    window.chartColors.green,
+
+                ],
+                label: 'Dataset 1'
+            }],
+            labels: [
+               Alto + '-' + 'Abastecido',
+                Medio + '-' + 'Medio',
+               Bajo + '-'+ 'Bajo'
+                //'Green',
+                //'Blue'
+            ]
+        },
+        options: {
+            responsive: true,
+            legend: {
+                position: 'top',
+            },
+            title: {
+                display: true,
+                text: 'Efectividad Inventario Cadena'
+            },
+            animation: {
+                animateScale: true,
+                animateRotate: true
+            }
+        }
+    };
+
+    window.onload = function () {
+        var ctx = document.getElementById('chart-area').getContext('2d');
+        window.myDoughnut = new Chart(ctx, config);
+    };
+
+    document.getElementById('randomizeData').addEventListener('click', function () {
+        config.data.datasets.forEach(function (dataset) {
+            dataset.data = dataset.data.map(function () {
+                return randomScalingFactor();
+            });
+        });
+
+        window.myDoughnut.update();
+    });
+
+    var colorNames = Object.keys(window.chartColors);
+    document.getElementById('addDataset').addEventListener('click', function () {
+        var newDataset = {
+            backgroundColor: [],
+            data: [],
+            label: 'New dataset ' + config.data.datasets.length,
+        };
+
+        for (var index = 0; index < config.data.labels.length; ++index) {
+            newDataset.data.push(randomScalingFactor());
+
+            var colorName = colorNames[index % colorNames.length];
+            var newColor = window.chartColors[colorName];
+            newDataset.backgroundColor.push(newColor);
+        }
+
+        config.data.datasets.push(newDataset);
+        window.myDoughnut.update();
+    });
+
+    document.getElementById('addData').addEventListener('click', function () {
+        if (config.data.datasets.length > 0) {
+            config.data.labels.push('data #' + config.data.labels.length);
+
+            var colorName = colorNames[config.data.datasets[0].data.length % colorNames.length];
+            var newColor = window.chartColors[colorName];
+
+            config.data.datasets.forEach(function (dataset) {
+                dataset.data.push(randomScalingFactor());
+                dataset.backgroundColor.push(newColor);
+            });
+
+            window.myDoughnut.update();
+        }
+    });
+
+    document.getElementById('removeDataset').addEventListener('click', function () {
+        config.data.datasets.splice(0, 1);
+        window.myDoughnut.update();
+    });
+
+    document.getElementById('removeData').addEventListener('click', function () {
+        config.data.labels.splice(-1, 1); // remove the label first
+
+        config.data.datasets.forEach(function (dataset) {
+            dataset.data.pop();
+            dataset.backgroundColor.pop();
+        });
+
+        window.myDoughnut.update();
+    });
+
+    document.getElementById('changeCircleSize').addEventListener('click', function () {
+        if (window.myDoughnut.options.circumference === Math.PI) {
+            window.myDoughnut.options.circumference = 2 * Math.PI;
+            window.myDoughnut.options.rotation = -Math.PI / 2;
+        } else {
+            window.myDoughnut.options.circumference = Math.PI;
+            window.myDoughnut.options.rotation = -Math.PI;
+        }
+
+        window.myDoughnut.update();
+    });
+</script>
+
+
+
+<style>
+    .funkyradio div {
+        clear: both;
+        overflow: hidden;
+    }
+
+    .funkyradio label {
+        width: 100%;
+        border-radius: 3px;
+        border: 1px solid #D1D3D4;
+        font-weight: normal;
+    }
+
+    .funkyradio input[type="radio"]:empty,
+    .funkyradio input[type="checkbox"]:empty {
+        display: none;
+    }
+
+        .funkyradio input[type="radio"]:empty ~ label,
+        .funkyradio input[type="checkbox"]:empty ~ label {
+            position: relative;
+            line-height: 2.5em;
+            text-indent: 3.25em;
+            margin-top: 2em;
+            cursor: pointer;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+            .funkyradio input[type="radio"]:empty ~ label:before,
+            .funkyradio input[type="checkbox"]:empty ~ label:before {
+                position: absolute;
+                display: block;
+                top: 0;
+                bottom: 0;
+                left: 0;
+                content: '';
+                width: 2.5em;
+                background: #D1D3D4;
+                border-radius: 3px 0 0 3px;
+            }
+
+    .funkyradio input[type="radio"]:hover:not(:checked) ~ label,
+    .funkyradio input[type="checkbox"]:hover:not(:checked) ~ label {
+        color: #888;
+    }
+
+        .funkyradio input[type="radio"]:hover:not(:checked) ~ label:before,
+        .funkyradio input[type="checkbox"]:hover:not(:checked) ~ label:before {
+            content: '\2714';
+            text-indent: .9em;
+            color: #C2C2C2;
+        }
+
+    .funkyradio input[type="radio"]:checked ~ label,
+    .funkyradio input[type="checkbox"]:checked ~ label {
+        color: #777;
+    }
+
+        .funkyradio input[type="radio"]:checked ~ label:before,
+        .funkyradio input[type="checkbox"]:checked ~ label:before {
+            content: '\2714';
+            text-indent: .9em;
+            color: #333;
+            background-color: #ccc;
+        }
+
+    .funkyradio input[type="radio"]:focus ~ label:before,
+    .funkyradio input[type="checkbox"]:focus ~ label:before {
+        box-shadow: 0 0 0 3px #999;
+    }
+
+    .funkyradio-default input[type="radio"]:checked ~ label:before,
+    .funkyradio-default input[type="checkbox"]:checked ~ label:before {
+        color: #333;
+        background-color: #ccc;
+    }
+
+    .funkyradio-primary input[type="radio"]:checked ~ label:before,
+    .funkyradio-primary input[type="checkbox"]:checked ~ label:before {
+        color: #fff;
+        background-color: #337ab7;
+    }
+
+    .funkyradio-success input[type="radio"]:checked ~ label:before,
+    .funkyradio-success input[type="checkbox"]:checked ~ label:before {
+        color: #fff;
+        background-color: #5cb85c;
+    }
+
+    .funkyradio-danger input[type="radio"]:checked ~ label:before,
+    .funkyradio-danger input[type="checkbox"]:checked ~ label:before {
+        color: #fff;
+        background-color: #d9534f;
+    }
+
+    .funkyradio-warning input[type="radio"]:checked ~ label:before,
+    .funkyradio-warning input[type="checkbox"]:checked ~ label:before {
+        color: #fff;
+        background-color: #f0ad4e;
+    }
+
+    .funkyradio-info input[type="radio"]:checked ~ label:before,
+    .funkyradio-info input[type="checkbox"]:checked ~ label:before {
+        color: #fff;
+        background-color: #5bc0de;
+    }
+</style>
+
+
+<script>
+                $(document).ready(function () {
+                    $('#example').DataTable({
+                        dom: 'Bfrtip',
+                        buttons: [
+                            'excelHtml5',
+
+                        ]
+                    });
+                });
+</script>
+
+
+
+
+

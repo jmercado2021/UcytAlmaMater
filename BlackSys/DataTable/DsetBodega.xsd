@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DsetBodega" targetNamespace="http://tempuri.org/DsetBodega.xsd" xmlns:mstns="http://tempuri.org/DsetBodega.xsd" xmlns="http://tempuri.org/DsetBodega.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DsetBodega" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DsetBodega" msprop:Generator_UserDSName="DsetBodega">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="DtDistribucion" msprop:Generator_TableClassName="DtDistribucionDataTable" msprop:Generator_TableVarName="tableDtDistribucion" msprop:Generator_TablePropName="DtDistribucion" msprop:Generator_RowDeletingName="DtDistribucionRowDeleting" msprop:Generator_RowChangingName="DtDistribucionRowChanging" msprop:Generator_RowEvHandlerName="DtDistribucionRowChangeEventHandler" msprop:Generator_RowDeletedName="DtDistribucionRowDeleted" msprop:Generator_UserTableName="DtDistribucion" msprop:Generator_RowChangedName="DtDistribucionRowChanged" msprop:Generator_RowEvArgName="DtDistribucionRowChangeEvent" msprop:Generator_RowClassName="DtDistribucionRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ArticuloId" msprop:Generator_ColumnVarNameInTable="columnArticuloId" msprop:Generator_ColumnPropNameInRow="ArticuloId" msprop:Generator_ColumnPropNameInTable="ArticuloIdColumn" msprop:Generator_UserColumnName="ArticuloId" type="xs:string" minOccurs="0" />
+              <xs:element name="Descripcion" msprop:Generator_ColumnVarNameInTable="columnDescripcion" msprop:Generator_ColumnPropNameInRow="Descripcion" msprop:Generator_ColumnPropNameInTable="DescripcionColumn" msprop:Generator_UserColumnName="Descripcion" type="xs:string" minOccurs="0" />
+              <xs:element name="CodigoBarra" msprop:Generator_ColumnVarNameInTable="columnCodigoBarra" msprop:Generator_ColumnPropNameInRow="CodigoBarra" msprop:Generator_ColumnPropNameInTable="CodigoBarraColumn" msprop:Generator_UserColumnName="CodigoBarra" type="xs:string" minOccurs="0" />
+              <xs:element name="Cantidad" msprop:Generator_ColumnVarNameInTable="columnCantidad" msprop:Generator_ColumnPropNameInRow="Cantidad" msprop:Generator_ColumnPropNameInTable="CantidadColumn" msprop:Generator_UserColumnName="Cantidad" type="xs:double" minOccurs="0" />
+              <xs:element name="SucId" msprop:Generator_ColumnVarNameInTable="columnSucId" msprop:Generator_ColumnPropNameInRow="SucId" msprop:Generator_ColumnPropNameInTable="SucIdColumn" msprop:Generator_UserColumnName="SucId" type="xs:string" minOccurs="0" />
+              <xs:element name="SucNombre" msprop:Generator_ColumnVarNameInTable="columnSucNombre" msprop:Generator_ColumnPropNameInRow="SucNombre" msprop:Generator_ColumnPropNameInTable="SucNombreColumn" msprop:Generator_UserColumnName="SucNombre" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

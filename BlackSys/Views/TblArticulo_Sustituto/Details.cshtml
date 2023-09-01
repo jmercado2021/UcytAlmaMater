@@ -1,0 +1,67 @@
+﻿@model BlackSys.Models.TblArticulo_Sustituto
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>TblArticulo_Sustituto</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Sustituto_Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sustituto_Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sustituto_Estado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sustituto_Estado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Usuario_Id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Usuario_Id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sustituto_Fec_Actualizacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sustituto_Fec_Actualizacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TblArticulo_Sustituto1.Sustituto_Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TblArticulo_Sustituto1.Sustituto_Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TblArticulo_Sustituto2.Sustituto_Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TblArticulo_Sustituto2.Sustituto_Nombre)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Sustituto_Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

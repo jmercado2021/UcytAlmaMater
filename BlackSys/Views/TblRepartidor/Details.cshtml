@@ -1,0 +1,75 @@
+﻿@model BlackSys.Models.TblRepartidor
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<div>
+    <h4>TblRepartidor</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Codigo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Codigo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nombre_Repartidor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nombre_Repartidor)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RepartidorStatusOrden)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RepartidorStatusOrden)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UltimaOrden)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UltimaOrden)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OrdenConsecutivo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OrdenConsecutivo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TblSucursal.SucNombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TblSucursal.SucNombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TblEstadoActivo.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TblEstadoActivo.Nombre)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

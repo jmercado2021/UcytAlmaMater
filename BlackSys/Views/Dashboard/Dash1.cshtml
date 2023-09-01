@@ -1,0 +1,171 @@
+﻿
+
+@{
+
+    @model List<MiPrimerProyectoMVC.Model.DashTikets1_Result>
+    List<MiPrimerProyectoMVC.Model.DashClientes1_Result> listclien = ViewBag.ListaClientes;
+
+    ViewBag.Title = "Dash1";
+    Layout = "~/Views/Shared/_AdminLte.cshtml";
+  }
+
+
+<head>
+    <script src="~/Content/DynaTables/jquery-1.7.2.min.js"></script>
+    <link href="~/Content/DynaTables/jquery.dynatable.css" rel="stylesheet" />
+    <script src="~/Content/DynaTables/jquery.dynatable.js"></script>
+
+</head>
+
+
+        <!-- Main content -->
+        <section class="content">
+            <!-- Small boxes (Stat box) -->
+            <div class="row">
+                <div class="col-lg-3 col-xs-6">
+                    <!-- small box -->
+                    <div class="small-box label-warning">
+                        <div class="inner">
+                            <h3>@ViewBag.Notificados<sup style="font-size: 20px"></sup></h3>
+
+                            <p>Tickets Notificados</p>
+                        </div>
+                        <div class="icon">
+                            <i class=""></i>
+                        </div>
+                        <a href="#" class="small-box-footer"><i class="fa fa-arrow-circle-right"></i></a>
+                    </div>
+                </div>
+                <!-- ./col -->
+                <div class="col-lg-3 col-xs-6">
+                    <!-- small box -->
+                    <div class="small-box label-info">
+                        <div class="inner">
+                            <h3>@ViewBag.EnProceso<sup style="font-size: 20px"></sup></h3>
+
+                            <p>Tickets en Proceso</p>
+                        </div>
+                        <div class="icon">
+                            <i class=""></i>
+                        </div>
+                        <a href="#" class="small-box-footer"><i class="fa fa-arrow-circle-right"></i></a>
+                    </div>
+                </div>
+                <!-- ./col -->
+                <div class="col-lg-3 col-xs-6">
+                    <!-- small box -->
+                    <div class="small-box bg-green">
+                        <div class="inner">
+                            <h3>@ViewBag.Terminados</h3>
+
+                            <p>Tickets Completados</p>
+                        </div>
+                        <div class="icon">
+                            <i class="ion green"></i>
+                        </div>
+                        <a href="#" class="small-box-footer"><i class="fa fa-arrow-circle-right"></i></a>
+                    </div>
+                </div>
+                <!-- ./col -->
+                <!-- ./col -->
+            </div>
+        </section>
+
+
+
+
+
+        <!-- TO DO List -->
+        <div class="box box-primary">
+            <div class="box-header">
+                <i class="ion ion-clipboard"></i>
+
+                <h3 class="box-title">Estado de Tikets Por Operador</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body" style="font-size:20px">
+                <!-- See dist/js/pages/dashboard.js to activate the todoList plugin -->
+
+                @foreach (var item in Model)
+                {
+
+                    <ul class="todo-list">
+                        <li>
+                            <!-- drag handle -->
+                            <span class="handle">
+
+                            </span>
+
+                            <div class="row">
+
+                                <dvi class="col-md-2">
+                                    <span class="text">@Html.DisplayFor(modelItem => item.OperadorNombre)           </span>
+                                </dvi>
+
+                                <dvi class="col-md-2">
+                                    <small class="label label-warning" style="font-size:100%"><i class="fa fa-info-circle"></i> Notificado + @Html.DisplayFor(modelItem => item.Notificado) </small>
+                                </dvi>
+
+
+                                <dvi class="col-md-2">
+                                    <small class="label label-info" style="font-size:100%"><i class="fa fa-info-circle"></i> En Proceso + @Html.DisplayFor(modelItem => item.EnProceso)</small>
+                                </dvi>
+
+                                <dvi class="col-md-2">
+                                    <small class="label label-success" style="font-size:100%"><i class="fa fa-info-circle"></i> Terminado + @Html.DisplayFor(modelItem => item.Terminado)</small>
+                                </dvi>
+                            </div>
+
+                        </li>
+
+                    </ul>
+                }
+            </div>
+        </div>
+
+<div class="panel-body col-md-12">
+
+    <table class="table table-striped" id="my-tableDino23">
+       
+         <thead>
+            <tr style="width:10%">
+                <th>Codigo Cliente</th>
+                <th>Nombre</th>
+                <th>Tikets Abiertos</th>
+                <th>Tikets Completados</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in listclien)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.Codigo)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Nombre)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Abiertos)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Terminado)</td>
+
+                </tr>
+
+            }
+        </tbody>
+    </table>
+
+
+    
+   </div>
+
+
+
+
+
+@*<script>
+
+    $('#my-tableDino23').dynatable({
+        table: {
+            defaultColumnIdStyle: 'dashed'
+        }
+    });
+
+
+</script>*@
+

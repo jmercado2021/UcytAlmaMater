@@ -1,0 +1,69 @@
+﻿@model MiPrimerProyectoMVC.Model.TblDepartamento
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_AdminLte.cshtml";
+}
+
+
+<form method="post" action='@Url.Action("Edit", "TblDepartamento")'>
+    <div class="container">
+        <div class="panel panel-primary" style="width:750px;margin:0px auto">
+
+
+            <div class="panel-heading">Modificar Registro</div>
+            <div class="panel-body">
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Codigo, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Codigo, new { htmlAttributes = new { disabled = true } })
+                        @Html.ValidationMessageFor(model => model.Codigo, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Nombre, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Nombre, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+               
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Fecha, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Fecha, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Fecha, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-row align-items-center">
+                    <div class="col-auto my-1">
+                        <label class="mr-sm-2" for="inlineFormCustomSelect">Activo o Inactivo</label>
+                        <select class="custom-select mr-sm-2" name="Activo">
+                            <option selected>SI</option>
+                            @*<option value="SI">SI</option>*@
+                            <option value="NO">NO</option>
+
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Guardar" class="btn btn-default" />
+                    </div>
+                </div>
+            </div>
+
+
+            <div>
+                @Html.ActionLink("Regresar al Listsado", "Index")
+            </div>
+        </div>
+    </div>
+</form>
+

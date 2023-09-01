@@ -1,0 +1,183 @@
+﻿  @model List<BlackSys.Models.W_MonitoCallPrincipalCall_Result>
+
+<!-- TABLE: LATEST ORDERS -->
+
+<head>
+
+
+    <link href="~/Content/DynaTables/jquery.dynatable.css" rel="stylesheet" />
+    <script src="~/Content/DynaTables/jquery.dynatable.js"></script>
+    <script src="~/Content/DynaTables/jquery.dynatableSinBuscador.js"></script>
+    <link href="~/assets/css/StyloByron.css" rel="stylesheet" />
+
+
+    <link href="~/Content/plugins/Alertify/alertify.css" rel="stylesheet" />
+    <script src="~/Content/plugins/Alertify/alertify.js"></script>
+    <link href="~/Content/plugins/Alertify/alertify.min.css" rel="stylesheet"  />
+    
+</head>
+
+<div class="form-group">
+
+   
+    @Html.DropDownList("Nuevos", (IEnumerable<SelectListItem>)ViewBag.Nuevos, null, new { id = "Nuevos", @class = "hidden" })
+    <div class="help-block with-errors"></div>
+    <span id="span1"></span>
+</div>
+<div class="box box-info">
+        <h2 class="box-title">Ordenes Express</h2>
+
+   
+    <!-- /.box-header -->
+    <div class="box-body">
+        <div class="table-responsive">
+
+         
+            <table class="table table-striped" id="my-tableDino23">
+                <thead>
+                    <tr>
+                        <th>Orden</th>
+                        <th>Sucursal</th>
+                        <th>Cliente</th>
+                        <th>Operador</th>
+                        <th>Fecha Inicio</th>
+                        <th>Transcurso</th>
+                        <th>Estado</th>
+
+
+                    </tr>
+                </thead>
+                <tbody>
+
+    @foreach (var item in Model)
+    {
+       
+       <tr class="item">
+                @{
+
+                    var Dias = Convert.ToDouble(item.Dias);
+                    var PaDias = " Dias ";
+                    var Hora = Convert.ToDouble(item.Hora);
+                        if (Dias < 1)
+                        {
+                            if (Hora >= 1)
+                            {
+                                <td style="border-color:orangered"><a href="#">@Html.DisplayFor(modelItem => item.Orden_id)</a></td>
+                            }
+                            if (Hora < 1)
+                            {
+                                <td><a href="#">@Html.DisplayFor(modelItem => item.Orden_id)</a></td>
+                            }
+
+                            <td><a href="#">@Html.DisplayFor(modelItem => item.Suc_Nombre)</a></td>
+                            <td><a href="#">@Html.DisplayFor(modelItem => item.Orden_Cliente)</a> - <strong>@Html.DisplayFor(modelItem => item.Ubicacion_id)</strong></td>
+                            <td><a href="#">@Html.DisplayFor(modelItem => item.Usuario_nombre)</a></td>
+                            <td><a href="#">@Html.DisplayFor(modelItem => item.Orden_FecIni_Orden)</a></td>
+                            <td class="mailbox-date"> @Html.DisplayFor(modelItem => item.Hora) horas  @Html.DisplayFor(modelItem => item.Minutos) Minutos </td>
+                            <td>@Html.DisplayFor(modelItem => item.Estado)</td>
+                    }
+                    if (Dias >= 1)
+                    {
+
+                        if (Hora >= 1)
+                        {
+                            <td style="border-color:orangered"><a href="#">@Html.DisplayFor(modelItem => item.Orden_id)</a></td>
+                        }
+                        if (Hora < 1)
+                        {
+                            <td><a href="#">@Html.DisplayFor(modelItem => item.Orden_id)</a></td>
+                        }
+
+                            <td><a href="#">@Html.DisplayFor(modelItem => item.Suc_Nombre)</a></td>
+                            <td><a href="#">@Html.DisplayFor(modelItem => item.Orden_Cliente)</a> - <strong>@Html.DisplayFor(modelItem => item.Ubicacion_id)</strong></td>
+                            <td><a href="#">@Html.DisplayFor(modelItem => item.Usuario_nombre)</a></td>
+                            <td><a href="#">@Html.DisplayFor(modelItem => item.Orden_FecIni_Orden)</a></td>
+                            <td class="mailbox-date">@Dias  @PaDias  @Html.DisplayFor(modelItem => item.Hora) Horas @Html.DisplayFor(modelItem => item.Minutos) Minutos </td>
+                            <td>@Html.DisplayFor(modelItem => item.Estado)</td>
+                        }
+
+
+                        @*var Hora = Convert.ToDouble(item.Hora);
+                        if (Hora >= 1)
+                        {
+                            <td style="border-color:orangered"><a href="#">@Html.DisplayFor(modelItem => item.Orden_id)</a></td>
+                        }
+                        if (Hora < 1)
+                        {
+                            <td><a href="#">@Html.DisplayFor(modelItem => item.Orden_id)</a></td>
+                        }
+                        <td><a href="#">@Html.DisplayFor(modelItem => item.Suc_Nombre)</a></td>
+
+
+
+
+                        var Dias = Convert.ToDouble(item.Dias);
+                        var PaDias = " Dias ";
+                        if (Dias < 1)
+                        {
+
+                            <td class="mailbox-date"> @Html.DisplayFor(modelItem => item.Hora) horas  @Html.DisplayFor(modelItem => item.Minutos) Minutos </td>
+                        }
+                        if (Dias >= 1)
+                        {
+                            <td class="mailbox-date">@Dias  @PaDias  @Html.DisplayFor(modelItem => item.Hora) Horas @Html.DisplayFor(modelItem => item.Minutos) Minutos </td>
+                        }*@
+
+                }
+                     
+
+            </tr>
+       
+
+                       
+                                }
+
+
+                </tbody>
+            </table>
+        </div>
+        <!-- /.table-responsive -->
+    </div>
+</div>
+
+<script>
+
+        $('#my-tableDino23').dynatable({
+            table: {
+                defaultColumnIdStyle: 'dashed'
+            }
+        });
+
+
+</script>
+
+<script>
+   $(document).ready(function() {
+     var concatValor = '';
+     $("#Nuevos option").each(function () {
+        if ($(this).val() != "" ){
+            //concatValor += $(this).val() + ' - ' + $(this).text() + '\n';
+            SonidoFinal()
+            alertify.success($(this).val() + ' - ' + $(this).text() + '\n');
+
+
+        }
+     });
+    
+
+   });
+</script>
+
+
+<script>
+    var audio = new Audio('/assets/Sonidos/mensaje.mp3');  // Create audio object and load desired file.
+    function SonidoFinal() {
+        audio.pause();
+        audio.currentTime = 0;
+        audio.play();
+    }
+
+
+</script>
+
+

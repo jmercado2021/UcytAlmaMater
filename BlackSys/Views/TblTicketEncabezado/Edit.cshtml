@@ -1,0 +1,123 @@
+﻿@model MiPrimerProyectoMVC.Model.TblTicketEncabezado
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_AdminLte.cshtml";
+}
+
+<div class="modal-header">
+    <button class="btn btn-sm pull-right btn-danger" type="button" id="btnCloseModal" data-dismiss="modal">X</button>
+    <h2>Edit</h2>
+</div>
+<div class="modal-body">
+    @using (Html.BeginForm("Edit", "TblTicketEncabezado", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            @*@Html.HiddenFor(model => model.Estado)*@
+            <div class="form-group">
+                @Html.LabelFor(model => model.Incidente, "Incidente", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("Incidente", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Incidente, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-sm btn-success" onclick="Edit(@Model.NTicket)">Save changes</button>
+        </div>
+    }
+</div>
+@*<div class="modal-header">
+    <button class="btn btn-sm pull-right btn-danger" type="button" id="btnCloseModal" data-dismiss="modal">X</button>
+    <h2>Edit</h2>
+</div>
+<div class="modal-body">
+    @using (Html.BeginForm("Edit", "MyEntities", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+           
+            <div class="form-group">
+                @Html.LabelFor(model => model.EstadoId, "EstadoId", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("EstadoId", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.EstadoId, "", new { @class = "text-danger" })
+                </div>
+            </div>
+          
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-sm btn-success" onclick="EditEmp(@Model.NTicket)">Save changes</button>
+        </div>
+    }
+</div>*@
+
+
+
+
+@*<br />
+
+    @using (Html.BeginForm("Edit", "TblTicketEncabezado", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <div class="container">
+            <div class="panel panel-primary" style="width:750px;margin:0px auto">
+
+                <div class="panel-heading">Modificar Registro</div>
+                <div class="panel-body">
+
+                    <div class="form-group hidden">
+
+                        @Html.LabelFor(model => model.UsuarioId, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.UsuarioId, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.UsuarioId, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group hidden">
+                        @Html.LabelFor(model => model.NTicket, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.NTicket, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.NTicket, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Incidente, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Incidente, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Incidente, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.EstadoId, "EstadoId", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.DropDownList("EstadoId", null, htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.EstadoId, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+               
+                    <br />
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Guardar" class="btn btn-primary " />
+                        </div>
+                        <div>
+                            @Html.ActionLink("Regresar al Listado", "Index")
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    }*@
+
+

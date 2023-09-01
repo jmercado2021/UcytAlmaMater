@@ -1,0 +1,547 @@
+﻿
+@{
+    ViewBag.Title = "AjustesInventario";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<!DOCTYPE html>
+
+<head>
+
+    <script src="~/Content/css/CSS Personalizado/zelect.js"></script>
+    <link rel="stylesheet" href="http://css.cdn.tl/normalize.css" />
+    <link href="~/Content/css/CSS Personalizado/CssDropList.css" rel="stylesheet" />
+    <script>
+        $(setup)
+
+        function setup() {
+            $('#intro select').zelect({ placeholder: 'Buscar Articulo' })
+        }
+    </script>
+
+
+</head>
+
+
+
+<h2>Ajustes de Inventario</h2>
+
+<br />
+<form method="post" action="@Url.Action("/AjusteInventario/GuardarAjustesInventario")">
+
+    <div class="well well-sm">
+        <div class="row">
+            <div class="col-md-12">
+                @*<h4 class="control-label col-md-8">Lista de  Articulo</h4>*@
+                @Html.DropDownList("TipoMov", (IEnumerable<SelectListItem>)ViewBag.TipoMov, null, new { @class = "form-control" })
+
+
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div id="intro" class="col-xs-7">
+                @*@Html.HiddenFor(x => x.CabeceraProductoId)*@
+                @*@Html.TextBoxFor(x => x.CabeceraProductoNombre, new { @class = "form-control", placeholder = "Buscar producto", id = "Producto" })*@
+                @*@Html.ValidationMessage("producto_agregar", null, new { @class = "label label-danger" })*@
+                @*<input id="Producto" name="Producto" type="text" class="form-control" placeholder="">*@
+                @Html.DropDownList("Articulos", (IEnumerable<SelectListItem>)ViewBag.Articulos, null, new { @class = "form-control" })
+                    @*@Html.ValidationMessage("producto_agregar", null, new { @class = "label label-danger" })*@
+            </div>
+            <div class="col-xs-2">
+                <input id="Cantidad" name="Cantidad" class="number" type="number" value="1" placeholder="0" />
+            </div>
+            @*<div class="col-xs-2">
+                    <div class="input-group">
+                        <span class="input-group-addon" id="basic-addon1">S/.</span>
+                        @Html.TextBoxFor(x => x.CabeceraProductoPrecio, new { @class = "form-control", placeholder = "Precio" })
+                    </div>
+                </div>*@
+            @*<div class="col-xs-1">
+                <button class="btn btn-primary" onclick="AgregarItem()">
+                    <i class="glyphicon glyphicon-plus"></i>
+                </button>*@
+
+
+            <div class="col-xs-1">
+                <button type="button" onclick="AgregarItem()" class="btn btn-primary glyphicon glyphicon-plus"></button>
+            </div>
+
+            <div class="col-md-1">
+                <button type="submit" class="btn btn-primary glyphicon glyphicon-save">Guardar</button>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="box-body pad col-md-9">
+                <span>Observacion ajuste:</span>
+                <textarea name="Observacion" class="textarea" placeholder="No hay Observacion"
+                          style="width: 100%; height: 100px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
+
+            </div>
+
+        </div>
+    </div>
+
+    <hr />
+    @*<input type="text" name="vaa" id="vaa" placeholder="Recibe contenido" class="form-control">*@
+    <div class="row">
+        <div class="col-md-2">
+            <span>Codigo</span>
+            <br />
+            <input id="Cod1" type="text" class="form-control" placeholder="">
+
+        </div>
+        <div class="col-md-6">
+            <span>Nombre</span>
+            <br />
+            <input id="Nom1" type="text" class="form-control" placeholder="">
+
+        </div>
+        <div class="col-md-2">
+            <span>Cantidad</span>
+            <br />
+            <input id="Cant1" type="text" class="form-control" placeholder="">
+
+        </div>
+
+
+
+    </div>
+
+    <hr />
+    <div class="row">
+        <div id="intro" class="col-md-2">
+            @*<span>Articulo</span>*@
+            <input id="Cod2" type="text" class="form-control" placeholder="">
+
+        </div>
+        <div id="intro" class="col-md-6">
+            @*<span>Articulo</span>*@
+            <input id="Nom2" type="text" class="form-control" placeholder="">
+
+        </div>
+        <div id="intro" class="col-md-2">
+            @*<span>Articulo</span>*@
+            <input id="Cant2" type="text" class="form-control" placeholder="">
+
+        </div>
+
+    </div>
+
+
+    <hr />
+    <div class="row">
+        <div id="intro" class="col-md-2">
+            @*<span>Articulo</span>*@
+            <input id="Cod3" type="text" class="form-control" placeholder="">
+
+        </div>
+        <div id="intro" class="col-md-6">
+            @*<span>Articulo</span>*@
+            <input id="Nom3" type="text" class="form-control" placeholder="">
+
+        </div>
+        <div id="intro" class="col-md-2">
+            @*<span>Articulo</span>*@
+            <input id="Cant3" type="text" class="form-control" placeholder="">
+
+        </div>
+
+    </div>
+
+
+    <hr />
+    <div class="row">
+        <div id="intro" class="col-md-2">
+            @*<span>Articulo</span>*@
+            <input id="Cod4" type="text" class="form-control" placeholder="">
+
+        </div>
+        <div id="intro" class="col-md-6">
+            @*<span>Articulo</span>*@
+            <input id="Nom4" type="text" class="form-control" placeholder="">
+
+        </div>
+        <div id="intro" class="col-md-2">
+            @*<span>Articulo</span>*@
+            <input id="Cant4" type="text" class="form-control" placeholder="">
+
+        </div>
+
+    </div>
+
+
+    <hr />
+    <div class="row">
+        <div id="intro" class="col-md-2">
+            @*<span>Articulo</span>*@
+            <input id="Cod5" type="text" class="form-control" placeholder="">
+
+        </div>
+        <div id="intro" class="col-md-6">
+            @*<span>Articulo</span>*@
+            <input id="Nom5" type="text" class="form-control" placeholder="">
+
+        </div>
+        <div id="intro" class="col-md-2">
+            @*<span>Articulo</span>*@
+            <input id="Cant5" type="text" class="form-control" placeholder="">
+
+        </div>
+
+    </div>
+
+
+    <hr />
+    <div class="row">
+        <div id="intro" class="col-md-2">
+            @*<span>Articulo</span>*@
+            <input id="Cod6" type="text" class="form-control" placeholder="">
+
+        </div>
+        <div id="intro" class="col-md-6">
+            @*<span>Articulo</span>*@
+            <input id="Nom6" type="text" class="form-control" placeholder="">
+
+        </div>
+        <div id="intro" class="col-md-2">
+            @*<span>Articulo</span>*@
+            <input id="Cant6" type="text" class="form-control" placeholder="">
+
+        </div>
+
+    </div>
+
+
+    <hr />
+    <div class="row">
+        <div id="intro" class="col-md-2">
+            @*<span>Articulo</span>*@
+            <input id="Cod7" type="text" class="form-control" placeholder="">
+
+        </div>
+        <div id="intro" class="col-md-6">
+            @*<span>Articulo</span>*@
+            <input id="Nom7" type="text" class="form-control" placeholder="">
+
+        </div>
+        <div id="intro" class="col-md-2">
+            @*<span>Articulo</span>*@
+            <input id="Cant7" type="text" class="form-control" placeholder="">
+
+        </div>
+
+    </div>
+
+
+    <hr />
+    <div class="row">
+        <div id="intro" class="col-md-2">
+            @*<span>Articulo</span>*@
+            <input id="Cod8" type="text" class="form-control" placeholder="">
+
+        </div>
+        <div id="intro" class="col-md-6">
+            @*<span>Articulo</span>*@
+            <input id="Nom8" type="text" class="form-control" placeholder="">
+
+        </div>
+        <div id="intro" class="col-md-2">
+            @*<span>Articulo</span>*@
+            <input id="Cant8" type="text" class="form-control" placeholder="">
+
+        </div>
+
+    </div>
+
+
+    <hr />
+    <div class="row">
+        <div id="intro" class="col-md-2">
+            @*<span>Articulo</span>*@
+            <input id="Cod9" type="text" class="form-control" placeholder="">
+
+        </div>
+        <div id="intro" class="col-md-6">
+            @*<span>Articulo</span>*@
+            <input id="Nom9" type="text" class="form-control" placeholder="">
+
+        </div>
+        <div id="intro" class="col-md-2">
+            @*<span>Articulo</span>*@
+            <input id="Cant9" type="text" class="form-control" placeholder="">
+
+        </div>
+
+    </div>
+
+
+    <hr />
+    <div class="row">
+        <div id="intro" class="col-md-2">
+            @*<span>Articulo</span>*@
+            <input id="Cod10" type="text" class="form-control" placeholder="">
+
+        </div>
+        <div id="intro" class="col-md-6">
+            @*<span>Articulo</span>*@
+            <input id="Nom10" type="text" class="form-control" placeholder="">
+
+        </div>
+        <div id="intro" class="col-md-2">
+            @*<span>Articulo</span>*@
+            <input id="Cant10" type="text" class="form-control" placeholder="">
+
+        </div>
+
+    </div>
+
+
+
+
+</form>
+
+<hr />
+
+
+
+<script>
+    document.querySelector("#buscar").onkeyup = function () {
+        $TableFilter("#my-tableDino23", this.value);
+    }
+
+    $TableFilter = function (id, value) {
+        var rows = document.querySelectorAll(id + ' tbody tr');
+
+        for (var i = 0; i < rows.length; i++) {
+            var showRow = false;
+
+            var row = rows[i];
+            row.style.display = 'none';
+
+            for (var x = 0; x < row.childElementCount; x++) {
+                if (row.children[x].textContent.toLowerCase().indexOf(value.toLowerCase().trim()) > -1) {
+                    showRow = true;
+                    break;
+                }
+            }
+
+            if (showRow) {
+                row.style.display = null;
+            }
+        }
+    }
+</script>
+
+
+<script>
+
+    $('#my-tableDino23').dynatable({
+        table: {
+            defaultColumnIdStyle: 'dashed'
+        }
+    });
+
+
+</script>
+
+<script>
+
+    function AgregarItem() {
+        var Codigo = $('#Articulos').val();
+        var Cantidad = $('#Cantidad').val();
+        var combo = document.getElementById("Articulos");
+        var selected = combo.options[combo.selectedIndex].text;
+
+        var CbTipo = document.getElementById("TipoMov");
+        var TipoMov = $('#TipoMov').val();
+
+        //Valido el tipo de ajuste y si 5 es de salida lo pongo en negativos las cantidades
+        if (TipoMov == 5) {
+            Cantidad = Cantidad * -1
+        }
+
+        if (Cantidad == 0) {
+            alertify.error("No se puede insertar un registro con cantidad cero");
+            return;
+        }
+
+        if (selected.length <= 0) {
+            alertify.error("Debe Seleccionar un articulo a agregar");
+            return;
+        }
+
+
+        var Valida = $('#Cod1').val();  // si es el primer articulo agregado
+        if (Valida.length <= 0) {
+            document.getElementById('Cod1').value = Codigo
+            document.getElementById('Cod1').text = Codigo
+            document.getElementById('Nom1').value = selected
+            document.getElementById('Nom1').text = selected
+            document.getElementById('Cant1').value = Cantidad
+            document.getElementById('Cant1').text = Cantidad
+
+            return;
+        }
+
+        var Valida = $('#Cod1').val();  //si es el segundo
+        var Valida2 = $('#Cod2').val();
+        if (Valida.length > 0 && Valida2.length <= 0) {
+            document.getElementById('Cod2').value = Codigo
+            document.getElementById('Cod2').text = Codigo
+            document.getElementById('Nom2').value = selected
+            document.getElementById('Nom2').text = selected
+            document.getElementById('Cant2').value = Cantidad
+            document.getElementById('Cant2').text = Cantidad
+            return;
+        }
+
+
+
+        Valida = $('#Cod3').val();
+        if (Valida.length <= 0) {
+            document.getElementById('Cod3').value = Codigo
+            document.getElementById('Cod3').text = Codigo
+            document.getElementById('Nom3').value = selected
+            document.getElementById('Nom3').text = selected
+            document.getElementById('Cant3').value = Cantidad
+            document.getElementById('Cant3').text = Cantidad
+            return;
+        }
+
+
+        //si es el segundo
+
+        Valida = $('#Cod4').val();
+        if (Valida.length <= 0) {
+            document.getElementById('Cod4').value = Codigo
+            document.getElementById('Cod4').text = Codigo
+            document.getElementById('Nom4').value = selected
+            document.getElementById('Nom4').text = selected
+            document.getElementById('Cant4').value = Cantidad
+            document.getElementById('Cant4').text = Cantidad
+            return;
+        }
+
+        Valida = $('#Cod5').val();
+        if (Valida.length <= 0) {
+            document.getElementById('Cod5').value = Codigo
+            document.getElementById('Cod5').text = Codigo
+            document.getElementById('Nom5').value = selected
+            document.getElementById('Nom5').text = selected
+            document.getElementById('Cant5').value = Cantidad
+            document.getElementById('Cant5').text = Cantidad
+            return;
+        }
+
+        Valida = $('#Cod6').val();
+        if (Valida.length <= 0) {
+            document.getElementById('Cod6').value = Codigo
+            document.getElementById('Cod6').text = Codigo
+            document.getElementById('Nom6').value = selected
+            document.getElementById('Nom6').text = selected
+            document.getElementById('Cant6').value = Cantidad
+            document.getElementById('Cant6').text = Cantidad
+            return;
+        }
+
+        Valida = $('#Cod7').val();
+        if (Valida.length <= 0) {
+            document.getElementById('Cod7').value = Codigo
+            document.getElementById('Cod7').text = Codigo
+            document.getElementById('Nom7').value = selected
+            document.getElementById('Nom7').text = selected
+            document.getElementById('Cant7').value = Cantidad
+            document.getElementById('Cant7').text = Cantidad
+            return;
+        }
+
+        Valida = $('#Cod8').val();
+        if (Valida.length <= 0) {
+            document.getElementById('Cod8').value = Codigo
+            document.getElementById('Cod8').text = Codigo
+            document.getElementById('Nom8').value = selected
+            document.getElementById('Nom8').text = selected
+            document.getElementById('Cant8').value = Cantidad
+            document.getElementById('Cant8').text = Cantidad
+            return;
+        }
+
+        Valida = $('#Cod9').val();
+        if (Valida.length <= 0) {
+            document.getElementById('Cod9').value = Codigo
+            document.getElementById('Cod9').text = Codigo
+            document.getElementById('Nom9').value = selected
+            document.getElementById('Nom9').text = selected
+            document.getElementById('Cant9').value = Cantidad
+            document.getElementById('Cant9').text = Cantidad
+            return;
+        }
+
+
+
+
+        //si es el segundo
+
+        Valida = $('#Cod10').val();
+        if (Valida.length <= 0) {
+            document.getElementById('Cod10').value = Codigo
+            document.getElementById('Cod10').text = Codigo
+            document.getElementById('Nom10').value = selected
+            document.getElementById('Nom10').text = selected
+            document.getElementById('Cant10').value = Cantidad
+            document.getElementById('Cant10').text = Cantidad
+            return;
+        }
+
+
+    };
+</script>
+
+
+
+@section Scripts{
+    <script>
+        $(document).ready(function () {
+            //LimpiarAgregarProducto();
+
+            //$(".btn-retirar").click(function () {
+            //    if (confirm('¿Está seguro de retirar el item seleccionado?')) {
+            //        $(this).closest('.list-group-item').find('.retirar').val("True");
+            //        return true;
+            //    }
+
+            //    return false;
+            //})
+            /* Autocomplete de producto, jquery UI */
+            $("#producto_agregar").autocomplete({
+                dataType: 'JSON',
+                source: function (request, response) {
+                    jQuery.ajax({
+                        url: '/Inventario/BuscarProducto',
+                        type: "post",
+                        dataType: "json",
+                        data: {
+                            nombre: request.term
+                        },
+                        success: function (data) {
+                            response($.map(data, function (item) {
+                                return {
+                                    id: item.Codigo,
+                                    value: item.ArticuloNombre,
+                                    precio: item.Precio
+                                }
+                            }))
+                        }
+                    })
+                },
+                select: function (e, ui) {
+                    //$("#CabeceraProductoId").val(ui.item.id);
+                    //$("#CabeceraProductoPrecio").val(ui.item.precio);
+                    $("#Cantidad").focus();
+                }
+            })
+        })
+
+    </script>
+}

@@ -1,0 +1,67 @@
+﻿@model List <BlackSys.Models.W_MonitoCallPrincipalCallSucursal_Result>
+
+@{
+    ViewBag.Title = "MonitorGeneralSucursal";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<head>
+    <script src="~/assets/js/Reloj.js"></script>
+    <link href="~/assets/css/StyloByron.css" rel="stylesheet" />
+    <script src="~/assets/js/ScripMonitorByron.js"></script>
+    <meta http-equiv="refresh" content="20" />
+</head>
+
+
+
+@*<div class="row">
+        <div class="col-md-8"></div>
+        <div class="col-lg-4">
+
+            <div class="widget">
+
+                <div class="reloj">
+                    <p id="horas" class="horas"></p>
+                    <p>:</p>
+                    <p id="minutos" class="minutos"></p>
+                    <p>:</p>
+                    <div class="cajaSegundos">
+
+                        <p id="segundos" class="segundos"></p>
+                        <p id="ampm" class="ampm"></p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>*@
+@*<div class="form-group">
+
+
+        @Html.DropDownList("Nuevos", (IEnumerable<SelectListItem>)ViewBag.Nuevos, null, new { id = "Articulo", @class = "form-control" })
+        <div class="help-block with-errors"></div>
+        <span id="span1"></span>
+    </div>*@
+<div class="row">
+
+    <div class="col-md-2">
+        <button type="button" class="btn btn-primary btn-circle btn-lg"><i class="glyphicon glyphicon-list"> Todos @ViewBag.Totales</i></button>
+    </div>
+    <div class="col-md-4">
+        <button type="button" class="btn btn-danger btn-circle btn-lg"><i class="glyphicon glyphicon-time"> Retrasadas  @ViewBag.Retrasadas</i></button>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div id="PartialOrdenes">
+
+            @Html.Partial("ListarOrdenesSucursal")
+
+        </div>
+
+    </div>
+
+</div>

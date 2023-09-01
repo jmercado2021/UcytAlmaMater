@@ -1,0 +1,68 @@
+﻿body {
+}
+
+
+h3 {
+font-size:24px;
+color:skyblue;
+font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  text-shadow: #555 2px 2px 3px;
+    filter: shadow(color=#555555, direction=135, strength=2);
+  width: 100%;  /* necesario para activar la propiedad hasLayout */
+   position: relative;
+}
+
+.tablaorden {
+       padding:10px 40px; 
+       width:5000px;
+       resize:both;
+       overflow:auto;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+/*html,body {
+  height: 50%;
+}*/
+
+/*.contenedor {
+  width: 40%;
+  height: 50%;
+  position: relative;
+  max-width: 1000px;
+  margin: auto;
+  background: #ccc;
+}*/
+
+.widget p {
+  display: inline-block;
+  line-height: 1em;
+}
+.fecha {
+  font-family: arial;
+  text-align: center;
+  font-size: 1.5em;
+  margin-bottom: 5px;
+  background: rgba(0,0,0,.5);
+  padding: 20px;
+  width: 100%;
+}
+.reloj {
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  width: 100%;
+  /*height:50%;*/
+  /*padding: 900px;*/
+  font-size: 30px;
+  text-align:center;
+  /*background: rgba(0,0,0,.5);*/
+}
+.reloj .cajaSegundos {
+  display: inline-block;  
+}
+.reloj .ampm, .reloj .segundos{
+  display:compact;
+  font-size: 30px;
+}

@@ -1,0 +1,89 @@
+﻿@model MiPrimerProyectoMVC.Model.TblServidorCorreo
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_AdminLte.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>TblServidorCorreo</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Codigo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Codigo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ServidorCorreo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ServidorCorreo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UsuarioCorreo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UsuarioCorreo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PasswordCorreo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PasswordCorreo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PuertoCorreo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PuertoCorreo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UsuarioId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UsuarioId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Fecha)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fecha)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Activo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Activo)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

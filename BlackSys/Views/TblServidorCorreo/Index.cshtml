@@ -1,0 +1,63 @@
+﻿@model IEnumerable<MiPrimerProyectoMVC.Model.TblServidorCorreo>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLte.cshtml";
+}
+<br />
+<div class="container">
+
+    <div class="panel panel-primary" style="width:100%;margin:0px auto">
+
+        <div class="panel-body">
+            <table class="table">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Codigo)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ServidorCorreo)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.UsuarioCorreo)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.PasswordCorreo)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.PuertoCorreo)
+                    </th>
+                    
+                    <th>Accion</th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Codigo)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ServidorCorreo)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.UsuarioCorreo)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PasswordCorreo)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PuertoCorreo)
+                        </td>
+                       
+                        <td>
+                            @Html.ActionLink("Editar", "Edit", new { id = item.Id }, new { @class = "btn btn-warning" }) 
+                            
+                        </td>
+                    </tr>
+                }
+
+            </table>
+        </div>
+    </div>
+</div>

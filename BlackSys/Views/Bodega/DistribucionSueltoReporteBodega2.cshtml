@@ -1,0 +1,202 @@
+﻿@model List<BlackSys.Models.W_DistBodSueltoCAD2Nuevo_Result>
+
+@{
+    ViewBag.Title = "DistribucionSueltosReporte";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<head>
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    @*Neccesarios para Exportar Js*@
+    @*<script src="~/assets/js/popper.min.js"></script>
+        <link href="~/assets/Exportar Js/tableexport.css" rel="stylesheet" />
+        <script src="~/assets/Exportar Js/Exportar2.js"></script>*@
+
+    @*<link href="~/Content/DynaTables/jquery.dynatable.css" rel="stylesheet" />
+        <script src="~/Content/DynaTables/jquery.dynatable.js"></script>*@
+
+
+ 
+</head>
+<div class="container container-fluid ">
+
+    @*<form method="post" action="@Url.Action("DistribucionSueltosReporte","Bodega")">*@
+    <form method="post" action="@Url.Action("Distribuir2","Bodega")">
+        <button type="submit" class="bt btn-primary">Reporte</button>
+
+
+
+    </form>
+
+    <form method="post" action="@Url.Action("ExportarExcelDistrbucion2","Bodega")">
+        <button type="submit" class="bt btn-primary">Distribucion Carga Excel</button>
+    </form>
+
+
+    @*<table id="example" class="cell-border" style="width:100%">*@
+
+    <table id="example" class="display" style="width:100%">
+        <thead>
+            <tr>
+                <th>Casa_Nombre</th>
+                <th>Equivalente_Id</th>
+                <th>Codigo Hijo</th>
+                <th>Codigo Padre</th>
+                <th>Articulo_Nombre</th>
+                <th>Existencia Suelto</th>
+                <th>Existencia Caja</th>
+                <th>Tot Unidades</th>
+                <th>Xol.Bello Horizonte</th>
+                <th>M.12.5</th>
+                <th>M.Sur</th>
+                <th>X.Bolonia</th>
+                <th>M.Camino Oriente 2</th>
+                <th>X.Ciudad Sandino</th>
+                <th>X.Tipitapa 1</th>
+                <th>X.Doral</th>
+
+                <th>M.Multicentro</th>
+                <th>M.Colinas</th>
+                <th>M.PumaColinas</th>
+
+                <th>M.Sierritas</th>
+                <th>M.Tiangue</th>
+                <th>M.Serrania</th>
+
+                <th>M.Puma Americano</th>
+                <th>M.Hiper GALERIA</th>
+
+                <th>M.Galerias</th>
+                <th>M.Bello Ho</th>
+                <th>M.Praderas</th>
+
+                <th>M.Colinas 2</th>
+                <th>M.Ticomo </th>
+                <th>M.Villa Fontana</th>
+
+                <th>M.MetroCentro</th>
+                <th>Med.Plaza España</th>
+                <th>X.Ticuantepe</th>
+
+                <th>M.Colonia Pespaña</th>
+                <th>M.Aeropuerto</th>
+                <th>M.Veracruz</th>
+
+                <th>X.Esquipulas</th>
+                <th>X.Sabana</th>
+                <th>X.Colonia las Americas</th>
+
+                <th>X.Las Brisas</th>
+                <th>X.Colonia Rubenia</th>
+                <th>M.Plaza Inter</th>
+
+                <th>X.Col Metrocentro</th>
+                <th>X.Ciudad Jardidn</th>
+                <th>X.Tipitapa 2</th>
+
+                <th>X.Pali Zumen</th>
+
+                <th>X.Ticuantepe 2</th>
+                <th>X.Centro America</th>
+                <th>X.Villa Libertad</th>
+
+
+
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.Casa_Nombre)</td>
+                    <td>@Html.DisplayFor(modelItem => item.CodigoBarra)</td>
+                    <td>@Html.DisplayFor(modelItem => item.ArticuloId)</td>
+
+                    <td>@Html.DisplayFor(modelItem => item.Articulo_idCaja)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Articulo_Nombre)</td>
+                    <td>@Html.DisplayFor(modelItem => item.ExistSuelto)</td>
+
+                    <td>@Html.DisplayFor(modelItem => item.ExisCaja)</td>
+                    <td>@Html.DisplayFor(modelItem => item.TotUniadesPy)</td>
+
+                    <td>@Html.DisplayFor(modelItem => item.C_33)</td>
+                    <td>@Html.DisplayFor(modelItem => item.C_25)</td>
+                    <td>@Html.DisplayFor(modelItem => item.C_05)</td>
+                    <td>@Html.DisplayFor(modelItem => item.C_12)</td>
+
+                    <td>@Html.DisplayFor(modelItem => item.C_36)</td>
+                    <td>@Html.DisplayFor(modelItem => item.C_28)</td>
+                    <td>@Html.DisplayFor(modelItem => item.C_27)</td>
+                    <td>@Html.DisplayFor(modelItem => item.C_11)</td>
+
+                    <td>@Html.DisplayFor(modelItem => item.C_07)</td>
+                    <td>@Html.DisplayFor(modelItem => item.C_40)</td>
+                    <td>@Html.DisplayFor(modelItem => item.C_32)</td>
+
+                    <td>@Html.DisplayFor(modelItem => item.C_13)</td>
+                    <td>@Html.DisplayFor(modelItem => item.C_37)</td>
+                    <td>@Html.DisplayFor(modelItem => item.C_29)</td>
+
+                    <td>@Html.DisplayFor(modelItem => item.C_41)</td>
+                    <td>@Html.DisplayFor(modelItem => item.C_31)</td>
+                    <td>@Html.DisplayFor(modelItem => item.C_10)</td>
+
+                    <td>@Html.DisplayFor(modelItem => item.C_06)</td>
+                    <td>@Html.DisplayFor(modelItem => item.C_35)</td>
+                    <td>@Html.DisplayFor(modelItem => item.C_39)</td>
+
+                    <td>@Html.DisplayFor(modelItem => item.C_34)</td>
+                    <td>@Html.DisplayFor(modelItem => item.C_08)</td>
+                    <td>@Html.DisplayFor(modelItem => item.C_15)</td>
+
+                    <td>@Html.DisplayFor(modelItem => item.C_04)</td>
+                    <td>@Html.DisplayFor(modelItem => item.C_19)</td>
+                    <td>@Html.DisplayFor(modelItem => item.C_17)</td>
+
+                    <td>@Html.DisplayFor(modelItem => item.C_26)</td>
+                    <td>@Html.DisplayFor(modelItem => item.C_24)</td>
+                    <td>@Html.DisplayFor(modelItem => item.C_09)</td>
+
+                    <td>@Html.DisplayFor(modelItem => item.C_38)</td>
+                    <td>@Html.DisplayFor(modelItem => item.C_14)</td>
+                    <td>@Html.DisplayFor(modelItem => item.C_22)</td>
+
+                    <td>@Html.DisplayFor(modelItem => item.C_16)</td>
+                    <td>@Html.DisplayFor(modelItem => item.C_21)</td>
+                    <td> @Html.DisplayFor(modelItem => item.C_20)</td>
+
+                    <td> @Html.DisplayFor(modelItem => item.C_18)</td>
+                    <td> @Html.DisplayFor(modelItem => item.C_30)</td>
+                    <td> @Html.DisplayFor(modelItem => item.C_23)</td>
+
+                    <td> @Html.DisplayFor(modelItem => item.C_42)</td>
+                    <td> @Html.DisplayFor(modelItem => item.C_43)</td>
+                    <td> @Html.DisplayFor(modelItem => item.C_44)</td>
+
+
+                </tr>
+            }
+
+        </tbody>
+    </table>
+
+
+</div>
+<script>
+                $(document).ready(function () {
+                    $('#example').DataTable({
+                        dom: 'Bfrtip',
+                        buttons: [
+                            'copyHtml5',
+                            'excelHtml5',
+                            'csvHtml5',
+                            'pdfHtml5'
+                        ]
+                    });
+                });
+</script>

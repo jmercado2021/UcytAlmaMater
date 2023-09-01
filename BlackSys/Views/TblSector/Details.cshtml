@@ -1,0 +1,57 @@
+﻿@model MiPrimerProyectoMVC.Model.TblSector
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_AdminLte.cshtml";
+}
+<br />
+
+<div class="container">
+    <div class="panel panel-primary" style="width:750px;margin:0px auto">
+
+
+        <div class="panel-heading">Mostrar Registro</div>
+        <div class="panel-body">
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Codigo)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Codigo)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Nombre)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Nombre)
+                </dd>
+
+             
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Fecha)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Fecha)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Activo)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Activo)
+                </dd>
+
+            </dl>
+        </div>
+        <p>
+            @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+            @Html.ActionLink("Back to List", "Index")
+        </p>
+    </div>
+</div>

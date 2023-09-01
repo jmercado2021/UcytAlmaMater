@@ -1,0 +1,103 @@
+﻿@model BlackSys.Models.TblSucursal
+
+@{
+    ViewBag.Title = "Edit";
+    //Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Actualizar Sucursal</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+<div class="form-horizontal">
+   
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.EmpId)
+
+    @Html.HiddenFor(model => model.SucId)
+
+    @Html.HiddenFor(model => model.SucNombre)
+
+    @Html.HiddenFor(model => model.SucDireccion)
+
+    @Html.HiddenFor(model => model.SucEmail)
+
+    @Html.HiddenFor(model => model.SucTelefono)
+
+    @Html.HiddenFor(model => model.SucTelefono2)
+
+    @Html.HiddenFor(model => model.SucTelefono3)
+
+    @Html.HiddenFor(model => model.SucResponsable)
+
+    @Html.HiddenFor(model => model.SucMts2)
+
+    @Html.HiddenFor(model => model.SucCantidadPersonal)
+
+    @Html.HiddenFor(model => model.SucCedulaJuridica)
+
+    @Html.HiddenFor(model => model.SucRazonSocial)
+
+    @Html.HiddenFor(model => model.FechaApertura)
+
+    @Html.HiddenFor(model => model.SucActivo)
+
+    <div class="form-group">
+        @*@Html.LabelFor(model => model.ConsecutivoOrdenId, htmlAttributes: new { @class = "control-label col-md-2" })*@
+        <div class="col-md-offset-1 col-md-5">
+            <span>Nombre sucursal:</span>
+            @Html.EditorFor(model => model.SucNombre, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.SucNombre, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="col-md-5">
+            <span>Telefono:</span>
+            @Html.EditorFor(model => model.SucTelefono, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.SucTelefono, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @*@Html.LabelFor(model => model.ConsecutivoAjusteId, htmlAttributes: new { @class = "control-label col-md-2" })*@
+        <div class="col-md-offset-1 col-md-5">
+            <span>Correo Electronico:</span>
+            @Html.EditorFor(model => model.SucEmail, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.SucEmail, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="col-md-5">
+            <span>Responsable:</span>
+            @Html.EditorFor(model => model.SucResponsable, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.SucResponsable, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @*@Html.LabelFor(model => model.ConsecutivoAjusteId, htmlAttributes: new { @class = "control-label col-md-2" })*@
+        <div class="col-md-offset-1 col-md-5">
+            <span>Cantidad Personal:</span>
+            @Html.EditorFor(model => model.SucCantidadPersonal, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.SucCantidadPersonal, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="col-md-5">
+            <span>Direccion:</span>
+            @Html.EditorFor(model => model.SucDireccion, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.SucDireccion, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-1 col-md-10">
+            <input type="submit" value="Actualizar" class="btn btn-circle btn-primary" />
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

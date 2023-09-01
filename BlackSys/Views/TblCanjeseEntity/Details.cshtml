@@ -1,0 +1,342 @@
+﻿@model MiPrimerProyectoMVC.Model.TblCanjes
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_AdminLte.cshtml";
+}
+
+            <dl class="dl-horizontal">
+                @*<dt>
+                    @Html.DisplayNameFor(model => model.Cliente_Id)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Cliente_Id)
+                </dd>*@
+
+                @*<dt>
+                    @Html.DisplayNameFor(model => model.Cantidad_Cajas)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Cantidad_Cajas)
+                </dd>*@
+
+                @*<dt>
+                    @Html.DisplayNameFor(model => model.Cant_Canje_Solicitado)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Cant_Canje_Solicitado)
+                </dd>*@
+
+                @*<dt>
+                    @Html.DisplayNameFor(model => model.Usuario_Id)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Usuario_Id)
+                </dd>*@
+
+                @*<dt>
+                    @Html.DisplayNameFor(model => model.Fecha)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Fecha)
+                </dd>*@
+
+                @*<dt>
+                    @Html.DisplayNameFor(model => model.NFactura1)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.NFactura1)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.NFactura2)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.NFactura2)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.NFactura3)
+                </dt>*@
+
+                @*<dd>
+                    @Html.DisplayFor(model => model.NFactura3)
+                </dd>*@
+
+                @*<dt>
+                    @Html.DisplayNameFor(model => model.ObservacionUsuario)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.ObservacionUsuario)
+                </dd>*@
+
+                @*<dt>
+                    @Html.DisplayNameFor(model => model.ObservacionResponsable)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.ObservacionResponsable)
+                </dd>*@
+
+                @*<dt>
+                    @Html.DisplayNameFor(model => model.PM_Estado.Descripcion)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.PM_Estado.Descripcion)
+                </dd>*@
+
+                @*<dt>
+                    @Html.DisplayNameFor(model => model.Tbl_PM_Sucursales.Nombre)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Tbl_PM_Sucursales.Nombre)
+                </dd>*@
+
+                @*<dt>
+                    @Html.DisplayNameFor(model => model.TblTipoCanje.Descripcion)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.TblTipoCanje.Descripcion)
+                </dd>*@
+
+                @*<dt>
+                    @Html.DisplayNameFor(model => model.TblMaestro_ArticuloProgMed.Descripcion)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.TblMaestro_ArticuloProgMed.Descripcion)
+                </dd>*@
+
+                @*<dt>
+                    @Html.DisplayNameFor(model => model.TblProgMedicos.Descripcion)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.TblProgMedicos.Descripcion)
+                </dd>*@
+
+            </dl>
+      
+<div class="container">
+    <div class="panel panel-primary">
+        <div class="panel-heading">Detalles del Registro</div>
+        <div class="panel-body">
+            <form id="form" class="form-horizontal" role="form">
+
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        <label for="ejemplo_email_3" class="col-md-4 control-label" name="nombre">Codigo del Cliente:</label>
+
+                        <div class="col-md-4">
+                            <input class="form-control" name="text_nom1" value="@Html.DisplayFor(model => model.Cliente_Id)" readonly id="text_nom1" />
+                        </div>
+                        
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        <label for="ejemplo_email_3" class="col-md-4 control-label" name="nombre">Nombre del cliente:</label>
+
+                       
+                        <div class="col-md-8">
+                            <input class="form-control" name="text_nom1
+                                   " value="@Html.DisplayFor(model => model.TblCliente_ProgramaMedico.Cliente_Nombre)" readonly id="text_nolm1" />
+                        </div>
+                    </div>
+                   
+                    <div class="form-group col-md-6">
+                        <label for="ejemplo_email_3" class="col-md-5 col-lg-4 control-label">Fecha de Registro</label>
+
+                        <div class="col-md-7 col-lg-8">
+                            <input class="form-control" value="@Html.DisplayFor(model => model.Fecha)" readonly name="text_ape2" id="text_ape2">
+                        </div>
+                    </div>
+                    @*<div class="form-group col-md-6">
+                        <label for="ejemplo_email_3" class="col-md-5 col-lg-4 control-label">Cajas Presentadas</label>
+
+                        <div class="col-md-7 col-lg-3">
+                            <input class="form-control" value="@Html.DisplayFor(model => model.Cantidad_Cajas)" name="text_nom2" id="text_nom2">
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="ejemplo_email_3" class="col-md-5 col-lg-4 control-label">Cajas Presentadas</label>
+
+                        <div class="col-md-7 col-lg-3">
+                            <input class="form-control" value="@Html.DisplayFor(model => model.Cantidad_Cajas)" name="text_nom2" id="text_nom2">
+                        </div>
+                    </div>*@
+                </div>
+
+                <div class="row">
+                        <div class="form-group col-md-6">
+                            <label for="ejemplo_email_3" class="col-md-5 col-lg-4 control-label">Cajas Presentadas</label>
+
+                            <div class="col-md-7 col-lg-3">
+                                <input class="form-control" value="@Html.DisplayFor(model => model.Cantidad_Cajas)" readonly name="text_nom2" id="text_nom2">
+                            </div>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="ejemplo_email_3" class="col-md-4 control-label">Canjes Solicitados</label>
+
+                            <div class="col-md-8">
+                                <input class="form-control" value="@Html.DisplayFor(model => model.Cant_Canje_Solicitado)" readonly name="text_ape1" id="text_ape1">
+                            </div>
+                        </div>
+                     
+                    </div>
+
+
+                <div class="row">
+                    <div class="form-group col-md-4">
+                        <label for="ejemplo_email_3" class="col-md-5 col-lg-4 control-label">Factura 1</label>
+
+                        <div class="col-md-7 col-lg-4">
+                            <input class="form-control" value="@Html.DisplayFor(model => model.NFactura1)" readonly name="text_nom2" id="text_nom2">
+                        </div>
+
+                     
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="ejemplo_email_3" class="col-md-5 col-lg-4 control-label">Factura 2</label>
+
+                        <div class="col-md-7 col-lg-4">
+                            <input class="form-control" value="@Html.DisplayFor(model => model.NFactura2)" readonly name="text_nom2" id="text_nom2">
+                        </div>
+                    </div>
+
+                    <div class="form-group col-md-4">
+                        <label for="ejemplo_email_3" class="col-md-5 col-lg-4 control-label">Factura 3</label>
+
+                        <div class="col-md-7 col-lg-4">
+                            <input class="form-control" value="@Html.DisplayFor(model => model.NFactura3)" readonly name="text_nom2" id="text_nom2">
+                        </div>
+                    </div>
+                    
+                </div>
+
+
+                <div class="row">
+                    <div class="form-group col-md-4">
+                        <label for="ejemplo_email_3" class="col-md-5 col-lg-4 control-label">Factura 4</label>
+
+                        <div class="col-md-7 col-lg-4">
+                            <input class="form-control" value="@Html.DisplayFor(model => model.NFactura4)" readonly name="text_nom2" id="text_nom2">
+                        </div>
+
+
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="ejemplo_email_3" class="col-md-5 col-lg-4 control-label">Factura 5</label>
+
+                        <div class="col-md-7 col-lg-4">
+                            <input class="form-control" value="@Html.DisplayFor(model => model.NFactura5)" readonly name="text_nom2" id="text_nom2">
+                        </div>
+                    </div>
+
+                    <div class="form-group col-md-4">
+                        <label for="ejemplo_email_3" class="col-md-5 col-lg-4 control-label">Numero de Traslado</label>
+
+                        <div class="col-md-7 col-lg-4">
+                            <input class="form-control" value="@Html.DisplayFor(model => model.NTraslado)" readonly name="text_nom2" id="text_nom2">
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        <label for="ejemplo_email_3" class="col-md-5 col-lg-4 control-label">Observacion Sucursal</label>
+
+                        <div class="col-md-7 col-lg-6">
+                            <input class="form-control" value="@Html.DisplayFor(model => model.ObservacionUsuario)" readonly name="text_nom2" id="text_nom2">
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="ejemplo_email_3" class="col-md-5 col-lg-4 control-label">Obsesrvacion Responsable de Canjes:</label>
+
+                        <div class="col-md-7 col-lg-6">
+                            <input class="form-control" value="@Html.DisplayFor(model => model.ObservacionResponsable)" readonly name="text_nom2" id="text_nom2">
+                        </div>
+                    </div>
+
+
+                </div>
+
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        <label for="ejemplo_email_3" class="col-md-5 col-lg-4 control-label">Estado:</label>
+
+                        <div class="col-md-7 col-lg-6">
+                            <input class="form-control" value="@Html.DisplayFor(model => model.PM_Estado.Descripcion)" readonly name="text_nom2" id="text_nom2">
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="ejemplo_email_3" class="col-md-5 col-lg-4 control-label">Sucursal:</label>
+
+                        <div class="col-md-7 col-lg-6">
+                            <input class="form-control" value="@Html.DisplayFor(model => model.Tbl_PM_Sucursales.Nombre)" readonly name="text_nom2" id="text_nom2">
+                        </div>
+                    </div>
+
+
+                </div>
+
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        <label for="ejemplo_email_3" class="col-md-5 col-lg-4 control-label">Tipo de Canje:</label>
+
+                        <div class="col-md-7 col-lg-6">
+                            <input class="form-control" value="@Html.DisplayFor(model => model.TblTipoCanje.Descripcion)" readonly name="text_nom2" id="text_nom2">
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="ejemplo_email_3" class="col-md-5 col-lg-4 control-label">Articulo:</label>
+
+                        <div class="col-md-7 col-lg-6">
+                            <input class="form-control" value="@Html.DisplayFor(model => model.TblMaestro_ArticuloProgMed.Descripcion)" readonly name="text_nom2" id="text_nom2">
+                        </div>
+                    </div>
+
+
+                </div>
+
+
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        <label for="ejemplo_email_3" class="col-md-5 col-lg-4 control-label">Programa Medico:</label>
+
+                        <div class="col-md-7 col-lg-6">
+                            <input class="form-control" value="@Html.DisplayFor(model => model.TblProgMedicos.Descripcion)" readonly name="text_nom2" id="text_nom2">
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="ejemplo_email_3" class="col-md-5 col-lg-4 control-label">Usuario Registra:</label>
+
+                        <div class="col-md-7 col-lg-6">
+                            <input class="form-control" value="@Html.DisplayFor(model => model.UsuarioRegistra)" readonly name="text_nom2" id="text_nom2">
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div>
+                    @Html.ActionLink(" Regresar al Listado", "Index")
+                    <br />
+                </div>
+
+                </form>
+            </div>
+        </div>
+    </div>

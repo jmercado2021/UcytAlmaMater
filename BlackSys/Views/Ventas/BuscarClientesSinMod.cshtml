@@ -1,0 +1,75 @@
+﻿@model IEnumerable<BlackSys.Models.Articulo>
+@{
+    Layout = null;
+}
+<head>
+    @*<script src="~/Content/DynaTables/jquery-1.7.2.min.js"></script>*@
+    <link href="~/Content/DynaTables/jquery.dynatable.css" rel="stylesheet" />
+    <script src="~/Content/DynaTables/jquery.dynatable.js"></script>
+</head>
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>BuscarClientes</title>
+</head>
+<body>
+    <table class="table table-striped" id="my-tableDino23">
+
+        @*<table id="example" class="cell-border" style="width:100%">*@
+        <thead>
+            <tr>
+                <th>Codigo</th>
+                <th>Descripcion</th>
+
+
+                @*<th>Visto
+
+
+
+                    </th>*@
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.Articulo_Id)</td>
+
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Articulo_Nombre)
+                    </td>
+
+                    <td>
+
+                        @Html.ActionLink("Seleccionar", "ComentariosTiket", new { id = item.Articulo_Id }, new { @class = "btn btn-info" })
+
+                        @*<button type="button" class="btn btn-info" data-toggle="modal" data-target="#modalCreate" onclick="RenderActions('/TblTicketEncabezado/Edit2/' + @item.NTicket)">Actualizara</button>*@
+                        @*</div>*@
+
+                    </td>
+
+                </tr>
+            }
+        </tbody>
+    </table>
+
+
+
+
+
+</body>
+</html>
+<script>
+
+    $('#my-tableDino23').dynatable({
+        table: {
+            defaultColumnIdStyle: 'dashed'
+        }
+    });
+
+
+</script>

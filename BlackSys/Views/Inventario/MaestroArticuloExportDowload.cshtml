@@ -1,0 +1,235 @@
+﻿
+@model IEnumerable<BlackSys.Models.W_MaestroArticulo_Result>
+
+@{
+    ViewBag.Title = "MaestroArticulo";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<head>
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    @*Neccesarios para Exportar Js*@
+    <script src="~/assets/js/popper.min.js"></script>
+    <link href="~/assets/Exportar Js/tableexport.css" rel="stylesheet" />
+
+    @*<script src="~/Content/DynaTables/jquery-1.7.2.min.js"></script>*@
+    <link href="~/Content/DynaTables/jquery.dynatable.css" rel="stylesheet" />
+    <script src="~/Content/DynaTables/jquery.dynatable.js"></script>
+</head>
+@*<div class="container container-fluid">*@
+
+<br />
+
+<table class="table table-striped" id="my-tableDino23">
+
+    @*<table id="example" class="cell-border" style="width:100%">*@
+    <thead>
+        <tr>
+            <th>Codigo</th>
+            <th>ArticuloNombre</th>
+            <th>Categoria</th>
+            <th>Casa</th>
+            <th>SubCategoria</th>
+            <th>Departamento_Articulo</th>
+            <th>Grupo_Terapeutico</th>
+            <th>Proveedor</th>
+            <th>ArticuloObservacion</th>
+            <th>ArticuloClienteFrecuente</th>
+            <th>Color</th>
+            <th>Tamaño</th>
+            <th>ArticuloBarra</th>
+            <th>ArticuloCosto</th>
+            <th>ArticuloCostoProm</th>
+            <th>ArticuloCostoUlt</th>
+            <th>ArticuloPrecio1</th>
+            <th>ArticuloPrecio2</th>
+            <th>ArticuloPrecio3</th>
+            <th>ArticuloPrecio4</th>
+            <th>ArticuloPrecio5</th>
+            <th>ArticuloABC</th>
+
+            <th>ArticuloActivoVenta</th>
+            <th>ArticuloLimiteDesc</th>
+            <th>ArticuloLimiteDesc2</th>
+            <th>ArticuloLimiteDesc3</th>
+            <th>ArticuloVentaBajoCosto</th>
+            <th>ArticuloCantidadMinima</th>
+            <th>FechaCreacion</th>
+            <th>FechaModifica</th>
+            <th>Activo</th>
+            <th>PagaIva</th>
+            <th>Existencia</th>
+            <th>ArticuloCodigoPadre</th>
+            <th>ArticuloCodigoHijo</th>
+            <th>ArticuloCodCajaSuelto</th>
+            <th>ArticuloActivoCompra</th>
+            <th>Marca</th>
+
+            <th>ArticuloFactorConv</th>
+            <th>PVD30</th>
+            <th>PVD60</th>
+            <th>PVD90</th>
+            <th>PVDVariable</th>
+            <th>Articulo_Margen</th>
+            <th>Articulo_Rot_Min</th>
+            <th>Articulo_Rot_Max</th>
+            <th>Articulo_Alto</th>
+            <th>Articulo_Ancho</th>
+            <th>Articulo_Largo</th>
+            <th>Articulo_Unidad</th>
+            <th>Articulo_Aplica_Regalia</th>
+
+            <th>Articulo_Express</th>
+            <th>Articulo_Permiso</th>
+            <th>Articulo_Devuelve_Proveedor</th>
+            <th>Articulo_Fehca_Ult_Compra</th>
+            <th>Articulo_Fecha_Vence</th>
+            <th>Articulo_Mecanica</th>
+            <th>Articulo_Programa</th>
+            <th>Sustituto_Nombre</th>
+            <th>articulo_suma_iva</th>
+
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>@Html.DisplayFor(modelItem => item.Codigo)</td>
+            <td>  @Html.DisplayFor(modelItem => item.ArticuloNombre)</td>
+            <td> @Html.DisplayFor(modelItem => item.Categoria)</td>
+            <td> @Html.DisplayFor(modelItem => item.Casa)</td>
+            <td> @Html.DisplayFor(modelItem => item.SubCategoria)</td>
+            <td> @Html.DisplayFor(modelItem => item.Departamento_Articulo) </td>
+            <td> @Html.DisplayFor(modelItem => item.Grupo_Terapeutico)</td>
+            <td>@Html.DisplayFor(modelItem => item.Proveedor)</td>
+            <td>@Html.DisplayFor(modelItem => item.ArticuloObservacion)</td>
+
+            <td> @Html.DisplayFor(modelItem => item.ArticuloClienteFrecuente)</td>
+            <td> @Html.DisplayFor(modelItem => item.Color)</td>
+            <td> @Html.DisplayFor(modelItem => item.Tamaño)</td>
+            <td>@Html.DisplayFor(modelItem => item.ArticuloBarra)</td>
+            <td>@Html.DisplayFor(modelItem => item.ArticuloCosto)</td>
+
+            <td> @Html.DisplayFor(modelItem => item.ArticuloCostoProm)</td>
+            <td> @Html.DisplayFor(modelItem => item.ArticuloCostoUlt)</td>
+            <td> @Html.DisplayFor(modelItem => item.ArticuloPrecio1)</td>
+            <td>@Html.DisplayFor(modelItem => item.ArticuloPrecio2)</td>
+            <td>@Html.DisplayFor(modelItem => item.ArticuloPrecio3)</td>
+            <td> @Html.DisplayFor(modelItem => item.ArticuloCostoProm)</td>
+            <td> @Html.DisplayFor(modelItem => item.ArticuloCostoUlt)</td>
+            <td> @Html.DisplayFor(modelItem => item.ArticuloPrecio1)</td>
+            <td>@Html.DisplayFor(modelItem => item.ArticuloPrecio2)</td>
+            <td>@Html.DisplayFor(modelItem => item.ArticuloPrecio3)</td>
+            <td> @Html.DisplayFor(modelItem => item.ArticuloPrecio4)</td>
+            <td> @Html.DisplayFor(modelItem => item.ArticuloPrecio5)</td>
+            <td> @Html.DisplayFor(modelItem => item.ArticuloVentaBajoCosto)</td>
+            <td>@Html.DisplayFor(modelItem => item.ArticuloCantidadMinima)</td>
+            <td>@Html.DisplayFor(modelItem => item.FechaCreacion)</td>
+
+            <td> @Html.DisplayFor(modelItem => item.FechaModifica)</td>
+            <td> @Html.DisplayFor(modelItem => item.Activo)</td>
+            <td> @Html.DisplayFor(modelItem => item.PagaIva)</td>
+            <td>@Html.DisplayFor(modelItem => item.Existencia)</td>
+            <td>@Html.DisplayFor(modelItem => item.ArticuloCodigoPadre)</td>
+            <td> @Html.DisplayFor(modelItem => item.ArticuloCodigoHijo)</td>
+            <td> @Html.DisplayFor(modelItem => item.ArticuloCodCajaSuelto)</td>
+            <td> @Html.DisplayFor(modelItem => item.ArticuloActivoCompra)</td>
+            <td>@Html.DisplayFor(modelItem => item.Marca)</td>
+            <td>@Html.DisplayFor(modelItem => item.ArticuloFactorConv)</td>
+            <td> @Html.DisplayFor(modelItem => item.PVD30)</td>
+            <td> @Html.DisplayFor(modelItem => item.PVD60)</td>
+            <td> @Html.DisplayFor(modelItem => item.PVD90)</td>
+            <td>@Html.DisplayFor(modelItem => item.PVDVariable)</td>
+            <td>@Html.DisplayFor(modelItem => item.Articulo_Margen)</td>
+
+            <td>@Html.DisplayFor(modelItem => item.Articulo_Rot_Min)</td>
+            <td>@Html.DisplayFor(modelItem => item.Articulo_Rot_Max)</td>
+            <td> @Html.DisplayFor(modelItem => item.Articulo_Alto)</td>
+            <td> @Html.DisplayFor(modelItem => item.Articulo_Ancho)</td>
+            <td> @Html.DisplayFor(modelItem => item.Articulo_Largo)</td>
+            <td>@Html.DisplayFor(modelItem => item.Articulo_Unidad)</td>
+            <td>@Html.DisplayFor(modelItem => item.Articulo_Aplica_Regalia)</td>
+
+            <td> @Html.DisplayFor(modelItem => item.Articulo_Express)</td>
+            <td> @Html.DisplayFor(modelItem => item.Articulo_Permiso)</td>
+            <td>@Html.DisplayFor(modelItem => item.Articulo_Devuelve_Proveedor)</td>
+            <td>@Html.DisplayFor(modelItem => item.Articulo_Fehca_Ult_Compra)</td>
+
+            <td>@Html.DisplayFor(modelItem => item.Articulo_Fecha_Vence)</td>
+
+            <td> @Html.DisplayFor(modelItem => item.Articulo_Mecanica)</td>
+            <td> @Html.DisplayFor(modelItem => item.Articulo_Programa)</td>
+            <td>@Html.DisplayFor(modelItem => item.Sustituto_Nombre)</td>
+            <td>@Html.DisplayFor(modelItem => item.articulo_suma_iva)</td>
+
+
+
+        </tr>
+        }
+
+    </tbody>
+</table>
+
+
+
+<!-- Llamar a los complementos javascript-->
+@*<script src="jquery-1.12.4.min.js"></script>*@
+@*<script src="FileSaver.min.js"></script>
+    <script src="Blob.min.js"></script>
+    <script src="xls.core.min.js"></script>
+    <script src="dist/js/tableexport.js"></script>*@
+@*<script>
+
+        $('#my-tableDino23').dynatable({
+            table: {
+                defaultColumnIdStyle: 'dashed'
+            }
+        });
+
+
+    </script>*@
+
+<script src="~/assets/Exportar Js/FileSaver.min.js"></script>
+<script src="~/assets/Exportar Js/Blob.min.js"></script>
+<script src="~/assets/Exportar Js/xls.core.min.js"></script>
+<script src="~/assets/Exportar Js/tableexport.js"></script>
+
+<script>
+    $("table").tableExport({
+        formats: ["xlsx", "txt", "csv"], //Tipo de archivos a exportar ("xlsx","txt", "csv", "xls")
+        position: 'button',  // Posicion que se muestran los botones puedes ser: (top, bottom)
+        bootstrap: false,//Usar lo estilos de css de bootstrap para los botones (true, false)
+        fileName: "Export",    //Nombre del archivo
+    });
+</script>
+@*</div>*@
+
+<script>
+    $(document).ready(function () {
+
+        $(".Export").click(function () {
+            alertify.success("Se iniciara la Descarga del Archivo");
+
+        });
+    });
+</script>
+
+
+<script>
+
+    $('#my-tableDino23').dynatable({
+        table: {
+            defaultColumnIdStyle: 'dashed'
+        }
+    });
+
+
+</script>
+

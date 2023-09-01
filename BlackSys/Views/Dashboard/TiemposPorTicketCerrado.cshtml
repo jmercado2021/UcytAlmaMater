@@ -1,0 +1,84 @@
+﻿@model List<MiPrimerProyectoMVC.Model.EntityTíemposPorTiketCerrados_Result>
+@{
+    ViewBag.Title = "TiemposPorTicketCerrados";
+    Layout = "~/Views/Shared/_AdminLte.cshtml";
+}
+<head>
+    <script src="~/Content/DynaTables/jquery-1.7.2.min.js"></script>
+    <link href="~/Content/DynaTables/jquery.dynatable.css" rel="stylesheet" />
+    <script src="~/Content/DynaTables/jquery.dynatable.js"></script>
+</head>
+
+<div class="panel-body col-md-12">
+
+    <table class="table table-striped" id="my-tableDino23">
+
+        <thead>
+            <tr style="width:10%">
+                <th>NTicket</th>
+                <th>Cliente</th>
+                <th>Estado</th>
+                <th>Tipo Problema</th>
+                <th>Prioridad</th>
+                <th>Incidente</th>
+                <th>Operador Asignado</th>
+                <th>Fecha Inicio</th>
+                <th>Operador Finaliza</th>
+                <th>Fecha fin</th>            
+            
+                <th>Transcurso</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.NTicket)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Cliente)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Estado)</td>
+                    <td>@Html.DisplayFor(modelItem => item.TipoProblema)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Prioridad)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Incidente)</td>
+                    <td>@Html.DisplayFor(modelItem => item.OperadorInicia)</td>
+                    <td>@Html.DisplayFor(modelItem => item.FechaTicketInicio)</td>
+                    <td>@Html.DisplayFor(modelItem => item.OperadorFinaliza)</td>                
+                    <td>@Html.DisplayFor(modelItem => item.FechaTicketfin)</td>
+                  
+                    @{
+                        var PaDias = " Dias ";
+                        var Dias = (Convert.ToDouble(item.DuracionHorasFinalizada) / 24);
+                        var Dias2 = Convert.ToInt32(Dias);
+
+                        if (Dias < 1)
+                        {
+                            <td class="mailbox-date"> @Html.DisplayFor(modelItem => item.DuracionHorasFinalizada) horas  @Html.DisplayFor(modelItem => item.DuracionMinutoFinalizada) Minutos </td>
+                        }
+
+                        if (Dias > 1)
+                        {
+                                <td class="mailbox-date"> @Dias2  @PaDias  @Html.DisplayFor(modelItem => item.DuracionHorasFinalizada) Horas @Html.DisplayFor(modelItem => item.DuracionMinutoFinalizada) Minutos </td>
+                        }
+                          
+                        }
+                </tr>
+
+                        }
+        </tbody>
+    </table>
+
+
+
+</div>
+
+<script>
+
+    $('#my-tableDino23').dynatable({
+        table: {
+            defaultColumnIdStyle: 'dashed'
+        }
+    });
+
+
+</script>
+
+

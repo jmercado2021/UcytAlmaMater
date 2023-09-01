@@ -1,0 +1,75 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <title>FormDen Example</title>
+</head>
+<body>
+    <link href="~/bower_components/bootstrap/dist/css/bootstrap-iso.css" rel="stylesheet" />
+    <script src="~/bower_components/bootstrap/dist/js/formden.js"></script>         
+    <link href="~/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/bower_components/bootstrap/dist/css/StyleCalendario.css" rel="stylesheet" />
+            <!-- Inline CSS based on choices in "Settings" tab -->
+       
+
+            <!-- HTML Form (wrapped in a .bootstrap-iso div) -->
+            <div class="bootstrap-iso">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <form action="https://formden.com/post/MlKtmY4x/" class="form-horizontal" method="post">
+                                <div class="form-group ">
+                                    <label class="control-label col-sm-2 requiredField" for="date">
+                                        Date
+                                        <span class="asteriskField">
+                                            *
+                                        </span>
+                                    </label>
+                                    <div class="col-sm-10">
+                                        <div class="input-group">
+                                            <div class="input-group-addon">
+                                                <i class="fa fa-calendar">
+                                                </i>
+                                            </div>
+                                            <input class="form-control" id="date" name="date" placeholder="MM/DD/YYYY" type="text" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-10 col-sm-offset-2">
+                                        <input name="_honey" style="display:none" type="text" />
+                                        <button class="btn btn-primary " name="submit" type="submit">
+                                            Submit
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Extra JavaScript/CSS added manually in "Settings" tab -->
+            <!-- Include jQuery -->
+
+            
+            @*<script>
+            $(document).ready(function(){
+                var date_input=$('input[name="date"]'); //our date input has the name "date"
+                var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
+                date_input.datepicker({
+                    format: 'mm/dd/yyyy',
+                    container: container,
+                    todayHighlight: true,
+                    autoclose: true,
+                })
+            })
+            </script>*@
+
+        </body>
+
+        </html>

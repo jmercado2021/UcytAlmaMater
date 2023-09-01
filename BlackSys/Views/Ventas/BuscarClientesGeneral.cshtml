@@ -1,0 +1,183 @@
+﻿@model List<BlackSys.Models.Cliente>
+@{
+    ViewBag.Title = "BuscarClientesGeneral";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<head>
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    @*Neccesarios para Exportar Js*@
+    <script src="~/assets/js/popper.min.js"></script>
+    <link href="~/assets/Exportar Js/tableexport.css" rel="stylesheet" />
+
+
+    <link href="~/Content/DynaTables/jquery.dynatable.css" rel="stylesheet" />
+    <script src="~/Content/DynaTables/jquery.dynatable.js"></script>
+</head>
+<!-- /.col (left) -->
+
+<form method="post" action="@Url.Action("ListarFacturas","Ventas")">
+    <br />
+
+    <div class="form-group">
+        <label class="control-label" for="Nombre">Seleecione el Cliente a consultar</label>
+        @*<button></button>*@
+        @Html.DropDownList("Cliente", (IEnumerable<SelectListItem>)ViewBag.Cliente, null, new { id = "Cliente", @class = "form-control" })
+        <div class="help-block with-errors"></div>
+        <span id="span1"></span>
+    </div>
+    <label>Fecha de inicio:</label>
+    <input name="FechaIni" class="glyphicon-calendar" placeholder="26/05/2020 11:06:56 a. m." type="date" />
+    <label>Fecha de finalizacion:</label>
+    <input name="FechaFin" class="glyphicon-calendar" placeholder="26/05/2020 11:06:56 a. m." type="date" />
+    <button id="cargar" type="submit" class="btn btn-primary">Consultar</button>
+    <br />
+
+</form>
+
+    <table class="table table-striped" id="my-tableDino23">
+        @*<table class="table table-striped" id="my-tableDino23">*@
+        @*<table id="example" class="cell-border" style="width:100%">*@
+        <thead>
+            <tr>
+                <th>Tipo</th>
+                <th>Factura N°</th>
+
+                <th>Origen</th>
+                <th>Fecha</th>
+                <th>Sucursal</th>
+                <th>Tipo Precio Cliente</th>
+                <th>Monto Total</th>
+                <th></th>
+
+
+
+            </tr>
+        </thead>
+        <tbody>
+
+            @*@foreach (var item in Model)
+                {*@
+            <tr>
+
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                @*<td> @Html.DisplayFor(modelItem => item.C_40)</td>
+                    <td> @Html.DisplayFor(modelItem => item.C_41)</td>
+                    <td>@Html.DisplayFor(modelItem => item.TotUnidadesPy)</td>
+                    <td>@Html.DisplayFor(modelItem => item.CostoUltCompra)</td>
+                    <td>@Html.DisplayFor(modelItem => item.SumaBod1)</td>
+                    <td>@Html.DisplayFor(modelItem => item.SumaBod2)</td>
+                    <td>@Html.DisplayFor(modelItem => item.ExistBod)</td>*@
+
+
+
+
+            </tr>
+
+
+        </tbody>
+    </table>
+
+
+
+    <div class="modal modal-static fade" id="processing-modal" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="text-center">
+                        @*<img src="~/assets/images/loading.gif" class="icon" />*@
+                        <div class="spinner"></div>
+                        @*<img src="~/Content/dist/img/128x128.gif" />*@
+                        @*<img src="~/Imagenes/circulo espera.gif" />*@
+                        <h5><span class="modal-text center-block">Procesando, Espere por favor...<br />      </span></h5>
+                        <h5><span class="modal-text"><br />      </span></h5>
+                        <h5><span class="modal-text"><br />      </span></h5>
+                        <h5><span class="modal-text"><br />      </span></h5>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script>
+
+        $('#my-tableDino23').dynatable({
+            table: {
+                defaultColumnIdStyle: 'dashed'
+            }
+        });
+
+
+    </script>
+
+
+    @*<script src="~/assets/Exportar Js/FileSaver.min.js"></script>
+        <script src="~/assets/Exportar Js/Blob.min.js"></script>
+        <script src="~/assets/Exportar Js/xls.core.min.js"></script>
+        <script src="~/assets/Exportar Js/tableexport.js"></script>*@
+
+
+
+
+
+    @*<script>
+                    $("table").tableExport({
+                        formats: ["xlsx", "txt", "csv"], //Tipo de archivos a exportar ("xlsx","txt", "csv", "xls")
+                        position: 'button',  // Posicion que se muestran los botones puedes ser: (top, bottom)
+                        bootstrap: false,//Usar lo estilos de css de bootstrap para los botones (true, false)
+                        fileName: "Export",    //Nombre del archivo
+                    });
+        </script>*@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    @*<!-- jQuery 3 -->
+        <script src="../../bower_components/jquery/dist/jquery.min.js"></script>
+        <!-- Bootstrap 3.3.7 -->
+        <script src="../../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+        <!-- Select2 -->
+        <script src="../../bower_components/select2/dist/js/select2.full.min.js"></script>
+        <!-- InputMask -->
+
+        <script src="~/bower_components/inputmask/dist/inputmask/jquery.inputmask.js"></script>
+        <script src="~/Content/plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
+        <!-- date-range-picker -->
+        <script src="~/Content/plugins/input-mask/jquery.inputmask.extensions.js"></script>
+        <script src="~/bower_components/moment/min/moment.min.js"></script>
+        <!-- bootstrap datepicker -->
+        <script src="~/bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
+        <script src="~/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+        <!-- bootstrap color picker -->
+        <script src="~/bower_components/bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js"></script>
+        <script src="~/bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+
+        <script src="~/Content/plugins/timepicker/bootstrap-timepicker.min.js"></script>
+
+        <!-- AdminLTE for demo purposes -->
+
+        <script src="~/Content/dist/js/demo.js"></script>*@

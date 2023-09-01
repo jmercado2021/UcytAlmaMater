@@ -1,0 +1,204 @@
+﻿@model List<BlackSys.Models.W_ConsultarOrdenExpress3_Result>
+@{
+    ViewBag.Title = "ConsultarOrden";
+    //Layout = "~/Views/Shared/_Loyout2.cshtml";
+}
+
+<head>
+</head>
+<br />
+<div class="modal-header">
+    <button class="btn btn-sm pull-right btn-danger" type="button" id="btnCloseModal" data-dismiss="modal">X</button>
+    @*<h2>Articulos</h2>*@
+</div>
+
+<!-- Main content -->
+<section class="content">
+ 
+    <div class="row">
+        <div class="col-md-3">
+
+            <!-- Profile Image -->
+            <div class="box box-primary">
+                <div class="box-body box-profile">
+                    <img style="position:center" class="profile-user-img img-responsive img-circle" src="~/Content/img/usuario (1).png" alt="User profile picture">
+                    @*<img src="~/Content/img/usuario (1).png" />*@
+
+                    <h4 class="profile-username text-center">@ViewBag.Cliente</h4>
+
+                    @*<p class="text-muted text-center">Software Engineer</p>*@
+
+                    <ul class="list-group list-group-unbordered">
+                        <li class="list-group-item">
+                            <b>Ubicacion:</b> <a class="pull-right">@ViewBag.Ubicacion</a>
+                        </li>      
+                        <li class="list-group-item">
+                            <b>Distrito:</b> <a class="pull-right">@ViewBag.distrito</a>
+                        </li>
+                        <li class="list-group-item">
+                            <b>Zona:</b> <a class="pull-left">@ViewBag.Zona</a>
+                            <br />
+                            <br />
+                            <br />
+                        </li>
+                    </ul>
+                    @*<a href="#" class="btn btn-primary btn-block"><b>Accion</b></a>*@
+                </div>
+                <!-- /.box-body -->
+            </div>
+   
+        </div>
+        <!-- /.col -->
+        <div class="col-md-9">
+            @*<div class="nav-tabs-custom">*@
+
+                <ul class="nav nav-tabs">
+                    <li class="active"><a href="#activity" data-toggle="tab">Detalles de la Orden -<strong>@ViewBag.Orden_Id</strong> </a></li>
+                    @*<li><a href="#timeline" data-toggle="tab">Timeline</a></li>
+                    <li><a href="#settings" data-toggle="tab">Settings</a></li>*@
+                </ul>
+                <div class="tab-content">
+                    <div class="active tab-pane" id="activity">
+                        <!-- Post -->
+                        <div class="post">
+                            <div class="user-block">
+                                @*<img class="img-circle img-bordered-sm" src="../../dist/img/user1-128x128.jpg" alt="user image">*@
+                                <span class="username">
+                                    <a href="#">Operador:</a>
+                                    <a href="#" class="pull-right btn-box-tool"></a>
+                                </span>
+                                <span class="description">@ViewBag.Usuario</span>
+                            </div>
+                            <div class="user-block">
+                                @*<img class="img-circle img-bordered-sm" src="../../dist/img/user1-128x128.jpg" alt="user image">*@
+                                <span class="username">
+                                    <a href="#">Repartidor:</a>
+                                    <a href="#" class="pull-right btn-box-tool"></a>
+                                </span>
+                                <span class="description">@ViewBag.RepartidorId - @ViewBag.Repartidor </span>
+                            </div>
+                            <div class="user-block">
+                                @*<img class="img-circle img-bordered-sm" src="../../dist/img/user1-128x128.jpg" alt="user image">*@
+                                <span class="username">
+                                    <a href="#">Monto:</a>
+                                    <a href="#" class="pull-right btn-box-tool"></i></a>
+                                </span>
+                                <span class="description">@ViewBag.Monto</span>
+                            </div>
+                            <div class="user-block">
+                                @*<img class="img-circle img-bordered-sm" src="../../dist/img/user1-128x128.jpg" alt="user image">*@
+                                <span class="username">
+                                    <a href="#">Moneda:</a>
+                                    <a href="#" class="pull-right btn-box-tool"></i></a>
+                                </span>
+                                <span class="description">@ViewBag.Moneda</span>
+                            </div>
+
+                            <div class="user-block">
+                                @*<img class="img-circle img-bordered-sm" src="../../dist/img/user1-128x128.jpg" alt="user image">*@
+                                <span class="username">
+                                    <a href="#">Observacion:</a>
+                                    <a href="#" class="pull-right btn-box-tool"></a>
+                                </span>
+                                <span class="description">@ViewBag.observacion</span>
+                            </div>   
+                            <div class="user-block">
+                                @*<img class="img-circle img-bordered-sm" src="../../dist/img/user1-128x128.jpg" alt="user image">*@
+                                <span class="username">
+                                    <a href="#">Direccion de Envio:</a>
+                                    <a href="#" class="pull-right btn-box-tool"></a>
+                                </span>
+                                <span class="description">@ViewBag.DireccionEnvio</span>
+                            </div>                        
+                            <hr>
+                        </div>
+                        <div class="box box-info">
+                            <h2 class="box-title">Detalle de Pedido</h2>
+                            <!-- /.box-header -->
+                            <div class="box-body">
+                                @*<input id="buscar" type="text" class="form-control" placeholder="Escriba algo para filtrar" />*@
+                                <div class="table-responsive">
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>Codigo</th>
+                                                <th>Descripcion</th>
+                                                <th>Cantidad</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                        @foreach (var item in Model)
+                                                        {
+                                                            <tr class="item">
+                                                                <td>@Html.DisplayFor(modelItem => item.Articulo_Id)</td>
+                                                                <td>@Html.DisplayFor(modelItem => item.Articulo_Nombre)</td>
+                                                                <td>@Html.DisplayFor(modelItem => item.Detalle_Facturar)</td>
+                                                            </tr>
+                                                          }
+                                        </tbody>
+                                    </table>
+                                    <hr />
+                                </div>
+                                <!-- /.table-responsive -->
+                            </div>
+                            @*<button type="submit" class="btn btn-danger pull-right btn-block btn-sm">Send</button>*@
+                        </div>
+                </div>
+            </div>
+
+
+
+
+
+
+
+        </div>
+    </div>
+    </section>
+                        <!-- /.post -->
+                        <!-- /.box -->
+                        @*<div class="row">
+                                <div class="col-md-1"></div>
+                                <div class="container col-md-10">
+                                    <strong>Cliente: Juan Emilio</strong> <br />
+                                    <strong>Telefono: 22555555</strong><br />
+                                    <strong>Direccion: KM 12 Carretera Sur</strong>
+
+                                </div>
+                            </div>
+
+                            <br />
+
+                            <div class="row">
+                                <div class="col-md-1"></div>
+                                <div class="container col-md-3">
+
+                                    <div>
+                                        <p>Parrafo1</p>
+                                    </div>
+
+
+                                </div>
+                                <div class="col-md-1"></div>
+                                <div class="container col-md-3">
+
+                                    <div>
+                                        <p>Parrafo1</p>
+                                    </div>
+
+                                </div>
+                                <div class="col-md-1"></div>
+                                <div class="container col-md-3">
+                                    <div class="col-md-4">
+                                        <p>Parrafooo1</p>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <style>
+                                .container {
+                                   border-color:black;
+                                   background-color:lightblue;
+                                }
+
+                            </style>*@

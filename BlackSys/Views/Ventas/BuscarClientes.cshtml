@@ -1,0 +1,102 @@
+﻿
+@model IEnumerable<BlackSys.Models.Articulo>
+@{
+//Layout = "~/Views/Shared/_AdminLte.cshtml";
+}
+<head>
+    @*<script src="~/Content/DynaTables/jquery-1.7.2.min.js"></script>*@
+    @*<link href="~/Content/DynaTables/jquery.dynatable.css" rel="stylesheet" />
+        <script src="~/Content/DynaTables/jquery.dynatable.js"></script>*@
+    @*<script src="~/Scripts/BuscarEnTabla.js"></script>*@
+
+</head>
+<!DOCTYPE html>
+
+
+<head>
+    <meta name="viewport" content="width=device-width" />
+    @*<title>BuscarClientes</title>*@
+</head>
+
+<div class="modal-header">
+    <button class="btn btn-sm pull-right btn-danger" type="button" id="btnCloseModal" data-dismiss="modal">X</button>
+    <h2>Buscar Articulos</h2>
+</div>
+
+<div class="modal-body">
+    <form style="text-align:left">
+
+        @*<label></label>
+            <input class="col-md-12" id="searchTerm" type="text" onkeyup="doSearch1()" />*@
+
+        <input id="searchTerm2" type="text" class="col-lg-12" onkeyup="doSearch1()" />
+    </form>
+
+    @*<table class="table table-striped" id="my-tableDino23">*@
+    <table class="table table-striped" id="tabla2">
+        @*<table id="example" class="cell-border" style="width:100%">*@
+        <thead>
+            <tr>
+                <th>Codigo</th>
+                <th>Descripcion</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.Articulo_Id)</td>
+
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Articulo_Nombre)
+                    </td>
+
+                    <td>
+                        @*<button type="button" class="btn btn-sm btn-success" onclick="Edit2(@item.Articulo_Id)">Seleccionar</button>*@
+                        @Html.ActionLink("Seleccionara", "GetNombreCodigoArt", "Ventas", new { id = item.Articulo_Id }, new { @class = "btn btn-info" })
+
+                        @*<button type="button" class="btn btn-sm btn-success"  onclick="RenderActions('/Ventas/GetNombreCodigoArt/' + @item.Articulo_Id)">Seleccionar</button>*@
+                        @*</div>*@
+
+                    </td>
+
+                </tr>
+            }
+        </tbody>
+    </table>
+
+</div>
+
+<script>
+    function doSearch1() {
+        var tableReg = document.getElementById('tabla2');
+        var searchText = document.getElementById('searchTerm2').value.toLowerCase();
+        var cellsOfRow = "";
+        var found = false;
+        var compareWith = "";
+
+        // Recorremos todas las filas con contenido de la tabla
+        for (var i = 1; i < tableReg.rows.length; i++) {
+            cellsOfRow = tableReg.rows[i].getElementsByTagName('td');
+            found = false;
+            // Recorremos todas las celdas
+            for (var j = 0; j < cellsOfRow.length && !found; j++) {
+                compareWith = cellsOfRow[j].innerHTML.toLowerCase();
+                // Buscamos el texto en el contenido de la celda
+                if (searchText.length == 0 || (compareWith.indexOf(searchText) > -1)) {
+                    found = true;
+                }
+            }
+            if (found) {
+                tableReg.rows[i].style.display = '';
+            } else {
+                // si no ha encontrado ninguna coincidencia, esconde la
+                // fila de la tabla
+                tableReg.rows[i].style.display = 'none';
+            }
+        }
+    }
+
+</script>

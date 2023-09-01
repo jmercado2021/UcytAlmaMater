@@ -1,0 +1,106 @@
+﻿@model MiPrimerProyectoMVC.Model.TblOperador
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_AdminLte.cshtml";
+}
+
+<br />
+
+    <div class="container">
+    <div class="panel panel-primary" style="width:750px;margin:0px auto">
+
+
+        <div class="panel-heading">Mostrar Registro</div>
+        <div class="panel-body">
+
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Codigo)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Codigo)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Nombre)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Nombre)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Telefono)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Telefono)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Email)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Email)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.UsuarioId)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.UsuarioId)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Fecha)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Fecha)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Activo)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Activo)
+                </dd>
+
+                <dt>
+                    Area
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.TblArea.Nombre)
+                </dd>
+
+                <dt>
+                    Cargo
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.TblCargo.Nombre)
+                </dd>
+
+                <dt>
+                    Sector
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.TblSector.Nombre)
+                </dd>
+
+            </dl>
+        </div>
+        <p>
+            @Html.ActionLink("Editar", "Edit", new { id = Model.Id }) |
+            @Html.ActionLink("Regresar al Listado", "Index")
+        </p>
+    </div>
+</div>
+

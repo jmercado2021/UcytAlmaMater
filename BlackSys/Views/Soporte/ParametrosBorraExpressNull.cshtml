@@ -1,0 +1,54 @@
+﻿
+@{
+    ViewBag.Title = "ParametrosBorraExpressNull";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@*<form method="post" action='@Url.Action("BorraExpressNull","Soporte")'>*@
+
+    <br />
+    <div class="">
+
+        <label for="cars">Seleccione la Sucursal</label>
+        <div class="form-group">
+            <select id="SucursalcId" name="SucursalcId" style="height:30px">
+                <option value="05">Medco Carretera Sur</option>
+                <option value="25">Medco Carretera a Masaya 12.5</option>
+                <option value="36">Medco Camino de Oriente 2</option>
+                <option value="28">Xolotlan Ciudad Sandino 2</option>
+                <option value="33">Xolotlan Rubenia</option>
+                <option value="27">Xolotlan Tipitapa </option>
+                <option value="12">Xolotlan Bolonia</option>
+            </select>
+           
+        </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">Numero de Orden</label>
+                <input type="text" class="form-control"  id="OrdenId" name="OrdenId" placeholder="N° Orden">
+            </div>
+
+       
+        <button  onclick="enlazar2()" class="btn btn-primary">Actualizar</button>
+
+        </div>
+
+
+<div id="partial2">
+
+    @Html.Partial("BorraExpressNull", (string)ViewBag.Mensaje)
+
+</div>
+
+
+
+@*Funciona tuani*@
+
+<script>
+
+    function enlazar2() {
+        var SucursalcId = $("#SucursalcId").val();
+        var OrdenId = $("#OrdenId").val();
+
+        $("#partial2").load('@Url.Action("BorraExpressNull", "Soporte")' + '?SucursalcId=' + SucursalcId + '&OrdenId=' + OrdenId);
+    };
+</script>

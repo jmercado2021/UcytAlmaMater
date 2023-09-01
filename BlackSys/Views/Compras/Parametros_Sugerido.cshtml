@@ -1,0 +1,61 @@
+﻿@*@model List<BlackSys.Models.ParametrosSugerido>*@
+@{
+    ViewBag.Title = "Parametros_Sugerido";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<head>
+    
+</head>
+
+<form method="post" action="@Url.Action("Parametros_SugeridoUpdate","Compras")">
+  
+   @* <input type="text" value="@ViewBag.Status" name="status" id="status" placeholder="Recibe contenido" class="form-control">*@
+
+
+    @*@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.AntiForgeryToken()*@
+   
+    <label for="basic-url">Parametros para generacion de Sugerido</label>
+   
+
+  
+            <div class="input-group col-md-6">
+                <span class="input-group-addon" id="basic-addon1">Venta</span>
+                <input type="text" name="PVD" class="form-control" value="@ViewBag.PVD" placeholder="Promedio de Venta" aria-describedby="basic-addon1">
+
+                
+            </div>
+    <br />
+
+    <div class="input-group col-md-6">
+        <span class="input-group-addon" id="basic-addon1">Factor de Mes</span>
+        <input type="text" name="FactorMes" class="form-control" value="@ViewBag.FactorMes" placeholder="Covertura del Sugerido" aria-describedby="basic-addon1">
+    </div>
+   
+
+    <br />
+
+
+    <div class="input-group col-md-6">
+        <span class="input-group-addon" id="basic-addon1">Cobertura</span>
+        <input type="text" name="Cobertura" class="form-control" value="@ViewBag.Cobertura" placeholder="Covertura del Sugerido" aria-describedby="basic-addon1">
+    </div>
+    <br />
+        <button type="submit" onclick="actualizar()" class="btn btn-primary">Guardar</button>
+</form>
+
+
+
+<script >
+    //var al = document.getElementById('status');
+    function actualizar()
+    {
+        alertify.success("Parametros Actualizados");
+        
+    }
+
+  
+
+
+</script>

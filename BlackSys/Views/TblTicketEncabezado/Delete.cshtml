@@ -1,0 +1,121 @@
+﻿@model MiPrimerProyectoMVC.Model.TblTicketEncabezado
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_AdminLte.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>TblTicketEncabezado</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.UsuarioId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UsuarioId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Incidente)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Incidente)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Observaciones)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Observaciones)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaTicketInicio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaTicketInicio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaTicketModificado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaTicketModificado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaTicketfin)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaTicketfin)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TblEstado.Codigo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TblEstado.Codigo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TblOperador.Codigo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TblOperador.Codigo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TblPrioridad.Codigo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TblPrioridad.Codigo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TblSubTipoProblema.Codigo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TblSubTipoProblema.Codigo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TblTipoProblema.Codigo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TblTipoProblema.Codigo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TblUsuarioCliente.Codigo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TblUsuarioCliente.Codigo)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

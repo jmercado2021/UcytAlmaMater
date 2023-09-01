@@ -1,0 +1,99 @@
+﻿@model List < BlackSys.Models.W_AuditoriaReporteTraslados_Result>
+@{
+    ViewBag.Title = "TrasladosEntreSucursalesReporte";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<br />
+@*<strong class="box-title ">Buqueda de clientes en compra de articulos especificos</strong>*@
+
+
+<head>
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    @*Neccesarios para Exportar Js*@
+    <script src="~/assets/js/popper.min.js"></script>
+    <link href="~/assets/Exportar Js/tableexport.css" rel="stylesheet" />
+    @*<script src="~/Content/DynaTables/jquery-1.7.2.min.js"></script>*@
+    <script src="~/Content/DynaTables/jquery.dynatable.js"></script>
+    <link href="~/Content/DynaTables/jquery.dynatable.css" rel="stylesheet" />
+</head>
+@*<div class="container container-fluid ">*@
+
+   <table class="table table-striped" id="my-tableDino23">
+
+    <thead>
+        <tr>
+            <th>N°</th>
+            <th>Fecha</th>
+            <th>Origen</th>
+            <th>Destino</th>
+            <th>Estado</th>
+            <th>Comentario</th>
+            <th>Monto Total</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var item in Model)
+            {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.Id)</td>
+
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Fecha)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Suc_Nombre)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Bodega_Nombre)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Mov_Estado)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Mov_Comentario)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Mov_Total)
+                </td>
+            </tr>
+        }
+
+    </tbody>
+</table>
+
+
+
+<script src="~/assets/Exportar Js/FileSaver.min.js"></script>
+<script src="~/assets/Exportar Js/Blob.min.js"></script>
+<script src="~/assets/Exportar Js/xls.core.min.js"></script>
+<script src="~/assets/Exportar Js/tableexport.js"></script>
+    <script>
+                $("table").tableExport({
+                    formats: ["xlsx", "txt", "csv"], //Tipo de archivos a exportar ("xlsx","txt", "csv", "xls")
+                    position: 'button',  // Posicion que se muestran los botones puedes ser: (top, bottom)
+                    bootstrap: false,//Usar lo estilos de css de bootstrap para los botones (true, false)
+                    fileName: "Export",    //Nombre del archivo
+                });
+    </script>
+
+
+ <script>
+
+    $('#my-tableDino23').dynatable({
+        table: {
+            defaultColumnIdStyle: 'dashed'
+        }
+    });
+
+
+</script>

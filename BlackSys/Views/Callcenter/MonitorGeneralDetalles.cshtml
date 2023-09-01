@@ -1,0 +1,94 @@
+﻿@model List<BlackSys.Models.W_MonitoCallPrincipalCallXEstado1_Result>
+@{
+    ViewBag.Title = "MonitorGeneral";
+    Layout = "~/Views/Shared/_Loyout2.cshtml";
+}
+<head>
+    <script src="~/assets/js/Reloj.js"></script>
+    <link href="~/assets/css/StyloByron.css" rel="stylesheet" />
+    <script src="~/assets/js/ScripMonitorByron.js"></script>
+    <meta http-equiv="refresh" content="60" />
+</head>
+
+<div class="row">
+ 
+    <div class="col-md-5">
+        <div class="form-row align-items-center">
+
+            <div class="form-group">
+                @*<label class="control-label" for="Nombre">Seleecione el Vendedor a consultar</label>*@
+                <h4>Seleecione para Filtrar</h4>
+                @*<button></button>*@
+                @Html.DropDownList("ListarEstatus", (IEnumerable<SelectListItem>)ViewBag.ListarEstatus, null, new { id = "ListarEstatus", @class = "form-control" })
+                <div class="help-block with-errors"></div>
+                <span id="span1"></span>
+            </div>
+        </div>
+         </div>
+
+
+
+    <div class="col-md-2">
+        <br />
+        <br />
+        <button type="button" class="btn btn-primary btn-circle btn-lg"><i class="glyphicon glyphicon-list"> Todos @ViewBag.Totales</i></button>
+    </div>
+    <div class="col-md-2">
+        <br />
+        <br />
+        <button type="button" class="btn btn-danger btn-circle btn-lg"><i class="glyphicon glyphicon-time"> Retrasadas  @ViewBag.Retrasadas</i></button>
+    </div>
+    <div class="col-md-2">
+        <br />
+        <br />
+     
+        @*<input class="btn btn-success" type="button" value="Actualizar" onclick="location.reload()"
+               style="font-family:Arial;font-size:10pt;width:200px;height:30px;
+        background:#777777;color:#ebe9e9;cursor:pointer;" />*@
+        <input class="btn btn-primary" type="button" value="Actualizar" onclick="location.reload()" />
+              
+
+    </div>
+  
+    </div>
+
+
+
+
+
+
+    <div class="row">
+        <div class="col-md-12">
+            <div id="PartialOrdenes">
+
+                @Html.Partial("ListarOrdenesDetalle")
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <script>
+                $(document).ready(function () {
+
+                    $("#ListarEstatus").change(function () {
+                        alertify.notify('Cargando', 'success', 1, null);
+                        var estatus = $("#ListarEstatus").val();
+                        $("#PartialOrdenes").load('@(Url.Action("ListarOrdenesDetalle", "Callcenter", null, Request.Url.Scheme))?estatus=' + estatus);
+
+                    });
+                });
+    </script>
+
+    <script>
+
+                        $(document).ready(function () {
+                            $('.navbar-nav').on('click', function () {
+                                $('.navbar-collapse').collapse('hide');
+                            });
+                        });
+        </script>
+

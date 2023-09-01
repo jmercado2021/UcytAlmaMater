@@ -1,0 +1,184 @@
+﻿
+@model IEnumerable<BlackSys.Models.W_Ventas_ReporteRegalias_Result>
+@{
+    ViewBag.Title = "ReporteCanjesReporte";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    @*Neccesarios para Exportar Js*@
+    <script src="~/assets/js/popper.min.js"></script>
+    <link href="~/assets/Exportar Js/tableexport.css" rel="stylesheet" />
+    @*<script src="~/Content/DynaTables/jquery-1.7.2.min.js"></script>*@
+    <script src="~/Content/DynaTables/jquery.dynatable.js"></script>
+    <link href="~/Content/DynaTables/jquery.dynatable.css" rel="stylesheet" />
+    
+</head>
+@*<div class="container container-fluid">*@
+
+    <br />
+<button onclick="exportTableToExcel('tableID')">Exportar Excel</button>
+    <table class="table table-striped" id="tableID">
+
+        @*<table id="example" class="cell-border" style="width:100%">*@
+        <thead>
+            <tr>
+                <th>No. Ticket de Regalía</th>
+                <th>Fecha</th>
+                <th>Sucursal</th>
+                <th>Cliente</th>
+                <th>Vendedor</th>
+                <th>Casa</th>
+                <th>Cod. Producto</th>
+                <th>Descripcion Producto</th>
+                <th>Costo</th>
+                <th>Unidades</th>
+                <th>Fracciones</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Regalia_Id)
+                    </td>
+                    <td>@Html.DisplayFor(modelItem => item.Regalia_Fecha)</td>
+
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Suc_Nombre)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Regalia_Cliente)
+                    </td>
+
+                   
+                   
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Vendedor_Nombre_Completo)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Casa_Nombre)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Articulo_Id)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Articulo_Nombre)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Articulo_Costo_Actual)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Unidades)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Fracciones)
+                    </td>
+
+
+
+                </tr>
+            }
+
+        </tbody>
+    </table>
+
+
+
+        <!-- Llamar a los complementos javascript-->
+        @*<script src="jquery-1.12.4.min.js"></script>*@
+        @*<script src="FileSaver.min.js"></script>
+            <script src="Blob.min.js"></script>
+            <script src="xls.core.min.js"></script>
+            <script src="dist/js/tableexport.js"></script>*@
+        @*<script>
+
+            $('#my-tableDino23').dynatable({
+                table: {
+                    defaultColumnIdStyle: 'dashed'
+                }
+            });
+
+
+        </script>*@
+
+        @*<script src="~/assets/Exportar Js/FileSaver.min.js"></script>
+        <script src="~/assets/Exportar Js/Blob.min.js"></script>
+        <script src="~/assets/Exportar Js/xls.core.min.js"></script>
+        <script src="~/assets/Exportar Js/tableexport.js"></script>*@
+
+        @*<script>
+            $("table").tableExport({
+                formats: ["xlsx", "txt", "csv"], //Tipo de archivos a exportar ("xlsx","txt", "csv", "xls")
+                position: 'button',  // Posicion que se muestran los botones puedes ser: (top, bottom)
+                bootstrap: false,//Usar lo estilos de css de bootstrap para los botones (true, false)
+                fileName: "Export",    //Nombre del archivo
+            });
+        </script>*@
+@*</div>*@
+
+@*<script>
+    $(document).ready(function() {
+
+        $(".xlsx").click(function () {
+            alertify.success("Se iniciara la Descarga del Archivo");
+
+        });
+    });
+</script>*@
+
+<script>
+
+    $('#my-tableDino23').dynatable({
+        table: {
+            defaultColumnIdStyle: 'dashed'
+        }
+    });
+
+
+</script>
+
+
+<script>
+    function exportTableToExcel(tableID) {
+        //alertify.success("Se iniciara la Descarga del Archivo");
+        var downloadLink;
+        var filename = 'Exportar';
+        var dataType = 'application/vnd.ms-excel';
+        var tableSelect = document.getElementById('tableID');
+        var tableHTML = tableSelect.outerHTML.replace(/ /g, '%20');
+
+        // Specify file name
+        filename = filename ? filename + '.xls' : 'excel_data.xls';
+
+        // Create download link element
+        downloadLink = document.createElement("a");
+
+        document.body.appendChild(downloadLink);
+
+        if (navigator.msSaveOrOpenBlob) {
+            var blob = new Blob(['ufeff', tableHTML], {
+                type: dataType
+            });
+            navigator.msSaveOrOpenBlob(blob, filename);
+        } else {
+            // Create a link to the file
+            downloadLink.href = 'data:' + dataType + ', ' + tableHTML;
+
+            // Setting the file name
+            downloadLink.download = filename;
+
+            //triggering the function
+            downloadLink.click();
+        }
+    }
+</script>

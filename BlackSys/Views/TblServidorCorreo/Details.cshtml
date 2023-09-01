@@ -1,0 +1,83 @@
+﻿@model MiPrimerProyectoMVC.Model.TblServidorCorreo
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_AdminLte.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>TblServidorCorreo</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Codigo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Codigo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ServidorCorreo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ServidorCorreo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UsuarioCorreo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UsuarioCorreo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PasswordCorreo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PasswordCorreo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PuertoCorreo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PuertoCorreo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UsuarioId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UsuarioId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Fecha)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fecha)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Activo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Activo)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

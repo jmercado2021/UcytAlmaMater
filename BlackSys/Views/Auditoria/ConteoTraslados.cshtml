@@ -1,0 +1,176 @@
+﻿@model List < BlackSys.Models.W_AuditoriaConteoTraslados_Result>
+@{
+    ViewBag.Title = "ConteoTraslados";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<br />
+@*<strong class="box-title ">Buqueda de clientes en compra de articulos especificos</strong>*@
+
+
+<head>
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    @*Neccesarios para Exportar Js*@
+    <script src="~/assets/js/popper.min.js"></script>
+    <link href="~/assets/Exportar Js/tableexport.css" rel="stylesheet" />
+
+
+        <link href="~/Content/DynaTables/jquery.dynatable.css" rel="stylesheet" />
+        <script src="~/Content/DynaTables/jquery.dynatable.js"></script>
+</head>
+<div class="row">
+
+    <div class="col-md-8">
+        <table class="table table-striped" id="my-tableDino23">
+
+            <thead>
+                <tr>
+                    <th>Suc_Destino</th>
+                    <th>Bodega_Nombre</th>
+                    <th>Cantidad</th>
+
+                </tr>
+            </thead>
+
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.Suc_Destino)</td>
+
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Bodega_Nombre)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Cantidad)
+                    </td>
+                    @*<td>
+
+
+                        <button type="button" onclick="obtener()" class="boton">Listar</button>
+                    </td>*@
+
+                </tr>
+            }
+
+        </table>
+
+    </div>
+
+    @*<div id="partial" class="col-md-6">
+        
+
+            @Html.Partial("TrasladosParcial")
+
+
+    </div>*@
+
+   
+</div>
+
+<script>
+
+    function obtener() {
+
+
+        $("table tbody tr").click(function () {
+            var destino = $(this).find("td:eq(1)").text();
+         
+            //var cCelular = $(this).find("td:eq(4)").text();
+            //document.getElementById('cCelular').value = destino
+            //document.getElementById('cCelular').text = 'Celular: ' + cCelular
+
+            //var SucursalcId = $("#SucursalcId").val();
+            //var OrdenId = $("#OrdenId").val();
+
+            @*$("#partial2").load('@Url.Action("BorraExpressNull", "Soporte")' + '?destino=' + destino + '&OrdenId=' + OrdenId);*@
+            $("#partial").load('@Url.Action("TrasladosParcial", "Auditoria")' + '?destino=' + destino);
+       
+        });
+
+
+            }
+</script>
+
+@*<script>
+            $(function () {
+                $("#btnCargar").click(function () {
+                    //$(this).prop("disabled","disabled");
+                    var url = "@Url.Action("TrasladosParcial", "Auditoria")";
+                    $.get(url).done(function (data) {
+                        $("#partial").append(data);
+                    });
+
+
+                });
+            });
+</script>*@
+
+
+@*<script>
+
+                         $.ajax({
+                            method: "GET",
+                            cache: false,
+                            url: "some.url/PopulateType",
+                            dataType: "HTML"
+                            data: { selectedValue: value }
+                        })
+                        .done(function (response) { // jQuery 1.8 deprecates success() callback
+                            var div = $('#partialViewDiv');
+                            div.html('');
+                            div.html(response);
+                        });
+
+</script>*@
+
+
+
+
+@*<script>
+
+
+                $(document).ready(function () {
+
+                    $("#Vendedor").click(function () {
+                        alertify.notify('Cargando', 'success', 1, null);
+                        var Vendedor = $("#Vendedor").val();
+                        $("#partial").load('@(Url.Action("ListaClientesRecetario", "Sucursal",null, Request.Url.Scheme))?Vendedor=' + Vendedor);
+
+                    });
+                });
+</script>*@
+
+
+<script src="~/assets/Exportar Js/FileSaver.min.js"></script>
+<script src="~/assets/Exportar Js/Blob.min.js"></script>
+<script src="~/assets/Exportar Js/xls.core.min.js"></script>
+<script src="~/assets/Exportar Js/tableexport.js"></script>
+<script>
+                $("table").tableExport({
+                    formats: ["xlsx", "txt", "csv"], //Tipo de archivos a exportar ("xlsx","txt", "csv", "xls")
+                    position: 'button',  // Posicion que se muestran los botones puedes ser: (top, bottom)
+                    bootstrap: false,//Usar lo estilos de css de bootstrap para los botones (true, false)
+                    fileName: "Export",    //Nombre del archivo
+                });
+</script>
+
+
+
+<script>
+
+        $('#my-tableDino23').dynatable({
+            table: {
+                defaultColumnIdStyle: 'dashed'
+            }
+        });
+
+
+</script>
+

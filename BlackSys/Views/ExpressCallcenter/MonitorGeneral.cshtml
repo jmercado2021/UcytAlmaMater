@@ -1,0 +1,39 @@
+﻿@model List<BlackSys.Models.W_MonitoCallPrincipalCallSucursal_Result2>
+@{
+    ViewBag.Title = "MonitorGeneral";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<head>
+    <script src="~/assets/js/Reloj.js"></script>
+    <link href="~/assets/css/StyloByron.css" rel="stylesheet" />
+    <script src="~/assets/js/ScripMonitorByron.js"></script>
+    <meta http-equiv="refresh" content="30" />
+</head>
+
+
+<div class="row">
+
+    <div class="col-md-2">
+        <button type="button" class="btn btn-primary btn-circle btn-lg"><i class="glyphicon glyphicon-list"> Todos @ViewBag.Totales</i></button>
+    </div>
+    <div class="col-md-4">
+        <button type="button" class="btn btn-danger btn-circle btn-lg"><i class="glyphicon glyphicon-time"> Retrasadas  @ViewBag.Retrasadas</i></button>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div id="PartialOrdenes">
+
+            @Html.Partial("ListarOrd")
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+

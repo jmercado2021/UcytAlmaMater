@@ -1,0 +1,142 @@
+﻿@model IEnumerable<BlackSys.Models.W_MaestroDeArticulo_Result>
+@{
+    ViewBag.Title = "MaestroArticulo";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<head>
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    @*Neccesarios para Exportar Js*@
+    <script src="~/assets/js/popper.min.js"></script>
+    <link href="~/assets/Exportar Js/tableexport.css" rel="stylesheet" />
+
+    @*<script src="~/Content/DynaTables/jquery-1.7.2.min.js"></script>*@
+        <link href="~/Content/DynaTables/jquery.dynatable.css" rel="stylesheet" />
+        <script src="~/Content/DynaTables/jquery.dynatable.js"></script>
+</head>
+@*<div class="container container-fluid">*@
+
+<br />
+
+<table class="table table-striped" id="my-tableDino23">
+
+    @*<table id="example" class="cell-border" style="width:100%">*@
+    <thead>
+        <tr>
+            <th>Articulo_Id</th>
+            <th>Existencia</th>
+            <th>Casa_id</th>
+            <th>Casa_Nombre</th>
+            <th>Articulo_Codigo_Hijo</th>
+            <th>Articulo_Nombre</th>
+            <th>Articulo_Factor_Unitario</th>
+            <th>Articulo_Costo_Actual</th>
+            <th>Articulo_Costo_Bruto</th>
+            <th>AXS_precio1</th>
+            <th>AXS_precio2</th>
+            <th>AXS_precio3</th>
+            <th>AXS_precio4</th>
+            <th>AXS_precio5</th>
+            <th>AxS_Limite_Desc</th>
+            <th>Monedero_Porcentaje</th>
+            <th>Articulo_ABC</th>
+            <th>Impuesto</th>
+            <th>CodigoBarra</th>
+         
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var item in Model)
+            {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.Articulo_Id)</td>
+                <td>  @Html.DisplayFor(modelItem => item.Existencia)</td>
+                <td> @Html.DisplayFor(modelItem => item.Casa_id)</td>
+                <td> @Html.DisplayFor(modelItem => item.Casa_Nombre)</td>
+                <td> @Html.DisplayFor(modelItem => item.Articulo_Codigo_Hijo)</td>
+                <td> @Html.DisplayFor(modelItem => item.Articulo_Nombre) </td>
+                <td> @Html.DisplayFor(modelItem => item.Articulo_Factor_Unitario)</td>
+                <td>@Html.DisplayFor(modelItem => item.Articulo_Costo_Actual)</td>
+                <td>@Html.DisplayFor(modelItem => item.Articulo_Costo_Bruto)</td>
+
+                <td> @Html.DisplayFor(modelItem => item.AXS_precio1)</td>
+                <td> @Html.DisplayFor(modelItem => item.AxS_Precio2)</td>
+                <td> @Html.DisplayFor(modelItem => item.AxS_Precio3)</td>
+                <td>@Html.DisplayFor(modelItem => item.Axs_Precio4)</td>
+                <td>@Html.DisplayFor(modelItem => item.AxS_Precio5)</td>
+
+                <td> @Html.DisplayFor(modelItem => item.AxS_Limite_Desc)</td>
+                <td> @Html.DisplayFor(modelItem => item.Monedero_Porcentaje)</td>
+                <td> @Html.DisplayFor(modelItem => item.Articulo_ABC)</td>
+                <td>@Html.DisplayFor(modelItem => item.Impuesto)</td>
+                <td>@Html.DisplayFor(modelItem => item.CodigoBarra)</td>
+
+
+
+            </tr>
+        }
+
+    </tbody>
+</table>
+
+
+
+<!-- Llamar a los complementos javascript-->
+@*<script src="jquery-1.12.4.min.js"></script>*@
+@*<script src="FileSaver.min.js"></script>
+    <script src="Blob.min.js"></script>
+    <script src="xls.core.min.js"></script>
+    <script src="dist/js/tableexport.js"></script>*@
+@*<script>
+
+        $('#my-tableDino23').dynatable({
+            table: {
+                defaultColumnIdStyle: 'dashed'
+            }
+        });
+
+
+    </script>*@
+
+<script src="~/assets/Exportar Js/FileSaver.min.js"></script>
+<script src="~/assets/Exportar Js/Blob.min.js"></script>
+<script src="~/assets/Exportar Js/xls.core.min.js"></script>
+<script src="~/assets/Exportar Js/tableexport.js"></script>
+
+<script>
+            $("table").tableExport({
+                formats: ["xlsx", "txt", "csv"], //Tipo de archivos a exportar ("xlsx","txt", "csv", "xls")
+                position: 'button',  // Posicion que se muestran los botones puedes ser: (top, bottom)
+                bootstrap: false,//Usar lo estilos de css de bootstrap para los botones (true, false)
+                fileName: "Export",    //Nombre del archivo
+            });
+</script>
+@*</div>*@
+
+<script>
+    $(document).ready(function() {
+
+        $(".Export").click(function () {
+            alertify.success("Se iniciara la Descarga del Archivo");
+
+        });
+    });
+</script>
+
+
+<script>
+
+    $('#my-tableDino23').dynatable({
+        table: {
+            defaultColumnIdStyle: 'dashed'
+        }
+    });
+
+
+</script>

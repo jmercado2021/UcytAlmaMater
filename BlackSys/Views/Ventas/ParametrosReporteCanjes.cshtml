@@ -1,0 +1,518 @@
+﻿@model List<BlackSys.Models.Casa>
+@{
+    ViewBag.Title = "ParametrosReporteCanjes";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<head>
+
+
+    @*<link href="~/assets/css/jquerysctipttop.css" rel="stylesheet" />*@
+  
+    <link href="~/assets/css/bstree.css" rel="stylesheet" />
+    <!-- Minified Bootstrap CSS -->
+
+    <!-- Minified JS library -->
+
+    <script src="~/assets/js/jqueryTreeview.js"></script>
+    <!-- Minified Bootstrap JS -->
+
+  
+</head>
+
+<body>
+    <!-- Button trigger modal -->
+    @*<div class="row col-md-8">
+        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#exampleModalLong">
+            Ayuda
+        </button>
+    </div>*@
+
+
+    <form method="post" action="@Url.Action("ReporteCanjesReporte","Ventas")">
+        <br />
+        <div class="btn-group">
+            <button type="button" class="btn btn-default" data-toggle="modal" data-target="#exampleModalLong">Ayuda</button>
+            <button id="cargar" type="submit" class="btn btn-default">Consultar</button>
+         <br />
+        </div>
+        <br />
+        <div class="form-group">
+     
+            @*<div class="row text-center glyphicon-align-center">*@
+
+            <br />
+                <label>Fecha de inicio:</label>
+                <input name="FechaIni" class="glyphicon-calendar" placeholder="@DateTime.Now" type="date" />
+                <label>Fecha de finalizacion:</label>
+                <input name="FechaFin" class="glyphicon-calendar" placeholder="@DateTime.Now" type="date" />
+               @* <button onclick="Busc()" class="msg-basico btn btn-info">Consultar Registros</button>*@
+                @*<button type="submit">Consultar</button>*@
+
+
+
+            @*</div>*@
+
+            <div class="row">
+
+
+
+               
+                <div class="row col-md-6">
+                    <h3>Seleccione la Sucursal a generar</h3>
+                    <div >
+                        <p id="status">Status : </p>
+                    </div>
+                    <div class="col-6">
+                        <input id="bstree-data" type="hidden" name="bstree-data" data-ancestors="ALS:IDF">
+                        <div id="mytree" class="bstree">
+                            <ul>
+                                <li data-id="root" data-level="0">
+                                    <span>Super Farmacias Xolotlan</span>
+                                    <ul>
+                                        <li data-id="ACL" data-level="1">
+                                            <span>Sucursales</span>
+                                            <ul>
+                                                @*<span class="text">@Html.DisplayFor(modelItem => item.OperadorNombre)           </span>*@
+                                                <li data-id="4" data-level="2"><span>MEDCO PLAZA ESPANA</span></li>
+                                                <li data-id="5" data-level="2"><span>MEDCO CARRETERA SUR</span></li>
+                                                <li data-id="6" data-level="2"><span>MEDCO BELLO HORIZONTE</span></li>
+                                                <li data-id="7" data-level="2"><span>MEDCO LAS COLINAS</span></li>
+                                                <li data-id="8" data-level="2"><span>MEDCO VILLA FONTANA</span></li>
+                                                <li data-id="9" data-level="2"><span>XOLOTLAN ESQUIPULAS</span></li>
+
+                                                <li data-id="10" data-level="2"><span>MEDCO GALERIAS STO DOMINGO</span></li>
+                                                <li data-id="11" data-level="2"><span>XOLOTLAN MERCADO ORIENTAL</span></li>
+                                                <li data-id="12" data-level="2"><span>XOLOTLAN BOLONIA</span></li>
+                                                <li data-id="13" data-level="2"><span>MEDCO EL TIANGUE</span></li>
+                                                <li data-id="14" data-level="2"><span>XOLOTLAN COLONIA LAS AMERICAS</span></li>
+                                                <li data-id="15" data-level="2"><span>MEDCO METROCENTRO</span></li>
+
+                                                <li data-id="16" data-level="2"><span>XOLOTLAN COLONIA RUBENIA</span></li>
+                                                <li data-id="17" data-level="2"><span>MEDCO COLONIA PLAZA ESPAÑA</span></li>
+                                                <li data-id="18" data-level="2"><span>XOLOTLAN COLONIA CIUDAD JARDIN</span></li>
+                                                <li data-id="19" data-level="2"><span>XOLOTLAN TICUANTEPE PLAZA CORLEONE</span></li>
+                                                <li data-id="20" data-level="2"><span>XOLOTLAN COLONIA METROCENTRO</span></li>
+                                                <li data-id="21" data-level="2"><span>MEDCO PLAZA INTER</span></li>
+
+                                                <li data-id="22" data-level="2"><span>MEDCO COLONIA LAS BRISAS</span></li>
+                                                <li data-id="23" data-level="2"><span>XOLOTLAN PALI ZUMEN</span></li>
+                                                <li data-id="24" data-level="2"><span>MEDCO VERACRUZ</span></li>
+                                                <li data-id="25" data-level="2"><span>MEDCO KM 12 1/2 CAR MASAYA</span></li>
+                                                <li data-id="26" data-level="2"><span>MEDCO AEROPUERTO</span></li>
+                                                <li data-id="27" data-level="2"><span>XOLOTLAN TIPITAPA</span></li>
+
+                                                <li data-id="28" data-level="2"><span>XOLOTLAN CIUDAD SANDINO No. 2</span></li>
+                                                <li data-id="29" data-level="2"><span>MEDCO MULTIENCTRO LAS AMERICAS</span></li>
+                                                <li data-id="30" data-level="2"><span>XOLOTLAN TIPITAPA No 2</span></li>
+                                                <li data-id="31" data-level="2"><span>MEDCO HIPER COLONIA GALERIAS</span></li>
+                                                <li data-id="32" data-level="2"><span>MEDCO SIERRITAS</span></li>
+                                                <li data-id="33" data-level="2"><span>XOLOTLAN RUBENIA</span></li>
+
+                                                <li data-id="34" data-level="2"><span>MEDCO TICOMO</span></li>
+                                                <li data-id="35" data-level="2"><span>MEDCO LAS PRADERAS</span></li>
+                                                <li data-id="36" data-level="2"><span>MEDCO CAMINO DE ORIENTE 2</span></li>
+                                                <li data-id="37" data-level="2"><span>MEDCO SERRANIA</span></li>
+                                                <li data-id="38" data-level="2"><span>XOLOTLAN SABANA GRANDE</span></li>
+                                                <li data-id="39" data-level="2"><span>MEDCO COLINAS 2</span></li>
+                                                <li data-id="40" data-level="2"><span>XOLOTLAN PUMA COLINASE</span></li>
+                                                <li data-id="41" data-level="2"><span>MEDCO PUMA AMERICANO</span></li>
+
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+
+                            </ul>
+
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+                <div class="row col-md-6">
+                    <h3>Seleccione la casa a generar</h3>
+                    <div class="row">
+                        <div class="col-6">
+                            <p id="status2">Status : </p>
+
+
+
+                        </div>
+                        <div class="col-6">
+                            <input id="bstree-data2" type="hidden" name="bstree-data" data-ancestors="ALS:IDF">
+                            <div id="mytree2" class="bstree">
+                                <ul>
+                                    <li data-id="root" data-level="0">
+                                        <span>Super Farmacias Xolotlan</span>
+                                        <ul>
+                                            <li data-id="ACL" data-level="1">
+                                                <span>Sucursales</span>
+                                                <ul>
+                                                    @foreach (var item in Model)
+                                                    {
+                                                        @*<span class="text">@Html.DisplayFor(modelItem => item.OperadorNombre)           </span>*@
+                                                        <li data-id="@item.Casa_Id" data-level="2"><span>@item.Casa_Nombre</span></li>
+
+                                                    }
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </li>
+
+                                </ul>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+
+
+
+
+
+
+            <script src="~/assets/js/popper.min.js"></script>
+            <script src="~/assets/js/jquery.bstree.js"></script>
+            <script src="~/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+
+
+
+           
+            <input type="hidden" name="IdSucursal" id="IdSuc" placeholder="Recibe contenido" class="form-control">
+            <input type="hidden" name="IdCasas" id="IdCasa" placeholder="Recibe contenido" class="form-control" hidden>
+
+        </div>
+
+
+       
+    </form>
+
+   
+    <script>
+        $('document').ready(function () {
+            $hiddenInput = $('#bstree-data')
+            $('#mytree').bstree({
+                dataSource: $hiddenInput,
+                initValues: $hiddenInput.data('ancestors'),
+                onDataPush: function (values) {
+                    var def = '<strong class="pull-left">Values:&nbsp;</strong>'
+                    for (var i in values) {
+                        def += '<span class="pull-left">' + values[i] + '&nbsp;</span>'
+                    }
+                    ////$('#status').html(def),
+
+                    document.getElementById('IdSuc').value = values
+                },
+                updateNodeTitle: function (node, title) {
+                    return '[' + node.attr('data-id') + '] ' + title + ' (' + node.attr('data-level') + ')'
+                }
+            })
+        })
+    </script>
+
+    @*--scrip para el arbol Casas*@
+    <script>
+        $('document').ready(function () {
+            $hiddenInput = $('#bstree-data2')
+            $('#mytree2').bstree({
+                dataSource: $hiddenInput,
+                initValues: $hiddenInput.data('ancestors'),
+                onDataPush: function (values) {
+                    var def = '<strong class="pull-left">Values:&nbsp;</strong>'
+                    for (var i in values) {
+                        def += '<span class="pull-left">' + values[i] + '&nbsp;</span>'
+                    }
+                    //$('#status2').html(def),
+
+                    document.getElementById('IdCasa').value = values
+                },
+                updateNodeTitle: function (node, title) {
+                    return '[' + node.attr('data-id') + '] ' + title + ' (' + node.attr('data-level') + ')'
+                }
+            })
+        })
+    </script>
+</body>
+
+
+
+<script>
+
+    function EnviarCasa() {
+
+
+        //var dataObject = JSON.stringify({
+        //    'Sucursales': $('#uno').html()
+        //    //'name': $('#myName').val(),
+        //});
+
+        //var IdSuc = JSON.stringify({
+        //    'Sucursales': $('#uno').val()
+        //    //'name': $('#myName').val(),
+        //});
+
+        var IdSuc = $('#uno').val();
+        var IdCasa = $('#uno2').val();
+
+
+    $.ajax({
+        url: '/Ventas/ReporteCanjesReporte',
+        type: 'POST',
+        async: false,
+        dataType: 'text',
+        processData: false,
+        data: { IdSuc, IdCasa },
+        success: function (data) { }
+    });
+        }
+
+
+</script>
+
+<script>
+        function Busc() {
+            //var urls = $('#txtNombreBusqueda').attr('action'); // recupero la url de mi formulario -> localhost/miproyecto/public/agency/search
+            var IdSuc = $('#uno').val(); // recupero el dato de mi input para enviar a buscar a mi controlador
+            var IdCasa = $('#uno2').val();
+            var FechaIni = $('#FechaIni').val();
+            var FechaFin = $('#FechaFin').val();
+            $.ajax({
+                url: '/Ventas/ReporteCanjesReporte',
+                data: { IdSuc, IdCasa, FechaIni, FechaFin }, //Aqui tienes que enviar el objeto json
+                success: function () {
+                   
+                    location.href = "ReporteCanjesReporte/";
+                    console.log(ans);
+                },
+                error: function () {
+                    console.log('error');// solo ingresa a esta parte
+                }
+            });
+        };
+</script>
+
+<script type="text/javascript">
+$("#datetime").datetimepicker({
+    format: 'yyyy-mm-dd hh:ii'
+});
+</script>
+
+    
+<!-- Modal -->
+<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Ayuda al Usuario</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+               Permite ver un reporte de Regalias facturadas en LD.Facturacion<br />
+               Procedimiento:<br />
+                1-Seleccionar el rango de fechas a visualizar. <br />
+                2-Seleecionar las sucursales o marcar todas en el cuadro Todas a la izquiera de Super farmacias Xolotlan Casas.<br />
+                3-Seleccionar las Casas o marcar toddas en el cuadro Todas a la izquierda de Super farmacias Xolotlan Casas.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Ok</button>
+               @* <button type="button" class="btn btn-primary">Save changes</button>*@
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<div class="modal modal-static fade" id="processing-modal" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="text-center">
+                    @*<img src="~/assets/images/loading.gif" class="icon" />*@
+                    <div class="spinner"></div>
+                    @*<img src="~/Content/dist/img/128x128.gif" />*@
+                    @*<img src="~/Imagenes/circulo espera.gif" />*@
+                    <h5><span class="modal-text center-block">Procesando, Espere por favor...<br />      </span></h5>
+                    <h5><span class="modal-text"><br />      </span></h5>
+                    <h5><span class="modal-text"><br />      </span></h5>
+                    <h5><span class="modal-text"><br />      </span></h5>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    $("#cargar").click("click", function () {
+            var md = $("#processing-modal");
+            md.modal('show');
+
+
+
+        });
+</script>
+
+
+@*<script src="~/assets/NotificacionLateral/toastr.min.js"></script>
+
+<script src="~/assets/NotificacionLateral/glimpse.js"></script>
+<script src="~/assets/NotificacionLateral/glimpse.toastr.js"></script>
+
+
+@*--plugin mensaje*@
+@*<script type="text/javascript">
+   $(function () {
+        var i = -1;
+        var toastCount = 0;
+        var $toastlast;
+
+        var getMessage = function () {
+            var msgs = ['My name is Inigo Montoya. You killed my father. Prepare to die!',
+                '<div><input class="input-small" value="textbox"/>&nbsp;<a href="http://johnpapa.net" target="_blank">This is a hyperlink</a></div><div><button type="button" id="okBtn" class="btn btn-primary">Close me</button><button type="button" id="surpriseBtn" class="btn" style="margin: 0 8px 0 8px">Surprise me</button></div>',
+                'Are you the six fingered man?',
+                'Inconceivable!',
+                'I do not think that means what you think it means.',
+                'Have fun storming the castle!'
+            ];
+            i++;
+            if (i === msgs.length) {
+                i = 0;
+            }
+
+            return msgs[i];
+        };
+
+        var getMessageWithClearButton = function (msg) {
+            msg = msg ? msg : 'Clear itself?';
+            msg += '<br /><br /><button type="button" class="btn clear">Yes</button>';
+            return msg;
+        };
+
+        $('#showtoast').click(function () {
+            var shortCutFunction = 'info'
+            var msg = 'Hola payaso'
+            var title ='Mensaje'
+            var $showDuration = '300'
+            var $hideDuration = '200'
+            var $timeOut = '5000'
+            var $extendedTimeOut = '1000'
+            var $showEasing = 'swing'
+            var $hideEasing = 'linear'
+            var $showMethod ='fadeIn'
+            var $hideMethod = 'fadeOut'
+            var toastIndex = toastCount++;
+            var addClear = 'progressBar'
+
+            toastr.options = {
+                closeButton:'false',
+                debug: $('#debugInfo').prop('checked'),
+                newestOnTop: $('#newestOnTop').prop('checked'),
+                progressBar: true ,
+                positionClass: 'toast-bottom-right',
+                preventDuplicates: $('#preventDuplicates').prop('checked'),
+                onclick: null
+            };
+
+            if ($('#addBehaviorOnToastClick').prop('checked')) {
+                toastr.options.onclick = function () {
+                    alert('You can perform some custom action after a toast goes away');
+                };
+            }
+
+            if ($showDuration.val().length) {
+                toastr.options.showDuration = $showDuration.val();
+            }
+
+            if ($hideDuration.val().length) {
+                toastr.options.hideDuration = $hideDuration.val();
+            }
+
+            if ($timeOut.val().length) {
+                toastr.options.timeOut = addClear ? 0 : $timeOut.val();
+            }
+
+            if ($extendedTimeOut.val().length) {
+                toastr.options.extendedTimeOut = addClear ? 0 : $extendedTimeOut.val();
+            }
+
+            if ($showEasing.val().length) {
+                toastr.options.showEasing = $showEasing.val();
+            }
+
+            if ($hideEasing.val().length) {
+                toastr.options.hideEasing = $hideEasing.val();
+            }
+
+            if ($showMethod.val().length) {
+                toastr.options.showMethod = $showMethod.val();
+            }
+
+            if ($hideMethod.val().length) {
+                toastr.options.hideMethod = $hideMethod.val();
+            }
+
+            if (addClear) {
+                msg = getMessageWithClearButton(msg);
+                toastr.options.tapToDismiss = false;
+            }
+            if (!msg) {
+                msg = getMessage();
+            }
+
+            $('#toastrOptions').text('Command: toastr["'
+                    + shortCutFunction
+                    + '"]("'
+                    + msg
+                    + (title ? '", "' + title : '')
+                    + '")\n\ntoastr.options = '
+                    + JSON.stringify(toastr.options, null, 2)
+            );
+
+            var $toast = toastr[shortCutFunction](msg, title); // Wire up an event handler to a button in the toast, if it exists
+            $toastlast = $toast;
+
+            if(typeof $toast === 'undefined'){
+                return;
+            }
+
+            if ($toast.find('#okBtn').length) {
+                $toast.delegate('#okBtn', 'click', function () {
+                    alert('you clicked me. i was toast #' + toastIndex + '. goodbye!');
+                    $toast.remove();
+                });
+            }
+            if ($toast.find('#surpriseBtn').length) {
+                $toast.delegate('#surpriseBtn', 'click', function () {
+                    alert('Surprise! you clicked me. i was toast #' + toastIndex + '. You could perform an action here.');
+                });
+            }
+            if ($toast.find('.clear').length) {
+                $toast.delegate('.clear', 'click', function () {
+                    toastr.clear($toast, { force: true });
+                });
+            }
+        });
+
+        function getLastToast(){
+            return $toastlast;
+        }
+        $('#clearlasttoast').click(function () {
+            toastr.clear(getLastToast());
+        });
+        $('#cleartoasts').click(function () {
+            toastr.clear();
+        });
+    })
+</script>*@

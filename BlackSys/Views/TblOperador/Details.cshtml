@@ -1,0 +1,141 @@
+﻿@*@model MiPrimerProyectoMVC.Model.TblOperador*@
+@model List<MiPrimerProyectoMVC.Model.EntityOperadorDetalla_Result>
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_AdminLte.cshtml";
+}
+
+<head>
+
+</head>
+<br />
+
+
+    <div class="container">
+
+        <div class="panel panel-primary" style="width:750px;margin:0px auto">
+
+
+            <div class="panel-heading" id="mypanelId">
+                Editar Registro
+                @*<div  class="btn btn-secondary ">
+                        @Html.ActionLink("Crear Nuevo", "Create")
+
+                    </div>*@
+
+            </div>
+
+
+  
+            <div class="panel-body">
+
+
+                <table id="tabla1" class="table">
+                    <tr>
+                        <th>
+                            @*@Html.DisplayNameFor(model => model.Suc_Nombre)*@
+                            Codigo
+                        </th>
+
+                        <th>
+                            @*@Html.DisplayNameFor(model => model.Articulo_Nombre)*@
+                            Nombre
+                        </th>
+                        <th>
+                            @*@Html.DisplayNameFor(model => model.ArticuloFechaControl)*@
+                            Telefono
+                        </th>
+                        <th>
+                            @*@Html.DisplayNameFor(model => model.ArticuloFechaControl)*@
+                            Email
+                        </th>
+                        <th>
+                            @*@Html.DisplayNameFor(model => model.Articulo_Nombre)*@
+                            Cargo
+                        </th>
+                        <th>
+                            @*@Html.DisplayNameFor(model => model.ArticuloFechaControl)*@
+                            Area
+                        </th>
+                        <th>
+                            @*@Html.DisplayNameFor(model => model.ArticuloFechaControl)*@
+                            Sector
+                        </th>
+                        <th>
+                            @*@Html.DisplayNameFor(model => model.ArticuloFechaControl)*@
+                            FechaActualizacion
+                        </th>
+                        <th>
+                            @*@Html.DisplayNameFor(model => model.ArticuloFechaControl)*@
+                            Activo
+                        </th>
+
+                        
+
+                        <th></th>
+                    </tr>
+
+                    @foreach (var item in Model)
+            {
+                        <tr class="info">
+                            <td id="Suc">
+                                @Html.DisplayFor(model => item.id)
+                            </td>
+
+                            <
+                            <td>
+                                >
+                                @Html.DisplayFor(model => item.Codigo)
+                            </td>
+
+
+
+                            <td>
+                                @Html.DisplayNameFor(model => item.Nombre)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(model => item.Telefono)
+                            </td>
+
+                            <td>
+                                @Html.DisplayNameFor(model => item.Email)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(model => item.Cargo)
+                            </td>
+
+                            <td>
+                                @Html.DisplayNameFor(model => item.Area)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(model => item.Sector)
+                            </td>
+
+                            <td>
+                                @Html.DisplayNameFor(model => item.FechaActualizacion)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(model => item.Activo)
+                            </td>
+
+
+
+
+                        </tr>
+                    }
+                </table>
+</div>
+            @*<p>
+                @Html.ActionLink("Edit", "Edit", new {id = item.Id }) |
+                @Html.ActionLink("Back to List", "Index")
+            </p>*@
+
+        </div>
+
+       
+    </div>

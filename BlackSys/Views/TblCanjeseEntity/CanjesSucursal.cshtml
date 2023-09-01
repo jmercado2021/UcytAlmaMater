@@ -1,0 +1,166 @@
+﻿@model List<MiPrimerProyectoMVC.Model.PM_Sp_ConsultarCanjesSucursal_Result>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLte.cshtml";
+}
+
+<head>
+
+    <link href="~/css/Tabla.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-3.2.1.js" type="text/javascript"></script>
+    <link href="~/css/jquery.ambiance.css" rel="stylesheet" type="text/css">
+    <script src="~/Scripts/jquery.ambiance.js" type="text/javascript"></script>
+    <script src="~/Scripts/BuscarenTabla.js"></script>
+    <!-- Abiance Notif -->
+    <script src="~/Scripts/jquery-3.2.1.min.js"></script>
+    <script src="~/Scripts/Sweet Alert/functions.js"></script>
+    <script src="~/Scripts/Sweet Alert/sweetalert.min.js"></script>
+    <link href="~/Content/Sweet Alert/sweetalert.css" rel="stylesheet" />
+
+    <link href="~/css/ContenedorScrollByron.css" rel="stylesheet" />
+
+
+
+
+    <script>
+        $(document).ready(function () {
+            $('#example').DataTable ( {
+			"scrollX":true
+        });
+		 });
+    </script>
+    <style>
+    </style>
+
+
+
+
+
+
+</head>
+<br />
+@Html.ActionLink("Refrescar", "Index")
+<table id="example" class="cell-border" style="width:100%">
+    <thead>
+        <tr>
+            <th class="btn-primary">Accion</th>
+            <th class="btn-primary">N°</th>
+            <th class="btn-primary">Sucursal</th>
+            <th class="btn-primary">Fecha</th>
+            <th class="btn-primary">Programa Medico</th>
+            <th class="btn-primary">Tipo de Canje</th>
+            @*<th>Cliente</th>*@
+            @*<th>Codigo</th>*@
+            <th class="btn-primary">
+                Descripcion
+            </th>
+
+            <th class="btn-primary">
+                Estado
+            </th>
+
+
+        </tr>
+    </thead>
+
+    @foreach (var item in Model)
+    {
+        <tbody>
+            <tr>
+                <td class="btn">
+                   
+                    @Html.ActionLink("Consultar", "Details", new { id = item.Id }, new { @class = "btn btn-warning" })
+                    @*@Html.ActionLink("Delete", "Delete", new { id = item.Id })*@
+                    @*<button class="btn-danger eliminar" data-id="@item.Id">Editar</button>
+                        <button class="btn-danger eliminar" data-id="@item.Id">Editar</button>*@
+                </td>
+                <td>@Html.DisplayFor(modelItem => item.Id)</td>
+                <td>@Html.DisplayFor(modelItem => item.Suc_Nombre)</td>
+                <td>@Html.DisplayFor(modelItem => item.Fecha)</td>
+                <td>@Html.DisplayFor(modelItem => item.ProgramaMedico)</td>
+                <td>@Html.DisplayFor(modelItem => item.TipoCanje)</td>
+                @*<td>@Html.DisplayFor(modelItem => item.Cliente_Nombre)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Codigo)</td>*@
+                <td>@Html.DisplayFor(modelItem => item.Descripcion)</td>
+
+                <td >
+                    <text id="celda" value="@Html.DisplayFor(modelItem => item.Estado)">@Html.DisplayFor(modelItem => item.Estado)
+                 </text>
+                </td>
+                @*<td  id="Estado">
+                    @Html.DisplayFor(modelItem => item.Estado)
+                    </td>*@
+
+
+            </tr>
+        </tbody>
+    }
+</table>
+
+
+@*<script>
+        var x;
+
+        x = document.getElementById("celda").innerHTML;
+
+        if(x = "Enviado")
+        {
+            document.getElementById("celda").style.backgroundColor = "#66ff33";
+        }
+
+
+        if (x = "Enviar a Retirar") {
+            document.getElementById("celda").style.backgroundColor = "#61ff33";
+        }
+
+    </script>*@
+
+
+
+
+
+
+@*<button class="btn-danger eliminar" data-id="@item.Id">Eliminar</button>*@
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+            </div>
+            <div class="modal-body">
+                ¿Esta seguro que queire eliminar este registro?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="btnEliminar" data-eliminar="">Eliminar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+            $('.eliminar').click(function () {
+                var idEliminar = $(this).attr("data-id");
+                $("#btnEliminar").attr("data-eliminar", idEliminar);
+                $("#myModal").modal();
+            });
+            $("#btnEliminar").click(function () {
+                var idEliminar = $(this).attr("data-eliminar");
+                $.ajax({
+                    url: '/Canjes/EliminarCanje',
+                    type: 'get',
+                    data: { id: idEliminar },
+                    dataType: 'json',
+                    success: function (result) {
+                        console.log("Exito");
+                        $("#" + idEliminar).remove();
+                        $("#myModal").modal('hide');
+                    },
+                    error: function () {
+                        console.log("fallo");
+                    }
+                });
+            });
+</script>

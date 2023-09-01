@@ -1,0 +1,116 @@
+﻿@model List<BlackSys.Models.W_ListarClientesNotificar_Result>
+@{
+    ViewBag.Title = "ParametrosConsultaRecetario";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@*<form method="post" action="@Url.Action("ListaClientesRecetario","Sucursal")">*@
+    <br />
+@*<button type="button" id="btnCargar" class="btn btn-default">Consultar</button>*@
+<div class="btn-group">
+    <button type="button" class="btn btn-default" data-toggle="modal" data-target="#exampleModalLong">Ayuda</button>
+
+
+</div>
+<div class="row">
+
+   
+    <div class="col-md-6">
+
+
+        <div class="form-group">
+            @*<label class="control-label" for="Nombre">Seleecione el Vendedor a consultar</label>*@
+            <h4>Seleecione el Vendedor a consultar</h4>
+            @*<button></button>*@
+            @Html.DropDownList("Vendedor", (IEnumerable<SelectListItem>)ViewBag.Vendedor, null, new { id = "Vendedor", @class = "form-control" })
+            <div class="help-block with-errors"></div>
+            <span id="span1"></span>
+        </div>
+    </div>
+    </div>
+
+
+
+    <!-- Main content -->
+    @*<section class="content">
+        <div class="row">*@
+
+
+    @*</form>*@
+    <div id="partial" class="row">
+
+        @Html.Partial("ListaClientesRecetario")
+    
+
+    </div>
+
+    <script>
+            $(function () {
+                $("#btnCargar").click(function () {
+                    //$(this).prop("disabled","disabled");
+                    var url = "@Url.Action("ListaClientesRecetario", "Sucursal")";
+                    $.get(url).done(function (data) {
+                        $("#partial").append(data);
+                    });
+
+
+                });
+            });
+        </script>
+
+
+
+
+            <script>
+
+
+                $(document).ready(function () {
+
+                    $("#Vendedor").change(function () {
+                        alertify.notify('Cargando', 'success', 1, null);
+                        var Vendedor = $("#Vendedor").val();
+                        $("#partial").load('@(Url.Action("ListaClientesRecetario", "Sucursal",null, Request.Url.Scheme))?Vendedor=' + Vendedor);
+                   
+                    });
+                });
+            </script>
+
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Ayuda al Usuario</h5>
+                <button type="button" class="close" data-nsdismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Genera una lista de clientes que han comprado articulos clasificados como cronicos <br /> 
+                y que apartir de su fecha de compra su tratamiento esta pronto a agotarse<br />
+                Las notificaciones se realizan atravez de la interfaz de WhatsApp con ayuda del<br />
+                mensaje automatico que se genera al consultar la informacion del cliente.
+                Procedimiento:<br />
+                1-Seleecionar el vendedor a consultar<br />
+                2-Al obtener la lista de clientes seleccionar el boton Info. si el cliente <br />
+                no posee Numero Celular no se podra notificar por esta via. El sistema unicamente <br />
+                podra notificar por EMAIL.
+                3-Si el numero celular es valido seleccionar el numero en el panel derecho y utilizar <br />
+                la integraciono de WhatsApp.
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Ok</button>
+                @* <button type="button" class="btn btn-primary">Save changes</button>*@
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+    
+
