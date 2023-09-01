@@ -8,17 +8,21 @@ namespace BlackSys.Controllers
 {
     public class DocentesController : Controller
     {
+        private BlackSys.Repository.Docentes.IRepository _docenteRepositoy;
+        public DocentesController()
+        {
+            _docenteRepositoy = new BlackSys.Repository.Docentes.Repository(this.ModelState);
+        }
         // GET: Docentes
         public ActionResult Index()
         {
-          
-            return View();
+            return View(_docenteRepositoy.GetAll());
         }
 
-        // GET: Docentes/Details/5
-        public ActionResult Details(int id)
+    // GET: Docentes/Details/5
+        public ActionResult ParcialListado(string Nombre)
         {
-            return View();
+            return PartialView(_docenteRepositoy.FindByName(Nombre));
         }
 
         // GET: Docentes/Create

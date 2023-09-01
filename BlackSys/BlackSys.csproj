@@ -1216,6 +1216,8 @@
       <DependentUpon>RptReporteCargaTraslado.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Repository\Docentes\IRepository.cs" />
+    <Compile Include="Repository\Docentes\Repository.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -1518,6 +1520,7 @@
     <Content Include="Views\Oficina\Details.cshtml" />
     <Content Include="Views\Oficina\Edit.cshtml" />
     <Content Include="Views\Oficina\Index.cshtml" />
+    <Content Include="Views\Docentes\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -1540,7 +1543,7 @@
     <Folder Include="Controllers\Tienda\" />
     <Folder Include="Reports\" />
     <Folder Include="Tools\" />
-    <Folder Include="Views\Docentes\" />
+    <Folder Include="Views\Docente\" />
     <Folder Include="Views\Express\" />
     <Folder Include="Views\Reportes\" />
   </ItemGroup>
