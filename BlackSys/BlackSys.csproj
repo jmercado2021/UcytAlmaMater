@@ -1521,6 +1521,7 @@
     <Content Include="Views\Oficina\Edit.cshtml" />
     <Content Include="Views\Oficina\Index.cshtml" />
     <Content Include="Views\Docentes\Index.cshtml" />
+    <Content Include="Views\Docentes\ParcialListado.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

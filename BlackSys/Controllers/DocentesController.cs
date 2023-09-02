@@ -8,10 +8,10 @@ namespace BlackSys.Controllers
 {
     public class DocentesController : Controller
     {
-        private BlackSys.Repository.Docentes.IRepository _docenteRepositoy;
+        private Repository.Docentes.IRepository _docenteRepositoy;
         public DocentesController()
         {
-            _docenteRepositoy = new BlackSys.Repository.Docentes.Repository(this.ModelState);
+            _docenteRepositoy = new Repository.Docentes.Repository(this.ModelState);
         }
         // GET: Docentes
         public ActionResult Index()

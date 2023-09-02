@@ -13,7 +13,7 @@ namespace BlackSys.Controllers
         private BlackSysEntities db = new BlackSysEntities();
         public ActionResult Index()
         {
-            
+            return View();
         }
 
         [Authorize]
