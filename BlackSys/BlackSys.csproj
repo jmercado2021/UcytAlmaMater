@@ -719,6 +719,16 @@
     <Content Include="Content\plugins\uniform\images\sprite_original.png" />
     <Content Include="Content\plugins\uniform\jquery.uniform.js" />
     <Content Include="Content\plugins\uniform\jquery.uniform.min.js" />
+    <Content Include="Content\vertical-tabs-css\dist\css\style.css" />
+    <Content Include="Content\vertical-tabs-css\dist\images\favicon.png" />
+    <Content Include="Content\vertical-tabs-css\dist\images\logo.jpg" />
+    <Content Include="Content\vertical-tabs-css\dist\js\app.js" />
+    <Content Include="Content\vertical-tabs-css\index.html" />
+    <Content Include="Content\vertical-tabs-css\vertical-tabs-css\dist\css\style.css" />
+    <Content Include="Content\vertical-tabs-css\vertical-tabs-css\dist\images\favicon.png" />
+    <Content Include="Content\vertical-tabs-css\vertical-tabs-css\dist\images\logo.jpg" />
+    <Content Include="Content\vertical-tabs-css\vertical-tabs-css\dist\js\app.js" />
+    <Content Include="Content\vertical-tabs-css\vertical-tabs-css\index.html" />
     <Content Include="Database\01 - Database.sql" />
     <Content Include="Database\03 - Data.sql" />
     <Content Include="Database\02 - Complements.sql" />
@@ -1522,6 +1532,7 @@
     <Content Include="Views\Oficina\Index.cshtml" />
     <Content Include="Views\Docentes\Index.cshtml" />
     <Content Include="Views\Docentes\ParcialListado.cshtml" />
+    <Content Include="Views\Docentes\Details.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -1531,6 +1542,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\NewFolder1\" />
     <Folder Include="Content\plugins\bootstrap-datetimepicker-2\" />
     <Folder Include="Content\plugins\bootstrap-datetimepicker\" />
     <Folder Include="Content\plugins\font-awesome\fonts\" />

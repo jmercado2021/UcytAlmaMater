@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using BlackSys.Models.ViewModel;
 
 namespace BlackSys.Controllers
 {
@@ -23,6 +24,17 @@ namespace BlackSys.Controllers
         public ActionResult ParcialListado(string Nombre)
         {
             return PartialView(_docenteRepositoy.FindByName(Nombre));
+        }
+        public ActionResult Details (int id)
+        {
+            //if (id != 0)
+            //{
+
+           
+            DocenteViewModel docenteView = new DocenteViewModel();
+            docenteView.docente = _docenteRepositoy.GetById(id);
+            return View(docenteView);
+            //}
         }
 
         // GET: Docentes/Create
