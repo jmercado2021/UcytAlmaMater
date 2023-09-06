@@ -68,31 +68,82 @@
                         <br />
 
                         <section id="tab-1" class="tab-body entry-content active active-content">
+
                             <div class="row">
-                                <div class="col-md-6">
-                                    @Html.LabelFor(model => model.docente.Id, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-3">
+                                    <span>Id:</span>
+                                    @Html.EditorFor(model => model.docente.Id, new { htmlAttributes = new { @class = "form-control col-md-3" } })
+                                    @Html.ValidationMessageFor(model => model.docente.Id, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="col-lg-12">
+                                    <span>Nombre:</span>
+                                    @Html.EditorFor(model => model.docente.Nombre, new { htmlAttributes = new { @class = "form-control col-md-8" } })
+                                    @Html.ValidationMessageFor(model => model.docente.Nombre, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="col-lg-12">
+                                    <span>Cedula:</span>
+                                    @Html.EditorFor(model => model.docente.Cedula, new { htmlAttributes = new { @class = "form-control col-md-8" } })
+                                    @Html.ValidationMessageFor(model => model.docente.Cedula, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="row">
+
+                                <div class="col-lg-12">
+                                    <span>Direccion:</span>
+                                    @Html.EditorFor(model => model.docente.Direccion, new { htmlAttributes = new { @class = "form-control col-lg-12" } })
+                                    @Html.ValidationMessageFor(model => model.docente.Direccion, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-4">
+                                    <span>Teléfono:</span>
+                                    @Html.EditorFor(model => model.docente.Telefono, new { htmlAttributes = new { @class = "form-control col-lg-4" } })
+                                    @Html.ValidationMessageFor(model => model.docente.Telefono, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="col-lg-4">
+                                    <span>Celular:</span>
+                                    @Html.EditorFor(model => model.docente.Celular, new { htmlAttributes = new { @class = "form-control col-lg-4" } })
+                                    @Html.ValidationMessageFor(model => model.docente.Celular, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="col-lg-4">
+                                    <span>Correo:</span>
+                                    @Html.EditorFor(model => model.docente.Email, new { htmlAttributes = new { @class = "form-control col-lg-4" } })
+                                    @Html.ValidationMessageFor(model => model.docente.Email, "", new { @class = "text-danger" })
+                                </div>
+
+                            </div>
+                        </section>
+                   
+
+                        <section id="tab-2" class="tab-body entry-content">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    @Html.LabelFor(model => model.docente.Id, htmlAttributes: new { @class = "control-label col-md-3" })
                                     <div class="col-md-3">
                                         @Html.EditorFor(model => model.docente.Id, new { htmlAttributes = new { @class = "form-control" } })
                                         @Html.ValidationMessageFor(model => model.docente.Id, "", new { @class = "text-danger" })
                                     </div>
                                 </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    @Html.LabelFor(model => model.docente.Nombre, htmlAttributes: new { @class = "control-label col-md-6" })
-                                    <div class="col-md-6">
+
+
+                                <div class="col-md-3">
+                                    @Html.LabelFor(model => model.docente.Nombre, htmlAttributes: new { @class = "control-label col-md-3" })
+                                    <div class="col-md-3">
+                                        @Html.EditorFor(model => model.docente.Nombre, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.docente.Nombre, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    @Html.LabelFor(model => model.docente.Nombre, htmlAttributes: new { @class = "control-label col-md-3" })
+                                    <div class="col-md-3">
                                         @Html.EditorFor(model => model.docente.Nombre, new { htmlAttributes = new { @class = "form-control" } })
                                         @Html.ValidationMessageFor(model => model.docente.Nombre, "", new { @class = "text-danger" })
                                     </div>
                                 </div>
                             </div>
+                            
 
-                        </section>
-
-                        <section id="tab-2" class="tab-body entry-content">
-                            <h2>Foundation</h2>
-                            <p>Foundation is probably the hardest part of your makeup routine to get right, as you not only have to consider the type of coverage you want (i.e. sheer/natural, medium, or full), but also your skin type and undertones.</p>
-                            <p>If you are new to wearing foundation or aren’t sure what type/shade is right for you, I’d highly recommend going to your nearest Sephora, MAC, or department store and have a makeup artist help you pick out one that matches your complexion and fits your coverage needs. It’s also a good idea to request a sample if you want to see how a formula feels on your skin before buying.</p>
                         </section>
 
                         <section id="tab-3" class="tab-body entry-content">

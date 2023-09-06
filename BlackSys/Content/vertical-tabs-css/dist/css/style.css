@@ -3,10 +3,10 @@
  */
 *,
 *::before,
-*::after {
+/**::after {
 	box-sizing: border-box;
 }
-
+*/
 html {
 	font-family: sans-serif;
 	line-height: 1.15;
@@ -173,16 +173,16 @@ footer .credits {
 	display: block;
 }
 
-.tabs > ul li:not(:last-child) {
-	border-bottom: 1px solid #262626;
-}
+	.tabs > ul li:not(:last-child) {
+		border-bottom: 1px solid #eaeaea;
+	}
 
 .tabs > ul li a,
 .tabs > ul li a:visited {
 	display: flex;
 	border-bottom: none;
 	text-decoration: none;
-	background-color: #000;
+	background-color: #9a7272;;
 	color: #fff;
 	padding: 1rem 1.5rem;
 	transition: all 0.2s ease-in-out;
@@ -332,7 +332,7 @@ footer .credits {
 	}
 
 	.tabs > ul li a > span {
-		width: 200%;
+		width: 100%;
 	}
 
 	.tabs > ul li a > span.tab-label {
