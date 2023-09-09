@@ -27,8 +27,8 @@ namespace BlackSys.Models.Dal
         public string Direccion { get; set; }
         public string Ruc { get; set; }
     
+        public virtual Empresa Empresa1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Docente> Docente { get; set; }
-        public virtual Empresa Empresa1 { get; set; }
     }
 }

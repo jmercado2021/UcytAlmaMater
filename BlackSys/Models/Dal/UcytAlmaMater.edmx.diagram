@@ -8,7 +8,6 @@
         <EntityTypeShape EntityType="UcytAlmaMaterModel.Area" Width="1.5" PointX="3" PointY="3" IsExpanded="true" />
         <EntityTypeShape EntityType="UcytAlmaMaterModel.Cargo" Width="1.5" PointX="3" PointY="10.625" IsExpanded="true" />
         <EntityTypeShape EntityType="UcytAlmaMaterModel.Departamento" Width="1.5" PointX="10" PointY="0.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="UcytAlmaMaterModel.Docente" Width="1.5" PointX="5.25" PointY="1.5" IsExpanded="true" />
         <EntityTypeShape EntityType="UcytAlmaMaterModel.Empresa" Width="1.5" PointX="0.75" PointY="6.5" IsExpanded="true" />
         <EntityTypeShape EntityType="UcytAlmaMaterModel.Institucion" Width="1.5" PointX="7.75" PointY="7.75" IsExpanded="true" />
         <EntityTypeShape EntityType="UcytAlmaMaterModel.Municipio" Width="1.5" PointX="12.25" PointY="1" IsExpanded="true" />
@@ -16,15 +15,20 @@
         <EntityTypeShape EntityType="UcytAlmaMaterModel.Profesion" Width="1.5" PointX="3" PointY="13.125" IsExpanded="true" />
         <EntityTypeShape EntityType="UcytAlmaMaterModel.Recinto" Width="1.5" PointX="3" PointY="6.5" IsExpanded="true" />
         <EntityTypeShape EntityType="UcytAlmaMaterModel.TipoContrato" Width="1.5" PointX="3" PointY="15.625" IsExpanded="true" />
-        <AssociationConnector Association="UcytAlmaMaterModel.FK_Docente_Area" ManuallyRouted="false" />
-        <AssociationConnector Association="UcytAlmaMaterModel.FK_Docente_Cargo" ManuallyRouted="false" />
         <AssociationConnector Association="UcytAlmaMaterModel.FK_Departamento_Pais" ManuallyRouted="false" />
         <AssociationConnector Association="UcytAlmaMaterModel.FK_Municipio_Departamento" ManuallyRouted="false" />
-        <AssociationConnector Association="UcytAlmaMaterModel.FK_Docente_Docente" ManuallyRouted="false" />
-        <AssociationConnector Association="UcytAlmaMaterModel.FK_Docente_Profesion" ManuallyRouted="false" />
-        <AssociationConnector Association="UcytAlmaMaterModel.FK_Docente_TipoContrato" ManuallyRouted="false" />
         <AssociationConnector Association="UcytAlmaMaterModel.FK_Recinto_Empresa" ManuallyRouted="false" />
         <EntityTypeShape EntityType="UcytAlmaMaterModel.Etnia" Width="1.5" PointX="7.375" PointY="4.75" />
+        <AssociationConnector Association="UcytAlmaMaterModel.FK_Departamento_Pais1" />
+        <AssociationConnector Association="UcytAlmaMaterModel.FK_Municipio_Departamento1" />
+        <EntityTypeShape EntityType="UcytAlmaMaterModel.Docente" Width="1.5" PointX="14.5" PointY="2.5" />
+        <AssociationConnector Association="UcytAlmaMaterModel.FK_Docente_Area" />
+        <AssociationConnector Association="UcytAlmaMaterModel.FK_Docente_Cargo" />
+        <AssociationConnector Association="UcytAlmaMaterModel.FK_Docente_Departamento" />
+        <AssociationConnector Association="UcytAlmaMaterModel.FK_Docente_Docente" />
+        <AssociationConnector Association="UcytAlmaMaterModel.FK_Docente_Municipio" />
+        <AssociationConnector Association="UcytAlmaMaterModel.FK_Docente_Profesion" />
+        <AssociationConnector Association="UcytAlmaMaterModel.FK_Docente_TipoContrato" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

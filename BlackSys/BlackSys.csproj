@@ -792,6 +792,7 @@
     <Content Include="Imagenes\loading.gif" />
     <Content Include="Imagenes\LOGOBBU.jpeg" />
     <Content Include="Imagenes\LOGOEMPRESA.jpg" />
+    <Content Include="Imagenes\LogoUcyt.png" />
     <Content Include="Imagenes\mantenimiento.png" />
     <Content Include="Imagenes\PM ICON.png" />
     <Content Include="Imagenes\preloader.gif" />
@@ -838,6 +839,7 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\Chart.js" />
     <Content Include="Scripts\Chart.min.js" />
+    <Content Include="Scripts\Controller\Root\Docentes\Details.js" />
     <Content Include="Scripts\DataTables-1.10.18\css\Buttons.css" />
     <Content Include="Scripts\DataTables-1.10.18\css\dataTables.bootstrap.css" />
     <Content Include="Scripts\DataTables-1.10.18\css\dataTables.bootstrap.min.css" />
@@ -1143,6 +1145,7 @@
     <Compile Include="Models\Empresa.cs">
       <DependentUpon>SISCOMP_Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Enum\ClEnum.cs" />
     <Compile Include="Models\Estado.cs">
       <DependentUpon>SISCOMP_Model.tt</DependentUpon>
     </Compile>
@@ -1226,8 +1229,20 @@
       <DependentUpon>RptReporteCargaTraslado.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Repository\Departamento\IRepository.cs" />
+    <Compile Include="Repository\Departamento\Repository.cs" />
     <Compile Include="Repository\Docentes\IRepository.cs" />
     <Compile Include="Repository\Docentes\Repository.cs" />
+    <Compile Include="Repository\Etnia\IRepository.cs" />
+    <Compile Include="Repository\Etnia\Repository.cs" />
+    <Compile Include="Repository\Municipio\IRepository.cs" />
+    <Compile Include="Repository\Municipio\Repository.cs" />
+    <Compile Include="Repository\Pais\IRepository.cs" />
+    <Compile Include="Repository\Pais\Repository.cs" />
+    <Compile Include="Repository\Cargo\IRepository.cs" />
+    <Compile Include="Repository\Cargo\Repository.cs" />
+    <Compile Include="Repository\TipoContrato\IRepository.cs" />
+    <Compile Include="Repository\TipoContrato\Repository.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>

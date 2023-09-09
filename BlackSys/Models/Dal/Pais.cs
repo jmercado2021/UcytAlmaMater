@@ -14,10 +14,18 @@ namespace BlackSys.Models.Dal
     
     public partial class Pais
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Pais()
+        {
+            this.Departamento1 = new HashSet<Departamento>();
+        }
+    
         public int Id { get; set; }
         public string Descripcion { get; set; }
         public Nullable<bool> Activo { get; set; }
     
         public virtual Departamento Departamento { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Departamento> Departamento1 { get; set; }
     }
 }

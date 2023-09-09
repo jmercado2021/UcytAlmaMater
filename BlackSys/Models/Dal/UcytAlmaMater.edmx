@@ -46,6 +46,8 @@
           <Property Name="Telefono" Type="varchar" MaxLength="10" />
           <Property Name="Celular" Type="varchar" MaxLength="10" />
           <Property Name="Email" Type="varchar" MaxLength="20" />
+          <Property Name="EstadoCivil" Type="varchar" MaxLength="20" />
+          <Property Name="Dependencia" Type="varchar" MaxLength="50" />
           <Property Name="EtniaId" Type="int" />
           <Property Name="PaisId" Type="int" />
           <Property Name="DepartamentoId" Type="int" />
@@ -62,7 +64,7 @@
           <Property Name="TipoContratoId" Type="int" />
           <Property Name="CategoriaEnDocente" Type="varchar" MaxLength="50" />
           <Property Name="ServiciosProgramasEspeciales" Type="varchar" MaxLength="50" />
-          <Property Name="AñosAntiguedad" Type="int" />
+          <Property Name="AnosAntiguedad" Type="int" />
           <Property Name="NHijos" Type="int" />
           <Property Name="CargoActualId" Type="int" />
           <Property Name="CantGrupos" Type="int" />
@@ -162,14 +164,14 @@
           <Property Name="Activo" Type="bit" />
         </EntityType>
         <Association Name="FK_Departamento_Pais">
-          <End Role="Pais" Type="Self.Pais" Multiplicity="1" />
-          <End Role="Departamento" Type="Self.Departamento" Multiplicity="0..1" />
+          <End Role="Pais" Type="Self.Pais" Multiplicity="0..1" />
+          <End Role="Departamento" Type="Self.Departamento" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Pais">
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="Departamento">
-              <PropertyRef Name="Id" />
+              <PropertyRef Name="PaisId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -197,6 +199,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Docente_Departamento">
+          <End Role="Departamento" Type="Self.Departamento" Multiplicity="0..1" />
+          <End Role="Docente" Type="Self.Docente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Departamento">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Docente">
+              <PropertyRef Name="DepartamentoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Docente_Docente">
           <End Role="Recinto" Type="Self.Recinto" Multiplicity="1" />
           <End Role="Docente" Type="Self.Docente" Multiplicity="*" />
@@ -206,6 +220,18 @@
             </Principal>
             <Dependent Role="Docente">
               <PropertyRef Name="RecintoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Docente_Municipio">
+          <End Role="Municipio" Type="Self.Municipio" Multiplicity="0..1" />
+          <End Role="Docente" Type="Self.Docente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Municipio">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Docente">
+              <PropertyRef Name="MunicipioId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -234,14 +260,14 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Municipio_Departamento">
-          <End Role="Departamento" Type="Self.Departamento" Multiplicity="1" />
-          <End Role="Municipio" Type="Self.Municipio" Multiplicity="0..1" />
+          <End Role="Departamento" Type="Self.Departamento" Multiplicity="0..1" />
+          <End Role="Municipio" Type="Self.Municipio" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Departamento">
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="Municipio">
-              <PropertyRef Name="Id" />
+              <PropertyRef Name="DepartamentoId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -282,8 +308,16 @@
             <End Role="Cargo" EntitySet="Cargo" />
             <End Role="Docente" EntitySet="Docente" />
           </AssociationSet>
+          <AssociationSet Name="FK_Docente_Departamento" Association="Self.FK_Docente_Departamento">
+            <End Role="Departamento" EntitySet="Departamento" />
+            <End Role="Docente" EntitySet="Docente" />
+          </AssociationSet>
           <AssociationSet Name="FK_Docente_Docente" Association="Self.FK_Docente_Docente">
             <End Role="Recinto" EntitySet="Recinto" />
+            <End Role="Docente" EntitySet="Docente" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Docente_Municipio" Association="Self.FK_Docente_Municipio">
+            <End Role="Municipio" EntitySet="Municipio" />
             <End Role="Docente" EntitySet="Docente" />
           </AssociationSet>
           <AssociationSet Name="FK_Docente_Profesion" Association="Self.FK_Docente_Profesion">
@@ -314,7 +348,7 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Activo" Type="Boolean" />
-          <NavigationProperty Name="Docente" Relationship="Self.FK_Docente_Area" FromRole="Area" ToRole="Docente" />
+          <NavigationProperty Name="Docente" Relationship="UcytAlmaMaterModel.FK_Docente_Area" FromRole="Area" ToRole="Docente" />
         </EntityType>
         <EntityType Name="Cargo">
           <Key>
@@ -323,7 +357,7 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Activo" Type="Boolean" />
-          <NavigationProperty Name="Docente" Relationship="Self.FK_Docente_Cargo" FromRole="Cargo" ToRole="Docente" />
+          <NavigationProperty Name="Docente" Relationship="UcytAlmaMaterModel.FK_Docente_Cargo" FromRole="Cargo" ToRole="Docente" />
         </EntityType>
         <EntityType Name="Departamento">
           <Key>
@@ -335,71 +369,9 @@
           <Property Name="Activo" Type="Boolean" />
           <NavigationProperty Name="Pais" Relationship="Self.FK_Departamento_Pais" FromRole="Departamento" ToRole="Pais" />
           <NavigationProperty Name="Municipio" Relationship="Self.FK_Municipio_Departamento" FromRole="Departamento" ToRole="Municipio" />
-        </EntityType>
-        <EntityType Name="Docente">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="RecintoId" Type="Int32" Nullable="false" />
-          <Property Name="ProfesionId" Type="Int32" Nullable="false" />
-          <Property Name="AreaId" Type="Int32" />
-          <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="Direccion" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="Cedula" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="Sexo" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
-          <Property Name="FechaNac" Type="DateTime" Precision="3" />
-          <Property Name="Telefono" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="Celular" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="Email" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="EtniaId" Type="Int32" />
-          <Property Name="PaisId" Type="Int32" />
-          <Property Name="DepartamentoId" Type="Int32" />
-          <Property Name="MunicipioId" Type="Int32" />
-          <Property Name="Zona" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Discapacidad" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="FormacionPedadogica" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="FechaFormacionPedadogica" Type="DateTime" Precision="3" />
-          <Property Name="Estudia" Type="Boolean" />
-          <Property Name="NivelFormacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="RecibeBeca" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
-          <Property Name="TipoBeca" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="MontoBeca" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="TipoContratoId" Type="Int32" />
-          <Property Name="CategoriaEnDocente" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ServiciosProgramasEspeciales" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="AñosAntiguedad" Type="Int32" />
-          <Property Name="NHijos" Type="Int32" />
-          <Property Name="CargoActualId" Type="Int32" />
-          <Property Name="CantGrupos" Type="Int32" />
-          <Property Name="HorasClase" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="NoInss" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="HorasClaseSemana" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="HorasInvestigacionSemana" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="TipoInvestigacionParticipa" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="HorasDedicadasExtencionSemana" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="InstitucionRealizaExtencion" Type="Int32" />
-          <Property Name="Tutorias" Type="Boolean" />
-          <Property Name="CantAlumnoMascTutoriaMonografia" Type="Int32" />
-          <Property Name="CantAlumnoFemTutoriaMonografia" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="MobilidadAcademica" Type="Boolean" />
-          <Property Name="TipoMobilidadAcademica" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ModalidadDeMobilidad" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="FinalidadMobilidad" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="DuracionMobilidad" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="NombreInstitucion" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="CapacitacionesRecibidas" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
-          <Property Name="TematicaCapacitacionRecibida" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ValorXHoraClase" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="UsuarioModifica" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="FechaRegistro" Type="DateTime" Precision="3" />
-          <Property Name="FechaModifica" Type="DateTime" Precision="3" />
-          <Property Name="Activo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Area" Relationship="Self.FK_Docente_Area" FromRole="Docente" ToRole="Area" />
-          <NavigationProperty Name="Cargo" Relationship="Self.FK_Docente_Cargo" FromRole="Docente" ToRole="Cargo" />
-          <NavigationProperty Name="Recinto" Relationship="Self.FK_Docente_Docente" FromRole="Docente" ToRole="Recinto" />
-          <NavigationProperty Name="Profesion" Relationship="Self.FK_Docente_Profesion" FromRole="Docente" ToRole="Profesion" />
-          <NavigationProperty Name="TipoContrato" Relationship="Self.FK_Docente_TipoContrato" FromRole="Docente" ToRole="TipoContrato" />
+          <NavigationProperty Name="Pais1" Relationship="UcytAlmaMaterModel.FK_Departamento_Pais1" FromRole="Departamento" ToRole="Pais" />
+          <NavigationProperty Name="Municipio1" Relationship="UcytAlmaMaterModel.FK_Municipio_Departamento1" FromRole="Departamento" ToRole="Municipio" />
+          <NavigationProperty Name="Docente" Relationship="UcytAlmaMaterModel.FK_Docente_Departamento" FromRole="Departamento" ToRole="Docente" />
         </EntityType>
         <EntityType Name="Empresa">
           <Key>
@@ -430,6 +402,8 @@
           <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Activo" Type="Boolean" />
           <NavigationProperty Name="Departamento" Relationship="Self.FK_Municipio_Departamento" FromRole="Municipio" ToRole="Departamento" />
+          <NavigationProperty Name="Departamento1" Relationship="UcytAlmaMaterModel.FK_Municipio_Departamento1" FromRole="Municipio" ToRole="Departamento" />
+          <NavigationProperty Name="Docente" Relationship="UcytAlmaMaterModel.FK_Docente_Municipio" FromRole="Municipio" ToRole="Docente" />
         </EntityType>
         <EntityType Name="Pais">
           <Key>
@@ -439,6 +413,7 @@
           <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Activo" Type="Boolean" />
           <NavigationProperty Name="Departamento" Relationship="Self.FK_Departamento_Pais" FromRole="Pais" ToRole="Departamento" />
+          <NavigationProperty Name="Departamento1" Relationship="UcytAlmaMaterModel.FK_Departamento_Pais1" FromRole="Pais" ToRole="Departamento" />
         </EntityType>
         <EntityType Name="Profesion">
           <Key>
@@ -447,7 +422,7 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Activo" Type="Boolean" />
-          <NavigationProperty Name="Docente" Relationship="Self.FK_Docente_Profesion" FromRole="Profesion" ToRole="Docente" />
+          <NavigationProperty Name="Docente" Relationship="UcytAlmaMaterModel.FK_Docente_Profesion" FromRole="Profesion" ToRole="Docente" />
         </EntityType>
         <EntityType Name="Recinto">
           <Key>
@@ -459,8 +434,8 @@
           <Property Name="Telefono" Type="Double" />
           <Property Name="Direccion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Ruc" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Docente" Relationship="Self.FK_Docente_Docente" FromRole="Recinto" ToRole="Docente" />
           <NavigationProperty Name="Empresa1" Relationship="Self.FK_Recinto_Empresa" FromRole="Recinto" ToRole="Empresa" />
+          <NavigationProperty Name="Docente" Relationship="UcytAlmaMaterModel.FK_Docente_Docente" FromRole="Recinto" ToRole="Docente" />
         </EntityType>
         <EntityType Name="TipoContrato">
           <Key>
@@ -469,32 +444,8 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Activo" Type="Boolean" />
-          <NavigationProperty Name="Docente" Relationship="Self.FK_Docente_TipoContrato" FromRole="TipoContrato" ToRole="Docente" />
+          <NavigationProperty Name="Docente" Relationship="UcytAlmaMaterModel.FK_Docente_TipoContrato" FromRole="TipoContrato" ToRole="Docente" />
         </EntityType>
-        <Association Name="FK_Docente_Area">
-          <End Role="Area" Type="Self.Area" Multiplicity="0..1" />
-          <End Role="Docente" Type="Self.Docente" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Area">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Docente">
-              <PropertyRef Name="AreaId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Docente_Cargo">
-          <End Role="Cargo" Type="Self.Cargo" Multiplicity="0..1" />
-          <End Role="Docente" Type="Self.Docente" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Cargo">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Docente">
-              <PropertyRef Name="CargoActualId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Departamento_Pais">
           <End Role="Pais" Type="Self.Pais" Multiplicity="1" />
           <End Role="Departamento" Type="Self.Departamento" Multiplicity="0..1" />
@@ -519,42 +470,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Docente_Docente">
-          <End Role="Recinto" Type="Self.Recinto" Multiplicity="1" />
-          <End Role="Docente" Type="Self.Docente" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Recinto">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Docente">
-              <PropertyRef Name="RecintoId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Docente_Profesion">
-          <End Role="Profesion" Type="Self.Profesion" Multiplicity="1" />
-          <End Role="Docente" Type="Self.Docente" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Profesion">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Docente">
-              <PropertyRef Name="ProfesionId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Docente_TipoContrato">
-          <End Role="TipoContrato" Type="Self.TipoContrato" Multiplicity="0..1" />
-          <End Role="Docente" Type="Self.Docente" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TipoContrato">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Docente">
-              <PropertyRef Name="TipoContratoId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Recinto_Empresa">
           <End Role="Empresa" Type="Self.Empresa" Multiplicity="1" />
           <End Role="Recinto" Type="Self.Recinto" Multiplicity="*" />
@@ -571,7 +486,6 @@
           <EntitySet Name="Area" EntityType="Self.Area" />
           <EntitySet Name="Cargo" EntityType="Self.Cargo" />
           <EntitySet Name="Departamento" EntityType="Self.Departamento" />
-          <EntitySet Name="Docente" EntityType="Self.Docente" />
           <EntitySet Name="Empresa" EntityType="Self.Empresa" />
           <EntitySet Name="Institucion" EntityType="Self.Institucion" />
           <EntitySet Name="Municipio" EntityType="Self.Municipio" />
@@ -579,14 +493,6 @@
           <EntitySet Name="Profesion" EntityType="Self.Profesion" />
           <EntitySet Name="Recinto" EntityType="Self.Recinto" />
           <EntitySet Name="TipoContrato" EntityType="Self.TipoContrato" />
-          <AssociationSet Name="FK_Docente_Area" Association="Self.FK_Docente_Area">
-            <End Role="Area" EntitySet="Area" />
-            <End Role="Docente" EntitySet="Docente" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Docente_Cargo" Association="Self.FK_Docente_Cargo">
-            <End Role="Cargo" EntitySet="Cargo" />
-            <End Role="Docente" EntitySet="Docente" />
-          </AssociationSet>
           <AssociationSet Name="FK_Departamento_Pais" Association="Self.FK_Departamento_Pais">
             <End Role="Pais" EntitySet="Pais" />
             <End Role="Departamento" EntitySet="Departamento" />
@@ -595,24 +501,49 @@
             <End Role="Departamento" EntitySet="Departamento" />
             <End Role="Municipio" EntitySet="Municipio" />
           </AssociationSet>
-          <AssociationSet Name="FK_Docente_Docente" Association="Self.FK_Docente_Docente">
-            <End Role="Recinto" EntitySet="Recinto" />
-            <End Role="Docente" EntitySet="Docente" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Docente_Profesion" Association="Self.FK_Docente_Profesion">
-            <End Role="Profesion" EntitySet="Profesion" />
-            <End Role="Docente" EntitySet="Docente" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Docente_TipoContrato" Association="Self.FK_Docente_TipoContrato">
-            <End Role="TipoContrato" EntitySet="TipoContrato" />
-            <End Role="Docente" EntitySet="Docente" />
-          </AssociationSet>
           <AssociationSet Name="FK_Recinto_Empresa" Association="Self.FK_Recinto_Empresa">
             <End Role="Empresa" EntitySet="Empresa" />
             <End Role="Recinto" EntitySet="Recinto" />
           </AssociationSet>
           <EntitySet Name="Etnia" EntityType="UcytAlmaMaterModel.Etnia" />
-        </EntityContainer>
+          <AssociationSet Name="FK_Departamento_Pais1" Association="UcytAlmaMaterModel.FK_Departamento_Pais1">
+            <End Role="Pais" EntitySet="Pais" />
+            <End Role="Departamento" EntitySet="Departamento" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Municipio_Departamento1" Association="UcytAlmaMaterModel.FK_Municipio_Departamento1">
+            <End Role="Departamento" EntitySet="Departamento" />
+            <End Role="Municipio" EntitySet="Municipio" />
+          </AssociationSet>
+          <EntitySet Name="Docente" EntityType="UcytAlmaMaterModel.Docente" />
+          <AssociationSet Name="FK_Docente_Area" Association="UcytAlmaMaterModel.FK_Docente_Area">
+            <End Role="Area" EntitySet="Area" />
+            <End Role="Docente" EntitySet="Docente" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Docente_Cargo" Association="UcytAlmaMaterModel.FK_Docente_Cargo">
+            <End Role="Cargo" EntitySet="Cargo" />
+            <End Role="Docente" EntitySet="Docente" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Docente_Departamento" Association="UcytAlmaMaterModel.FK_Docente_Departamento">
+            <End Role="Departamento" EntitySet="Departamento" />
+            <End Role="Docente" EntitySet="Docente" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Docente_Docente" Association="UcytAlmaMaterModel.FK_Docente_Docente">
+            <End Role="Recinto" EntitySet="Recinto" />
+            <End Role="Docente" EntitySet="Docente" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Docente_Municipio" Association="UcytAlmaMaterModel.FK_Docente_Municipio">
+            <End Role="Municipio" EntitySet="Municipio" />
+            <End Role="Docente" EntitySet="Docente" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Docente_Profesion" Association="UcytAlmaMaterModel.FK_Docente_Profesion">
+            <End Role="Profesion" EntitySet="Profesion" />
+            <End Role="Docente" EntitySet="Docente" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Docente_TipoContrato" Association="UcytAlmaMaterModel.FK_Docente_TipoContrato">
+            <End Role="TipoContrato" EntitySet="TipoContrato" />
+            <End Role="Docente" EntitySet="Docente" />
+          </AssociationSet>
+          </EntityContainer>
         <EntityType Name="Etnia">
           <Key>
             <PropertyRef Name="Id" />
@@ -621,7 +552,184 @@
           <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Activo" Type="Boolean" />
         </EntityType>
-      </Schema>
+        <Association Name="FK_Departamento_Pais1">
+          <End Type="UcytAlmaMaterModel.Pais" Role="Pais" Multiplicity="0..1" />
+          <End Type="UcytAlmaMaterModel.Departamento" Role="Departamento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pais">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Departamento">
+              <PropertyRef Name="PaisId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Municipio_Departamento1">
+          <End Type="UcytAlmaMaterModel.Departamento" Role="Departamento" Multiplicity="0..1" />
+          <End Type="UcytAlmaMaterModel.Municipio" Role="Municipio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Departamento">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Municipio">
+              <PropertyRef Name="DepartamentoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Docente">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RecintoId" Type="Int32" Nullable="false" />
+          <Property Name="ProfesionId" Type="Int32" Nullable="false" />
+          <Property Name="AreaId" Type="Int32" />
+          <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Direccion" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Cedula" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Sexo" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="FechaNac" Type="DateTime" Precision="3" />
+          <Property Name="Telefono" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Celular" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="EstadoCivil" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Dependencia" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EtniaId" Type="Int32" />
+          <Property Name="PaisId" Type="Int32" />
+          <Property Name="DepartamentoId" Type="Int32" />
+          <Property Name="MunicipioId" Type="Int32" />
+          <Property Name="Zona" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Discapacidad" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FormacionPedadogica" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="FechaFormacionPedadogica" Type="DateTime" Precision="3" />
+          <Property Name="Estudia" Type="Boolean" />
+          <Property Name="NivelFormacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="RecibeBeca" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="TipoBeca" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MontoBeca" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="TipoContratoId" Type="Int32" />
+          <Property Name="CategoriaEnDocente" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ServiciosProgramasEspeciales" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AnosAntiguedad" Type="Int32" />
+          <Property Name="NHijos" Type="Int32" />
+          <Property Name="CargoActualId" Type="Int32" />
+          <Property Name="CantGrupos" Type="Int32" />
+          <Property Name="HorasClase" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="NoInss" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="HorasClaseSemana" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="HorasInvestigacionSemana" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TipoInvestigacionParticipa" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="HorasDedicadasExtencionSemana" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="InstitucionRealizaExtencion" Type="Int32" />
+          <Property Name="Tutorias" Type="Boolean" />
+          <Property Name="CantAlumnoMascTutoriaMonografia" Type="Int32" />
+          <Property Name="CantAlumnoFemTutoriaMonografia" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="MobilidadAcademica" Type="Boolean" />
+          <Property Name="TipoMobilidadAcademica" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ModalidadDeMobilidad" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FinalidadMobilidad" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="DuracionMobilidad" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="NombreInstitucion" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="CapacitacionesRecibidas" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="TematicaCapacitacionRecibida" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ValorXHoraClase" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="UsuarioModifica" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="FechaRegistro" Type="DateTime" Precision="3" />
+          <Property Name="FechaModifica" Type="DateTime" Precision="3" />
+          <Property Name="Activo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Area" Relationship="UcytAlmaMaterModel.FK_Docente_Area" FromRole="Docente" ToRole="Area" />
+          <NavigationProperty Name="Cargo" Relationship="UcytAlmaMaterModel.FK_Docente_Cargo" FromRole="Docente" ToRole="Cargo" />
+          <NavigationProperty Name="Departamento" Relationship="UcytAlmaMaterModel.FK_Docente_Departamento" FromRole="Docente" ToRole="Departamento" />
+          <NavigationProperty Name="Recinto" Relationship="UcytAlmaMaterModel.FK_Docente_Docente" FromRole="Docente" ToRole="Recinto" />
+          <NavigationProperty Name="Municipio" Relationship="UcytAlmaMaterModel.FK_Docente_Municipio" FromRole="Docente" ToRole="Municipio" />
+          <NavigationProperty Name="Profesion" Relationship="UcytAlmaMaterModel.FK_Docente_Profesion" FromRole="Docente" ToRole="Profesion" />
+          <NavigationProperty Name="TipoContrato" Relationship="UcytAlmaMaterModel.FK_Docente_TipoContrato" FromRole="Docente" ToRole="TipoContrato" />
+        </EntityType>
+        <Association Name="FK_Docente_Area">
+          <End Type="UcytAlmaMaterModel.Area" Role="Area" Multiplicity="0..1" />
+          <End Type="UcytAlmaMaterModel.Docente" Role="Docente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Area">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Docente">
+              <PropertyRef Name="AreaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Docente_Cargo">
+          <End Type="UcytAlmaMaterModel.Cargo" Role="Cargo" Multiplicity="0..1" />
+          <End Type="UcytAlmaMaterModel.Docente" Role="Docente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cargo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Docente">
+              <PropertyRef Name="CargoActualId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Docente_Departamento">
+          <End Type="UcytAlmaMaterModel.Departamento" Role="Departamento" Multiplicity="0..1" />
+          <End Type="UcytAlmaMaterModel.Docente" Role="Docente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Departamento">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Docente">
+              <PropertyRef Name="DepartamentoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Docente_Docente">
+          <End Type="UcytAlmaMaterModel.Recinto" Role="Recinto" Multiplicity="1" />
+          <End Type="UcytAlmaMaterModel.Docente" Role="Docente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Recinto">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Docente">
+              <PropertyRef Name="RecintoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Docente_Municipio">
+          <End Type="UcytAlmaMaterModel.Municipio" Role="Municipio" Multiplicity="0..1" />
+          <End Type="UcytAlmaMaterModel.Docente" Role="Docente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Municipio">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Docente">
+              <PropertyRef Name="MunicipioId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Docente_Profesion">
+          <End Type="UcytAlmaMaterModel.Profesion" Role="Profesion" Multiplicity="1" />
+          <End Type="UcytAlmaMaterModel.Docente" Role="Docente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Profesion">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Docente">
+              <PropertyRef Name="ProfesionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Docente_TipoContrato">
+          <End Type="UcytAlmaMaterModel.TipoContrato" Role="TipoContrato" Multiplicity="0..1" />
+          <End Type="UcytAlmaMaterModel.Docente" Role="Docente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoContrato">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Docente">
+              <PropertyRef Name="TipoContratoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -651,67 +759,6 @@
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="PaisId" ColumnName="PaisId" />
                 <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
-                <ScalarProperty Name="Activo" ColumnName="Activo" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Docente">
-            <EntityTypeMapping TypeName="UcytAlmaMaterModel.Docente">
-              <MappingFragment StoreEntitySet="Docente">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="RecintoId" ColumnName="RecintoId" />
-                <ScalarProperty Name="ProfesionId" ColumnName="ProfesionId" />
-                <ScalarProperty Name="AreaId" ColumnName="AreaId" />
-                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
-                <ScalarProperty Name="Cedula" ColumnName="Cedula" />
-                <ScalarProperty Name="Sexo" ColumnName="Sexo" />
-                <ScalarProperty Name="FechaNac" ColumnName="FechaNac" />
-                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
-                <ScalarProperty Name="Celular" ColumnName="Celular" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="EtniaId" ColumnName="EtniaId" />
-                <ScalarProperty Name="PaisId" ColumnName="PaisId" />
-                <ScalarProperty Name="DepartamentoId" ColumnName="DepartamentoId" />
-                <ScalarProperty Name="MunicipioId" ColumnName="MunicipioId" />
-                <ScalarProperty Name="Zona" ColumnName="Zona" />
-                <ScalarProperty Name="Discapacidad" ColumnName="Discapacidad" />
-                <ScalarProperty Name="FormacionPedadogica" ColumnName="FormacionPedadogica" />
-                <ScalarProperty Name="FechaFormacionPedadogica" ColumnName="FechaFormacionPedadogica" />
-                <ScalarProperty Name="Estudia" ColumnName="Estudia" />
-                <ScalarProperty Name="NivelFormacion" ColumnName="NivelFormacion" />
-                <ScalarProperty Name="RecibeBeca" ColumnName="RecibeBeca" />
-                <ScalarProperty Name="TipoBeca" ColumnName="TipoBeca" />
-                <ScalarProperty Name="MontoBeca" ColumnName="MontoBeca" />
-                <ScalarProperty Name="TipoContratoId" ColumnName="TipoContratoId" />
-                <ScalarProperty Name="CategoriaEnDocente" ColumnName="CategoriaEnDocente" />
-                <ScalarProperty Name="ServiciosProgramasEspeciales" ColumnName="ServiciosProgramasEspeciales" />
-                <ScalarProperty Name="AñosAntiguedad" ColumnName="AñosAntiguedad" />
-                <ScalarProperty Name="NHijos" ColumnName="NHijos" />
-                <ScalarProperty Name="CargoActualId" ColumnName="CargoActualId" />
-                <ScalarProperty Name="CantGrupos" ColumnName="CantGrupos" />
-                <ScalarProperty Name="HorasClase" ColumnName="HorasClase" />
-                <ScalarProperty Name="NoInss" ColumnName="NoInss" />
-                <ScalarProperty Name="HorasClaseSemana" ColumnName="HorasClaseSemana" />
-                <ScalarProperty Name="HorasInvestigacionSemana" ColumnName="HorasInvestigacionSemana" />
-                <ScalarProperty Name="TipoInvestigacionParticipa" ColumnName="TipoInvestigacionParticipa" />
-                <ScalarProperty Name="HorasDedicadasExtencionSemana" ColumnName="HorasDedicadasExtencionSemana" />
-                <ScalarProperty Name="InstitucionRealizaExtencion" ColumnName="InstitucionRealizaExtencion" />
-                <ScalarProperty Name="Tutorias" ColumnName="Tutorias" />
-                <ScalarProperty Name="CantAlumnoMascTutoriaMonografia" ColumnName="CantAlumnoMascTutoriaMonografia" />
-                <ScalarProperty Name="CantAlumnoFemTutoriaMonografia" ColumnName="CantAlumnoFemTutoriaMonografia" />
-                <ScalarProperty Name="MobilidadAcademica" ColumnName="MobilidadAcademica" />
-                <ScalarProperty Name="TipoMobilidadAcademica" ColumnName="TipoMobilidadAcademica" />
-                <ScalarProperty Name="ModalidadDeMobilidad" ColumnName="ModalidadDeMobilidad" />
-                <ScalarProperty Name="FinalidadMobilidad" ColumnName="FinalidadMobilidad" />
-                <ScalarProperty Name="DuracionMobilidad" ColumnName="DuracionMobilidad" />
-                <ScalarProperty Name="NombreInstitucion" ColumnName="NombreInstitucion" />
-                <ScalarProperty Name="CapacitacionesRecibidas" ColumnName="CapacitacionesRecibidas" />
-                <ScalarProperty Name="TematicaCapacitacionRecibida" ColumnName="TematicaCapacitacionRecibida" />
-                <ScalarProperty Name="ValorXHoraClase" ColumnName="ValorXHoraClase" />
-                <ScalarProperty Name="UsuarioModifica" ColumnName="UsuarioModifica" />
-                <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
-                <ScalarProperty Name="FechaModifica" ColumnName="FechaModifica" />
                 <ScalarProperty Name="Activo" ColumnName="Activo" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -791,6 +838,69 @@
               <MappingFragment StoreEntitySet="Etnia">
                 <ScalarProperty Name="Activo" ColumnName="Activo" />
                 <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Docente">
+            <EntityTypeMapping TypeName="UcytAlmaMaterModel.Docente">
+              <MappingFragment StoreEntitySet="Docente">
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="FechaModifica" ColumnName="FechaModifica" />
+                <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
+                <ScalarProperty Name="UsuarioModifica" ColumnName="UsuarioModifica" />
+                <ScalarProperty Name="ValorXHoraClase" ColumnName="ValorXHoraClase" />
+                <ScalarProperty Name="TematicaCapacitacionRecibida" ColumnName="TematicaCapacitacionRecibida" />
+                <ScalarProperty Name="CapacitacionesRecibidas" ColumnName="CapacitacionesRecibidas" />
+                <ScalarProperty Name="NombreInstitucion" ColumnName="NombreInstitucion" />
+                <ScalarProperty Name="DuracionMobilidad" ColumnName="DuracionMobilidad" />
+                <ScalarProperty Name="FinalidadMobilidad" ColumnName="FinalidadMobilidad" />
+                <ScalarProperty Name="ModalidadDeMobilidad" ColumnName="ModalidadDeMobilidad" />
+                <ScalarProperty Name="TipoMobilidadAcademica" ColumnName="TipoMobilidadAcademica" />
+                <ScalarProperty Name="MobilidadAcademica" ColumnName="MobilidadAcademica" />
+                <ScalarProperty Name="CantAlumnoFemTutoriaMonografia" ColumnName="CantAlumnoFemTutoriaMonografia" />
+                <ScalarProperty Name="CantAlumnoMascTutoriaMonografia" ColumnName="CantAlumnoMascTutoriaMonografia" />
+                <ScalarProperty Name="Tutorias" ColumnName="Tutorias" />
+                <ScalarProperty Name="InstitucionRealizaExtencion" ColumnName="InstitucionRealizaExtencion" />
+                <ScalarProperty Name="HorasDedicadasExtencionSemana" ColumnName="HorasDedicadasExtencionSemana" />
+                <ScalarProperty Name="TipoInvestigacionParticipa" ColumnName="TipoInvestigacionParticipa" />
+                <ScalarProperty Name="HorasInvestigacionSemana" ColumnName="HorasInvestigacionSemana" />
+                <ScalarProperty Name="HorasClaseSemana" ColumnName="HorasClaseSemana" />
+                <ScalarProperty Name="NoInss" ColumnName="NoInss" />
+                <ScalarProperty Name="HorasClase" ColumnName="HorasClase" />
+                <ScalarProperty Name="CantGrupos" ColumnName="CantGrupos" />
+                <ScalarProperty Name="CargoActualId" ColumnName="CargoActualId" />
+                <ScalarProperty Name="NHijos" ColumnName="NHijos" />
+                <ScalarProperty Name="AnosAntiguedad" ColumnName="AnosAntiguedad" />
+                <ScalarProperty Name="ServiciosProgramasEspeciales" ColumnName="ServiciosProgramasEspeciales" />
+                <ScalarProperty Name="CategoriaEnDocente" ColumnName="CategoriaEnDocente" />
+                <ScalarProperty Name="TipoContratoId" ColumnName="TipoContratoId" />
+                <ScalarProperty Name="MontoBeca" ColumnName="MontoBeca" />
+                <ScalarProperty Name="TipoBeca" ColumnName="TipoBeca" />
+                <ScalarProperty Name="RecibeBeca" ColumnName="RecibeBeca" />
+                <ScalarProperty Name="NivelFormacion" ColumnName="NivelFormacion" />
+                <ScalarProperty Name="Estudia" ColumnName="Estudia" />
+                <ScalarProperty Name="FechaFormacionPedadogica" ColumnName="FechaFormacionPedadogica" />
+                <ScalarProperty Name="FormacionPedadogica" ColumnName="FormacionPedadogica" />
+                <ScalarProperty Name="Discapacidad" ColumnName="Discapacidad" />
+                <ScalarProperty Name="Zona" ColumnName="Zona" />
+                <ScalarProperty Name="MunicipioId" ColumnName="MunicipioId" />
+                <ScalarProperty Name="DepartamentoId" ColumnName="DepartamentoId" />
+                <ScalarProperty Name="PaisId" ColumnName="PaisId" />
+                <ScalarProperty Name="EtniaId" ColumnName="EtniaId" />
+                <ScalarProperty Name="Dependencia" ColumnName="Dependencia" />
+                <ScalarProperty Name="EstadoCivil" ColumnName="EstadoCivil" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Celular" ColumnName="Celular" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="FechaNac" ColumnName="FechaNac" />
+                <ScalarProperty Name="Sexo" ColumnName="Sexo" />
+                <ScalarProperty Name="Cedula" ColumnName="Cedula" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="AreaId" ColumnName="AreaId" />
+                <ScalarProperty Name="ProfesionId" ColumnName="ProfesionId" />
+                <ScalarProperty Name="RecintoId" ColumnName="RecintoId" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

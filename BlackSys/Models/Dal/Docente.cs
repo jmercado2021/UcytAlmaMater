@@ -26,6 +26,8 @@ namespace BlackSys.Models.Dal
         public string Telefono { get; set; }
         public string Celular { get; set; }
         public string Email { get; set; }
+        public string EstadoCivil { get; set; }
+        public string Dependencia { get; set; }
         public Nullable<int> EtniaId { get; set; }
         public Nullable<int> PaisId { get; set; }
         public Nullable<int> DepartamentoId { get; set; }
@@ -42,7 +44,7 @@ namespace BlackSys.Models.Dal
         public Nullable<int> TipoContratoId { get; set; }
         public string CategoriaEnDocente { get; set; }
         public string ServiciosProgramasEspeciales { get; set; }
-        public Nullable<int> AñosAntiguedad { get; set; }
+        public Nullable<int> AnosAntiguedad { get; set; }
         public Nullable<int> NHijos { get; set; }
         public Nullable<int> CargoActualId { get; set; }
         public Nullable<int> CantGrupos { get; set; }
@@ -72,7 +74,9 @@ namespace BlackSys.Models.Dal
     
         public virtual Area Area { get; set; }
         public virtual Cargo Cargo { get; set; }
+        public virtual Departamento Departamento { get; set; }
         public virtual Recinto Recinto { get; set; }
+        public virtual Municipio Municipio { get; set; }
         public virtual Profesion Profesion { get; set; }
         public virtual TipoContrato TipoContrato { get; set; }
     }
