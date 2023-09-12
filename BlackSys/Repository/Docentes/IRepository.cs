@@ -11,6 +11,9 @@ namespace BlackSys.Repository.Docentes
     {
         List<Docente> GetAll();
         Docente GetById(int id);
+        bool Update(Docente docente);
         List<Docente> FindByName(string Nombre);
+        List<ViewDocenteAsignatura> LoadDocenteAsignatura(int id);
+        void Save();
     }
 }

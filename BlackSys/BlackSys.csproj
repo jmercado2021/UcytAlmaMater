@@ -1094,6 +1094,9 @@
     <Compile Include="Models\Dal\Area.cs">
       <DependentUpon>UcytAlmaMater.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Dal\Asignatura.cs">
+      <DependentUpon>UcytAlmaMater.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Dal\Cargo.cs">
       <DependentUpon>UcytAlmaMater.tt</DependentUpon>
     </Compile>
@@ -1103,15 +1106,25 @@
     <Compile Include="Models\Dal\Docente.cs">
       <DependentUpon>UcytAlmaMater.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Dal\DocenteAsignatura.cs">
+      <DependentUpon>UcytAlmaMater.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Dal\DocenteIdioma.cs">
+      <DependentUpon>UcytAlmaMater.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Dal\Empresa.cs">
       <DependentUpon>UcytAlmaMater.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Dal\Etnia.cs">
       <DependentUpon>UcytAlmaMater.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Dal\Idiomas.cs">
+      <DependentUpon>UcytAlmaMater.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Dal\Institucion.cs">
       <DependentUpon>UcytAlmaMater.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Dal\MetaData\Docente\DocenteMetaData.cs" />
     <Compile Include="Models\Dal\Municipio.cs">
       <DependentUpon>UcytAlmaMater.tt</DependentUpon>
     </Compile>
@@ -1141,6 +1154,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>UcytAlmaMater.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Dal\ViewDocenteAsignatura.cs">
+      <DependentUpon>UcytAlmaMater.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Dal\ViewDocenteIdiomas.cs">
+      <DependentUpon>UcytAlmaMater.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Empresa.cs">
       <DependentUpon>SISCOMP_Model.tt</DependentUpon>
@@ -1235,6 +1254,8 @@
     <Compile Include="Repository\Docentes\Repository.cs" />
     <Compile Include="Repository\Etnia\IRepository.cs" />
     <Compile Include="Repository\Etnia\Repository.cs" />
+    <Compile Include="Repository\Asignatura\IRepository.cs" />
+    <Compile Include="Repository\Asignatura\Repository.cs" />
     <Compile Include="Repository\Municipio\IRepository.cs" />
     <Compile Include="Repository\Municipio\Repository.cs" />
     <Compile Include="Repository\Pais\IRepository.cs" />
@@ -1548,6 +1569,7 @@
     <Content Include="Views\Docentes\Index.cshtml" />
     <Content Include="Views\Docentes\ParcialListado.cshtml" />
     <Content Include="Views\Docentes\Details.cshtml" />
+    <Content Include="Views\Docentes\_AsignaturasDocentes.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

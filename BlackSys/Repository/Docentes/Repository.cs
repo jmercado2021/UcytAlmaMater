@@ -31,6 +31,28 @@ namespace BlackSys.Repository.Docentes
         {
             return _dtx.Docente.Where(x => x.Nombre.Contains("Nombre")).ToList();
         }
+        public List<ViewDocenteAsignatura> LoadDocenteAsignatura(int id)
+        {
+           IQueryable<ViewDocenteAsignatura> ls = _dtx.ViewDocenteAsignatura.Where(tt => tt.DocenteId==id);
+            return ls.ToList();
+
+        }
+        public bool Update(Docente p)
+        {
+            if (_modelstate.IsValid)
+            {
+                Models.Dal.Docente a = GetById(p.Id);
+                _dtx.Entry(a).CurrentValues.SetValues(p);
+            }
+            return _modelstate.IsValid;
+           
+
+        }
+        public void Save()
+        {
+            _dtx.SaveChanges();
+        }
+
 
     }
 }

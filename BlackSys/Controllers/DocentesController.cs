@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using BlackSys.Models.ViewModel;
+using Newtonsoft;
+using Newtonsoft.Json;
 using static BlackSys.Models.Enum.ClEnum;
 
 namespace BlackSys.Controllers
@@ -17,6 +19,7 @@ namespace BlackSys.Controllers
         private Repository.Pais.IRepository _pais;
         private Repository.TipoContrato.IRepository _tipoContrato;
         private Repository.Cargo.IRepository _cargo;
+        private Repository.Asignatura.IRepository _Asignatura;
         public DocentesController()
         {
             _docenteRepositoy = new Repository.Docentes.Repository(this.ModelState);
@@ -26,6 +29,7 @@ namespace BlackSys.Controllers
             _pais = new Repository.Pais.Repository(this.ModelState);
             _tipoContrato = new Repository.TipoContrato.Repository(this.ModelState);
             _cargo = new Repository.Cargo.Repository(this.ModelState);
+            _Asignatura = new Repository.Asignatura.Repository(this.ModelState);
         }
         // GET: Docentes
         public ActionResult Index()
@@ -73,7 +77,37 @@ namespace BlackSys.Controllers
             ViewBag.FormacionPedadogica = new SelectList(lstrueFalse, "Id", "Descripcion");
             ViewBag.TipoContrato = new SelectList(_tipoContrato.GetAll(), "Id", "Descripcion");
             ViewBag.Cargo = new SelectList(_cargo.GetAll(), "Id", "Descripcion");
+            ViewBag.Asignaturas = new SelectList(_Asignatura.GetAll(), "Id", "Nombre");
             return View(docenteView);
+            //}
+        }
+        [HttpPost]
+        public ActionResult Details(DocenteViewModel docente)
+        {
+            //if (_docenteRepositoy.Update(docente))
+            //{
+            //    return Json("Ok");
+            //}
+            //HttpContext.Response.StatusCode = 500;
+            //    HttpContext.Response.StatusDescription = JsonConvert.SerializeObject(ModelState.Values.SelectMany(m => m.Errors)
+            //        .Select(e => e.ErrorMessage.Truncate(500))
+            //          .ToList());
+            //HttpContext.Response.Clear();
+            //return PartialView("Details", docente);
+
+            if (ModelState.IsValid)
+            {
+                if (_docenteRepositoy.Update(docente.docente))
+                {
+                    _docenteRepositoy.Save();
+                }
+                //_docenteRepositoy.Update(docente);
+               
+
+               
+            }
+            return View(docente);
+            //return View();
             //}
         }
 
@@ -100,9 +134,10 @@ namespace BlackSys.Controllers
         }
 
         // GET: Docentes/Edit/5
-        public ActionResult Edit(int id)
+        public PartialViewResult _PartialAsignaturasDocente(int id)
         {
-            return View();
+            var data = _docenteRepositoy.LoadDocenteAsignatura(id);
+            return PartialView("_AsignaturasDocentes",data);
         }
 
         // POST: Docentes/Edit/5

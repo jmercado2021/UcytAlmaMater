@@ -13,6 +13,23 @@
           <Property Name="Descripcion" Type="varchar" MaxLength="50" />
           <Property Name="Activo" Type="bit" />
         </EntityType>
+        <EntityType Name="Asignatura">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="NotaMinRegular" Type="float" Nullable="false" />
+          <Property Name="NotaMinExtraDerecho" Type="float" Nullable="false" />
+          <Property Name="NotaMaxExtraDerecho" Type="float" Nullable="false" />
+          <Property Name="NotaMinConvalidacion" Type="float" Nullable="false" />
+          <Property Name="NotaMinSuficiencia" Type="float" Nullable="false" />
+          <Property Name="NotaMinTutoria" Type="float" Nullable="false" />
+          <Property Name="FechaModifica" Type="datetime" Nullable="false" />
+          <Property Name="UsuarioModifica" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Estado" Type="bit" Nullable="false" />
+          <Property Name="Identificador" Type="varchar" MaxLength="7" Nullable="false" />
+        </EntityType>
         <EntityType Name="Cargo">
           <Key>
             <PropertyRef Name="Id" />
@@ -58,7 +75,7 @@
           <Property Name="FechaFormacionPedadogica" Type="datetime" />
           <Property Name="Estudia" Type="bit" />
           <Property Name="NivelFormacion" Type="varchar" MaxLength="50" />
-          <Property Name="RecibeBeca" Type="varchar" MaxLength="2" />
+          <Property Name="RecibeBeca" Type="varchar" MaxLength="50" />
           <Property Name="TipoBeca" Type="varchar" MaxLength="50" />
           <Property Name="MontoBeca" Type="money" />
           <Property Name="TipoContratoId" Type="int" />
@@ -68,29 +85,55 @@
           <Property Name="NHijos" Type="int" />
           <Property Name="CargoActualId" Type="int" />
           <Property Name="CantGrupos" Type="int" />
-          <Property Name="HorasClase" Type="nchar" MaxLength="10" />
+          <Property Name="HorasClase" Type="int" />
           <Property Name="NoInss" Type="varchar" MaxLength="20" />
-          <Property Name="HorasClaseSemana" Type="varchar" MaxLength="50" />
-          <Property Name="HorasInvestigacionSemana" Type="varchar" MaxLength="50" />
+          <Property Name="HorasClaseSemana" Type="int" />
+          <Property Name="HorasInvestigacionSemana" Type="int" />
           <Property Name="TipoInvestigacionParticipa" Type="varchar" MaxLength="50" />
-          <Property Name="HorasDedicadasExtencionSemana" Type="varchar" MaxLength="50" />
-          <Property Name="InstitucionRealizaExtencion" Type="int" />
-          <Property Name="Tutorias" Type="bit" />
+          <Property Name="HorasDedicadasExtencionSemana" Type="int" />
+          <Property Name="InstitucionRealizaExtencion" Type="varchar" MaxLength="50" />
+          <Property Name="Tutorias" Type="varchar" MaxLength="100" />
           <Property Name="CantAlumnoMascTutoriaMonografia" Type="int" />
-          <Property Name="CantAlumnoFemTutoriaMonografia" Type="nchar" MaxLength="10" />
-          <Property Name="MobilidadAcademica" Type="bit" />
+          <Property Name="CantAlumnoFemTutoriaMonografia" Type="int" />
+          <Property Name="ProyectosInvesTotEstudianteMasculino" Type="varchar" MaxLength="50" />
+          <Property Name="ProyectosInvTtotalEstudianteFem" Type="varchar" MaxLength="50" />
+          <Property Name="HorasenCursoPosgradoTotal" Type="int" />
+          <Property Name="HorasEnCursoPostgradoFemenino" Type="int" />
+          <Property Name="MovilidadAcademica" Type="varchar" MaxLength="50" />
           <Property Name="TipoMobilidadAcademica" Type="varchar" MaxLength="50" />
           <Property Name="ModalidadDeMobilidad" Type="varchar" MaxLength="50" />
-          <Property Name="FinalidadMobilidad" Type="nchar" MaxLength="10" />
-          <Property Name="DuracionMobilidad" Type="nchar" MaxLength="10" />
-          <Property Name="NombreInstitucion" Type="nchar" MaxLength="10" />
-          <Property Name="CapacitacionesRecibidas" Type="char" MaxLength="2" />
+          <Property Name="FinalidadMobilidad" Type="varchar" MaxLength="50" />
+          <Property Name="DuracionMobilidad" Type="varchar" MaxLength="50" />
+          <Property Name="NombreInstitucion" Type="varchar" MaxLength="50" />
+          <Property Name="CapacitacionesRecibidas" Type="bit" />
           <Property Name="TematicaCapacitacionRecibida" Type="varchar" MaxLength="50" />
           <Property Name="ValorXHoraClase" Type="money" />
           <Property Name="UsuarioModifica" Type="varchar" MaxLength="20" />
           <Property Name="FechaRegistro" Type="datetime" />
           <Property Name="FechaModifica" Type="datetime" />
-          <Property Name="Activo" Type="varchar" MaxLength="50" />
+          <Property Name="Activo" Type="bit" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'UcytAlmaMater.dbo.DocenteAsignatura' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="DocenteAsignatura">
+          <Key>
+            <PropertyRef Name="RecintoId" />
+            <PropertyRef Name="DocenteId" />
+            <PropertyRef Name="AsignaturaId" />
+          </Key>
+          <Property Name="RecintoId" Type="float" Nullable="false" />
+          <Property Name="DocenteId" Type="float" Nullable="false" />
+          <Property Name="AsignaturaId" Type="float" Nullable="false" />
+          <Property Name="Activo" Type="bit" />
+        </EntityType>
+        <EntityType Name="DocenteIdioma">
+          <Key>
+            <PropertyRef Name="DocenteId" />
+            <PropertyRef Name="IdiomaId" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DocenteId" Type="int" Nullable="false" />
+          <Property Name="IdiomaId" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Empresa">
           <Key>
@@ -110,6 +153,14 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Descripcion" Type="varchar" MaxLength="50" />
           <Property Name="Activo" Type="bit" />
+        </EntityType>
+        <EntityType Name="Idiomas">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Activo" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Institucion">
           <Key>
@@ -162,6 +213,33 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Descripcion" Type="varchar" MaxLength="50" />
           <Property Name="Activo" Type="bit" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'UcytAlmaMater.dbo.ViewDocenteAsignatura' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="ViewDocenteAsignatura">
+          <Key>
+            <PropertyRef Name="RecintoId" />
+            <PropertyRef Name="DocenteId" />
+            <PropertyRef Name="Identificador" />
+            <PropertyRef Name="Asignatura" />
+          </Key>
+          <Property Name="RecintoId" Type="float" Nullable="false" />
+          <Property Name="Recinto" Type="varchar" MaxLength="50" />
+          <Property Name="DocenteId" Type="float" Nullable="false" />
+          <Property Name="DocenteNombre" Type="varchar" MaxLength="100" />
+          <Property Name="Identificador" Type="varchar" MaxLength="7" Nullable="false" />
+          <Property Name="Asignatura" Type="varchar" MaxLength="250" Nullable="false" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'UcytAlmaMater.dbo.ViewDocenteIdiomas' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="ViewDocenteIdiomas">
+          <Key>
+            <PropertyRef Name="Idioma" />
+            <PropertyRef Name="DocenteId" />
+          </Key>
+          <Property Name="Idioma" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DocenteId" Type="int" Nullable="false" />
+          <Property Name="DocenteNombre" Type="varchar" MaxLength="100" />
         </EntityType>
         <Association Name="FK_Departamento_Pais">
           <End Role="Pais" Type="Self.Pais" Multiplicity="0..1" />
@@ -285,17 +363,45 @@
         </Association>
         <EntityContainer Name="UcytAlmaMaterModelStoreContainer">
           <EntitySet Name="Area" EntityType="Self.Area" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Asignatura" EntityType="Self.Asignatura" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Cargo" EntityType="Self.Cargo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Departamento" EntityType="Self.Departamento" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Docente" EntityType="Self.Docente" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DocenteIdioma" EntityType="Self.DocenteIdioma" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Empresa" EntityType="Self.Empresa" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Etnia" EntityType="Self.Etnia" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Idiomas" EntityType="Self.Idiomas" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Institucion" EntityType="Self.Institucion" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Municipio" EntityType="Self.Municipio" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Pais" EntityType="Self.Pais" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Profesion" EntityType="Self.Profesion" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Recinto" EntityType="Self.Recinto" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TipoContrato" EntityType="Self.TipoContrato" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DocenteAsignatura" EntityType="Self.DocenteAsignatura" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [DocenteAsignatura].[RecintoId] AS [RecintoId], 
+    [DocenteAsignatura].[DocenteId] AS [DocenteId], 
+    [DocenteAsignatura].[AsignaturaId] AS [AsignaturaId], 
+    [DocenteAsignatura].[Activo] AS [Activo]
+    FROM [dbo].[DocenteAsignatura] AS [DocenteAsignatura]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="ViewDocenteAsignatura" EntityType="Self.ViewDocenteAsignatura" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [ViewDocenteAsignatura].[RecintoId] AS [RecintoId], 
+    [ViewDocenteAsignatura].[Recinto] AS [Recinto], 
+    [ViewDocenteAsignatura].[DocenteId] AS [DocenteId], 
+    [ViewDocenteAsignatura].[DocenteNombre] AS [DocenteNombre], 
+    [ViewDocenteAsignatura].[Identificador] AS [Identificador], 
+    [ViewDocenteAsignatura].[Asignatura] AS [Asignatura]
+    FROM [dbo].[ViewDocenteAsignatura] AS [ViewDocenteAsignatura]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="ViewDocenteIdiomas" EntityType="Self.ViewDocenteIdiomas" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [ViewDocenteIdiomas].[Idioma] AS [Idioma], 
+    [ViewDocenteIdiomas].[DocenteId] AS [DocenteId], 
+    [ViewDocenteIdiomas].[DocenteNombre] AS [DocenteNombre]
+    FROM [dbo].[ViewDocenteIdiomas] AS [ViewDocenteIdiomas]</DefiningQuery>
+          </EntitySet>
           <AssociationSet Name="FK_Departamento_Pais" Association="Self.FK_Departamento_Pais">
             <End Role="Pais" EntitySet="Pais" />
             <End Role="Departamento" EntitySet="Departamento" />
@@ -514,6 +620,7 @@
             <End Role="Departamento" EntitySet="Departamento" />
             <End Role="Municipio" EntitySet="Municipio" />
           </AssociationSet>
+          <EntitySet Name="DocenteAsignatura" EntityType="UcytAlmaMaterModel.DocenteAsignatura" />
           <EntitySet Name="Docente" EntityType="UcytAlmaMaterModel.Docente" />
           <AssociationSet Name="FK_Docente_Area" Association="UcytAlmaMaterModel.FK_Docente_Area">
             <End Role="Area" EntitySet="Area" />
@@ -543,6 +650,11 @@
             <End Role="TipoContrato" EntitySet="TipoContrato" />
             <End Role="Docente" EntitySet="Docente" />
           </AssociationSet>
+          <EntitySet Name="ViewDocenteAsignatura" EntityType="UcytAlmaMaterModel.ViewDocenteAsignatura" />
+          <EntitySet Name="ViewDocenteIdiomas" EntityType="UcytAlmaMaterModel.ViewDocenteIdiomas" />
+          <EntitySet Name="Asignatura" EntityType="UcytAlmaMaterModel.Asignatura" />
+          <EntitySet Name="DocenteIdioma" EntityType="UcytAlmaMaterModel.DocenteIdioma" />
+          <EntitySet Name="Idiomas" EntityType="UcytAlmaMaterModel.Idiomas" />
           </EntityContainer>
         <EntityType Name="Etnia">
           <Key>
@@ -576,6 +688,17 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="DocenteAsignatura">
+          <Key>
+            <PropertyRef Name="RecintoId" />
+            <PropertyRef Name="DocenteId" />
+            <PropertyRef Name="AsignaturaId" />
+          </Key>
+          <Property Name="RecintoId" Type="Double" Nullable="false" />
+          <Property Name="DocenteId" Type="Double" Nullable="false" />
+          <Property Name="AsignaturaId" Type="Double" Nullable="false" />
+          <Property Name="Activo" Type="Boolean" />
+        </EntityType>
         <EntityType Name="Docente">
           <Key>
             <PropertyRef Name="Id" />
@@ -604,7 +727,7 @@
           <Property Name="FechaFormacionPedadogica" Type="DateTime" Precision="3" />
           <Property Name="Estudia" Type="Boolean" />
           <Property Name="NivelFormacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="RecibeBeca" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="RecibeBeca" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="TipoBeca" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="MontoBeca" Type="Decimal" Precision="19" Scale="4" />
           <Property Name="TipoContratoId" Type="Int32" />
@@ -614,29 +737,33 @@
           <Property Name="NHijos" Type="Int32" />
           <Property Name="CargoActualId" Type="Int32" />
           <Property Name="CantGrupos" Type="Int32" />
-          <Property Name="HorasClase" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="HorasClase" Type="Int32" />
           <Property Name="NoInss" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="HorasClaseSemana" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="HorasInvestigacionSemana" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="HorasClaseSemana" Type="Int32" />
+          <Property Name="HorasInvestigacionSemana" Type="Int32" />
           <Property Name="TipoInvestigacionParticipa" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="HorasDedicadasExtencionSemana" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="InstitucionRealizaExtencion" Type="Int32" />
-          <Property Name="Tutorias" Type="Boolean" />
+          <Property Name="HorasDedicadasExtencionSemana" Type="Int32" />
+          <Property Name="InstitucionRealizaExtencion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Tutorias" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="CantAlumnoMascTutoriaMonografia" Type="Int32" />
-          <Property Name="CantAlumnoFemTutoriaMonografia" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="MobilidadAcademica" Type="Boolean" />
+          <Property Name="CantAlumnoFemTutoriaMonografia" Type="Int32" />
+          <Property Name="ProyectosInvesTotEstudianteMasculino" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ProyectosInvTtotalEstudianteFem" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="HorasenCursoPosgradoTotal" Type="Int32" />
+          <Property Name="HorasEnCursoPostgradoFemenino" Type="Int32" />
+          <Property Name="MovilidadAcademica" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="TipoMobilidadAcademica" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="ModalidadDeMobilidad" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="FinalidadMobilidad" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="DuracionMobilidad" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="NombreInstitucion" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="CapacitacionesRecibidas" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="FinalidadMobilidad" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DuracionMobilidad" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="NombreInstitucion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CapacitacionesRecibidas" Type="Boolean" />
           <Property Name="TematicaCapacitacionRecibida" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="ValorXHoraClase" Type="Decimal" Precision="19" Scale="4" />
           <Property Name="UsuarioModifica" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="FechaRegistro" Type="DateTime" Precision="3" />
           <Property Name="FechaModifica" Type="DateTime" Precision="3" />
-          <Property Name="Activo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Activo" Type="Boolean" />
           <NavigationProperty Name="Area" Relationship="UcytAlmaMaterModel.FK_Docente_Area" FromRole="Docente" ToRole="Area" />
           <NavigationProperty Name="Cargo" Relationship="UcytAlmaMaterModel.FK_Docente_Cargo" FromRole="Docente" ToRole="Cargo" />
           <NavigationProperty Name="Departamento" Relationship="UcytAlmaMaterModel.FK_Docente_Departamento" FromRole="Docente" ToRole="Departamento" />
@@ -729,6 +856,63 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="ViewDocenteAsignatura">
+          <Key>
+            <PropertyRef Name="RecintoId" />
+            <PropertyRef Name="DocenteId" />
+            <PropertyRef Name="Identificador" />
+            <PropertyRef Name="Asignatura" />
+          </Key>
+          <Property Name="RecintoId" Type="Double" Nullable="false" />
+          <Property Name="Recinto" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DocenteId" Type="Double" Nullable="false" />
+          <Property Name="DocenteNombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Identificador" Type="String" Nullable="false" MaxLength="7" FixedLength="false" Unicode="false" />
+          <Property Name="Asignatura" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="ViewDocenteIdiomas">
+          <Key>
+            <PropertyRef Name="Idioma" />
+            <PropertyRef Name="DocenteId" />
+          </Key>
+          <Property Name="Idioma" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DocenteId" Type="Int32" Nullable="false" />
+          <Property Name="DocenteNombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Asignatura">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="NotaMinRegular" Type="Double" Nullable="false" />
+          <Property Name="NotaMinExtraDerecho" Type="Double" Nullable="false" />
+          <Property Name="NotaMaxExtraDerecho" Type="Double" Nullable="false" />
+          <Property Name="NotaMinConvalidacion" Type="Double" Nullable="false" />
+          <Property Name="NotaMinSuficiencia" Type="Double" Nullable="false" />
+          <Property Name="NotaMinTutoria" Type="Double" Nullable="false" />
+          <Property Name="FechaModifica" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UsuarioModifica" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Estado" Type="Boolean" Nullable="false" />
+          <Property Name="Identificador" Type="String" Nullable="false" MaxLength="7" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="DocenteIdioma">
+          <Key>
+            <PropertyRef Name="DocenteId" />
+            <PropertyRef Name="IdiomaId" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DocenteId" Type="Int32" Nullable="false" />
+          <Property Name="IdiomaId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Idiomas">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Activo" Type="Boolean" Nullable="false" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -842,6 +1026,16 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="DocenteAsignatura">
+            <EntityTypeMapping TypeName="UcytAlmaMaterModel.DocenteAsignatura">
+              <MappingFragment StoreEntitySet="DocenteAsignatura">
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="AsignaturaId" ColumnName="AsignaturaId" />
+                <ScalarProperty Name="DocenteId" ColumnName="DocenteId" />
+                <ScalarProperty Name="RecintoId" ColumnName="RecintoId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Docente">
             <EntityTypeMapping TypeName="UcytAlmaMaterModel.Docente">
               <MappingFragment StoreEntitySet="Docente">
@@ -857,7 +1051,11 @@
                 <ScalarProperty Name="FinalidadMobilidad" ColumnName="FinalidadMobilidad" />
                 <ScalarProperty Name="ModalidadDeMobilidad" ColumnName="ModalidadDeMobilidad" />
                 <ScalarProperty Name="TipoMobilidadAcademica" ColumnName="TipoMobilidadAcademica" />
-                <ScalarProperty Name="MobilidadAcademica" ColumnName="MobilidadAcademica" />
+                <ScalarProperty Name="MovilidadAcademica" ColumnName="MovilidadAcademica" />
+                <ScalarProperty Name="HorasEnCursoPostgradoFemenino" ColumnName="HorasEnCursoPostgradoFemenino" />
+                <ScalarProperty Name="HorasenCursoPosgradoTotal" ColumnName="HorasenCursoPosgradoTotal" />
+                <ScalarProperty Name="ProyectosInvTtotalEstudianteFem" ColumnName="ProyectosInvTtotalEstudianteFem" />
+                <ScalarProperty Name="ProyectosInvesTotEstudianteMasculino" ColumnName="ProyectosInvesTotEstudianteMasculino" />
                 <ScalarProperty Name="CantAlumnoFemTutoriaMonografia" ColumnName="CantAlumnoFemTutoriaMonografia" />
                 <ScalarProperty Name="CantAlumnoMascTutoriaMonografia" ColumnName="CantAlumnoMascTutoriaMonografia" />
                 <ScalarProperty Name="Tutorias" ColumnName="Tutorias" />
@@ -901,6 +1099,63 @@
                 <ScalarProperty Name="AreaId" ColumnName="AreaId" />
                 <ScalarProperty Name="ProfesionId" ColumnName="ProfesionId" />
                 <ScalarProperty Name="RecintoId" ColumnName="RecintoId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ViewDocenteAsignatura">
+            <EntityTypeMapping TypeName="UcytAlmaMaterModel.ViewDocenteAsignatura">
+              <MappingFragment StoreEntitySet="ViewDocenteAsignatura">
+                <ScalarProperty Name="Asignatura" ColumnName="Asignatura" />
+                <ScalarProperty Name="Identificador" ColumnName="Identificador" />
+                <ScalarProperty Name="DocenteNombre" ColumnName="DocenteNombre" />
+                <ScalarProperty Name="DocenteId" ColumnName="DocenteId" />
+                <ScalarProperty Name="Recinto" ColumnName="Recinto" />
+                <ScalarProperty Name="RecintoId" ColumnName="RecintoId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ViewDocenteIdiomas">
+            <EntityTypeMapping TypeName="UcytAlmaMaterModel.ViewDocenteIdiomas">
+              <MappingFragment StoreEntitySet="ViewDocenteIdiomas">
+                <ScalarProperty Name="DocenteNombre" ColumnName="DocenteNombre" />
+                <ScalarProperty Name="DocenteId" ColumnName="DocenteId" />
+                <ScalarProperty Name="Idioma" ColumnName="Idioma" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Asignatura">
+            <EntityTypeMapping TypeName="UcytAlmaMaterModel.Asignatura">
+              <MappingFragment StoreEntitySet="Asignatura">
+                <ScalarProperty Name="Identificador" ColumnName="Identificador" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="UsuarioModifica" ColumnName="UsuarioModifica" />
+                <ScalarProperty Name="FechaModifica" ColumnName="FechaModifica" />
+                <ScalarProperty Name="NotaMinTutoria" ColumnName="NotaMinTutoria" />
+                <ScalarProperty Name="NotaMinSuficiencia" ColumnName="NotaMinSuficiencia" />
+                <ScalarProperty Name="NotaMinConvalidacion" ColumnName="NotaMinConvalidacion" />
+                <ScalarProperty Name="NotaMaxExtraDerecho" ColumnName="NotaMaxExtraDerecho" />
+                <ScalarProperty Name="NotaMinExtraDerecho" ColumnName="NotaMinExtraDerecho" />
+                <ScalarProperty Name="NotaMinRegular" ColumnName="NotaMinRegular" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DocenteIdioma">
+            <EntityTypeMapping TypeName="UcytAlmaMaterModel.DocenteIdioma">
+              <MappingFragment StoreEntitySet="DocenteIdioma">
+                <ScalarProperty Name="IdiomaId" ColumnName="IdiomaId" />
+                <ScalarProperty Name="DocenteId" ColumnName="DocenteId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Idiomas">
+            <EntityTypeMapping TypeName="UcytAlmaMaterModel.Idiomas">
+              <MappingFragment StoreEntitySet="Idiomas">
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
