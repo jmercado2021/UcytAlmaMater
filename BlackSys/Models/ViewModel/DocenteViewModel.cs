@@ -10,6 +10,7 @@ namespace BlackSys.Models.ViewModel
     public class DocenteViewModel 
     {
         public Docente docente { get; set; }
-        //public Docente docente { get; set; }
+        public  List<ViewDocenteAsignatura> asignaturasView { get; set; }
+
     }
 }

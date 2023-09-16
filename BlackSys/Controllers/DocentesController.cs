@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using BlackSys.Models.Dal;
 using BlackSys.Models.ViewModel;
 using Newtonsoft;
 using Newtonsoft.Json;
@@ -111,9 +112,25 @@ namespace BlackSys.Controllers
             //}
         }
 
-        // GET: Docentes/Create
-        public ActionResult Create()
+        public ActionResult AddSubject(int id)
         {
+            DocenteViewModel docenteView = new DocenteViewModel();
+            docenteView.docente = _docenteRepositoy.GetById(id);
+            docenteView.asignaturasView = _docenteRepositoy.LoadDocenteAsignatura(id);
+            return View("_AddSubjectDocente",docenteView);
+        }
+
+        
+        [HttpPost]
+        public ActionResult AddSubjectDocente(DocenteViewModel model,int subject)
+        {
+            DocenteAsignatura docSubject = new DocenteAsignatura()
+            {
+                DocenteId = model.docente.Id,
+                RecintoId = model.docente.RecintoId,
+                AsignaturaId= subject,
+                Activo =true
+            };
             return View();
         }
 

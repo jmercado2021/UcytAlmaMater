@@ -1042,6 +1042,7 @@
     <Compile Include="Controllers\AdminUsersController.cs" />
     <Compile Include="Controllers\Articulos\ArticuloMasterController.cs" />
     <Compile Include="Controllers\Articulos\TblCasasController.cs" />
+    <Compile Include="Controllers\AsignaturaController.cs" />
     <Compile Include="Controllers\ComponentsController.cs" />
     <Compile Include="Controllers\CustomersController.cs" />
     <Compile Include="Controllers\DocentesController.cs" />
@@ -1570,6 +1571,7 @@
     <Content Include="Views\Docentes\ParcialListado.cshtml" />
     <Content Include="Views\Docentes\Details.cshtml" />
     <Content Include="Views\Docentes\_AsignaturasDocentes.cshtml" />
+    <Content Include="Views\Docentes\_AddSubjectDocente.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -1593,6 +1595,7 @@
     <Folder Include="Controllers\Tienda\" />
     <Folder Include="Reports\" />
     <Folder Include="Tools\" />
+    <Folder Include="Views\Asignatura\" />
     <Folder Include="Views\Docente\" />
     <Folder Include="Views\Express\" />
     <Folder Include="Views\Reportes\" />

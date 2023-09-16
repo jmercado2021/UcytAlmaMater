@@ -1,0 +1,25 @@
+﻿
+@model  BlackSys.Models.ViewModel.DocenteViewModel
+<table class="table table-striped table-bordered table-hover dt-responsive" id="my-tableDino23" cellspacing="0">
+    <thead>
+        <tr>
+            <th>Identificador</th>
+            <th>Asignatura</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var ModelD in Model.asignaturasView)
+        {
+            <tr>
+                <td>@ModelD.Identificador</td>
+                <td>@ModelD.Asignatura</td>
+
+                <td>
+                  
+                    @Html.ActionLink("Eliminar", "Eliminar", new { id = ModelD.DocenteId,AsignaturaId= ModelD.Identificador }, new { @class = "btn btn-danger btn-sm", onclick = "return confirm('¿Estás seguro de que deseas eliminar esta Asignatura?');" })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
