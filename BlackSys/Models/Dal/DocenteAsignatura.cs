@@ -14,6 +14,7 @@ namespace BlackSys.Models.Dal
     
     public partial class DocenteAsignatura
     {
+        public int Id { get; set; }
         public double RecintoId { get; set; }
         public double DocenteId { get; set; }
         public double AsignaturaId { get; set; }

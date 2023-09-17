@@ -19,6 +19,7 @@ namespace BlackSys.Models.Dal
         public double DocenteId { get; set; }
         public string DocenteNombre { get; set; }
         public string Identificador { get; set; }
+        public double AsignaturaId { get; set; }
         public string Asignatura { get; set; }
     }
 }

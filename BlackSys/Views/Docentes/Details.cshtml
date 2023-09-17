@@ -35,549 +35,586 @@
 }
 
 
-    <body class="home">
-        <div class="site-wrapper">
-            <section class="article-wrapper">
-                <div class="article-container">
-                    <div class="article-block">
-                        @*<div class="entry-content">
+<body class="home">
+    <div class="site-wrapper">
+        <section class="article-wrapper">
+            <div class="article-container">
+                <div class="article-block">
+                    @*<div class="entry-content">
                         <h1>Makeup Essentials</h1>
                         <p>The ultimate guide to creating the ultimate makeup collection.</p>
                     </div>*@
-                    </div>
                 </div>
-            </section>
-            @using (Html.BeginForm())
-            {
-                @Html.AntiForgeryToken()
-        <section class="tabs-wrapper">
-            <div class="tabs-container">
-
-                <div id="tabs-section" class="tabs">
-                    <ul class="tab-head">
-                        <li>
-                            <a href="#tab-1" class="tab-link active"> <span class="material-icons tab-icon">face</span> <span class="tab-label">Datos Personales</span></a>
-                        </li>
-                        <li>
-                            <a href="#tab-2" class="tab-link"> <span class="material-icons tab-icon">visibility</span> <span class="tab-label">Laborales"</span></a>
-                        </li>
-                        <li>
-                            <a href="#tab-3" class="tab-link"> <span class="material-icons tab-icon">settings_input_hdmi</span> <span class="tab-label">Asignaciones</span></a>
-                        </li>
-                        <li>
-                            <a href="#tab-4" class="tab-link"> <span class="material-icons tab-icon">build</span> <span class="tab-label">Estudios</span></a>
-                        </li>
-                        <li>
-                            <a href="#tab-5" class="tab-link"> <span class="material-icons tab-icon">toll</span> <span class="tab-label">Asignaturas</span></a>
-                        </li>
-                        <li>
-                            <br />
-                            @*<a href="#tab-5" class="tab-link"> <span class="material-icons tab-icon">toll</span> <span class="tab-label">Horarios</span></a>*@
-                        </li>
-                    </ul>
-                    <br />
-                    @Html.HiddenFor(model => model.docente.RecintoId)
-              
-                    @*<section id="tab-1" class="tab-body entry-content active active-content">*@
-                    <section id="tab-1" class="tab-body entry-content active active-content">
-
-                        <div class="panel-group">
-                            <div class="panel panel-heading">
-                                <div class="panel-heading"><h4>Datos generales</h4></div>
-                                <div class="panel-body">
-                                    <form class="form-horizontal">
-
-                                        <div class="row">
-                                            <div class="col-lg-12">
-                                                <div class="col-md-3">
-                                                    <span>Id:</span>
-                                                    @Html.EditorFor(model => model.docente.Id, new { htmlAttributes = new { @class = "form-control col-md-3", @readonly = "true" } })
-                                                    @Html.ValidationMessageFor(model => model.docente.Id, "", new { @class = "text-danger" })
-                                                </div>
-                                                <br />
-                                                <br />
-                                                <div class="col-md-12">
-                                                    <br />
-                                                    <span>Nombre:</span>
-                                                    @Html.EditorFor(model => model.docente.Nombre, new { htmlAttributes = new { @class = "form-control col-md-4" } })
-                                                    @Html.ValidationMessageFor(model => model.docente.Nombre, "", new { @class = "text-danger" })
-                                                </div>
-                                                <br />
-
-                                            </div>
-                                        </div>
-                                        <br />
-                                        <div class="row">
-                                            <div class="col-lg-12">
-                                                <div class="col-lg-12">
-                                                    <span>Direccion:</span>
-                                                    @Html.EditorFor(model => model.docente.Direccion, new { htmlAttributes = new { @class = "form-control col-lg-12" } })
-                                                    @Html.ValidationMessageFor(model => model.docente.Direccion, "", new { @class = "text-danger" })
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <br />
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <div class="col-md-4">
-                                                    <span>Teléfono:</span>
-                                                    @Html.EditorFor(model => model.docente.Telefono, new { htmlAttributes = new { @class = "form-control col-md-4" } })
-                                                    @Html.ValidationMessageFor(model => model.docente.Telefono, "", new { @class = "text-danger" })
-                                                </div>
-
-                                                <div class="col-md-4">
-                                                    <span>Celular:</span>
-                                                    @Html.EditorFor(model => model.docente.Celular, new { htmlAttributes = new { @class = "form-control col-md-4" } })
-                                                    @Html.ValidationMessageFor(model => model.docente.Celular, "", new { @class = "text-danger" })
-                                                </div>
-
-                                                <div class="col-md-4">
-                                                    <span>Correo:</span>
-                                                    @Html.EditorFor(model => model.docente.Email, new { htmlAttributes = new { @class = "form-control col-md-4" } })
-                                                    @Html.ValidationMessageFor(model => model.docente.Email, "", new { @class = "text-danger" })
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                        <br />
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <div id="intro" class="col-md-4">
-                                                    <span>Departamento:</span>
-                                                    @Html.DropDownList("PaisId", (IEnumerable<SelectListItem>)ViewBag.Pais, null, new { @class = "form-control" })
-                                                </div>
-                                                <div id="intro" class="col-md-4">
-                                                    <span>Departamento:</span>
-                                                    @Html.DropDownList("DepartamentoId", (IEnumerable<SelectListItem>)ViewBag.Departamento, null, new { @class = "form-control" })
-                                                </div>
-                                                <div id="intro" class="col-md-4">
-                                                    <span>Municipio:</span>
-                                                    @Html.DropDownList("MunicipioId", (IEnumerable<SelectListItem>)ViewBag.Municipio, null, new { @class = "form-control" })
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <br />
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <div id="intro" class="col-md-4">
-                                                    <span>Sexo:</span>
-                                                    @Html.DropDownList("Sexo", (IEnumerable<SelectListItem>)ViewBag.Sexo, null, new { @class = "form-control" })
-                                                </div>
-                                                <div id="intro" class="col-md-4">
-                                                    <span>Etnia:</span>
-                                                    @Html.DropDownList("Etnia", (IEnumerable<SelectListItem>)ViewBag.Etnia, null, new { @class = "form-control" })
-                                                </div>
-                                                <div id="intro" class="col-md-4">
-                                                    <span>Estado Civil:</span>
-                                                    @Html.DropDownList("EstadoCivil", (IEnumerable<SelectListItem>)ViewBag.CivilStatus, null, new { @class = "form-control" })
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <br />
-                                        <div class="row">
-                                            <div class="col-lg-12">
-                                                <div class="col-md-4">
-                                                    <span>Dependenica:</span>
-                                                    @Html.EditorFor(model => model.docente.Dependencia, new { htmlAttributes = new { @class = "form-control col-lg-4" } })
-                                                    @Html.ValidationMessageFor(model => model.docente.Dependencia, "", new { @class = "text-danger" })
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <span>Fecha Nac:</span>
-                                                    @Html.EditorFor(model => model.docente.FechaNac, new { htmlAttributes = new { @class = "form-control col-lg-4", @id = "fecha" } })
-                                                    @Html.ValidationMessageFor(model => model.docente.FechaNac, "", new { @class = "text-danger" })
-                                                </div>
-
-                                                <div class="col-md-4">
-                                                    <span>Nº Hijos:</span>
-                                                    @Html.EditorFor(model => model.docente.NHijos, new { htmlAttributes = new { @class = "form-control col-lg-4", @id = "datepicker" } })
-                                                    @Html.ValidationMessageFor(model => model.docente.NHijos, "", new { @class = "text-danger" })
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                        <br />
-                                        <div class="row">
-                                            <div class="col-lg-12">
-                                                <div class="col-md-4">
-                                                    <span>Discapacidad:</span>
-                                                    @Html.EditorFor(model => model.docente.Discapacidad, new { htmlAttributes = new { @class = "form-control col-lg-4" } })
-                                                    @Html.ValidationMessageFor(model => model.docente.Discapacidad, "", new { @class = "text-danger" })
-                                                </div>
-                                                <div id="intro" class="col-md-4">
-                                                    <span>Formacion Pedadogica</span>
-                                                    @Html.DropDownList("FormacionPedadogica", (IEnumerable<SelectListItem>)ViewBag.FormacionPedadogica, null, new { @class = "form-control" })
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <span>Año Formacion Pedadogica:</span>
-                                                    @Html.EditorFor(model => model.docente.FechaFormacionPedadogica, new { htmlAttributes = new { @class = "form-control col-lg-4" } })
-                                                    @Html.ValidationMessageFor(model => model.docente.FechaFormacionPedadogica, "", new { @class = "text-danger" })
-                                                </div>
-
-
-                                            </div>
-                                        </div>
-                                        <br />
-                                        <div class="row">
-                                            <div class="col-lg-12">
-                                                <div id="intro" class="col-md-4">
-                                                    <span>Estudia:</span>
-                                                    @Html.DropDownList("Estudia", (IEnumerable<SelectListItem>)ViewBag.Estudia, null, new { @class = "form-control" })
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <span>Niveles de Fromacion:</span>
-                                                    @Html.EditorFor(model => model.docente.NivelFormacion, new { htmlAttributes = new { @class = "form-control col-lg-4" } })
-                                                    @Html.ValidationMessageFor(model => model.docente.NivelFormacion, "", new { @class = "text-danger" })
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <br />
-                                                    <span>Cedula:</span>
-                                                    @Html.EditorFor(model => model.docente.Cedula, new { htmlAttributes = new { @class = "form-control col-md-4" } })
-                                                    @Html.ValidationMessageFor(model => model.docente.Cedula, "", new { @class = "text-danger" })
-                                                </div>
-
-
-                                            </div>
-                                        </div>
-                                        <br />
-                                        <div class="row">
-                                            <div class="col-lg-12">
-                                                <div class="col-md-4">
-                                                    <span>Recibe Beca:</span>
-                                                    @Html.EditorFor(model => model.docente.RecibeBeca, new { htmlAttributes = new { @class = "form-control col-lg-4" } })
-                                                    @Html.ValidationMessageFor(model => model.docente.RecibeBeca, "", new { @class = "text-danger" })
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <span>Tipo beneficio Beca:</span>
-                                                    @Html.EditorFor(model => model.docente.TipoBeca, new { htmlAttributes = new { @class = "form-control col-lg-4" } })
-                                                    @Html.ValidationMessageFor(model => model.docente.TipoBeca, "", new { @class = "text-danger" })
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <span>Monto Beca:</span>
-                                                    @Html.EditorFor(model => model.docente.MontoBeca, new { htmlAttributes = new { @class = "form-control col-lg-4" } })
-                                                    @Html.ValidationMessageFor(model => model.docente.MontoBeca, "", new { @class = "text-danger" })
-                                                </div>
-
-
-                                            </div>
-                                        </div>
-                                        <br />
-                                        <div class="row">
-                                            <div class="col-lg-12">
-
-
-                                                <div id="intro" class="col-md-4">
-                                                    <span>Tipo Contrato:</span>
-                                                    @Html.DropDownList("TipoContratoId", (IEnumerable<SelectListItem>)ViewBag.TipoContrato, null, new { @class = "form-control" })
-                                                </div>
-
-                                                <div class="col-md-4">
-                                                    <span>Categoria Docente:</span>
-                                                    @Html.EditorFor(model => model.docente.CategoriaEnDocente, new { htmlAttributes = new { @class = "form-control col-lg-4" } })
-                                                    @Html.ValidationMessageFor(model => model.docente.CategoriaEnDocente, "", new { @class = "text-danger" })
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <span>Servicios en Programas Especiales:</span>
-                                                    @Html.EditorFor(model => model.docente.ServiciosProgramasEspeciales, new { htmlAttributes = new { @class = "form-control col-lg-4" } })
-                                                    @Html.ValidationMessageFor(model => model.docente.ServiciosProgramasEspeciales, "", new { @class = "text-danger" })
-                                                </div>
-
-
-                                            </div>
-                                        </div>
-
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-
-                    <section id="tab-2" class="tab-body entry-content">
-
-                        <div class="panel-group">
-                            <div class="panel panel-heading">
-                                <div class="panel-heading"><h4>Datos generales</h4></div>
-                                <div class="panel-body">
-                                    <form class="form-horizontal">
-
-                                        <div class="row">
-                                            <div class="col-lg-12">
-                                                <div class="col-md-3">
-                                                    <span>Años antiguedad Edu Superior:</span>
-                                                    @Html.EditorFor(model => model.docente.AnosAntiguedad, new { htmlAttributes = new { @class = "form-control col-md-3" } })
-                                                    @Html.ValidationMessageFor(model => model.docente.AnosAntiguedad, "", new { @class = "text-danger" })
-                                                </div>
-
-
-                                                <div id="intro" class="col-md-4">
-                                                    <span>Tipo Contrato:</span>
-                                                    @Html.DropDownList("CargoId", (IEnumerable<SelectListItem>)ViewBag.Cargo, null, new { @class = "form-control" })
-                                                </div>
-
-                                                <div class="col-md-4">
-
-                                                    <span>Cantidad Grupos:</span>
-                                                    @Html.EditorFor(model => model.docente.CantGrupos, new { htmlAttributes = new { @class = "form-control col-md-4" } })
-                                                    @Html.ValidationMessageFor(model => model.docente.CantGrupos, "", new { @class = "text-danger" })
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <br />
-                                        <div class="row">
-                                            <div class="col-lg-12">
-                                                <div class="col-md-4">
-                                                    <span>Horas Clase de grado Semana:</span>
-                                                    @Html.EditorFor(model => model.docente.HorasClaseSemana, new { htmlAttributes = new { @class = "form-control col-md-3" } })
-                                                    @Html.ValidationMessageFor(model => model.docente.HorasClaseSemana, "", new { @class = "text-danger" })
-                                                </div>
-
-
-                                                <div class="col-md-4">
-                                                    <span>Horas de Investigacion:</span>
-                                                    @Html.EditorFor(model => model.docente.HorasInvestigacionSemana, new { htmlAttributes = new { @class = "form-control col-md-3" } })
-                                                    @Html.ValidationMessageFor(model => model.docente.HorasInvestigacionSemana, "", new { @class = "text-danger" })
-                                                </div>
-
-                                                <div class="col-md-4">
-                                                    <br />
-                                                    <span>Cantidad Grupos:</span>
-                                                    @Html.EditorFor(model => model.docente.TipoInvestigacionParticipa, new { htmlAttributes = new { @class = "form-control col-md-4" } })
-                                                    @Html.ValidationMessageFor(model => model.docente.TipoInvestigacionParticipa, "", new { @class = "text-danger" })
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <br />
-                                        <div class="row">
-                                            <div class="col-lg-12">
-                                                <div class="col-md-4">
-                                                    <span>Horas Dedicadas Extencion Semana:</span>
-                                                    @Html.EditorFor(model => model.docente.HorasDedicadasExtencionSemana, new { htmlAttributes = new { @class = "form-control col-md-3" } })
-                                                    @Html.ValidationMessageFor(model => model.docente.HorasDedicadasExtencionSemana, "", new { @class = "text-danger" })
-                                                </div>
-
-
-                                                <div class="col-md-4">
-                                                    <span>Institucion donde realiza Investigacion:</span>
-                                                    @Html.EditorFor(model => model.docente.InstitucionRealizaExtencion, new { htmlAttributes = new { @class = "form-control col-md-3" } })
-                                                    @Html.ValidationMessageFor(model => model.docente.InstitucionRealizaExtencion, "", new { @class = "text-danger" })
-                                                </div>
-
-                                                <div class="col-md-4">
-
-                                                    <span>Tutorias:</span>
-                                                    @Html.EditorFor(model => model.docente.Tutorias, new { htmlAttributes = new { @class = "form-control col-md-4" } })
-                                                    @Html.ValidationMessageFor(model => model.docente.Tutorias, "", new { @class = "text-danger" })
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <br />
-                                        <div class="row">
-                                            <div class="col-lg-12">
-                                                <div class="col-md-4">
-                                                    <span>Tutoria de Monografia Total Est Masculino:</span>
-                                                    @Html.EditorFor(model => model.docente.CantAlumnoMascTutoriaMonografia, new { htmlAttributes = new { @class = "form-control col-md-3" } })
-                                                    @Html.ValidationMessageFor(model => model.docente.CantAlumnoMascTutoriaMonografia, "", new { @class = "text-danger" })
-                                                </div>
-
-                                                <div class="col-md-4">
-                                                    <span>Tutoria de Monografia Total Est Femenio:</span>
-                                                    @Html.EditorFor(model => model.docente.CantAlumnoFemTutoriaMonografia, new { htmlAttributes = new { @class = "form-control col-md-3" } })
-                                                    @Html.ValidationMessageFor(model => model.docente.CantAlumnoFemTutoriaMonografia, "", new { @class = "text-danger" })
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                        <br />
-                                        <div class="row">
-                                            <div class="col-lg-12">
-                                                <div class="col-md-3">
-                                                    <span>Profesion:</span>
-                                                    @Html.EditorFor(model => model.docente.ProfesionId, new { htmlAttributes = new { @class = "form-control col-md-3" } })
-                                                    @Html.ValidationMessageFor(model => model.docente.AnosAntiguedad, "", new { @class = "text-danger" })
-                                                </div>
-
-
-                                                @*<div id="intro" class="col-md-4">
-                                                    <span>Tipo Contrato:</span>
-                                                    @Html.DropDownList("CargoId", (IEnumerable<SelectListItem>)ViewBag.Cargo, null, new { @class = "form-control" })
-                                                </div>*@
-
-                                                <div class="col-md-4">
-
-                                                    <span>Area:</span>
-                                                    @Html.EditorFor(model => model.docente.AreaId, new { htmlAttributes = new { @class = "form-control col-md-4" } })
-                                                    @Html.ValidationMessageFor(model => model.docente.AreaId, "", new { @class = "text-danger" })
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                        <br />
-
-
-                    </section>
-
-                    <section id="tab-3" class="tab-body entry-content">
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div class="col-md-4">
-                                    <span>Proyectos Investigacion Total Estudiante Masculino:</span>
-                                    @Html.EditorFor(model => model.docente.ProyectosInvesTotEstudianteMasculino, new { htmlAttributes = new { @class = "form-control col-md-3" } })
-                                    @Html.ValidationMessageFor(model => model.docente.HorasDedicadasExtencionSemana, "", new { @class = "text-danger" })
-                                </div>
-
-
-                                <div class="col-md-4">
-                                    <span>Proyectos Investigacion Total Estudiante Femenino:</span>
-                                    @Html.EditorFor(model => model.docente.InstitucionRealizaExtencion, new { htmlAttributes = new { @class = "form-control col-md-3" } })
-                                    @Html.ValidationMessageFor(model => model.docente.InstitucionRealizaExtencion, "", new { @class = "text-danger" })
-                                </div>
-
-                                <div class="col-md-4">
-
-                                    <span>Horas en curso de PostGrado:</span>
-                                    @Html.EditorFor(model => model.docente.HorasenCursoPosgradoTotal, new { htmlAttributes = new { @class = "form-control col-md-4" } })
-                                    @Html.ValidationMessageFor(model => model.docente.Tutorias, "", new { @class = "text-danger" })
-                                </div>
-                            </div>
-                        </div>
-                        <br />
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div class="col-md-4">
-                                    <span>Horas en curso de PostGrado Femenino:</span>
-                                    @Html.EditorFor(model => model.docente.ProyectosInvesTotEstudianteMasculino, new { htmlAttributes = new { @class = "form-control col-md-3" } })
-                                    @Html.ValidationMessageFor(model => model.docente.HorasDedicadasExtencionSemana, "", new { @class = "text-danger" })
-                                </div>
-
-
-                                <div class="col-md-4">
-                                    <span>Movilidad Académica:</span>
-                                    @Html.EditorFor(model => model.docente.MovilidadAcademica, new { htmlAttributes = new { @class = "form-control col-md-3" } })
-                                    @Html.ValidationMessageFor(model => model.docente.InstitucionRealizaExtencion, "", new { @class = "text-danger" })
-                                </div>
-
-                                <div class="col-md-4">
-
-                                    <span>Final Movilidad:</span>
-                                    @Html.EditorFor(model => model.docente.FinalidadMobilidad, new { htmlAttributes = new { @class = "form-control col-md-4" } })
-                                    @Html.ValidationMessageFor(model => model.docente.Tutorias, "", new { @class = "text-danger" })
-                                </div>
-                            </div>
-                        </div>
-                        <br />
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div class="col-md-6">
-                                    <span>Duración Mobilidad:</span>
-                                    @Html.EditorFor(model => model.docente.DuracionMobilidad, new { htmlAttributes = new { @class = "form-control col-md-3" } })
-                                    @Html.ValidationMessageFor(model => model.docente.HorasDedicadasExtencionSemana, "", new { @class = "text-danger" })
-                                </div>
-
-                                <div class="col-md-6">
-
-                                    <span>Nombre de la Institución:</span>
-                                    @Html.EditorFor(model => model.docente.FinalidadMobilidad, new { htmlAttributes = new { @class = "form-control col-md-4" } })
-                                    @Html.ValidationMessageFor(model => model.docente.Tutorias, "", new { @class = "text-danger" })
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-
-                    <section id="tab-4" class="tab-body entry-content">
-                        <h2>Concealer</h2>
-
-                    </section>
-
-
-                    <section id="tab-5" class="tab-body entry-content">
-
-                        <div class="row">
-                            <div id="intro" class="col-xs-7">
-                               
-                                @Html.DropDownList("Asignaturas", (IEnumerable<SelectListItem>)ViewBag.Asignaturas, null, new { @class = "form-control" })
-                              
-                            </div>
-
-                            <div class="col-xs-1">
-                                <button type="button" onclick="AgregarItem()" class="btn btn-primary glyphicon glyphicon-plus"></button>
-                            </div>
-
-                            @*<div class="col-md-1">
-                                <button type="submit" class="btn btn-primary glyphicon glyphicon-save">Guardar</button>
-                            </div>*@
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-offset-12">
-                                @*@Html.ActionLink("Agregar Asignatura", "AddSubject", "Docentes", new { id = Model.docente.Id }, new { @class = "modal-link btn btn-success" })*@
-                                @*@Html.ActionLink("Agregar Asignatura", "AddSubject", "Docentes", href = "javascript:showEditDialog('TblCategoriaArticulo','Edit','@item.Id')")*@
-                                @*<a class="btn btn-default btn-sm" href="javascript:showEditDialog('TblCategoriaArticulo','Edit','@model.docent.Id')"><span class='glyphicon glyphicon-pencil'></span></a>
-
-                            *@</div>
-
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                @Html.Action("_PartialAsignaturasDocente", new { id = Model.docente.Id })
-
-                            </div>
-
-                        </div>
-                    </section>
-                </div>
-
-            </div>
-
-            <div class="form-group">
-                <a>  </a>  <button type="submit" class="btn btn-circle  btn-primary "><i class="fa fa-clipboard"></i> Guardar</button>
             </div>
         </section>
-              
-            }
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
 
-            </div>
+            @Html.ValidationSummary(true)
+            <span>@Html.ValidationSummary()</span>
+            <section class="tabs-wrapper">
+                <div class="tabs-container">
 
-        @*<script>
+                    <div id="tabs-section" class="tabs">
+                        <ul class="tab-head">
+                            <li>
+                                <a href="#tab-1" class="tab-link active"> <span class="material-icons tab-icon">face</span> <span class="tab-label">Datos Personales</span></a>
+                            </li>
+                            <li>
+                                <a href="#tab-2" class="tab-link"> <span class="material-icons tab-icon">visibility</span> <span class="tab-label">Laborales"</span></a>
+                            </li>
+                            <li>
+                                <a href="#tab-3" class="tab-link"> <span class="material-icons tab-icon">settings_input_hdmi</span> <span class="tab-label">Asignaciones</span></a>
+                            </li>
+                            <li>
+                                <a href="#tab-4" class="tab-link"> <span class="material-icons tab-icon">build</span> <span class="tab-label">Estudios</span></a>
+                            </li>
+                            <li>
+                                <a href="#tab-5" class="tab-link"> <span class="material-icons tab-icon">toll</span> <span class="tab-label">Asignaturas</span></a>
+                            </li>
+                            <li>
+                                <br />
+                                @*<a href="#tab-5" class="tab-link"> <span class="material-icons tab-icon">toll</span> <span class="tab-label">Horarios</span></a>*@
+                            </li>
+                        </ul>
+                        <br />
+                        @Html.HiddenFor(model => model.docente.RecintoId)
+
+                        @*<section id="tab-1" class="tab-body entry-content active active-content">*@
+                        <section id="tab-1" class="tab-body entry-content active active-content">
+
+                            <div class="panel-group">
+                                <div class="panel panel-heading">
+                                    <div class="panel-heading"><h4>Datos generales</h4></div>
+                                    <div class="panel-body">
+                                        <form class="form-horizontal">
+
+                                            <div class="row">
+                                                <div class="col-lg-12">
+                                                    <div class="col-md-3">
+                                                        <span>Id:</span>
+                                                        @Html.EditorFor(model => model.docente.Id, new { htmlAttributes = new { @class = "form-control col-md-3", @readonly = "true" } })
+                                                        @Html.ValidationMessageFor(model => model.docente.Id, "", new { @class = "text-danger" })
+                                                    </div>
+                                                    <br />
+                                                    <br />
+                                                    <div class="col-md-12">
+                                                        <br />
+                                                        <span>Nombre:</span>
+                                                        @Html.EditorFor(model => model.docente.Nombre, new { htmlAttributes = new { @class = "form-control col-md-4" } })
+                                                        @Html.ValidationMessageFor(model => model.docente.Nombre, "", new { @class = "text-danger" })
+                                                    </div>
+                                                    <br />
+
+                                                </div>
+                                            </div>
+                                            <br />
+                                            <div class="row">
+                                                <div class="col-lg-12">
+                                                    <div class="col-lg-12">
+                                                        <span>Direccion:</span>
+                                                        @Html.EditorFor(model => model.docente.Direccion, new { htmlAttributes = new { @class = "form-control col-lg-12" } })
+                                                        @Html.ValidationMessageFor(model => model.docente.Direccion, "", new { @class = "text-danger" })
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <br />
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="col-md-4">
+                                                        <span>Teléfono:</span>
+                                                        @Html.EditorFor(model => model.docente.Telefono, new { htmlAttributes = new { @class = "form-control col-md-4" } })
+                                                        @Html.ValidationMessageFor(model => model.docente.Telefono, "", new { @class = "text-danger" })
+                                                    </div>
+
+                                                    <div class="col-md-4">
+                                                        <span>Celular:</span>
+                                                        @Html.EditorFor(model => model.docente.Celular, new { htmlAttributes = new { @class = "form-control col-md-4" } })
+                                                        @Html.ValidationMessageFor(model => model.docente.Celular, "", new { @class = "text-danger" })
+                                                    </div>
+
+                                                    <div class="col-md-4">
+                                                        <span>Correo:</span>
+                                                        @Html.EditorFor(model => model.docente.Email, new { htmlAttributes = new { @class = "form-control col-md-4" } })
+                                                        @Html.ValidationMessageFor(model => model.docente.Email, "", new { @class = "text-danger" })
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                            <br />
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div id="intro" class="col-md-4">
+                                                        <span>Departamento:</span>
+                                                        @Html.DropDownList("PaisId", (IEnumerable<SelectListItem>)ViewBag.Pais, null, new { @class = "form-control" })
+                                                    </div>
+                                                    <div id="intro" class="col-md-4">
+                                                        <span>Departamento:</span>
+                                                        @Html.DropDownList("DepartamentoId", (IEnumerable<SelectListItem>)ViewBag.Departamento, null, new { @class = "form-control" })
+                                                    </div>
+                                                    <div id="intro" class="col-md-4">
+                                                        <span>Municipio:</span>
+                                                        @Html.DropDownList("MunicipioId", (IEnumerable<SelectListItem>)ViewBag.Municipio, null, new { @class = "form-control" })
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <br />
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div id="intro" class="col-md-4">
+                                                        <span>Sexo:</span>
+                                                        @Html.DropDownList("Sexo", (IEnumerable<SelectListItem>)ViewBag.Sexo, null, new { @class = "form-control" })
+                                                    </div>
+                                                    <div id="intro" class="col-md-4">
+                                                        <span>Etnia:</span>
+                                                        @Html.DropDownList("Etnia", (IEnumerable<SelectListItem>)ViewBag.Etnia, null, new { @class = "form-control" })
+                                                    </div>
+                                                    <div id="intro" class="col-md-4">
+                                                        <span>Estado Civil:</span>
+                                                        @Html.DropDownList("EstadoCivil", (IEnumerable<SelectListItem>)ViewBag.CivilStatus, null, new { @class = "form-control" })
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <br />
+                                            <div class="row">
+                                                <div class="col-lg-12">
+                                                    <div class="col-md-4">
+                                                        <span>Dependenica:</span>
+                                                        @Html.EditorFor(model => model.docente.Dependencia, new { htmlAttributes = new { @class = "form-control col-lg-4" } })
+                                                        @Html.ValidationMessageFor(model => model.docente.Dependencia, "", new { @class = "text-danger" })
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <span>Fecha Nac:</span>
+                                                        @Html.EditorFor(model => model.docente.FechaNac, new { htmlAttributes = new { @class = "form-control col-lg-4", @id = "fecha" } })
+                                                        @Html.ValidationMessageFor(model => model.docente.FechaNac, "", new { @class = "text-danger" })
+                                                    </div>
+
+                                                    <div class="col-md-4">
+                                                        <span>Nº Hijos:</span>
+                                                        @Html.EditorFor(model => model.docente.NHijos, new { htmlAttributes = new { @class = "form-control col-lg-4", @id = "datepicker" } })
+                                                        @Html.ValidationMessageFor(model => model.docente.NHijos, "", new { @class = "text-danger" })
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                            <br />
+                                            <div class="row">
+                                                <div class="col-lg-12">
+                                                    <div class="col-md-4">
+                                                        <span>Discapacidad:</span>
+                                                        @Html.EditorFor(model => model.docente.Discapacidad, new { htmlAttributes = new { @class = "form-control col-lg-4" } })
+                                                        @Html.ValidationMessageFor(model => model.docente.Discapacidad, "", new { @class = "text-danger" })
+                                                    </div>
+                                                    <div id="intro" class="col-md-4">
+                                                        <span>Formacion Pedadogica</span>
+                                                        @Html.DropDownList("FormacionPedadogica", (IEnumerable<SelectListItem>)ViewBag.FormacionPedadogica, null, new { @class = "form-control" })
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <span>Año Formacion Pedadogica:</span>
+                                                        @Html.EditorFor(model => model.docente.FechaFormacionPedadogica, new { htmlAttributes = new { @class = "form-control col-lg-4" } })
+                                                        @Html.ValidationMessageFor(model => model.docente.FechaFormacionPedadogica, "", new { @class = "text-danger" })
+                                                    </div>
+
+
+                                                </div>
+                                            </div>
+                                            <br />
+                                            <div class="row">
+                                                <div class="col-lg-12">
+                                                    <div id="intro" class="col-md-4">
+                                                        <span>Estudia:</span>
+                                                        @Html.DropDownList("Estudia", (IEnumerable<SelectListItem>)ViewBag.Estudia, null, new { @class = "form-control" })
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <span>Niveles de Fromacion:</span>
+                                                        @Html.EditorFor(model => model.docente.NivelFormacion, new { htmlAttributes = new { @class = "form-control col-lg-4" } })
+                                                        @Html.ValidationMessageFor(model => model.docente.NivelFormacion, "", new { @class = "text-danger" })
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <br />
+                                                        <span>Cedula:</span>
+                                                        @Html.EditorFor(model => model.docente.Cedula, new { htmlAttributes = new { @class = "form-control col-md-4" } })
+                                                        @Html.ValidationMessageFor(model => model.docente.Cedula, "", new { @class = "text-danger" })
+                                                    </div>
+
+
+                                                </div>
+                                            </div>
+                                            <br />
+                                            <div class="row">
+                                                <div class="col-lg-12">
+                                                    <div class="col-md-4">
+                                                        <span>Recibe Beca:</span>
+                                                        @Html.EditorFor(model => model.docente.RecibeBeca, new { htmlAttributes = new { @class = "form-control col-lg-4" } })
+                                                        @Html.ValidationMessageFor(model => model.docente.RecibeBeca, "", new { @class = "text-danger" })
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <span>Tipo beneficio Beca:</span>
+                                                        @Html.EditorFor(model => model.docente.TipoBeca, new { htmlAttributes = new { @class = "form-control col-lg-4" } })
+                                                        @Html.ValidationMessageFor(model => model.docente.TipoBeca, "", new { @class = "text-danger" })
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <span>Monto Beca:</span>
+                                                        @Html.EditorFor(model => model.docente.MontoBeca, new { htmlAttributes = new { @class = "form-control col-lg-4" } })
+                                                        @Html.ValidationMessageFor(model => model.docente.MontoBeca, "", new { @class = "text-danger" })
+                                                    </div>
+
+
+                                                </div>
+                                            </div>
+                                            <br />
+                                            <div class="row">
+                                                <div class="col-lg-12">
+
+
+                                                    <div id="intro" class="col-md-4">
+                                                        <span>Tipo Contrato:</span>
+                                                        @Html.DropDownList("TipoContratoId", (IEnumerable<SelectListItem>)ViewBag.TipoContrato, null, new { @class = "form-control" })
+                                                    </div>
+
+                                                    <div class="col-md-4">
+                                                        <span>Categoria Docente:</span>
+                                                        @Html.EditorFor(model => model.docente.CategoriaEnDocente, new { htmlAttributes = new { @class = "form-control col-lg-4" } })
+                                                        @Html.ValidationMessageFor(model => model.docente.CategoriaEnDocente, "", new { @class = "text-danger" })
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <span>Servicios en Programas Especiales:</span>
+                                                        @Html.EditorFor(model => model.docente.ServiciosProgramasEspeciales, new { htmlAttributes = new { @class = "form-control col-lg-4" } })
+                                                        @Html.ValidationMessageFor(model => model.docente.ServiciosProgramasEspeciales, "", new { @class = "text-danger" })
+                                                    </div>
+
+
+                                                </div>
+                                            </div>
+
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section id="tab-2" class="tab-body entry-content">
+
+                            <div class="panel-group">
+                                <div class="panel panel-heading">
+                                    <div class="panel-heading"><h4>Datos generales</h4></div>
+                                    <div class="panel-body">
+                                        <form class="form-horizontal">
+
+                                            <div class="row">
+                                                <div class="col-lg-12">
+                                                    <div class="col-md-3">
+                                                        <span>Años antiguedad Edu Superior:</span>
+                                                        @Html.EditorFor(model => model.docente.AnosAntiguedad, new { htmlAttributes = new { @class = "form-control col-md-3" } })
+                                                        @Html.ValidationMessageFor(model => model.docente.AnosAntiguedad, "", new { @class = "text-danger" })
+                                                    </div>
+
+
+                                                    <div id="intro" class="col-md-4">
+                                                        <span>Tipo Contrato:</span>
+                                                        @Html.DropDownList("CargoId", (IEnumerable<SelectListItem>)ViewBag.Cargo, null, new { @class = "form-control" })
+                                                    </div>
+
+                                                    <div class="col-md-4">
+
+                                                        <span>Cantidad Grupos:</span>
+                                                        @Html.EditorFor(model => model.docente.CantGrupos, new { htmlAttributes = new { @class = "form-control col-md-4" } })
+                                                        @Html.ValidationMessageFor(model => model.docente.CantGrupos, "", new { @class = "text-danger" })
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <br />
+                                            <div class="row">
+                                                <div class="col-lg-12">
+                                                    <div class="col-md-4">
+                                                        <span>Horas Clase de grado Semana:</span>
+                                                        @Html.EditorFor(model => model.docente.HorasClaseSemana, new { htmlAttributes = new { @class = "form-control col-md-3" } })
+                                                        @Html.ValidationMessageFor(model => model.docente.HorasClaseSemana, "", new { @class = "text-danger" })
+                                                    </div>
+
+
+                                                    <div class="col-md-4">
+                                                        <span>Horas de Investigacion:</span>
+                                                        @Html.EditorFor(model => model.docente.HorasInvestigacionSemana, new { htmlAttributes = new { @class = "form-control col-md-3" } })
+                                                        @Html.ValidationMessageFor(model => model.docente.HorasInvestigacionSemana, "", new { @class = "text-danger" })
+                                                    </div>
+
+                                                    <div class="col-md-4">
+                                                        <br />
+                                                        <span>Cantidad Grupos:</span>
+                                                        @Html.EditorFor(model => model.docente.TipoInvestigacionParticipa, new { htmlAttributes = new { @class = "form-control col-md-4" } })
+                                                        @Html.ValidationMessageFor(model => model.docente.TipoInvestigacionParticipa, "", new { @class = "text-danger" })
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <br />
+                                            <div class="row">
+                                                <div class="col-lg-12">
+                                                    <div class="col-md-4">
+                                                        <span>Horas Dedicadas Extencion Semana:</span>
+                                                        @Html.EditorFor(model => model.docente.HorasDedicadasExtencionSemana, new { htmlAttributes = new { @class = "form-control col-md-3" } })
+                                                        @Html.ValidationMessageFor(model => model.docente.HorasDedicadasExtencionSemana, "", new { @class = "text-danger" })
+                                                    </div>
+
+
+                                                    <div class="col-md-4">
+                                                        <span>Institucion donde realiza Investigacion:</span>
+                                                        @Html.EditorFor(model => model.docente.InstitucionRealizaExtencion, new { htmlAttributes = new { @class = "form-control col-md-3" } })
+                                                        @Html.ValidationMessageFor(model => model.docente.InstitucionRealizaExtencion, "", new { @class = "text-danger" })
+                                                    </div>
+
+                                                    <div class="col-md-4">
+
+                                                        <span>Tutorias:</span>
+                                                        @Html.EditorFor(model => model.docente.Tutorias, new { htmlAttributes = new { @class = "form-control col-md-4" } })
+                                                        @Html.ValidationMessageFor(model => model.docente.Tutorias, "", new { @class = "text-danger" })
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <br />
+                                            <div class="row">
+                                                <div class="col-lg-12">
+                                                    <div class="col-md-4">
+                                                        <span>Tutoria de Monografia Total Est Masculino:</span>
+                                                        @Html.EditorFor(model => model.docente.CantAlumnoMascTutoriaMonografia, new { htmlAttributes = new { @class = "form-control col-md-3" } })
+                                                        @Html.ValidationMessageFor(model => model.docente.CantAlumnoMascTutoriaMonografia, "", new { @class = "text-danger" })
+                                                    </div>
+
+                                                    <div class="col-md-4">
+                                                        <span>Tutoria de Monografia Total Est Femenio:</span>
+                                                        @Html.EditorFor(model => model.docente.CantAlumnoFemTutoriaMonografia, new { htmlAttributes = new { @class = "form-control col-md-3" } })
+                                                        @Html.ValidationMessageFor(model => model.docente.CantAlumnoFemTutoriaMonografia, "", new { @class = "text-danger" })
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                            <br />
+                                            <div class="row">
+                                                <div class="col-lg-12">
+                                                    <div class="col-md-3">
+                                                        <span>Profesion:</span>
+                                                        @Html.EditorFor(model => model.docente.ProfesionId, new { htmlAttributes = new { @class = "form-control col-md-3" } })
+                                                        @Html.ValidationMessageFor(model => model.docente.AnosAntiguedad, "", new { @class = "text-danger" })
+                                                    </div>
+
+
+                                                    @*<div id="intro" class="col-md-4">
+                                                        <span>Tipo Contrato:</span>
+                                                        @Html.DropDownList("CargoId", (IEnumerable<SelectListItem>)ViewBag.Cargo, null, new { @class = "form-control" })
+                                                    </div>*@
+
+                                                    <div class="col-md-4">
+
+                                                        <span>Area:</span>
+                                                        @Html.EditorFor(model => model.docente.AreaId, new { htmlAttributes = new { @class = "form-control col-md-4" } })
+                                                        @Html.ValidationMessageFor(model => model.docente.AreaId, "", new { @class = "text-danger" })
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <br />
+
+
+                        </section>
+
+                        <section id="tab-3" class="tab-body entry-content">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="col-md-4">
+                                        <span>Proyectos Investigacion Total Estudiante Masculino:</span>
+                                        @Html.EditorFor(model => model.docente.ProyectosInvesTotEstudianteMasculino, new { htmlAttributes = new { @class = "form-control col-md-3" } })
+                                        @Html.ValidationMessageFor(model => model.docente.HorasDedicadasExtencionSemana, "", new { @class = "text-danger" })
+                                    </div>
+
+
+                                    <div class="col-md-4">
+                                        <span>Proyectos Investigacion Total Estudiante Femenino:</span>
+                                        @Html.EditorFor(model => model.docente.InstitucionRealizaExtencion, new { htmlAttributes = new { @class = "form-control col-md-3" } })
+                                        @Html.ValidationMessageFor(model => model.docente.InstitucionRealizaExtencion, "", new { @class = "text-danger" })
+                                    </div>
+
+                                    <div class="col-md-4">
+
+                                        <span>Horas en curso de PostGrado:</span>
+                                        @Html.EditorFor(model => model.docente.HorasenCursoPosgradoTotal, new { htmlAttributes = new { @class = "form-control col-md-4" } })
+                                        @Html.ValidationMessageFor(model => model.docente.Tutorias, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                            <br />
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="col-md-4">
+                                        <span>Horas en curso de PostGrado Femenino:</span>
+                                        @Html.EditorFor(model => model.docente.ProyectosInvesTotEstudianteMasculino, new { htmlAttributes = new { @class = "form-control col-md-3" } })
+                                        @Html.ValidationMessageFor(model => model.docente.HorasDedicadasExtencionSemana, "", new { @class = "text-danger" })
+                                    </div>
+
+
+                                    <div class="col-md-4">
+                                        <span>Movilidad Académica:</span>
+                                        @Html.EditorFor(model => model.docente.MovilidadAcademica, new { htmlAttributes = new { @class = "form-control col-md-3" } })
+                                        @Html.ValidationMessageFor(model => model.docente.InstitucionRealizaExtencion, "", new { @class = "text-danger" })
+                                    </div>
+
+                                    <div class="col-md-4">
+
+                                        <span>Final Movilidad:</span>
+                                        @Html.EditorFor(model => model.docente.FinalidadMobilidad, new { htmlAttributes = new { @class = "form-control col-md-4" } })
+                                        @Html.ValidationMessageFor(model => model.docente.Tutorias, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                            <br />
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="col-md-6">
+                                        <span>Duración Mobilidad:</span>
+                                        @Html.EditorFor(model => model.docente.DuracionMobilidad, new { htmlAttributes = new { @class = "form-control col-md-3" } })
+                                        @Html.ValidationMessageFor(model => model.docente.HorasDedicadasExtencionSemana, "", new { @class = "text-danger" })
+                                    </div>
+
+                                    <div class="col-md-6">
+
+                                        <span>Nombre de la Institución:</span>
+                                        @Html.EditorFor(model => model.docente.FinalidadMobilidad, new { htmlAttributes = new { @class = "form-control col-md-4" } })
+                                        @Html.ValidationMessageFor(model => model.docente.Tutorias, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section id="tab-4" class="tab-body entry-content">
+                            <h2>Concealer</h2>
+
+                        </section>
+
+
+                        <section id="tab-5" class="tab-body entry-content">
+
+                            @*<a data-toggle="modal" data-target="#modalCreate" href="@Url.Action("AddSubject","Docentes",new { id = Model.docente.Id})" class="btn btn-primary" Id="@Model.docente.Id">
+                                @Html.DisplayFor(modelItem => Model.docente.Id)
+                                <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                            </a>*@
+
+                            <div class="row">
+                                <div id="intro" class="col-xs-7">
+
+                                    @Html.DropDownList("AsignaturaId", (IEnumerable<SelectListItem>)ViewBag.Asignaturas, null, new { @class = "form-control" })
+
+                                </div>
+
+                                <div class="col-xs-1">
+                                    <button type="button" onclick="AgregarAsignaturaDocente()" class="btn btn-primary glyphicon glyphicon-plus"></button>
+                                </div>
+
+                                @*<div class="col-md-1">
+                                    <button type="submit" class="btn btn-primary glyphicon glyphicon-save">Guardar</button>
+                                </div>*@
+                            </div>
+
+                            <div id="partial">
+
+                                @Html.Partial("_AddSubjectDocente", Model)
+
+
+                            </div>
+
+                            @*<div class="row">
+                                <div class="col-md-12">
+                                    @Html.Action("_PartialAsignaturasDocente", new { id = Model.docente.Id })
+
+                                </div>
+
+                            </div>*@
+                        </section>
+                    </div>
+
+                </div>
+
+                <div class="form-group">
+                    <a>  </a>  <button type="submit" class="btn btn-circle  btn-primary "><i class="fa fa-clipboard"></i> Guardar</button>
+                </div>
+            </section>
+
+        }
+
+    </div>
+
+    @*<script>
+                $(function () {
+                    $("#fecha").datepicker();
+                });
+            </script>
+                <script>
+                    $.datepicker.regional['es'] = {
+                        closeText: 'Cerrar',
+                    prevText: '< Ant',
+             nextText: 'Sig >',
+                    currentText: 'Hoy',
+                    monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+                    monthNamesShort: ['Ene','Feb','Mar','Abr', 'May','Jun','Jul','Ago','Sep', 'Oct','Nov','Dic'],
+                    dayNames: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
+                    dayNamesShort: ['Dom','Lun','Mar','Mié','Juv','Vie','Sáb'],
+                    dayNamesMin: ['Do','Lu','Ma','Mi','Ju','Vi','Sá'],
+                    weekHeader: 'Sm',
+                    dateFormat: 'dd/mm/yy',
+                    firstDay: 1,
+                    isRTL: false,
+                    showMonthAfterYear: false,
+                    yearSuffix: ''
+             };
+                    $.datepicker.setDefaults($.datepicker.regional['es']);
                     $(function () {
                         $("#fecha").datepicker();
-                    });
-                </script>
-                    <script>
-                        $.datepicker.regional['es'] = {
-                            closeText: 'Cerrar',
-                        prevText: '< Ant',
-                 nextText: 'Sig >',
-                        currentText: 'Hoy',
-                        monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
-                        monthNamesShort: ['Ene','Feb','Mar','Abr', 'May','Jun','Jul','Ago','Sep', 'Oct','Nov','Dic'],
-                        dayNames: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
-                        dayNamesShort: ['Dom','Lun','Mar','Mié','Juv','Vie','Sáb'],
-                        dayNamesMin: ['Do','Lu','Ma','Mi','Ju','Vi','Sá'],
-                        weekHeader: 'Sm',
-                        dateFormat: 'dd/mm/yy',
-                        firstDay: 1,
-                        isRTL: false,
-                        showMonthAfterYear: false,
-                        yearSuffix: ''
-                 };
-                        $.datepicker.setDefaults($.datepicker.regional['es']);
-                        $(function () {
-                            $("#fecha").datepicker();
-            });*@
+        });*@
 
-        </script>
-        <!-- Javascript Files -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-        <script src="~/Content/vertical-tabs-css/dist/js/app.js"></script>
-    </body>
+    </script>
+    <!-- Javascript Files -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="~/Content/vertical-tabs-css/dist/js/app.js"></script>
+</body>
 
-    <style>
-        .panel-byron > .panel-byron {
-            color: brown;
-            background-color: brown;
-            border-color: brown;
-        }
-    </style>
+<style>
+    .panel-byron > .panel-byron {
+        color: brown;
+        background-color: brown;
+        border-color: brown;
+    }
+</style>
 
+
+<script>
+
+function AgregarAsignaturaDocente() {
+    var DocenteId = $("#docente_Id").val();
+    var AsignaturaId = $("#AsignaturaId").val();
+
+    alertify.success("Articulo Asociado exitosamente");
+    $("#partial").load('@Url.Action("_AddSubjectDocente", "Docentes")' + '?DocenteId=' + DocenteId + '&AsignaturaId=' + AsignaturaId);
+};
+</script>
+<div id="modalCreate" class="modal fade" role="dialog" data-backdrop="false">
+
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div id="OpenDialog" class="modal-body">
+            </div>
+            <script>
+                jQuery(document).ready(function () {
+
+                    jQuery('#modalCreate').on('hidden.bs.modal', function (e) {
+                        jQuery(this).removeData('bs.modal');
+                        jQuery(this).find('.modal-content').empty();
+                    })
+
+                })
+            </script>
+        </div>
+    </div>
+</div>
 

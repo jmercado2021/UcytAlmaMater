@@ -78,6 +78,8 @@ namespace BlackSys.Controllers
             ViewBag.FormacionPedadogica = new SelectList(lstrueFalse, "Id", "Descripcion");
             ViewBag.TipoContrato = new SelectList(_tipoContrato.GetAll(), "Id", "Descripcion");
             ViewBag.Cargo = new SelectList(_cargo.GetAll(), "Id", "Descripcion");
+            docenteView.asignaturasView = _docenteRepositoy.LoadDocenteAsignatura(id);
+            //ViewBag.Asignaturas = docenteView.asignaturasView;
             ViewBag.Asignaturas = new SelectList(_Asignatura.GetAll(), "Id", "Nombre");
             return View(docenteView);
             //}
@@ -112,25 +114,37 @@ namespace BlackSys.Controllers
             //}
         }
 
-        public ActionResult AddSubject(int id)
+        public ActionResult _AddSubjectDocente(int DocenteId, int? AsignaturaId)
         {
+            var dataDocente= _docenteRepositoy.GetById(DocenteId);
             DocenteViewModel docenteView = new DocenteViewModel();
-            docenteView.docente = _docenteRepositoy.GetById(id);
-            docenteView.asignaturasView = _docenteRepositoy.LoadDocenteAsignatura(id);
-            return View("_AddSubjectDocente",docenteView);
+            docenteView.docente = dataDocente;
+           
+            
+            if (AsignaturaId.HasValue)
+            {
+                var asig = _docenteRepositoy.GetSubjectDocente(dataDocente, Convert.ToInt32(AsignaturaId));
+                if (asig.Count > 0)
+                {
+                    ModelState.AddModelError("","Ya existe la asignatura asociada");
+                }
+                else
+                {
+                    _docenteRepositoy.AddSubject(dataDocente, Convert.ToInt32(AsignaturaId));
+
+                }
+               
+            }
+            docenteView.asignaturasView = _docenteRepositoy.LoadDocenteAsignatura(DocenteId);
+            ViewBag.Asignaturas = new SelectList(_Asignatura.GetAll(), "Id", "Nombre");
+            return View("_AddSubjectDocente", docenteView);
         }
 
         
-        [HttpPost]
-        public ActionResult AddSubjectDocente(DocenteViewModel model,int subject)
+  
+        public ActionResult AddSubjectDocente(int DocenteId, int AsignaturaId)
         {
-            DocenteAsignatura docSubject = new DocenteAsignatura()
-            {
-                DocenteId = model.docente.Id,
-                RecintoId = model.docente.RecintoId,
-                AsignaturaId= subject,
-                Activo =true
-            };
+            
             return View();
         }
 
@@ -151,9 +165,9 @@ namespace BlackSys.Controllers
         }
 
         // GET: Docentes/Edit/5
-        public PartialViewResult _PartialAsignaturasDocente(int id)
+        public PartialViewResult _PartialAsignaturasDocente(int DocenteId)
         {
-            var data = _docenteRepositoy.LoadDocenteAsignatura(id);
+            var data = _docenteRepositoy.LoadDocenteAsignatura(DocenteId);
             return PartialView("_AsignaturasDocentes",data);
         }
 

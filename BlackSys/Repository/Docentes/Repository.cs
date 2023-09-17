@@ -48,6 +48,38 @@ namespace BlackSys.Repository.Docentes
            
 
         }
+        public List<ViewDocenteAsignatura> GetSubjectDocente(Docente model, int AsignaturaId)
+        {
+            IQueryable<ViewDocenteAsignatura> ls = _dtx.ViewDocenteAsignatura.Where(tt => tt.DocenteId == model.Id && tt.AsignaturaId ==AsignaturaId);
+
+            return ls.ToList();
+
+        }
+
+        public bool AddSubject(Docente model,int AsignaturaId)
+        {
+            try
+            {
+                DocenteAsignatura docSubject = new DocenteAsignatura()
+                {
+                    DocenteId = model.Id,
+                    RecintoId = model.RecintoId,
+                    AsignaturaId = AsignaturaId,
+                    Activo = true
+                };
+                _dtx.DocenteAsignatura.Add(docSubject);
+                Save();
+                return true;
+            }
+           catch(Exception ex)
+            {
+                return false;
+            }
+
+           
+
+
+        }
         public void Save()
         {
             _dtx.SaveChanges();
