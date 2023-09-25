@@ -35,13 +35,13 @@ function AlertDesasociarAsignatura(Identificador) {
         AsignaturaId: $('#AsignaturaId').val()
     };
     Swal.fire({
-        title: 'Are you sure?',
-        text: "You won't be able to revert this!",
+        title: 'Esta seguro en desasociar la Asignatura?',
+        text: "",
         icon: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
-        confirmButtonText: 'Yes, delete it!'
+        confirmButtonText: 'Si, Desasociar!'
     }).then((result) => {
         if (result.isConfirmed) {
             Swal.fire(

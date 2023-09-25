@@ -494,6 +494,7 @@
     <Content Include="Content\ScripByron\Ventas.js" />
     <Content Include="Content\sweetalert\sweetalert.css" />
     <Content Include="Content\sweetalert\sweetalert.js" />
+    <Content Include="Content\sweetalert\sweetalert2.all.min.js" />
     <Content Include="Content\template\css\components-md.css" />
     <Content Include="Content\template\css\components-md.min.css" />
     <Content Include="Content\template\css\components-rounded.css" />
@@ -1668,12 +1669,6 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>RptCanjes1.cs</LastGenOutput>
     </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\CapaAccesoDatos\CapaAccesoDatos.csproj">
-      <Project>{78FD1B7B-74D2-46A5-9FCA-818A1BD53629}</Project>
-      <Name>CapaAccesoDatos</Name>
-    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
