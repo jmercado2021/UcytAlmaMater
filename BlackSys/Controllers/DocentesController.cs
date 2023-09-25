@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using BlackSys.Models.Dal;
+using BlackSys.Models.Dto;
 using BlackSys.Models.ViewModel;
 using Newtonsoft;
 using Newtonsoft.Json;
@@ -46,8 +46,7 @@ namespace BlackSys.Controllers
         public ActionResult Details (int id)
         {
 
-            var enumData = from Gender e in Enum.GetValues(typeof(Gender))
-                           select new
+            var enumData = from Gender e in Enum.GetValues(typeof(Gender))select new
                            {
                                Id = (int)e,
                                Descripcion = e.ToString()
@@ -87,16 +86,45 @@ namespace BlackSys.Controllers
         [HttpPost]
         public ActionResult Details(DocenteViewModel docente)
         {
-            //if (_docenteRepositoy.Update(docente))
-            //{
-            //    return Json("Ok");
-            //}
-            //HttpContext.Response.StatusCode = 500;
-            //    HttpContext.Response.StatusDescription = JsonConvert.SerializeObject(ModelState.Values.SelectMany(m => m.Errors)
-            //        .Select(e => e.ErrorMessage.Truncate(500))
-            //          .ToList());
-            //HttpContext.Response.Clear();
-            //return PartialView("Details", docente);
+            var enumData = from Gender e in Enum.GetValues(typeof(Gender))
+                           select new
+                           {
+                               Id = (int)e,
+                               Descripcion = e.ToString()
+                           };
+            var lscivilstatus = from CivilStatus e in Enum.GetValues(typeof(CivilStatus))
+                                select new
+                                {
+                                    Id = (int)e,
+                                    Descripcion = e.ToString()
+                                };
+            var lstrueFalse = from SelectTrueFalse e in Enum.GetValues(typeof(SelectTrueFalse))
+                              select new
+                              {
+                                  Id = (int)e,
+                                  Descripcion = e.ToString()
+                              };
+
+
+            DocenteViewModel docenteView = new DocenteViewModel();
+            docenteView.docente = _docenteRepositoy.GetById(docente.docente.Id);
+            ViewBag.Departamento = new SelectList(_departamento.GetAll(), "Id", "Descripcion");
+            ViewBag.Municipio = new SelectList(_municipio.GetAll(), "Id", "Descripcion");
+            ViewBag.Etnia = new SelectList(_etnia.GetAll(), "Id", "Descripcion");
+            ViewBag.Pais = new SelectList(_pais.GetAll(), "Id", "Descripcion");
+            ViewBag.Sexo = new SelectList(enumData, "Id", "Descripcion");
+            ViewBag.CivilStatus = new SelectList(lscivilstatus, "Id", "Descripcion");
+            ViewBag.Estudia = new SelectList(lstrueFalse, "Id", "Descripcion");
+            ViewBag.FormacionPedadogica = new SelectList(lstrueFalse, "Id", "Descripcion");
+            ViewBag.TipoContrato = new SelectList(_tipoContrato.GetAll(), "Id", "Descripcion");
+            ViewBag.Cargo = new SelectList(_cargo.GetAll(), "Id", "Descripcion");
+            docenteView.asignaturasView = _docenteRepositoy.LoadDocenteAsignatura(docente.docente.Id);
+            //ViewBag.Asignaturas = docenteView.asignaturasView;
+            ViewBag.Asignaturas = new SelectList(_Asignatura.GetAll(), "Id", "Nombre");
+
+
+            ModelState.AddModelError("","Mi error");
+            return View(docente);
 
             if (ModelState.IsValid)
             {
@@ -105,48 +133,87 @@ namespace BlackSys.Controllers
                     _docenteRepositoy.Save();
                 }
                 //_docenteRepositoy.Update(docente);
-               
-
-               
             }
             return View(docente);
             //return View();
             //}
         }
-
-        public ActionResult _AddSubjectDocente(int DocenteId, int? AsignaturaId)
+        [HttpPost]
+        public JsonResult NAddSubjectDocente(DtoDocenteAsignatura docente)
         {
-            var dataDocente= _docenteRepositoy.GetById(DocenteId);
-            DocenteViewModel docenteView = new DocenteViewModel();
-            docenteView.docente = dataDocente;
-           
-            
-            if (AsignaturaId.HasValue)
-            {
-                var asig = _docenteRepositoy.GetSubjectDocente(dataDocente, Convert.ToInt32(AsignaturaId));
+           if (AddSubjectDocente(docente.DocenteId, docente.AsignaturaId))
+            { 
+                bool success = true;
+            return Json(new { success = success });
+            }
+            //return Json("'success':'true'");
+            else
+               return Json(String.Format("'success':'false','Error':'Ha habido un error al insertar el registro.'"));
+        }
+    
+        //public ActionResult _AddSubjectDocente(int DocenteId, int? AsignaturaId)
+        //{
+        //    var dataDocente= _docenteRepositoy.GetById(DocenteId);
+        //    DocenteViewModel docenteView = new DocenteViewModel();
+        //    docenteView.docente = dataDocente;
+        //    docenteView.asignaturasView = _docenteRepositoy.LoadDocenteAsignatura(DocenteId);
+        //    ViewBag.Asignaturas = new SelectList(_Asignatura.GetAll(), "Id", "Nombre");
+
+        //    if (AsignaturaId.HasValue)
+        //    {
+        //        var asig = _docenteRepositoy.GetSubjectDocente(dataDocente, Convert.ToInt32(AsignaturaId));
+        //        if (asig.Count > 0)
+        //        {
+        //            //ModelState.AddModelError(string.Empty,"Ya existe la asignatura asociada");
+        //            ModelState.AddModelError("docente", "Ya existe la asignatura asociada");
+
+        //            return View("_AddSubjectDocente", docenteView);
+        //        }
+        //        else
+        //        {
+        //            _docenteRepositoy.AddSubject(dataDocente, Convert.ToInt32(AsignaturaId));
+
+        //        }
+
+        //    }
+
+        //    return View("_AddSubjectDocente", docenteView);
+        //}
+
+        public bool AddSubjectDocente(int DocenteId, int AsignaturaId)
+        {
+            var dataDocente = _docenteRepositoy.GetById(DocenteId);
+            //DocenteViewModel docenteView = new DocenteViewModel();
+            //docenteView.docente = dataDocente;
+            //docenteView.asignaturasView = _docenteRepositoy.LoadDocenteAsignatura(DocenteId);
+            //ViewBag.Asignaturas = new SelectList(_Asignatura.GetAll(), "Id", "Nombre");
+
+
+            var asig = _docenteRepositoy.GetSubjectDocente(dataDocente, Convert.ToInt32(AsignaturaId));
                 if (asig.Count > 0)
                 {
-                    ModelState.AddModelError("","Ya existe la asignatura asociada");
-                }
-                else
-                {
-                    _docenteRepositoy.AddSubject(dataDocente, Convert.ToInt32(AsignaturaId));
+                    //ModelState.AddModelError(string.Empty,"Ya existe la asignatura asociada");
+                    ModelState.AddModelError("docente", "Ya existe la asignatura asociada");
 
-                }
+                    return false;
                
+
+                 }
+                else
+            {
+                _docenteRepositoy.AddSubject(dataDocente, Convert.ToInt32(AsignaturaId));
+                return true;
             }
-            docenteView.asignaturasView = _docenteRepositoy.LoadDocenteAsignatura(DocenteId);
-            ViewBag.Asignaturas = new SelectList(_Asignatura.GetAll(), "Id", "Nombre");
-            return View("_AddSubjectDocente", docenteView);
+            
         }
 
-        
-  
-        public ActionResult AddSubjectDocente(int DocenteId, int AsignaturaId)
-        {
+
+
+        //public ActionResult AddSubjectDocente(int DocenteId, int AsignaturaId)
+        //{
             
-            return View();
-        }
+        //    return View();
+        //}
 
         // POST: Docentes/Create
         [HttpPost]
