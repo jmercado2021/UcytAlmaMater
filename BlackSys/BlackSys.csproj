@@ -1135,7 +1135,8 @@
     <Compile Include="Models\Dal\Institucion.cs">
       <DependentUpon>UcytAlmaMater.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Dal\MetaData\Docente\DocenteMetaData.cs" />
+    <Compile Include="Models\Dal\Metadata.cs" />
+    <Compile Include="Models\Dal\PartialClasses.cs" />
     <Compile Include="Models\Dal\Municipio.cs">
       <DependentUpon>UcytAlmaMater.tt</DependentUpon>
     </Compile>
@@ -1260,6 +1261,8 @@
       <DependentUpon>RptReporteCargaTraslado.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Repository\Area\IRepository.cs" />
+    <Compile Include="Repository\Area\Repository.cs" />
     <Compile Include="Repository\Departamento\IRepository.cs" />
     <Compile Include="Repository\Departamento\Repository.cs" />
     <Compile Include="Repository\Docentes\IRepository.cs" />
@@ -1274,6 +1277,8 @@
     <Compile Include="Repository\Pais\Repository.cs" />
     <Compile Include="Repository\Cargo\IRepository.cs" />
     <Compile Include="Repository\Cargo\Repository.cs" />
+    <Compile Include="Repository\Profesion\IRepository.cs" />
+    <Compile Include="Repository\Profesion\Repository.cs" />
     <Compile Include="Repository\TipoContrato\IRepository.cs" />
     <Compile Include="Repository\TipoContrato\Repository.cs" />
     <Compile Include="Startup.cs" />
@@ -1427,6 +1432,7 @@
     <Folder Include="Content\plugins\select2\sass\" />
     <Folder Include="Controllers\Compras\" />
     <Folder Include="Controllers\Tienda\" />
+    <Folder Include="Models\Dal\MetaData\" />
     <Folder Include="Reports\" />
     <Folder Include="Tools\" />
     <Folder Include="Views\Asignatura\" />

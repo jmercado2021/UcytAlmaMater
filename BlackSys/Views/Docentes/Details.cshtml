@@ -187,7 +187,7 @@
                                                     </div>
                                                     <div class="col-md-4">
                                                         <span>Fecha Nac:</span>
-                                                        @Html.EditorFor(model => model.docente.FechaNac, new { htmlAttributes = new { @class = "form-control col-lg-4", @id = "fecha" } })
+                                                        @Html.EditorFor(model => model.docente.FechaNac, new { htmlAttributes = new { @class = "form-control col-lg-4" } })
                                                         @Html.ValidationMessageFor(model => model.docente.FechaNac, "", new { @class = "text-danger" })
                                                     </div>
 
@@ -208,7 +208,8 @@
                                                         @Html.ValidationMessageFor(model => model.docente.Discapacidad, "", new { @class = "text-danger" })
                                                     </div>
                                                     <div id="intro" class="col-md-4">
-                                                        <span>Formacion Pedadogica</span>
+                                                        <span>Formacion Pedadogica:</span>
+                                                        @*@Html.LabelFor(model => model.docente.FormacionPedadogica, htmlAttributes: new { @class = "control-label col-md-4" })*@
                                                         @Html.DropDownList("FormacionPedadogica", (IEnumerable<SelectListItem>)ViewBag.FormacionPedadogica, null, new { @class = "form-control" })
                                                     </div>
                                                     <div class="col-md-4">
@@ -269,10 +270,7 @@
                                                 <div class="col-lg-12">
 
 
-                                                    <div id="intro" class="col-md-4">
-                                                        <span>Tipo Contrato:</span>
-                                                        @Html.DropDownList("TipoContratoId", (IEnumerable<SelectListItem>)ViewBag.TipoContrato, null, new { @class = "form-control" })
-                                                    </div>
+                                                   
 
                                                     <div class="col-md-4">
                                                         <span>Categoria Docente:</span>
@@ -311,11 +309,15 @@
                                                         @Html.ValidationMessageFor(model => model.docente.AnosAntiguedad, "", new { @class = "text-danger" })
                                                     </div>
 
-
                                                     <div id="intro" class="col-md-4">
                                                         <span>Tipo Contrato:</span>
-                                                        @Html.DropDownList("CargoId", (IEnumerable<SelectListItem>)ViewBag.Cargo, null, new { @class = "form-control" })
+                                                        @Html.DropDownList("TipoContratoId", (IEnumerable<SelectListItem>)ViewBag.TipoContrato, null, new { @class = "form-control" })
                                                     </div>
+
+                                                    @*<div id="intro" class="col-md-4">
+                                                        <span>Tipo Contrato:</span>
+                                                        @Html.DropDownList("CargoId", (IEnumerable<SelectListItem>)ViewBag.Cargo, null, new { @class = "form-control" })
+                                                    </div>*@
 
                                                     <div class="col-md-4">
 
@@ -393,24 +395,28 @@
                                             <br />
                                             <div class="row">
                                                 <div class="col-lg-12">
-                                                    <div class="col-md-3">
-                                                        <span>Profesion:</span>
-                                                        @Html.EditorFor(model => model.docente.ProfesionId, new { htmlAttributes = new { @class = "form-control col-md-3" } })
-                                                        @Html.ValidationMessageFor(model => model.docente.AnosAntiguedad, "", new { @class = "text-danger" })
+                                                    @*<div class="col-md-3">
+            <span>Profesion:</span>
+            @Html.EditorFor(model => model.docente.ProfesionId, new { htmlAttributes = new { @class = "form-control col-md-3" } })
+            @Html.ValidationMessageFor(model => model.docente.AnosAntiguedad, "", new { @class = "text-danger" })
+        </div>*@
+                                                    <div id="intro" class="col-md-4">
+                                                        <span>Profession:</span>
+                                                        @Html.DropDownList("ProfesionId", (IEnumerable<SelectListItem>)ViewBag.ProfesionV, null, new { @class = "form-control" })
                                                     </div>
+
 
 
                                                     @*<div id="intro" class="col-md-4">
-                                                        <span>Tipo Contrato:</span>
-                                                        @Html.DropDownList("CargoId", (IEnumerable<SelectListItem>)ViewBag.Cargo, null, new { @class = "form-control" })
-                                                    </div>*@
+            <span>Tipo Contrato:</span>
+            @Html.DropDownList("CargoId", (IEnumerable<SelectListItem>)ViewBag.Cargo, null, new { @class = "form-control" })
+        </div>*@
 
-                                                    <div class="col-md-4">
-
+                                                    <div id="intro" class="col-md-4">
                                                         <span>Area:</span>
-                                                        @Html.EditorFor(model => model.docente.AreaId, new { htmlAttributes = new { @class = "form-control col-md-4" } })
-                                                        @Html.ValidationMessageFor(model => model.docente.AreaId, "", new { @class = "text-danger" })
+                                                        @Html.DropDownList("AreaId", (IEnumerable<SelectListItem>)ViewBag.AreaV, null, new { @class = "form-control" })
                                                     </div>
+
                                                 </div>
                                             </div>
                                         </form>
@@ -430,8 +436,7 @@
                                         @Html.EditorFor(model => model.docente.ProyectosInvesTotEstudianteMasculino, new { htmlAttributes = new { @class = "form-control col-md-3" } })
                                         @Html.ValidationMessageFor(model => model.docente.HorasDedicadasExtencionSemana, "", new { @class = "text-danger" })
                                     </div>
-
-
+                                   
                                     <div class="col-md-4">
                                         <span>Proyectos Investigacion Total Estudiante Femenino:</span>
                                         @Html.EditorFor(model => model.docente.InstitucionRealizaExtencion, new { htmlAttributes = new { @class = "form-control col-md-3" } })

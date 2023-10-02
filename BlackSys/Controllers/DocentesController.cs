@@ -21,6 +21,8 @@ namespace BlackSys.Controllers
         private Repository.TipoContrato.IRepository _tipoContrato;
         private Repository.Cargo.IRepository _cargo;
         private Repository.Asignatura.IRepository _Asignatura;
+        private Repository.Profesion.IRepository _profesion;
+        private Repository.Area.IRepository _area;
         public DocentesController()
         {
             _docenteRepositoy = new Repository.Docentes.Repository(this.ModelState);
@@ -31,6 +33,8 @@ namespace BlackSys.Controllers
             _tipoContrato = new Repository.TipoContrato.Repository(this.ModelState);
             _cargo = new Repository.Cargo.Repository(this.ModelState);
             _Asignatura = new Repository.Asignatura.Repository(this.ModelState);
+            _profesion = new Repository.Profesion.Repository(this.ModelState);
+            _area = new Repository.Area.Repository(this.ModelState);
         }
         // GET: Docentes
         public ActionResult Index()
@@ -77,6 +81,8 @@ namespace BlackSys.Controllers
             ViewBag.FormacionPedadogica = new SelectList(lstrueFalse, "Id", "Descripcion");
             ViewBag.TipoContrato = new SelectList(_tipoContrato.GetAll(), "Id", "Descripcion");
             ViewBag.Cargo = new SelectList(_cargo.GetAll(), "Id", "Descripcion");
+            ViewBag.ProfesionV = new SelectList(_profesion.GetAll(), "Id", "Descripcion");
+            ViewBag.AreaV = new SelectList(_area.GetAll(), "Id", "Descripcion");
             docenteView.asignaturasView = _docenteRepositoy.LoadDocenteAsignatura(id);
             //ViewBag.Asignaturas = docenteView.asignaturasView;
             ViewBag.Asignaturas = new SelectList(_Asignatura.GetAll(), "Id", "Nombre");
