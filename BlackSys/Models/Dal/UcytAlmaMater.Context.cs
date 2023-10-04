@@ -40,8 +40,8 @@ namespace BlackSys.Models.Dal
         public virtual DbSet<Asignatura> Asignatura { get; set; }
         public virtual DbSet<DocenteIdioma> DocenteIdioma { get; set; }
         public virtual DbSet<Idiomas> Idiomas { get; set; }
-        public virtual DbSet<Docente> Docente { get; set; }
         public virtual DbSet<DocenteAsignatura> DocenteAsignatura { get; set; }
         public virtual DbSet<ViewDocenteAsignatura> ViewDocenteAsignatura { get; set; }
+        public virtual DbSet<Docente> Docente { get; set; }
     }
 }

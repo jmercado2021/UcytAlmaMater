@@ -1,12 +1,19 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
 using System.ComponentModel.DataAnnotations;
 
 namespace BlackSys.Models.Dal
 {
-    public class DocenteMetadata
+    [MetadataType(typeof(DocenteMetaData))]
+    public partial class Docente
     {
-       
-        [Display(Name = "Id")]
+    }
+
+    public partial class DocenteMetaData
+    {
+        [Display(Name = "Id ")]
         public int Id { get; set; }
 
         [Display(Name = "Recinto")]
@@ -18,14 +25,14 @@ namespace BlackSys.Models.Dal
         [Display(Name = "Area")]
         public Nullable<int> AreaId { get; set; }
 
-        [MaxLength(100,ErrorMessage = "Nombre maximo 100 caracteres")]
-        [Required(ErrorMessage ="Nombre es Requerido")]
+        [MaxLength(100, ErrorMessage = "Nombre maximo 100 caracteres")]
+        [Required(ErrorMessage = "Nombre es Requerido")]
         [Display(Name = "Nombre")]
         public string Nombre { get; set; }
 
         [MaxLength(200, ErrorMessage = "Nombre maximo 200 caracteres")]
         [Required(ErrorMessage = "Direccion es Requerida")]
-        [Display(Name = "Direccion")]
+        [Display(Name = "Dirección")]
         public string Direccion { get; set; }
 
 
@@ -38,9 +45,9 @@ namespace BlackSys.Models.Dal
         [Display(Name = "Sexo")]
         public string Sexo { get; set; }
 
-        [Display(Name = "Fecha de Nacimientoo")]
+        [Display(Name = "Fecha de Nacimiento")]
         [Required(ErrorMessage = "Debe Seleccionar fecha de Nacimiento")]
-        //[DataType(DataType.Date), Required]
+        [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:dd/MM/YYY}", ApplyFormatInEditMode = true)]
         public Nullable<System.DateTime> FechaNac { get; set; }
 
@@ -117,10 +124,10 @@ namespace BlackSys.Models.Dal
         public string ServiciosProgramasEspeciales { get; set; }
 
         [Display(Name = "Años de Antiguedad")]
-        public Nullable<int> AnosAntiguedad { get; set; }
+        public long AnosAntiguedad { get; set; }
 
         [Display(Name = "Numero de Hijos")]
-        public Nullable<int> NHijos { get; set; }
+        public Nullable<short> NHijos { get; set; }
 
         [Display(Name = "Cargo Actual")]
         public Nullable<int> CargoActualId { get; set; }
@@ -211,18 +218,5 @@ namespace BlackSys.Models.Dal
         [Display(Name = "Activo")]
         public Nullable<bool> Activo { get; set; }
 
-        //public virtual Area Area { get; set; }
-        //public virtual Cargo Cargo { get; set; }
-        //public virtual Departamento Departamento { get; set; }
-        //public virtual Recinto Recinto { get; set; }
-        //public virtual Municipio Municipio { get; set; }
-        //public virtual Profesion Profesion { get; set; }
-        //public virtual TipoContrato TipoContrato { get; set; }
-    }
-
-    //public class EnrollmentMetadata
-    //{
-    //    [Range(0, 4)]
-    //    public Nullable<decimal> Grade;
-    //}
+}
 }

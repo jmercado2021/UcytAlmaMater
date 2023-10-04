@@ -90,7 +90,7 @@ namespace BlackSys.Controllers
             //}
         }
         [HttpPost]
-        public ActionResult Details(DocenteViewModel docente)
+        public ActionResult Details(DocenteViewModel viewmodel)
         {
             var enumData = from Gender e in Enum.GetValues(typeof(Gender))
                            select new
@@ -113,7 +113,7 @@ namespace BlackSys.Controllers
 
 
             DocenteViewModel docenteView = new DocenteViewModel();
-            docenteView.docente = _docenteRepositoy.GetById(docente.docente.Id);
+            docenteView.docente = _docenteRepositoy.GetById(viewmodel.docente.Id);
             ViewBag.Departamento = new SelectList(_departamento.GetAll(), "Id", "Descripcion");
             ViewBag.Municipio = new SelectList(_municipio.GetAll(), "Id", "Descripcion");
             ViewBag.Etnia = new SelectList(_etnia.GetAll(), "Id", "Descripcion");
@@ -124,23 +124,25 @@ namespace BlackSys.Controllers
             ViewBag.FormacionPedadogica = new SelectList(lstrueFalse, "Id", "Descripcion");
             ViewBag.TipoContrato = new SelectList(_tipoContrato.GetAll(), "Id", "Descripcion");
             ViewBag.Cargo = new SelectList(_cargo.GetAll(), "Id", "Descripcion");
-            docenteView.asignaturasView = _docenteRepositoy.LoadDocenteAsignatura(docente.docente.Id);
+            ViewBag.ProfesionV = new SelectList(_profesion.GetAll(), "Id", "Descripcion");
+            ViewBag.AreaV = new SelectList(_area.GetAll(), "Id", "Descripcion");
+            docenteView.asignaturasView = _docenteRepositoy.LoadDocenteAsignatura(viewmodel.docente.Id);
             //ViewBag.Asignaturas = docenteView.asignaturasView;
             ViewBag.Asignaturas = new SelectList(_Asignatura.GetAll(), "Id", "Nombre");
 
 
-            ModelState.AddModelError("","Mi error");
-            return View(docente);
+            ModelState.AddModelError("", "Existenen errores en datos ingresados, Por favor verifique los campos marcados en rojo ");
+            //return View(viewmodel);
 
-            if (ModelState.IsValid)
-            {
-                if (_docenteRepositoy.Update(docente.docente))
+            //if (ModelState.IsValid)
+            //{
+                if (_docenteRepositoy.Update(viewmodel.docente))
                 {
                     _docenteRepositoy.Save();
                 }
                 //_docenteRepositoy.Update(docente);
-            }
-            return View(docente);
+            //}
+            return View(docenteView);
             //return View();
             //}
         }

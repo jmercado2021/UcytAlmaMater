@@ -912,19 +912,8 @@
     <Content Include="Content\DynaTables\CONTRIBUTING.md" />
     <Content Include="Content\DynaTables\package.json" />
     <Content Include="Imagenes\FONDO.psd" />
-    <Content Include="DataTable\DsetBodega.xsc">
-      <DependentUpon>DsetBodega.xsd</DependentUpon>
-    </Content>
     <Content Include="bower_components\chart.js\.bower.json" />
     <Content Include="bower_components\chart.js\bower.json" />
-    <None Include="DataTable\DsetBodega.xsd">
-      <SubType>Designer</SubType>
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>DsetBodega.Designer.cs</LastGenOutput>
-    </None>
-    <Content Include="DataTable\DsetBodega.xss">
-      <DependentUpon>DsetBodega.xsd</DependentUpon>
-    </Content>
     <None Include="Properties\PublishProfiles\Local.pubxml" />
     <None Include="Scripts\jquery-3.6.0.intellisense.js" />
     <Content Include="Scripts\jquery-3.6.0.js" />
@@ -1065,11 +1054,6 @@
     <Compile Include="Controllers\SISCOMP\OficinaController.cs" />
     <Compile Include="Controllers\SuppliersController.cs" />
     <Compile Include="Controllers\SystemController.cs" />
-    <Compile Include="DataTable\DsetBodega.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DsetBodega.xsd</DependentUpon>
-    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -1079,7 +1063,6 @@
     <Compile Include="Models\Articulo.cs">
       <DependentUpon>SISCOMP_Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\ArticulosDescuentoClass.cs" />
     <Compile Include="Models\AspNetRoles.cs" />
     <Compile Include="Models\AspNetUserClaims.cs" />
     <Compile Include="Models\AspNetUserLogins.cs" />
@@ -1135,8 +1118,8 @@
     <Compile Include="Models\Dal\Institucion.cs">
       <DependentUpon>UcytAlmaMater.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Dal\Metadata.cs" />
-    <Compile Include="Models\Dal\PartialClasses.cs" />
+    <Compile Include="Models\Dal\MetaData\MetaData.cs" />
+    <Compile Include="Models\Dal\MetaData\PartialClass.cs" />
     <Compile Include="Models\Dal\Municipio.cs">
       <DependentUpon>UcytAlmaMater.tt</DependentUpon>
     </Compile>
@@ -1345,11 +1328,6 @@
     <Content Include="Views\Customers\Edit.cshtml" />
     <Content Include="Views\Customers\Index.cshtml" />
     <Content Include="Views\Shared\_Loyout2.cshtml" />
-    <Content Include="Views\Sucursal\InformacionCliente.cshtml" />
-    <Content Include="Views\Sucursal\ListaClientesRecetario.cshtml" />
-    <Content Include="Views\Sucursal\NombreSucursal.cshtml" />
-    <Content Include="Views\Sucursal\ParametrosConsultaRecetario.cshtml" />
-    <Content Include="Views\Sucursal\PNombreSucursal.cshtml" />
     <Content Include="Views\Soporte\BorraExpressNull.cshtml" />
     <Content Include="Views\Soporte\ParametrosBorraExpressNull.cshtml" />
     <Content Include="Views\Dashboard\Dash1.cshtml" />
@@ -1432,7 +1410,6 @@
     <Folder Include="Content\plugins\select2\sass\" />
     <Folder Include="Controllers\Compras\" />
     <Folder Include="Controllers\Tienda\" />
-    <Folder Include="Models\Dal\MetaData\" />
     <Folder Include="Reports\" />
     <Folder Include="Tools\" />
     <Folder Include="Views\Asignatura\" />

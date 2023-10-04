@@ -44,10 +44,10 @@ namespace BlackSys.Models.Dal
         public Nullable<int> TipoContratoId { get; set; }
         public string CategoriaEnDocente { get; set; }
         public string ServiciosProgramasEspeciales { get; set; }
-        public Nullable<int> AnosAntiguedad { get; set; }
-        public Nullable<int> NHijos { get; set; }
+        public Nullable<long> AnosAntiguedad { get; set; }
+        public Nullable<short> NHijos { get; set; }
         public Nullable<int> CargoActualId { get; set; }
-        public Nullable<int> CantGrupos { get; set; }
+        public byte[] CantGrupos { get; set; }
         public Nullable<int> HorasClase { get; set; }
         public string NoInss { get; set; }
         public Nullable<int> HorasClaseSemana { get; set; }

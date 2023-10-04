@@ -1,6 +1,16 @@
 ﻿
+//$(document).ready(function () {
 
+//    $("#docente_FechaNac").datepicker({
+//        dateFormat: "dd/mm/yy", // Formato de fecha deseado
+//        changeMonth: true, // Permite cambiar el mes
+//        changeYear: true, // Permite cambiar el año
+//        yearRange: "1900:2030" // Rango de años permitidos
+//        // Puedes personalizar más opciones según tus necesidades
+//    });
+//});
 
+/*$("#docente_FechaNac").datepicker();*/
 
 function AddSubject() {
     var DtoDocenteAsignatura = {
