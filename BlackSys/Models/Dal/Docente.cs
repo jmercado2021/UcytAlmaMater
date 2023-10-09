@@ -16,7 +16,7 @@ namespace BlackSys.Models.Dal
     {
         public int Id { get; set; }
         public int RecintoId { get; set; }
-        public int ProfesionId { get; set; }
+        public Nullable<int> ProfesionId { get; set; }
         public Nullable<int> AreaId { get; set; }
         public string Nombre { get; set; }
         public string Direccion { get; set; }
@@ -36,7 +36,7 @@ namespace BlackSys.Models.Dal
         public string Discapacidad { get; set; }
         public string FormacionPedadogica { get; set; }
         public Nullable<System.DateTime> FechaFormacionPedadogica { get; set; }
-        public Nullable<bool> Estudia { get; set; }
+        public bool Estudia { get; set; }
         public string NivelFormacion { get; set; }
         public string RecibeBeca { get; set; }
         public string TipoBeca { get; set; }
@@ -74,7 +74,7 @@ namespace BlackSys.Models.Dal
         public string UsuarioModifica { get; set; }
         public Nullable<System.DateTime> FechaRegistro { get; set; }
         public Nullable<System.DateTime> FechaModifica { get; set; }
-        public Nullable<bool> Activo { get; set; }
+        public bool Activo { get; set; }
     
         public virtual Area Area { get; set; }
         public virtual Cargo Cargo { get; set; }

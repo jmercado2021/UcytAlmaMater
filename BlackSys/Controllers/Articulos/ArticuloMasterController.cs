@@ -211,7 +211,7 @@ namespace BlackSys.Controllers.Articulos
 
             ////int Articulo_Unidad = 1;
 
-            //var user = User.Identity.GetUserName();
+            var user = User.Identity.GetUserName();
             //using (var ctx = new COMERCIALEntities())
             //{
             //    using (var ctxTrans = ctx.Database.BeginTransaction())

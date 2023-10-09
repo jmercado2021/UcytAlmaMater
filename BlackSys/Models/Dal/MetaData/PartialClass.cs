@@ -88,14 +88,14 @@ namespace BlackSys.Models.Dal
         [MaxLength(50, ErrorMessage = "Formacion Pedadogica Maximo 10 caracteres")]
         public string FormacionPedadogica { get; set; }
 
-        [Display(Name = "Fecha Formacion Pedadogica")]
+        [Display(Name = "Fecha Formación Pedadogica")]
         [DataType(DataType.Date), Required]
         [DisplayFormat(DataFormatString = "{0:dd/MM/YYY}", ApplyFormatInEditMode = true)]
         public Nullable<System.DateTime> FechaFormacionPedadogica { get; set; }
 
         [Display(Name = "Estudia Si/No")]
         [Required(ErrorMessage = "Dato Estudia Requerido")]
-        public Nullable<bool> Estudia { get; set; }
+        public bool? Estudia { get; set; }
 
         [Display(Name = "Nivel de Formación")]
         [Required(ErrorMessage = "Nivel de Formación es Requerido")]
@@ -140,6 +140,7 @@ namespace BlackSys.Models.Dal
 
         [Display(Name = "Nº Inss")]
         public string NoInss { get; set; }
+
 
         [Display(Name = "Horas Clase Demana")]
         public Nullable<int> HorasClaseSemana { get; set; }
@@ -205,18 +206,18 @@ namespace BlackSys.Models.Dal
         public Nullable<decimal> ValorXHoraClase { get; set; }
         public string UsuarioModifica { get; set; }
 
-        [Display(Name = "Fecha Formacion Pedadogica")]
-        [DataType(DataType.Date), Required]
+        [Display(Name = "Fecha de Registro")]
+        [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:dd/MM/YYY}", ApplyFormatInEditMode = true)]
         public Nullable<System.DateTime> FechaRegistro { get; set; }
 
         [Display(Name = "Fecha Formacion Pedadogica")]
-        [DataType(DataType.Date), Required]
+        [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:dd/MM/YYY}", ApplyFormatInEditMode = true)]
         public Nullable<System.DateTime> FechaModifica { get; set; }
 
         [Display(Name = "Activo")]
-        public Nullable<bool> Activo { get; set; }
+        public bool Activo { get; set; }
 
 }
 }

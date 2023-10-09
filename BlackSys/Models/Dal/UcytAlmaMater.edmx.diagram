@@ -4,30 +4,28 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="0bb6ce4c9962486d9ae76f8a453efcb3" Name="Diagram1">
-        <EntityTypeShape EntityType="UcytAlmaMaterModel.Area" Width="1.5" PointX="3" PointY="3" IsExpanded="true" />
-        <EntityTypeShape EntityType="UcytAlmaMaterModel.Cargo" Width="1.5" PointX="3" PointY="10.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="UcytAlmaMaterModel.Departamento" Width="1.5" PointX="10" PointY="0.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="UcytAlmaMaterModel.Empresa" Width="1.5" PointX="0.75" PointY="6.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="UcytAlmaMaterModel.Institucion" Width="1.5" PointX="7.75" PointY="7.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="UcytAlmaMaterModel.Municipio" Width="1.5" PointX="12.25" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="UcytAlmaMaterModel.Pais" Width="1.5" PointX="7.75" PointY="1.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="UcytAlmaMaterModel.Profesion" Width="1.5" PointX="3" PointY="13.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="UcytAlmaMaterModel.Recinto" Width="1.5" PointX="3" PointY="6.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="UcytAlmaMaterModel.TipoContrato" Width="1.5" PointX="3" PointY="15.625" IsExpanded="true" />
+      <Diagram DiagramId="f46a91b91eb541618a26293ffb648ca8" Name="Diagram1" ZoomLevel="74">
+        <EntityTypeShape EntityType="UcytAlmaMaterModel.Cargo" Width="1.5" PointX="5.25" PointY="12.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="UcytAlmaMaterModel.Departamento" Width="1.5" PointX="3" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="UcytAlmaMaterModel.DocenteAsignatura" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UcytAlmaMaterModel.DocenteIdioma" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UcytAlmaMaterModel.Empresa" Width="1.5" PointX="3" PointY="17.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="UcytAlmaMaterModel.Etnia" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UcytAlmaMaterModel.Idiomas" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UcytAlmaMaterModel.Institucion" Width="1.5" PointX="4.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UcytAlmaMaterModel.Municipio" Width="1.5" PointX="5.25" PointY="23.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="UcytAlmaMaterModel.Pais" Width="1.5" PointX="0.75" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="UcytAlmaMaterModel.Profesion" Width="1.5" PointX="5.25" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UcytAlmaMaterModel.Recinto" Width="1.5" PointX="5.25" PointY="17.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="UcytAlmaMaterModel.TipoContrato" Width="1.5" PointX="5.25" PointY="20.625" IsExpanded="true" />
         <AssociationConnector Association="UcytAlmaMaterModel.FK_Departamento_Pais" ManuallyRouted="false" />
         <AssociationConnector Association="UcytAlmaMaterModel.FK_Municipio_Departamento" ManuallyRouted="false" />
         <AssociationConnector Association="UcytAlmaMaterModel.FK_Recinto_Empresa" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="UcytAlmaMaterModel.Etnia" Width="1.5" PointX="7.375" PointY="4.75" />
-        <AssociationConnector Association="UcytAlmaMaterModel.FK_Departamento_Pais1" />
-        <AssociationConnector Association="UcytAlmaMaterModel.FK_Municipio_Departamento1" />
-        <EntityTypeShape EntityType="UcytAlmaMaterModel.ViewDocenteIdiomas" Width="1.5" PointX="10.375" PointY="7.75" />
-        <EntityTypeShape EntityType="UcytAlmaMaterModel.Asignatura" Width="1.5" PointX="7.375" PointY="10.75" />
-        <EntityTypeShape EntityType="UcytAlmaMaterModel.DocenteIdioma" Width="1.5" PointX="9.375" PointY="10.75" />
-        <EntityTypeShape EntityType="UcytAlmaMaterModel.Idiomas" Width="1.5" PointX="11.375" PointY="4.75" />
-        <EntityTypeShape EntityType="UcytAlmaMaterModel.DocenteAsignatura" Width="1.5" PointX="11.375" PointY="10.75" />
-        <EntityTypeShape EntityType="UcytAlmaMaterModel.ViewDocenteAsignatura" Width="1.5" PointX="9.375" PointY="13.75" />
-        <EntityTypeShape EntityType="UcytAlmaMaterModel.Docente" Width="1.5" PointX="14.5" PointY="2.125" />
+        <EntityTypeShape EntityType="UcytAlmaMaterModel.Area" Width="1.5" PointX="5.375" PointY="6.875" />
+        <EntityTypeShape EntityType="UcytAlmaMaterModel.ViewDocenteAsignatura" Width="1.5" PointX="7.375" PointY="0.75" />
+        <EntityTypeShape EntityType="UcytAlmaMaterModel.ViewDocenteIdiomas" Width="1.5" PointX="7.375" PointY="4.75" />
+        <EntityTypeShape EntityType="UcytAlmaMaterModel.Asignatura" Width="1.5" PointX="9.375" PointY="0.75" />
+        <EntityTypeShape EntityType="UcytAlmaMaterModel.Docente" Width="1.5" PointX="7.625" PointY="9.25" />
         <AssociationConnector Association="UcytAlmaMaterModel.FK_Docente_Area" />
         <AssociationConnector Association="UcytAlmaMaterModel.FK_Docente_Cargo" />
         <AssociationConnector Association="UcytAlmaMaterModel.FK_Docente_Departamento" />

@@ -77,7 +77,7 @@ namespace BlackSys.Controllers
             ViewBag.Pais = new SelectList(_pais.GetAll(), "Id", "Descripcion");
             ViewBag.Sexo = new SelectList(enumData, "Id", "Descripcion");
             ViewBag.CivilStatus = new SelectList(lscivilstatus, "Id", "Descripcion");
-            ViewBag.Estudia = new SelectList(lstrueFalse, "Id", "Descripcion");
+            ViewBag.SINO = new SelectList(lstrueFalse, "Id", "Descripcion");
             ViewBag.FormacionPedadogica = new SelectList(lstrueFalse, "Id", "Descripcion");
             ViewBag.TipoContrato = new SelectList(_tipoContrato.GetAll(), "Id", "Descripcion");
             ViewBag.Cargo = new SelectList(_cargo.GetAll(), "Id", "Descripcion");
@@ -90,7 +90,7 @@ namespace BlackSys.Controllers
             //}
         }
         [HttpPost]
-        public ActionResult Details(DocenteViewModel viewmodel)
+        public ActionResult Details(DocenteViewModel model)
         {
             var enumData = from Gender e in Enum.GetValues(typeof(Gender))
                            select new
@@ -111,38 +111,47 @@ namespace BlackSys.Controllers
                                   Descripcion = e.ToString()
                               };
 
+            //model.docente.Estudia = "SI" ? model.docente.Estudia = false : model.docente.Estudia = true; 
 
             DocenteViewModel docenteView = new DocenteViewModel();
-            docenteView.docente = _docenteRepositoy.GetById(viewmodel.docente.Id);
+            docenteView.docente = _docenteRepositoy.GetById(model.docente.Id);
+
             ViewBag.Departamento = new SelectList(_departamento.GetAll(), "Id", "Descripcion");
             ViewBag.Municipio = new SelectList(_municipio.GetAll(), "Id", "Descripcion");
             ViewBag.Etnia = new SelectList(_etnia.GetAll(), "Id", "Descripcion");
             ViewBag.Pais = new SelectList(_pais.GetAll(), "Id", "Descripcion");
             ViewBag.Sexo = new SelectList(enumData, "Id", "Descripcion");
             ViewBag.CivilStatus = new SelectList(lscivilstatus, "Id", "Descripcion");
-            ViewBag.Estudia = new SelectList(lstrueFalse, "Id", "Descripcion");
+            ViewBag.SINO = new SelectList(lstrueFalse, "Id", "Descripcion");
             ViewBag.FormacionPedadogica = new SelectList(lstrueFalse, "Id", "Descripcion");
             ViewBag.TipoContrato = new SelectList(_tipoContrato.GetAll(), "Id", "Descripcion");
             ViewBag.Cargo = new SelectList(_cargo.GetAll(), "Id", "Descripcion");
             ViewBag.ProfesionV = new SelectList(_profesion.GetAll(), "Id", "Descripcion");
             ViewBag.AreaV = new SelectList(_area.GetAll(), "Id", "Descripcion");
-            docenteView.asignaturasView = _docenteRepositoy.LoadDocenteAsignatura(viewmodel.docente.Id);
+            model.asignaturasView = _docenteRepositoy.LoadDocenteAsignatura(model.docente.Id);
             //ViewBag.Asignaturas = docenteView.asignaturasView;
             ViewBag.Asignaturas = new SelectList(_Asignatura.GetAll(), "Id", "Nombre");
+            //Validaciones
+            if (model.docente.Nombre ==null)
+            {
+                ModelState.AddModelError("", "Nombre no puede quedar vacio, Por favor registre el nombre del Docente ");
+                return View(model);
+            }
 
-
-            ModelState.AddModelError("", "Existenen errores en datos ingresados, Por favor verifique los campos marcados en rojo ");
+            //ModelState.AddModelError("", "Existenen errores en datos ingresados, Por favor verifique los campos marcados en rojo ");
             //return View(viewmodel);
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
 
-            //if (ModelState.IsValid)
-            //{
-                if (_docenteRepositoy.Update(viewmodel.docente))
+            if (_docenteRepositoy.Update(model.docente))
                 {
                     _docenteRepositoy.Save();
                 }
                 //_docenteRepositoy.Update(docente);
-            //}
-            return View(docenteView);
+           
+            return View(model);
             //return View();
             //}
         }

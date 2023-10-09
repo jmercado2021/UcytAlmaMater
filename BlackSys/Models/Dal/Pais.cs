@@ -17,15 +17,14 @@ namespace BlackSys.Models.Dal
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Pais()
         {
-            this.Departamento1 = new HashSet<Departamento>();
+            this.Departamento = new HashSet<Departamento>();
         }
     
         public int Id { get; set; }
         public string Descripcion { get; set; }
         public Nullable<bool> Activo { get; set; }
     
-        public virtual Departamento Departamento { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Departamento> Departamento1 { get; set; }
+        public virtual ICollection<Departamento> Departamento { get; set; }
     }
 }

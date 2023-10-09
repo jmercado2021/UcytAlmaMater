@@ -25,23 +25,23 @@ namespace BlackSys.Models.Dal
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Area> Area { get; set; }
         public virtual DbSet<Cargo> Cargo { get; set; }
         public virtual DbSet<Departamento> Departamento { get; set; }
+        public virtual DbSet<DocenteAsignatura> DocenteAsignatura { get; set; }
+        public virtual DbSet<DocenteIdioma> DocenteIdioma { get; set; }
         public virtual DbSet<Empresa> Empresa { get; set; }
+        public virtual DbSet<Etnia> Etnia { get; set; }
+        public virtual DbSet<Idiomas> Idiomas { get; set; }
         public virtual DbSet<Institucion> Institucion { get; set; }
         public virtual DbSet<Municipio> Municipio { get; set; }
         public virtual DbSet<Pais> Pais { get; set; }
         public virtual DbSet<Profesion> Profesion { get; set; }
         public virtual DbSet<Recinto> Recinto { get; set; }
         public virtual DbSet<TipoContrato> TipoContrato { get; set; }
-        public virtual DbSet<Etnia> Etnia { get; set; }
+        public virtual DbSet<Area> Area { get; set; }
+        public virtual DbSet<ViewDocenteAsignatura> ViewDocenteAsignatura { get; set; }
         public virtual DbSet<ViewDocenteIdiomas> ViewDocenteIdiomas { get; set; }
         public virtual DbSet<Asignatura> Asignatura { get; set; }
-        public virtual DbSet<DocenteIdioma> DocenteIdioma { get; set; }
-        public virtual DbSet<Idiomas> Idiomas { get; set; }
-        public virtual DbSet<DocenteAsignatura> DocenteAsignatura { get; set; }
-        public virtual DbSet<ViewDocenteAsignatura> ViewDocenteAsignatura { get; set; }
         public virtual DbSet<Docente> Docente { get; set; }
     }
 }

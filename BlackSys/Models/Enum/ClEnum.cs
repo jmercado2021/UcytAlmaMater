@@ -46,7 +46,8 @@ namespace BlackSys.Models.Enum
             Si = 0,
             [Display(Name = "No")]
             No = 1
-           
+
+
         }
         public enum NotificationType
         {

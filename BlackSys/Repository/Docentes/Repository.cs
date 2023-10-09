@@ -7,6 +7,7 @@ using Microsoft.AspNet.Identity;
 using BlackSys.Models;
 using BlackSys.Models.Dal;
 using System.Web.Mvc;
+//using System.Security.Principal;
 
 
 namespace BlackSys.Repository.Docentes
@@ -14,6 +15,7 @@ namespace BlackSys.Repository.Docentes
     public class Repository : IRepository
     {
         private readonly UcytAlmaMaterEntities _dtx = new UcytAlmaMaterEntities();
+        private System.Security.Principal.IPrincipal principal;
         private ModelStateDictionary _modelstate;
         public Repository(ModelStateDictionary modelstate)
         {
@@ -39,12 +41,84 @@ namespace BlackSys.Repository.Docentes
         }
         public bool Update(Docente p)
         {
-            if (_modelstate.IsValid)
+            //if (_modelstate.IsValid)
+            //{
+            try
             {
                 Models.Dal.Docente a = GetById(p.Id);
-                _dtx.Entry(a).CurrentValues.SetValues(p);
+                a.Nombre = p.Nombre;
+                a.NoInss = p.NoInss;
+                a.MunicipioId = p.MunicipioId;
+                a.Activo = p.Activo;
+                a.AnosAntiguedad = p.AnosAntiguedad;
+                a.AreaId = p.AreaId;
+                a.CantAlumnoFemTutoriaMonografia = p.CantAlumnoFemTutoriaMonografia;
+                a.CantAlumnoMascTutoriaMonografia = p.CantAlumnoMascTutoriaMonografia;
+                a.CantGrupos = p.CantGrupos;
+                a.CapacitacionesRecibidas = p.CapacitacionesRecibidas;
+                a.Cargo = p.Cargo;
+                a.CargoActualId = p.CargoActualId;
+                a.CategoriaEnDocente = p.CategoriaEnDocente;
+                a.Cedula = p.Cedula;
+                a.Celular = p.Celular;
+                a.DepartamentoId = p.DepartamentoId;
+                a.Dependencia = p.Dependencia;
+                a.Direccion = p.Direccion;
+                a.Discapacidad = p.Discapacidad;
+                a.DuracionMobilidad = p.DuracionMobilidad;
+                a.Email = p.Email;
+                a.EstadoCivil = p.EstadoCivil;
+                a.Estudia = p.Estudia;
+                a.EtniaId = p.EtniaId;
+                a.FechaFormacionPedadogica = p.FechaFormacionPedadogica;
+                a.FechaModifica = p.FechaModifica;
+                a.FechaNac = p.FechaNac;
+                a.FinalidadMobilidad = p.FinalidadMobilidad;
+                a.FormacionPedadogica = p.FormacionPedadogica;
+                a.HorasClase = p.HorasClase;
+                a.HorasClaseSemana = p.HorasClaseSemana;
+                a.HorasDedicadasExtencionSemana = p.HorasDedicadasExtencionSemana;
+                a.HorasenCursoPosgradoTotal = p.HorasenCursoPosgradoTotal;
+                a.HorasEnCursoPostgradoFemenino = p.HorasEnCursoPostgradoFemenino;
+                a.HorasInvestigacionSemana = p.HorasInvestigacionSemana;
+                a.InstitucionRealizaExtencion = p.InstitucionRealizaExtencion;
+                a.ModalidadDeMobilidad = p.ModalidadDeMobilidad;
+                a.MontoBeca = p.MontoBeca;
+                a.MovilidadAcademica = p.MovilidadAcademica;
+                a.MunicipioId = p.MunicipioId;
+                a.NHijos = p.NHijos;
+                a.NivelFormacion = p.NivelFormacion;
+                a.PaisId = p.PaisId;
+                a.NombreInstitucion = p.NombreInstitucion;
+                a.ProfesionId = p.ProfesionId;
+                a.ProyectosInvesTotEstudianteMasculino = p.ProyectosInvesTotEstudianteMasculino;
+                a.ProyectosInvTtotalEstudianteFem = p.ProyectosInvTtotalEstudianteFem;
+                a.RecibeBeca = p.RecibeBeca;
+                a.RecintoId = p.RecintoId;
+                a.ServiciosProgramasEspeciales = p.ServiciosProgramasEspeciales;
+                a.Sexo = p.Sexo=="1"? "F":"M";
+                a.Telefono = p.Telefono;
+                a.TematicaCapacitacionRecibida = p.TematicaCapacitacionRecibida;
+                a.TipoBeca = p.TipoBeca;
+                a.TipoContratoId = p.TipoContratoId;
+                a.TipoInvestigacionParticipa = p.TipoInvestigacionParticipa;
+                a.TipoMobilidadAcademica = p.TipoMobilidadAcademica;
+                a.Tutorias = p.Tutorias;
+                a.UsuarioModifica = "user";
+                //a.UsuarioModifica = principal.User.Identity.GetUserName();
+                a.ValorXHoraClase = p.ValorXHoraClase;
+                a.Zona = p.Zona;
+                //_dtx.SaveChanges();
+                return true;
             }
-            return _modelstate.IsValid;
+            catch (Exception E)
+            {
+                return false;
+            }
+
+
+            //}
+           
            
 
         }

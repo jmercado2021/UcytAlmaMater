@@ -26,7 +26,6 @@ namespace BlackSys.Models.Dal
         public Nullable<bool> Activo { get; set; }
     
         public virtual Departamento Departamento { get; set; }
-        public virtual Departamento Departamento1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Docente> Docente { get; set; }
     }

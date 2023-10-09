@@ -899,13 +899,6 @@
     <Content Include="Models\SISCOMP_Model.edmx.diagram">
       <DependentUpon>SISCOMP_Model.edmx</DependentUpon>
     </Content>
-    <EntityDeploy Include="Models\Dal\UcytAlmaMater.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>UcytAlmaMater.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\Dal\UcytAlmaMater.edmx.diagram">
-      <DependentUpon>UcytAlmaMater.edmx</DependentUpon>
-    </Content>
     <Content Include="Scripts\jquery-3.4.1.min.map" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Content\DynaTables\bower.json" />
@@ -914,6 +907,13 @@
     <Content Include="Imagenes\FONDO.psd" />
     <Content Include="bower_components\chart.js\.bower.json" />
     <Content Include="bower_components\chart.js\bower.json" />
+    <EntityDeploy Include="Models\Dal\UcytAlmaMater.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>UcytAlmaMater.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\Dal\UcytAlmaMater.edmx.diagram">
+      <DependentUpon>UcytAlmaMater.edmx</DependentUpon>
+    </Content>
     <None Include="Properties\PublishProfiles\Local.pubxml" />
     <None Include="Scripts\jquery-3.6.0.intellisense.js" />
     <Content Include="Scripts\jquery-3.6.0.js" />
@@ -1118,7 +1118,6 @@
     <Compile Include="Models\Dal\Institucion.cs">
       <DependentUpon>UcytAlmaMater.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Dal\MetaData\MetaData.cs" />
     <Compile Include="Models\Dal\MetaData\PartialClass.cs" />
     <Compile Include="Models\Dal\Municipio.cs">
       <DependentUpon>UcytAlmaMater.tt</DependentUpon>

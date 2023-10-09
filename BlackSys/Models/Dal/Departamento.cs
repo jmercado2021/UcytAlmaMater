@@ -17,7 +17,7 @@ namespace BlackSys.Models.Dal
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Departamento()
         {
-            this.Municipio1 = new HashSet<Municipio>();
+            this.Municipio = new HashSet<Municipio>();
             this.Docente = new HashSet<Docente>();
         }
     
@@ -27,10 +27,8 @@ namespace BlackSys.Models.Dal
         public Nullable<bool> Activo { get; set; }
     
         public virtual Pais Pais { get; set; }
-        public virtual Municipio Municipio { get; set; }
-        public virtual Pais Pais1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Municipio> Municipio1 { get; set; }
+        public virtual ICollection<Municipio> Municipio { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Docente> Docente { get; set; }
     }
