@@ -842,6 +842,7 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\Chart.js" />
     <Content Include="Scripts\Chart.min.js" />
+    <Content Include="Scripts\Controller\Root\Docentes\AgregarDocente.js" />
     <Content Include="Scripts\Controller\Root\Docentes\Details.js" />
     <Content Include="Scripts\DataTables-1.10.18\css\Buttons.css" />
     <Content Include="Scripts\DataTables-1.10.18\css\dataTables.bootstrap.css" />
@@ -1261,6 +1262,8 @@
     <Compile Include="Repository\Cargo\Repository.cs" />
     <Compile Include="Repository\Profesion\IRepository.cs" />
     <Compile Include="Repository\Profesion\Repository.cs" />
+    <Compile Include="Repository\Recinto\IRepository.cs" />
+    <Compile Include="Repository\Recinto\Repository.cs" />
     <Compile Include="Repository\TipoContrato\IRepository.cs" />
     <Compile Include="Repository\TipoContrato\Repository.cs" />
     <Compile Include="Startup.cs" />
@@ -1338,11 +1341,6 @@
     <Content Include="Views\TblCargo\Details.cshtml" />
     <Content Include="Views\TblCargo\Edit.cshtml" />
     <Content Include="Views\TblCargo\Index.cshtml" />
-    <Content Include="Views\TblSector\Create.cshtml" />
-    <Content Include="Views\TblSector\Delete.cshtml" />
-    <Content Include="Views\TblSector\Details.cshtml" />
-    <Content Include="Views\TblSector\Edit.cshtml" />
-    <Content Include="Views\TblSector\Index.cshtml" />
     <Content Include="Views\TblServidorCorreo\Create.cshtml" />
     <Content Include="Views\TblServidorCorreo\Delete.cshtml" />
     <Content Include="Views\TblServidorCorreo\Details.cshtml" />
@@ -1369,11 +1367,6 @@
     <Content Include="Views\Callcenter\ConsultarOrden.cshtml" />
     <Content Include="Views\Callcenter\MonitorXEstadod.cshtml" />
     <Content Include="Views\Callcenter\ListarOrdenesDetalleXestatusRetraso.cshtml" />
-    <Content Include="Views\Autorizador\Create.cshtml" />
-    <Content Include="Views\Autorizador\Delete.cshtml" />
-    <Content Include="Views\Autorizador\Details.cshtml" />
-    <Content Include="Views\Autorizador\Edit.cshtml" />
-    <Content Include="Views\Autorizador\Index.cshtml" />
     <Content Include="Views\Empresa\Create.cshtml" />
     <Content Include="Views\Empresa\Delete.cshtml" />
     <Content Include="Views\Empresa\Details.cshtml" />
@@ -1389,6 +1382,7 @@
     <Content Include="SweetAlert2\sweetalert2.scss" />
     <Content Include="SweetAlert2\mixins.scss" />
     <Content Include="SweetAlert2\animations.scss" />
+    <Content Include="Views\Docentes\AgregarDocente.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

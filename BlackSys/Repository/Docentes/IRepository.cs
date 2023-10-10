@@ -12,6 +12,7 @@ namespace BlackSys.Repository.Docentes
         List<Docente> GetAll();
         Docente GetById(int id);
         bool Update(Docente docente);
+        int Add(Docente docente);
         List<Docente> FindByName(string Nombre);
         List<ViewDocenteAsignatura> GetSubjectDocente(Docente model, int AsignaturaId);
         List<ViewDocenteAsignatura> LoadDocenteAsignatura(int id);
