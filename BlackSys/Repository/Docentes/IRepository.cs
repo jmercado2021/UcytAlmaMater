@@ -17,6 +17,8 @@ namespace BlackSys.Repository.Docentes
         List<ViewDocenteAsignatura> GetSubjectDocente(Docente model, int AsignaturaId);
         List<ViewDocenteAsignatura> LoadDocenteAsignatura(int id);
         bool AddSubject(Docente model, int AsignaturaId);
+        bool DeleteSubject(int DocenteId, int AsignaturaId);
+        
         void Save();
     }
 }

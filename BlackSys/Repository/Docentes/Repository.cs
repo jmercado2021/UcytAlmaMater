@@ -86,7 +86,7 @@ namespace BlackSys.Repository.Docentes
                 a.MovilidadAcademica = p.MovilidadAcademica;
                 a.MunicipioId = p.MunicipioId;
                 a.NHijos = p.NHijos;
-                a.NivelFormacion = p.NivelFormacion;
+                a.NivelFormacionId = p.NivelFormacionId;
                 a.PaisId = p.PaisId;
                 a.NombreInstitucion = p.NombreInstitucion;
                 a.ProfesionId = p.ProfesionId;
@@ -226,17 +226,31 @@ namespace BlackSys.Repository.Docentes
                     Activo = true
                 };
                 _dtx.DocenteAsignatura.Add(docSubject);
-                Save();
+                 Save();
                 return true;
             }
            catch(Exception ex)
             {
                 return false;
+            }  
+        }
+        public bool DeleteSubject(int DocenteId, int AsignaturaId)
+        {
+            try
+            {
+                var docSubject = _dtx.DocenteAsignatura.Where(tt => tt.DocenteId == DocenteId && tt.AsignaturaId == AsignaturaId);
+
+                foreach (var registro in docSubject)
+                {
+                    _dtx.DocenteAsignatura.Remove(registro);
+                }
+                Save();
+                return true;
             }
-
-           
-
-
+            catch (Exception ex)
+            {
+                return false;
+            }
         }
         public void Save()
         {

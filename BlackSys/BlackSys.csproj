@@ -1041,7 +1041,6 @@
     <Compile Include="Controllers\AdminRolesController.cs" />
     <Compile Include="Controllers\AdminUsersController.cs" />
     <Compile Include="Controllers\Articulos\ArticuloMasterController.cs" />
-    <Compile Include="Controllers\Articulos\TblCasasController.cs" />
     <Compile Include="Controllers\AsignaturaController.cs" />
     <Compile Include="Controllers\ComponentsController.cs" />
     <Compile Include="Controllers\CustomersController.cs" />
@@ -1049,10 +1048,6 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ComponentCategoryController.cs" />
     <Compile Include="Controllers\PermissionsController.cs" />
-    <Compile Include="Controllers\SISCOMP\AutorizadorController.cs" />
-    <Compile Include="Controllers\SISCOMP\EmpresaController.cs" />
-    <Compile Include="Controllers\SISCOMP\Metodos.cs" />
-    <Compile Include="Controllers\SISCOMP\OficinaController.cs" />
     <Compile Include="Controllers\SuppliersController.cs" />
     <Compile Include="Controllers\SystemController.cs" />
     <Compile Include="Global.asax.cs">
@@ -1123,6 +1118,9 @@
     <Compile Include="Models\Dal\Municipio.cs">
       <DependentUpon>UcytAlmaMater.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Dal\NivelFormacion.cs">
+      <DependentUpon>UcytAlmaMater.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Dal\Pais.cs">
       <DependentUpon>UcytAlmaMater.tt</DependentUpon>
     </Compile>
@@ -1133,6 +1131,9 @@
       <DependentUpon>UcytAlmaMater.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Dal\TipoContrato.cs">
+      <DependentUpon>UcytAlmaMater.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Dal\Titulos.cs">
       <DependentUpon>UcytAlmaMater.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Dal\UcytAlmaMater.Context.cs">
@@ -1256,6 +1257,8 @@
     <Compile Include="Repository\Asignatura\Repository.cs" />
     <Compile Include="Repository\Municipio\IRepository.cs" />
     <Compile Include="Repository\Municipio\Repository.cs" />
+    <Compile Include="Repository\NivelFormacion\IRepository.cs" />
+    <Compile Include="Repository\NivelFormacion\Repository.cs" />
     <Compile Include="Repository\Pais\IRepository.cs" />
     <Compile Include="Repository\Pais\Repository.cs" />
     <Compile Include="Repository\Cargo\IRepository.cs" />
@@ -1266,6 +1269,8 @@
     <Compile Include="Repository\Recinto\Repository.cs" />
     <Compile Include="Repository\TipoContrato\IRepository.cs" />
     <Compile Include="Repository\TipoContrato\Repository.cs" />
+    <Compile Include="Repository\Titulos\IRepository.cs" />
+    <Compile Include="Repository\Titulos\Repository.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -1401,8 +1406,6 @@
     <Folder Include="Content\plugins\jquery-notific8\" />
     <Folder Include="Content\plugins\select2\css\" />
     <Folder Include="Content\plugins\select2\sass\" />
-    <Folder Include="Controllers\Compras\" />
-    <Folder Include="Controllers\Tienda\" />
     <Folder Include="Reports\" />
     <Folder Include="Tools\" />
     <Folder Include="Views\Asignatura\" />

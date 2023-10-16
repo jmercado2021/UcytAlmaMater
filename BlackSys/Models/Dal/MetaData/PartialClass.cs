@@ -101,8 +101,12 @@ namespace BlackSys.Models.Dal
         public bool? Estudia { get; set; }
 
         [Display(Name = "Nivel de Formación")]
-        [Required(ErrorMessage = "Nivel de Formación es Requerido")]
-        public string NivelFormacion { get; set; }
+      
+        public int NivelFormacionId { get; set; }
+
+        [Display(Name = "Titulo Nivel Formacion")]
+       
+        public int TituloNivelFormacionId { get; set; }
 
         [Display(Name = "Recibe Beca?")]
         [Required(ErrorMessage = "Definir si recibe beca es Requerido")]
@@ -145,7 +149,7 @@ namespace BlackSys.Models.Dal
         public string NoInss { get; set; }
 
 
-        [Display(Name = "Horas Clase Demana")]
+        [Display(Name = "Horas Clase Semana")]
         public Nullable<int> HorasClaseSemana { get; set; }
 
         [Display(Name = "Horas Investigacion Semana")]
@@ -181,7 +185,7 @@ namespace BlackSys.Models.Dal
         [Display(Name = "Horas En Curso Postgrado Femenino")]
         public Nullable<int> HorasEnCursoPostgradoFemenino { get; set; }
 
-        [Display(Name = "Movilidad Académica?")]
+        [Display(Name = "Movilidad Académica")]
         public string MovilidadAcademica { get; set; }
 
         [Display(Name = "Tipo Mobilidad Académica")]

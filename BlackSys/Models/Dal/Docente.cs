@@ -37,7 +37,8 @@ namespace BlackSys.Models.Dal
         public string FormacionPedadogica { get; set; }
         public Nullable<System.DateTime> FechaFormacionPedadogica { get; set; }
         public bool Estudia { get; set; }
-        public string NivelFormacion { get; set; }
+        public string NivelFormacionId { get; set; }
+        public Nullable<int> TituloNivelFormacionId { get; set; }
         public string RecibeBeca { get; set; }
         public string TipoBeca { get; set; }
         public Nullable<decimal> MontoBeca { get; set; }
@@ -47,7 +48,7 @@ namespace BlackSys.Models.Dal
         public Nullable<long> AnosAntiguedad { get; set; }
         public Nullable<short> NHijos { get; set; }
         public Nullable<int> CargoActualId { get; set; }
-        public byte[] CantGrupos { get; set; }
+        public Nullable<int> CantGrupos { get; set; }
         public Nullable<int> HorasClase { get; set; }
         public string NoInss { get; set; }
         public Nullable<int> HorasClaseSemana { get; set; }

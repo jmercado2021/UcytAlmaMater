@@ -27,6 +27,7 @@ function AddSubject() {
         success: function (d) {
             if (d.success === true) {
                 alertify.success("Se ha asociado la Asignatura");
+                location.reload()
                 //alert('Has Asociado la Asignatura!!');
             } else {
                 alertify.error("La asignatura ya está asociada para este Docente!!");
@@ -39,11 +40,45 @@ function AddSubject() {
     });
 }
 
-function AlertDesasociarAsignatura(Identificador) {
+function DeleteSubject(DocenteId, AsignaturaId) {
     var DtoDocenteAsignatura = {
-        DocenteId: $('#docente_Id').val(),
-        AsignaturaId: $('#AsignaturaId').val()
+        DocenteId: DocenteId,
+        AsignaturaId: AsignaturaId
     };
+
+    $.ajax({
+        type: "POST",
+        url: "/Docentes/DeleteSubjectDocente",
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        data: JSON.stringify(DtoDocenteAsignatura),
+        success: function (d) {
+            if (d.success === true) {
+                Swal.fire(
+                    'Desasociado!',
+                    'Se ha desasociado la Asignatura al Docente',
+                    'success'
+                )
+                location.reload()
+                //alertify.success("Se ha asociado la Asignatura");
+                //alert('Has Asociado la Asignatura!!');
+            } else {
+                alertify.error("Ocurrio un problema al desasociar la asignatura!!");
+            }
+        },
+        error: function (xhr, textStatus, errorThrown) {
+            console.log("Error:", xhr, textStatus, errorThrown);
+            alert('Error en la solicitud AJAX');
+        }
+    });
+}
+
+
+function AlertDesasociarAsignatura(AsignaturaId) {
+    console.log(AsignaturaId);
+    var DocenteId = $('#docente_Id').val();
+       
+  
     Swal.fire({
         title: 'Esta seguro en desasociar la Asignatura?',
         text: "",
@@ -54,9 +89,13 @@ function AlertDesasociarAsignatura(Identificador) {
         confirmButtonText: 'Si, Desasociar!'
     }).then((result) => {
         if (result.isConfirmed) {
+            DeleteSubject(DocenteId, AsignaturaId)
+
+        }
+        else {
             Swal.fire(
-                'Deleted!',
-                'Your file has been deleted.',
+                'Desasociar!',
+                'Tranquilo, no pasa nada :)',
                 'success'
             )
         }

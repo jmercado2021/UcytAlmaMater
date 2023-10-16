@@ -24,6 +24,8 @@ namespace BlackSys.Controllers
         private Repository.Profesion.IRepository _profesion;
         private Repository.Area.IRepository _area;
         private Repository.Recinto.IRepository _recinto;
+        private Repository.NivelFormacion.IRepository _nivelformacion;
+        private Repository.Titulos.IRepository _titulo;
         public DocentesController()
         {
             _docenteRepositoy = new Repository.Docentes.Repository(this.ModelState);
@@ -37,6 +39,8 @@ namespace BlackSys.Controllers
             _profesion = new Repository.Profesion.Repository(this.ModelState);
             _area = new Repository.Area.Repository(this.ModelState);
             _recinto = new Repository.Recinto.Repository(this.ModelState);
+            _nivelformacion = new Repository.NivelFormacion.Repository(this.ModelState);
+            _titulo = new Repository.Titulos.Repository(this.ModelState);
         }
         // GET: Docentes
         public ActionResult Index()
@@ -85,6 +89,8 @@ namespace BlackSys.Controllers
             ViewBag.Cargo = new SelectList(_cargo.GetAll(), "Id", "Descripcion");
             ViewBag.ProfesionV = new SelectList(_profesion.GetAll(), "Id", "Descripcion");
             ViewBag.AreaV = new SelectList(_area.GetAll(), "Id", "Descripcion");
+            ViewBag.NivelFormacionV = new SelectList(_nivelformacion.GetAll(), "Id", "Descripcion");
+            ViewBag.TituloV = new SelectList(_titulo.GetAll(), "Id", "Descripcion");
             docenteView.asignaturasView = _docenteRepositoy.LoadDocenteAsignatura(id);
             //ViewBag.Asignaturas = docenteView.asignaturasView;
             ViewBag.Asignaturas = new SelectList(_Asignatura.GetAll(), "Id", "Nombre");
@@ -130,6 +136,8 @@ namespace BlackSys.Controllers
             ViewBag.Cargo = new SelectList(_cargo.GetAll(), "Id", "Descripcion");
             ViewBag.ProfesionV = new SelectList(_profesion.GetAll(), "Id", "Descripcion");
             ViewBag.AreaV = new SelectList(_area.GetAll(), "Id", "Descripcion");
+            ViewBag.NivelFormacionV = new SelectList(_nivelformacion.GetAll(), "Id", "Descripcion");
+            ViewBag.TituloV = new SelectList(_titulo.GetAll(), "Id", "Descripcion");
             model.asignaturasView = _docenteRepositoy.LoadDocenteAsignatura(model.docente.Id);
             //ViewBag.Asignaturas = docenteView.asignaturasView;
             ViewBag.Asignaturas = new SelectList(_Asignatura.GetAll(), "Id", "Nombre");
@@ -228,9 +236,7 @@ namespace BlackSys.Controllers
         public ActionResult AgregarDocente(DocenteViewModel model)
         {
             //DocenteViewModel docenteView = new DocenteViewModel();
-          //if (model.docente.Id==0)
-          //  {
-          //      model.docente.Id = null;
+          //if (model.docente.Id==0)NAddSubjectDocente
           //  }
                 model.asignaturasView= _docenteRepositoy.LoadDocenteAsignatura(model.docente.Id);
            
@@ -277,8 +283,6 @@ namespace BlackSys.Controllers
                 return View(model);
             }
 
-            //ModelState.AddModelError("", "Existenen errores en datos ingresados, Por favor verifique los campos marcados en rojo ");
-            //return View(viewmodel);
             if (!ModelState.IsValid)
             {
                 return View(model);
@@ -287,9 +291,8 @@ namespace BlackSys.Controllers
             if (id > 0)
             {
                 return RedirectToAction("Details", new { id = id });
-                //_docenteRepositoy.Save();
             }
-            //_docenteRepositoy.Update(docente);
+ 
 
             return View(model);
         }
@@ -326,10 +329,6 @@ namespace BlackSys.Controllers
     public bool AddSubjectDocente(int DocenteId, int AsignaturaId)
         {
             var dataDocente = _docenteRepositoy.GetById(DocenteId);
-            //DocenteViewModel docenteView = new DocenteViewModel();
-            //docenteView.docente = dataDocente;
-            //docenteView.asignaturasView = _docenteRepositoy.LoadDocenteAsignatura(DocenteId);
-            //ViewBag.Asignaturas = new SelectList(_Asignatura.GetAll(), "Id", "Nombre");
 
 
             var asig = _docenteRepositoy.GetSubjectDocente(dataDocente, Convert.ToInt32(AsignaturaId));
@@ -350,21 +349,31 @@ namespace BlackSys.Controllers
             
         }
 
+        [HttpPost]
+        public JsonResult DeleteSubjectDocente(DtoDocenteAsignatura docente)
+        {
+            if (ActionDeleteSubjectDocente(docente.DocenteId, docente.AsignaturaId))
+            {
+                bool success = true;
+                return Json(new { success = success });
+            }
+
+            else
+                return Json(String.Format("'success':'false','Error':'Ha habido un error al insertar el registro.'"));
+        }
+        public bool ActionDeleteSubjectDocente(int DocenteId, int AsignaturaId)
+        {
+    
+                _docenteRepositoy.DeleteSubject(DocenteId, AsignaturaId);
+                return true;
+        }
 
 
-        //public ActionResult AddSubjectDocente(int DocenteId, int AsignaturaId)
-        //{
-
-        //    return View();
-        //}
-
-        // POST: Docentes/Create
         [HttpPost]
         public ActionResult Create(FormCollection collection)
         {
             try
             {
-                // TODO: Add insert logic here
 
                 return RedirectToAction("Index");
             }

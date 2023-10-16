@@ -74,7 +74,8 @@
           <Property Name="FormacionPedadogica" Type="varchar" MaxLength="10" />
           <Property Name="FechaFormacionPedadogica" Type="datetime" />
           <Property Name="Estudia" Type="bit" Nullable="false" />
-          <Property Name="NivelFormacion" Type="varchar" MaxLength="50" />
+          <Property Name="NivelFormacionId" Type="nchar" MaxLength="10" />
+          <Property Name="TituloNivelFormacionId" Type="int" />
           <Property Name="RecibeBeca" Type="varchar" MaxLength="50" />
           <Property Name="TipoBeca" Type="varchar" MaxLength="50" />
           <Property Name="MontoBeca" Type="money" />
@@ -84,7 +85,7 @@
           <Property Name="AnosAntiguedad" Type="bigint" />
           <Property Name="NHijos" Type="smallint" />
           <Property Name="CargoActualId" Type="int" />
-          <Property Name="CantGrupos" Type="varbinary" MaxLength="1" />
+          <Property Name="CantGrupos" Type="int" />
           <Property Name="HorasClase" Type="int" />
           <Property Name="NoInss" Type="varchar" MaxLength="20" />
           <Property Name="HorasClaseSemana" Type="int" />
@@ -176,6 +177,14 @@
           <Property Name="Descripcion" Type="varchar" MaxLength="50" />
           <Property Name="Activo" Type="bit" />
         </EntityType>
+        <EntityType Name="NivelFormacion">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="50" />
+          <Property Name="Activo" Type="bit" />
+        </EntityType>
         <EntityType Name="Pais">
           <Key>
             <PropertyRef Name="Id" />
@@ -210,6 +219,14 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Descripcion" Type="varchar" MaxLength="50" />
           <Property Name="Activo" Type="bit" />
+        </EntityType>
+        <EntityType Name="Titulos">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="80" Nullable="false" />
+          <Property Name="Activo" Type="bit" Nullable="false" />
         </EntityType>
         <!--Errores durante la generación:
 advertencia 6002: La tabla o vista 'UcytAlmaMater.dbo.ViewDocenteAsignatura' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
@@ -373,10 +390,12 @@ advertencia 6002: La tabla o vista 'UcytAlmaMater.dbo.ViewDocenteIdiomas' no tie
           <EntitySet Name="Idiomas" EntityType="Self.Idiomas" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Institucion" EntityType="Self.Institucion" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Municipio" EntityType="Self.Municipio" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NivelFormacion" EntityType="Self.NivelFormacion" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Pais" EntityType="Self.Pais" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Profesion" EntityType="Self.Profesion" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Recinto" EntityType="Self.Recinto" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TipoContrato" EntityType="Self.TipoContrato" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Titulos" EntityType="Self.Titulos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ViewDocenteAsignatura" EntityType="Self.ViewDocenteAsignatura" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [ViewDocenteAsignatura].[RecintoId] AS [RecintoId], 
@@ -633,6 +652,8 @@ advertencia 6002: La tabla o vista 'UcytAlmaMater.dbo.ViewDocenteIdiomas' no tie
           <EntitySet Name="ViewDocenteAsignatura" EntityType="UcytAlmaMaterModel.ViewDocenteAsignatura" />
           <EntitySet Name="ViewDocenteIdiomas" EntityType="UcytAlmaMaterModel.ViewDocenteIdiomas" />
           <EntitySet Name="Asignatura" EntityType="UcytAlmaMaterModel.Asignatura" />
+          <EntitySet Name="NivelFormacion" EntityType="UcytAlmaMaterModel.NivelFormacion" />
+          <EntitySet Name="Titulos" EntityType="UcytAlmaMaterModel.Titulos" />
           <EntitySet Name="Docente" EntityType="UcytAlmaMaterModel.Docente" />
           <AssociationSet Name="FK_Docente_Area" Association="UcytAlmaMaterModel.FK_Docente_Area">
             <End Role="Area" EntitySet="Area" />
@@ -662,7 +683,7 @@ advertencia 6002: La tabla o vista 'UcytAlmaMater.dbo.ViewDocenteIdiomas' no tie
             <End Role="TipoContrato" EntitySet="TipoContrato" />
             <End Role="Docente" EntitySet="Docente" />
           </AssociationSet>
-        </EntityContainer>
+          </EntityContainer>
         <EntityType Name="Area">
           <Key>
             <PropertyRef Name="Id" />
@@ -714,6 +735,22 @@ advertencia 6002: La tabla o vista 'UcytAlmaMater.dbo.ViewDocenteIdiomas' no tie
           <Property Name="Estado" Type="Boolean" Nullable="false" />
           <Property Name="Identificador" Type="String" Nullable="false" MaxLength="7" FixedLength="false" Unicode="false" />
         </EntityType>
+        <EntityType Name="NivelFormacion">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Activo" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="Titulos">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="Activo" Type="Boolean" Nullable="false" />
+        </EntityType>
         <EntityType Name="Docente">
           <Key>
             <PropertyRef Name="Id" />
@@ -741,7 +778,8 @@ advertencia 6002: La tabla o vista 'UcytAlmaMater.dbo.ViewDocenteIdiomas' no tie
           <Property Name="FormacionPedadogica" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="FechaFormacionPedadogica" Type="DateTime" Precision="3" />
           <Property Name="Estudia" Type="Boolean" Nullable="false" />
-          <Property Name="NivelFormacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="NivelFormacionId" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="TituloNivelFormacionId" Type="Int32" />
           <Property Name="RecibeBeca" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="TipoBeca" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="MontoBeca" Type="Decimal" Precision="19" Scale="4" />
@@ -751,7 +789,7 @@ advertencia 6002: La tabla o vista 'UcytAlmaMater.dbo.ViewDocenteIdiomas' no tie
           <Property Name="AnosAntiguedad" Type="Int64" />
           <Property Name="NHijos" Type="Int16" />
           <Property Name="CargoActualId" Type="Int32" />
-          <Property Name="CantGrupos" Type="Binary" MaxLength="1" FixedLength="false" />
+          <Property Name="CantGrupos" Type="Int32" />
           <Property Name="HorasClase" Type="Int32" />
           <Property Name="NoInss" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="HorasClaseSemana" Type="Int32" />
@@ -871,7 +909,7 @@ advertencia 6002: La tabla o vista 'UcytAlmaMater.dbo.ViewDocenteIdiomas' no tie
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -1053,6 +1091,24 @@ advertencia 6002: La tabla o vista 'UcytAlmaMater.dbo.ViewDocenteIdiomas' no tie
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="NivelFormacion">
+            <EntityTypeMapping TypeName="UcytAlmaMaterModel.NivelFormacion">
+              <MappingFragment StoreEntitySet="NivelFormacion">
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Titulos">
+            <EntityTypeMapping TypeName="UcytAlmaMaterModel.Titulos">
+              <MappingFragment StoreEntitySet="Titulos">
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Docente">
             <EntityTypeMapping TypeName="UcytAlmaMaterModel.Docente">
               <MappingFragment StoreEntitySet="Docente">
@@ -1093,7 +1149,8 @@ advertencia 6002: La tabla o vista 'UcytAlmaMater.dbo.ViewDocenteIdiomas' no tie
                 <ScalarProperty Name="MontoBeca" ColumnName="MontoBeca" />
                 <ScalarProperty Name="TipoBeca" ColumnName="TipoBeca" />
                 <ScalarProperty Name="RecibeBeca" ColumnName="RecibeBeca" />
-                <ScalarProperty Name="NivelFormacion" ColumnName="NivelFormacion" />
+                <ScalarProperty Name="TituloNivelFormacionId" ColumnName="TituloNivelFormacionId" />
+                <ScalarProperty Name="NivelFormacionId" ColumnName="NivelFormacionId" />
                 <ScalarProperty Name="Estudia" ColumnName="Estudia" />
                 <ScalarProperty Name="FechaFormacionPedadogica" ColumnName="FechaFormacionPedadogica" />
                 <ScalarProperty Name="FormacionPedadogica" ColumnName="FormacionPedadogica" />
