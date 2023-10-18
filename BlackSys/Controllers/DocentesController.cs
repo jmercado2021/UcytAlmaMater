@@ -226,9 +226,10 @@ namespace BlackSys.Controllers
             ViewBag.ProfesionV = new SelectList(_profesion.GetAll(), "Id", "Descripcion");
             ViewBag.AreaV = new SelectList(_area.GetAll(), "Id", "Descripcion");
             ViewBag.RecintoV = new SelectList(_recinto.GetAll(), "Id", "Descripcion");
-
+            ViewBag.NivelFormacionV = new SelectList(_nivelformacion.GetAll(), "Id", "Descripcion");
+            ViewBag.TituloV = new SelectList(_titulo.GetAll(), "Id", "Descripcion");
             //ViewBag.Asignaturas = docenteView.asignaturasView;
-            ViewBag.Asignaturas = new SelectList(_Asignatura.GetAll(), "Id", "Nombre");
+          
             return View(docenteView);
 
         }
@@ -275,13 +276,13 @@ namespace BlackSys.Controllers
             ViewBag.Cargo = new SelectList(_cargo.GetAll(), "Id", "Descripcion");
             ViewBag.ProfesionV = new SelectList(_profesion.GetAll(), "Id", "Descripcion");
             ViewBag.AreaV = new SelectList(_area.GetAll(), "Id", "Descripcion");
-            ViewBag.Asignaturas = new SelectList(_Asignatura.GetAll(), "Id", "Nombre");
+            //ViewBag.Asignaturas = new SelectList(_Asignatura.GetAll(), "Id", "Nombre");
             ViewBag.RecintoV = new SelectList(_recinto.GetAll(), "Id", "Descripcion");
-            if (model.docente.Nombre == null)
-            {
-                ModelState.AddModelError("", "Nombre no puede quedar vacio, Por favor registre el nombre del Docente ");
-                return View(model);
-            }
+            //if (model.docente.Nombre == null)
+            //{
+            //    ModelState.AddModelError("", "Nombre no puede quedar vacio, Por favor registre el nombre del Docente ");
+            //    return View(model);
+            //}
 
             if (!ModelState.IsValid)
             {
@@ -296,37 +297,38 @@ namespace BlackSys.Controllers
 
             return View(model);
         }
-   
-    //public ActionResult _AddSubjectDocente(int DocenteId, int? AsignaturaId)
-    //{
-    //    var dataDocente= _docenteRepositoy.GetById(DocenteId);
-    //    DocenteViewModel docenteView = new DocenteViewModel();
-    //    docenteView.docente = dataDocente;
-    //    docenteView.asignaturasView = _docenteRepositoy.LoadDocenteAsignatura(DocenteId);
-    //    ViewBag.Asignaturas = new SelectList(_Asignatura.GetAll(), "Id", "Nombre");
 
-    //    if (AsignaturaId.HasValue)
-    //    {
-    //        var asig = _docenteRepositoy.GetSubjectDocente(dataDocente, Convert.ToInt32(AsignaturaId));
-    //        if (asig.Count > 0)
-    //        {
-    //            //ModelState.AddModelError(string.Empty,"Ya existe la asignatura asociada");
-    //            ModelState.AddModelError("docente", "Ya existe la asignatura asociada");
+        public ActionResult _AddSubjectDocenteAction(int Id)
+        {
+            DocenteViewModel docenteView = new DocenteViewModel();
+            docenteView.docente = _docenteRepositoy.GetById(Id);
+           
+            //docenteView.docente = dataDocente;
+            docenteView.asignaturasView = _docenteRepositoy.LoadDocenteAsignatura(Id);
 
-    //            return View("_AddSubjectDocente", docenteView);
-    //        }
-    //        else
-    //        {
-    //            _docenteRepositoy.AddSubject(dataDocente, Convert.ToInt32(AsignaturaId));
 
-    //        }
+            //if (AsignaturaId.HasValue)
+            //{
+            //    var asig = _docenteRepositoy.GetSubjectDocente(dataDocente, Convert.ToInt32(AsignaturaId));
+            //    if (asig.Count > 0)
+            //    {
+            //        //ModelState.AddModelError(string.Empty,"Ya existe la asignatura asociada");
+            //        ModelState.AddModelError("docente", "Ya existe la asignatura asociada");
 
-    //    }
+            //        return View("_AddSubjectDocente", docenteView);
+            //    }
+            //    else
+            //    {
+            //        _docenteRepositoy.AddSubject(dataDocente, Convert.ToInt32(AsignaturaId));
 
-    //    return View("_AddSubjectDocente", docenteView);
-    //}
+            //    _AddSubjectDocenteAction
 
-    public bool AddSubjectDocente(int DocenteId, int AsignaturaId)
+            //}
+
+            return View("_AddSubjectDocente", docenteView);
+        }
+
+        public bool AddSubjectDocente(int DocenteId, int AsignaturaId)
         {
             var dataDocente = _docenteRepositoy.GetById(DocenteId);
 

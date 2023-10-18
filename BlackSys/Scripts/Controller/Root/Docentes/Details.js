@@ -4,7 +4,7 @@
 //    $("#docente_FechaNac").datepicker({
 //        dateFormat: "dd/mm/yy", // Formato de fecha deseado
 //        changeMonth: true, // Permite cambiar el mes
-//        changeYear: true, // Permite cambiar el año
+//        changeYear: true, // Permite cambiar el AddSubject
 //        yearRange: "1900:2030" // Rango de años permitidos
 //        // Puedes personalizar más opciones según tus necesidades
 //    });
@@ -17,6 +17,7 @@ function AddSubject() {
         DocenteId: $('#docente_Id').val(),
         AsignaturaId: $('#AsignaturaId').val()
     };
+    var docenteId = $('#docente_Id').val();
 
     $.ajax({
         type: "POST",
@@ -27,7 +28,7 @@ function AddSubject() {
         success: function (d) {
             if (d.success === true) {
                 alertify.success("Se ha asociado la Asignatura");
-                location.reload()
+                $("#partial").load("/Docentes/_AddSubjectDocenteAction/" + docenteId);
                 //alert('Has Asociado la Asignatura!!');
             } else {
                 alertify.error("La asignatura ya está asociada para este Docente!!");
@@ -45,6 +46,7 @@ function DeleteSubject(DocenteId, AsignaturaId) {
         DocenteId: DocenteId,
         AsignaturaId: AsignaturaId
     };
+    var docenteId = DocenteId;
 
     $.ajax({
         type: "POST",
@@ -59,9 +61,9 @@ function DeleteSubject(DocenteId, AsignaturaId) {
                     'Se ha desasociado la Asignatura al Docente',
                     'success'
                 )
-                location.reload()
-                //alertify.success("Se ha asociado la Asignatura");
-                //alert('Has Asociado la Asignatura!!');
+               
+                $("#partial").load("/Docentes/_AddSubjectDocenteAction/" + docenteId);
+              
             } else {
                 alertify.error("Ocurrio un problema al desasociar la asignatura!!");
             }
@@ -73,6 +75,10 @@ function DeleteSubject(DocenteId, AsignaturaId) {
     });
 }
 
+
+//function AlertDesasociarAsignatura(AsignaturaId) {
+//    console.log(AsignaturaId);
+//    var DocenteId = $('#docente_Id').val();
 
 function AlertDesasociarAsignatura(AsignaturaId) {
     console.log(AsignaturaId);
@@ -91,6 +97,7 @@ function AlertDesasociarAsignatura(AsignaturaId) {
         if (result.isConfirmed) {
             DeleteSubject(DocenteId, AsignaturaId)
 
+
         }
         else {
             Swal.fire(
@@ -98,6 +105,9 @@ function AlertDesasociarAsignatura(AsignaturaId) {
                 'Tranquilo, no pasa nada :)',
                 'success'
             )
+            //var url = $(this).data('_AddSubjectDocente');
+            //$("#partial").load(url);
+            //$("#partial").load("Url.Action("_AddSubjectDocente","Items")")
         }
     })
 

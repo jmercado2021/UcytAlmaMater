@@ -13,6 +13,7 @@ namespace BlackSys.Controllers
         private BlackSysEntities db = new BlackSysEntities();
         public ActionResult Index()
         {
+            ViewBag.user = User.Identity.GetUserName();
             return View();
         }
 

@@ -28,6 +28,7 @@
 
                         @*@Html.ActionLink("Eliminar", "Eliminar", new { id = ModelD.DocenteId,AsignaturaId= ModelD.Identificador }, new { @class = "btn btn-danger btn-sm", onclick = "return confirm('¿Estás seguro de que deseas eliminar esta Asignatura?');" })*@
                         @*@Html.ActionLink("Eliminar", "Eliminar", new { id = ModelD.DocenteId, AsignaturaId = ModelD.Identificador }, new { @class = "btn btn-danger btn-sm", onclick = "AlertDesasociarAsignatura('@ModelD.Identificador')" })*@
+                        @*<a onclick="AlertDesasociarAsignatura('@ModelD.AsignaturaId')" class="btn btn-danger btn-sm">Desasociar</a>*@
                         <a onclick="AlertDesasociarAsignatura('@ModelD.AsignaturaId')" class="btn btn-danger btn-sm">Desasociar</a>
                     </td>
                 </tr>

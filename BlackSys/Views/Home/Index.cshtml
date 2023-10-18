@@ -1,14 +1,15 @@
 ﻿
+
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    var user = ViewBag.user;
+    string greeting = "Bienvenido " + user;
 }
 
-
-<div class="row">
-    
-</div>
-
 <script>
-    alertify.success("Bienvenido");
+    // Asegúrate de que la variable 'greeting' esté definida correctamente
+    var greeting = @Html.Raw(Json.Encode(greeting));
+
+    alertify.success(greeting);
 </script>

@@ -8,25 +8,9 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initifal-scale=1" />
 
-    <!-- Icon Fonts -->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
-
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    @*<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,800;0,100;1,800;1,700&family=Source+Sans+Pro:ital,wght@0,800;0,700;1,400;1,700&display=swap" rel="stylesheet" />*@
-
-    <!-- CSS Files -->
-    <!--<script src="https://cdn.jsdelivr.net/npm/jquery-ui-timepicker-addon@1.6.3/dist/jquery-ui-timepicker-addon.min.js"></script>
-
-    <link href="https://cdn.jsdelivr.net/npm/jquery-ui-timepicker-addon@1.6.3/dist/jquery-ui-timepicker-addon.min.css" rel="stylesheet" />-->
-    <link href="~/Content/vertical-tabs-css/dist/css/style.css" rel="stylesheet" />
     <script src="~/Scripts/Controller/Root/Docentes/Details.js"></script>
+    <link href="~/assets/Exportar Js/tableexport.css" rel="stylesheet" />
 
-
-    @*<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.1/themes/base/jquery-ui.css" />*@
-    @*<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
-        <script src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"></script>*@
 </head>
 
 
@@ -465,8 +449,7 @@
                         </div>
 
                         <div id="partial">
-
-                            @Html.Partial("_AddSubjectDocente", Model)
+                            @Html.Action("_AddSubjectDocenteAction", Model.docente.Id)
                         </div>
                     </section>
                 </div>
@@ -478,7 +461,7 @@
     </div>
     </section>
     </div>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    @*<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>*@
     <script src="~/Content/vertical-tabs-css/dist/js/app.js"></script>
 }
 <style>
@@ -488,25 +471,4 @@
         border-color: brown;
     }
 </style>
-
-
-<div id="modalCreate" class="modal fade" role="dialog" data-backdrop="false">
-
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div id="OpenDialog" class="modal-body">
-            </div>
-            <script>
-                jQuery(document).ready(function () {
-
-                    jQuery('#modalCreate').on('hidden.bs.modal', function (e) {
-                        jQuery(this).removeData('bs.modal');
-                        jQuery(this).find('.modal-content').empty();
-                    })
-
-                })
-            </script>
-        </div>
-    </div>
-</div>
 
