@@ -20,6 +20,7 @@ namespace BlackSys.Models.Dal
         public Nullable<int> AreaId { get; set; }
         public string Nombre { get; set; }
         public string Direccion { get; set; }
+        public Nullable<int> TipoDocumentoId { get; set; }
         public string Cedula { get; set; }
         public string Sexo { get; set; }
         public Nullable<System.DateTime> FechaNac { get; set; }

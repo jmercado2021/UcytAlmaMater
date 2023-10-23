@@ -26,6 +26,7 @@ namespace BlackSys.Controllers
         private Repository.Recinto.IRepository _recinto;
         private Repository.NivelFormacion.IRepository _nivelformacion;
         private Repository.Titulos.IRepository _titulo;
+        private Repository.TipoDocumento.IRepository _tipodocumento;
         public DocentesController()
         {
             _docenteRepositoy = new Repository.Docentes.Repository(this.ModelState);
@@ -41,6 +42,7 @@ namespace BlackSys.Controllers
             _recinto = new Repository.Recinto.Repository(this.ModelState);
             _nivelformacion = new Repository.NivelFormacion.Repository(this.ModelState);
             _titulo = new Repository.Titulos.Repository(this.ModelState);
+            _tipodocumento = new Repository.TipoDocumento.Repository(this.ModelState);
         }
         // GET: Docentes
         public ActionResult Index()
@@ -91,7 +93,9 @@ namespace BlackSys.Controllers
             ViewBag.AreaV = new SelectList(_area.GetAll(), "Id", "Descripcion");
             ViewBag.NivelFormacionV = new SelectList(_nivelformacion.GetAll(), "Id", "Descripcion");
             ViewBag.TituloV = new SelectList(_titulo.GetAll(), "Id", "Descripcion");
+            ViewBag.TipoDocumentoV = new SelectList(_tipodocumento.GetAll(), "Id", "Descripcion", selectedValue: null);
             docenteView.asignaturasView = _docenteRepositoy.LoadDocenteAsignatura(id);
+          
             //ViewBag.Asignaturas = docenteView.asignaturasView;
             ViewBag.Asignaturas = new SelectList(_Asignatura.GetAll(), "Id", "Nombre");
             return View(docenteView);
@@ -138,6 +142,7 @@ namespace BlackSys.Controllers
             ViewBag.AreaV = new SelectList(_area.GetAll(), "Id", "Descripcion");
             ViewBag.NivelFormacionV = new SelectList(_nivelformacion.GetAll(), "Id", "Descripcion");
             ViewBag.TituloV = new SelectList(_titulo.GetAll(), "Id", "Descripcion");
+            ViewBag.TipoDocumentoV = new SelectList(_tipodocumento.GetAll(), "Id", "Descripcion");
             model.asignaturasView = _docenteRepositoy.LoadDocenteAsignatura(model.docente.Id);
             //ViewBag.Asignaturas = docenteView.asignaturasView;
             ViewBag.Asignaturas = new SelectList(_Asignatura.GetAll(), "Id", "Nombre");
@@ -228,8 +233,9 @@ namespace BlackSys.Controllers
             ViewBag.RecintoV = new SelectList(_recinto.GetAll(), "Id", "Descripcion");
             ViewBag.NivelFormacionV = new SelectList(_nivelformacion.GetAll(), "Id", "Descripcion");
             ViewBag.TituloV = new SelectList(_titulo.GetAll(), "Id", "Descripcion");
+            ViewBag.TipoDocumentoV = new SelectList(_tipodocumento.GetAll(), "Id", "Descripcion");
             //ViewBag.Asignaturas = docenteView.asignaturasView;
-          
+
             return View(docenteView);
 
         }
@@ -263,7 +269,6 @@ namespace BlackSys.Controllers
 
 
 
-
             ViewBag.Departamento = new SelectList(_departamento.GetAll(), "Id", "Descripcion");
             ViewBag.Municipio = new SelectList(_municipio.GetAll(), "Id", "Descripcion");
             ViewBag.Etnia = new SelectList(_etnia.GetAll(), "Id", "Descripcion");
@@ -276,8 +281,10 @@ namespace BlackSys.Controllers
             ViewBag.Cargo = new SelectList(_cargo.GetAll(), "Id", "Descripcion");
             ViewBag.ProfesionV = new SelectList(_profesion.GetAll(), "Id", "Descripcion");
             ViewBag.AreaV = new SelectList(_area.GetAll(), "Id", "Descripcion");
-            //ViewBag.Asignaturas = new SelectList(_Asignatura.GetAll(), "Id", "Nombre");
             ViewBag.RecintoV = new SelectList(_recinto.GetAll(), "Id", "Descripcion");
+            ViewBag.NivelFormacionV = new SelectList(_nivelformacion.GetAll(), "Id", "Descripcion");
+            ViewBag.TituloV = new SelectList(_titulo.GetAll(), "Id", "Descripcion");
+            ViewBag.TipoDocumentoV = new SelectList(_tipodocumento.GetAll(), "Id", "Descripcion");
             //if (model.docente.Nombre == null)
             //{
             //    ModelState.AddModelError("", "Nombre no puede quedar vacio, Por favor registre el nombre del Docente ");

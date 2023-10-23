@@ -49,8 +49,8 @@ namespace BlackSys.Models
     public class LoginViewModel
     {
         [Required]
-        [Display(Name = "Email")]
-        [EmailAddress]
+        [Display(Name = "Usuario")]
+        //[EmailAddress]
         public string Email { get; set; }
 
         [Required]
@@ -65,8 +65,8 @@ namespace BlackSys.Models
     public class RegisterViewModel
     {
         [Required]
-        [EmailAddress]
-        [Display(Name = "Email")]
+        //[EmailAddress]
+        [Display(Name = "Usuario")]
         public string Email { get; set; }
 
         [Required]
@@ -98,8 +98,8 @@ namespace BlackSys.Models
     public class ResetPasswordViewModel
     {
         [Required]
-        [EmailAddress]
-        [Display(Name = "Email")]
+        //[EmailAddress]
+        [Display(Name = "Usuario")]
         public string Email { get; set; }
 
         [Required]
@@ -119,8 +119,8 @@ namespace BlackSys.Models
     public class ForgotPasswordViewModel
     {
         [Required]
-        [EmailAddress]
-        [Display(Name = "Email")]
+        //[EmailAddress]
+        [Display(Name = "Usuario")]
         public string Email { get; set; }
     }
 }

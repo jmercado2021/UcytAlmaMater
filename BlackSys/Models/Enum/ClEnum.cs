@@ -11,9 +11,9 @@ namespace BlackSys.Models.Enum
         public enum Gender
         {
             [Display(Name = "Masculino")]
-            M=0,
+            Masculino=0,
             [Display(Name = "Femenino")]
-            F=1
+            Femenino=1
         }
 
         public enum CivilStatus

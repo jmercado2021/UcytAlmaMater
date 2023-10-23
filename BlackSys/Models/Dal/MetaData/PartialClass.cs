@@ -39,8 +39,10 @@ namespace BlackSys.Models.Dal
         public string Direccion { get; set; }
 
 
-        [MaxLength(200, ErrorMessage = "Nombre maximo 200 caracteres")]
+        [MaxLength(14, ErrorMessage = "Cédula maximo 14 caracteres")]
         [Required(ErrorMessage = "Cédula es Requerida")]
+        [DisplayFormat(DataFormatString = "{0;##-######-#####")]
+        //[DisplayFormat(DataFormatString = "{0:0000000000000T}", ApplyFormatInEditMode = true)]
         [Display(Name = "Cedula")]
         public string Cedula { get; set; }
 
@@ -53,11 +55,14 @@ namespace BlackSys.Models.Dal
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:dd/MM/YYY}", ApplyFormatInEditMode = true)]
         public Nullable<System.DateTime> FechaNac { get; set; }
-
+        [MaxLength(8)]
+        [RegularExpression("(^[0-9]+$)", ErrorMessage = "Solo se permiten números")]
         [Display(Name = "Telefono")]
         public string Telefono { get; set; }
-
-        [Display(Name = "Telefono")]
+        [RegularExpression("(^[0-9]+$)", ErrorMessage = "Solo se permiten números")]
+        [MaxLength(8)]
+        
+        [Display(Name = "Celular")]
         public string Celular { get; set; }
 
         [DataType(DataType.EmailAddress)]

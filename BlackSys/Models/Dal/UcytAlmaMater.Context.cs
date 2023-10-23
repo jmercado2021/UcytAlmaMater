@@ -44,6 +44,7 @@ namespace BlackSys.Models.Dal
         public virtual DbSet<Asignatura> Asignatura { get; set; }
         public virtual DbSet<NivelFormacion> NivelFormacion { get; set; }
         public virtual DbSet<Titulos> Titulos { get; set; }
+        public virtual DbSet<TipoDocumento> TipoDocumento { get; set; }
         public virtual DbSet<Docente> Docente { get; set; }
     }
 }

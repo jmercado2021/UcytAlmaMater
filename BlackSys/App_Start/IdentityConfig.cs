@@ -27,7 +27,7 @@ namespace BlackSys
             manager.UserValidator = new UserValidator<ApplicationUser>(manager)
             {
                 AllowOnlyAlphanumericUserNames = false,
-                RequireUniqueEmail = true
+                //RequireUniqueEmail = true
             };
             // Configure validation logic for passwords
             manager.PasswordValidator = new PasswordValidator
@@ -126,7 +126,7 @@ namespace BlackSys
         {
             var userManager = HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>();
             var roleManager = HttpContext.Current.GetOwinContext().Get<ApplicationRoleManager>();
-            const string name = "admin@blacksys.com";
+            const string name = "jmercado";
             const string password = "Admin2.0";
             const string roleName = "Administrador";
 

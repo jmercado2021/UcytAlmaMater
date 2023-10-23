@@ -827,16 +827,6 @@
       <DependentUpon>UcytAlmaMater.edmx</DependentUpon>
       <LastGenOutput>UcytAlmaMater.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\SISCOMP_Model.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>SISCOMP_Model.edmx</DependentUpon>
-      <LastGenOutput>SISCOMP_Model.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Models\SISCOMP_Model.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>SISCOMP_Model.edmx</DependentUpon>
-      <LastGenOutput>SISCOMP_Model.cs</LastGenOutput>
-    </Content>
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -894,13 +884,6 @@
     <Content Include="Content\bootstrap-reboot.css.map" />
     <Content Include="Content\bootstrap-grid.min.css.map" />
     <Content Include="Content\bootstrap-grid.css.map" />
-    <EntityDeploy Include="Models\SISCOMP_Model.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>SISCOMP_Model.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\SISCOMP_Model.edmx.diagram">
-      <DependentUpon>SISCOMP_Model.edmx</DependentUpon>
-    </Content>
     <Content Include="Scripts\jquery-3.4.1.min.map" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Content\DynaTables\bower.json" />
@@ -1057,26 +1040,11 @@
     <Compile Include="Helpers\CustomHtmlHelper.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AdminViewModel.cs" />
-    <Compile Include="Models\Articulo.cs">
-      <DependentUpon>SISCOMP_Model.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\AspNetRoles.cs" />
     <Compile Include="Models\AspNetUserClaims.cs" />
     <Compile Include="Models\AspNetUserLogins.cs" />
     <Compile Include="Models\AspNetUsers.cs" />
-    <Compile Include="Models\Autorizador.cs">
-      <DependentUpon>SISCOMP_Model.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\BlackSysEntities.cs" />
-    <Compile Include="Models\Categoria_Articulo.cs">
-      <DependentUpon>SISCOMP_Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Categoria_OCompra.cs">
-      <DependentUpon>SISCOMP_Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Color.cs">
-      <DependentUpon>SISCOMP_Model.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\Colors.cs" />
     <Compile Include="Models\Component.cs" />
     <Compile Include="Models\ComponentCategory.cs" />
@@ -1134,6 +1102,9 @@
     <Compile Include="Models\Dal\TipoContrato.cs">
       <DependentUpon>UcytAlmaMater.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Dal\TipoDocumento.cs">
+      <DependentUpon>UcytAlmaMater.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Dal\Titulos.cs">
       <DependentUpon>UcytAlmaMater.tt</DependentUpon>
     </Compile>
@@ -1159,77 +1130,20 @@
       <DependentUpon>UcytAlmaMater.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Dto\DtoDocenteAsignatura.cs" />
-    <Compile Include="Models\Empresa.cs">
-      <DependentUpon>SISCOMP_Model.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\Enum\ClEnum.cs" />
-    <Compile Include="Models\Estado.cs">
-      <DependentUpon>SISCOMP_Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\EstadoOrden.cs">
-      <DependentUpon>SISCOMP_Model.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\Fabric.cs" />
     <Compile Include="Models\FabricCategory.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
-    <Compile Include="Models\Marcas.cs">
-      <DependentUpon>SISCOMP_Model.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\Menu.cs" />
     <Compile Include="Models\MenuTemp.cs" />
     <Compile Include="Models\Metodos.cs" />
-    <Compile Include="Models\ModoPago.cs">
-      <DependentUpon>SISCOMP_Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Moneda.cs">
-      <DependentUpon>SISCOMP_Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Oficina.cs">
-      <DependentUpon>SISCOMP_Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\OrdenCompraDetalle.cs">
-      <DependentUpon>SISCOMP_Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\OrdenCompraEncabezado.cs">
-      <DependentUpon>SISCOMP_Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Pais.cs">
-      <DependentUpon>SISCOMP_Model.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\Permission.cs" />
     <Compile Include="Models\PermissionMenu.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\ProductCategory.cs" />
     <Compile Include="Models\ProductPhoto.cs" />
-    <Compile Include="Models\Proveedor.cs">
-      <DependentUpon>SISCOMP_Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\SISCOMP_Model.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>SISCOMP_Model.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\SISCOMP_Model.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>SISCOMP_Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\SISCOMP_Model.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>SISCOMP_Model.edmx</DependentUpon>
-    </Compile>
     <Compile Include="Models\Supplier.cs" />
-    <Compile Include="Models\sysdiagrams.cs">
-      <DependentUpon>SISCOMP_Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\TiposCambio.cs">
-      <DependentUpon>SISCOMP_Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\UnidadMedida.cs">
-      <DependentUpon>SISCOMP_Model.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\UnitMeasure.cs" />
     <Compile Include="Models\ViewModel\DocenteViewModel.cs" />
     <Compile Include="OfficeOpenXml\ExcelPackage.cs" />
@@ -1270,6 +1184,8 @@
     <Compile Include="Repository\Recinto\Repository.cs" />
     <Compile Include="Repository\TipoContrato\IRepository.cs" />
     <Compile Include="Repository\TipoContrato\Repository.cs" />
+    <Compile Include="Repository\TipoDocumento\IRepository.cs" />
+    <Compile Include="Repository\TipoDocumento\Repository.cs" />
     <Compile Include="Repository\Titulos\IRepository.cs" />
     <Compile Include="Repository\Titulos\Repository.cs" />
     <Compile Include="Startup.cs" />

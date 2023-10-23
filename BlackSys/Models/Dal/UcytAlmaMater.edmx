@@ -57,6 +57,7 @@
           <Property Name="AreaId" Type="int" />
           <Property Name="Nombre" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="Direccion" Type="varchar" MaxLength="200" />
+          <Property Name="TipoDocumentoId" Type="int" />
           <Property Name="Cedula" Type="varchar" MaxLength="20" />
           <Property Name="Sexo" Type="varchar" MaxLength="1" />
           <Property Name="FechaNac" Type="datetime" />
@@ -213,6 +214,14 @@
           <Property Name="Ruc" Type="varchar" MaxLength="30" />
         </EntityType>
         <EntityType Name="TipoContrato">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="50" />
+          <Property Name="Activo" Type="bit" />
+        </EntityType>
+        <EntityType Name="TipoDocumento">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
@@ -395,6 +404,7 @@ advertencia 6002: La tabla o vista 'UcytAlmaMater.dbo.ViewDocenteIdiomas' no tie
           <EntitySet Name="Profesion" EntityType="Self.Profesion" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Recinto" EntityType="Self.Recinto" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TipoContrato" EntityType="Self.TipoContrato" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TipoDocumento" EntityType="Self.TipoDocumento" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Titulos" EntityType="Self.Titulos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ViewDocenteAsignatura" EntityType="Self.ViewDocenteAsignatura" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -654,6 +664,7 @@ advertencia 6002: La tabla o vista 'UcytAlmaMater.dbo.ViewDocenteIdiomas' no tie
           <EntitySet Name="Asignatura" EntityType="UcytAlmaMaterModel.Asignatura" />
           <EntitySet Name="NivelFormacion" EntityType="UcytAlmaMaterModel.NivelFormacion" />
           <EntitySet Name="Titulos" EntityType="UcytAlmaMaterModel.Titulos" />
+          <EntitySet Name="TipoDocumento" EntityType="UcytAlmaMaterModel.TipoDocumento" />
           <EntitySet Name="Docente" EntityType="UcytAlmaMaterModel.Docente" />
           <AssociationSet Name="FK_Docente_Area" Association="UcytAlmaMaterModel.FK_Docente_Area">
             <End Role="Area" EntitySet="Area" />
@@ -751,6 +762,14 @@ advertencia 6002: La tabla o vista 'UcytAlmaMater.dbo.ViewDocenteIdiomas' no tie
           <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="80" FixedLength="false" Unicode="false" />
           <Property Name="Activo" Type="Boolean" Nullable="false" />
         </EntityType>
+        <EntityType Name="TipoDocumento">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Activo" Type="Boolean" />
+        </EntityType>
         <EntityType Name="Docente">
           <Key>
             <PropertyRef Name="Id" />
@@ -761,6 +780,7 @@ advertencia 6002: La tabla o vista 'UcytAlmaMater.dbo.ViewDocenteIdiomas' no tie
           <Property Name="AreaId" Type="Int32" />
           <Property Name="Nombre" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="Direccion" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="TipoDocumentoId" Type="Int32" />
           <Property Name="Cedula" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="Sexo" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
           <Property Name="FechaNac" Type="DateTime" Precision="3" />
@@ -1109,6 +1129,15 @@ advertencia 6002: La tabla o vista 'UcytAlmaMater.dbo.ViewDocenteIdiomas' no tie
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="TipoDocumento">
+            <EntityTypeMapping TypeName="UcytAlmaMaterModel.TipoDocumento">
+              <MappingFragment StoreEntitySet="TipoDocumento">
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Docente">
             <EntityTypeMapping TypeName="UcytAlmaMaterModel.Docente">
               <MappingFragment StoreEntitySet="Docente">
@@ -1168,6 +1197,7 @@ advertencia 6002: La tabla o vista 'UcytAlmaMater.dbo.ViewDocenteIdiomas' no tie
                 <ScalarProperty Name="FechaNac" ColumnName="FechaNac" />
                 <ScalarProperty Name="Sexo" ColumnName="Sexo" />
                 <ScalarProperty Name="Cedula" ColumnName="Cedula" />
+                <ScalarProperty Name="TipoDocumentoId" ColumnName="TipoDocumentoId" />
                 <ScalarProperty Name="Direccion" ColumnName="Direccion" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
                 <ScalarProperty Name="AreaId" ColumnName="AreaId" />
