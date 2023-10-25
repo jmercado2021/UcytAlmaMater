@@ -17,8 +17,14 @@ namespace BlackSys.Repository.TipoDocumento
         }
         public List<BlackSys.Models.Dal.TipoDocumento> GetAll()
         {
-            return _dtx.TipoDocumento.ToList();
+
+            var tipoDocumentos = _dtx.TipoDocumento.ToList();
+            tipoDocumentos.Insert(0, new BlackSys.Models.Dal.TipoDocumento { Id = 0, Descripcion = "Seleccione una opción" });
+            return tipoDocumentos;
+     
         }
+
+
         public BlackSys.Models.Dal.TipoDocumento GetById(int id)
         {
             return _dtx.TipoDocumento.Where(t => t.Id == id).FirstOrDefault();

@@ -17,7 +17,9 @@ namespace BlackSys.Repository.Municipio
         }
         public List<BlackSys.Models.Dal.Municipio> GetAll()
         {
-            return _dtx.Municipio.ToList();
+            var municipio = _dtx.Municipio.ToList();
+            municipio.Insert(0, new BlackSys.Models.Dal.Municipio { Id = 0, Descripcion = "Seleccione una opción" });
+            return municipio;
         }
         public BlackSys.Models.Dal.Municipio GetById(int id)
         {

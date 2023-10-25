@@ -17,7 +17,9 @@ namespace BlackSys.Repository.Etnia
         }
         public List<BlackSys.Models.Dal.Etnia> GetAll()
         {
-            return _dtx.Etnia.ToList();
+            var etnia = _dtx.Etnia.ToList();
+            etnia.Insert(0, new BlackSys.Models.Dal.Etnia { Id = 0, Descripcion = "Seleccione una opción" });
+            return etnia;
         }
         public BlackSys.Models.Dal.Etnia GetById(int id)
         {

@@ -17,7 +17,10 @@ namespace BlackSys.Repository.Cargo
         }
         public List<BlackSys.Models.Dal.Cargo> GetAll()
         {
-            return _dtx.Cargo.ToList();
+            var cargo = _dtx.Cargo.ToList();
+            cargo.Insert(0, new BlackSys.Models.Dal.Cargo { Id = 0, Descripcion = "Seleccione una opción" });
+            return cargo;
+           
         }
         public BlackSys.Models.Dal.Cargo GetById(int id)
         {

@@ -69,6 +69,10 @@ namespace BlackSys.Models.Dal
         [EmailAddress]
         public string Email { get; set; }
 
+        [Display(Name = "Tipo Documento")]
+        public int TipoDocumentoId { get; set; }
+
+
         [Display(Name = "Estado Civil")]
         public string EstadoCivil { get; set; }
 

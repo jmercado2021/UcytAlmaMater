@@ -144,7 +144,6 @@ namespace BlackSys.Controllers
             ViewBag.TituloV = new SelectList(_titulo.GetAll(), "Id", "Descripcion");
             ViewBag.TipoDocumentoV = new SelectList(_tipodocumento.GetAll(), "Id", "Descripcion");
             model.asignaturasView = _docenteRepositoy.LoadDocenteAsignatura(model.docente.Id);
-            //ViewBag.Asignaturas = docenteView.asignaturasView;
             ViewBag.Asignaturas = new SelectList(_Asignatura.GetAll(), "Id", "Nombre");
             //Validaciones
             if (model.docente.Nombre ==null)

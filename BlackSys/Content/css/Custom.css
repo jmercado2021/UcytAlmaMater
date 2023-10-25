@@ -6,3 +6,10 @@
     width:150px;
     text-align:center;
 }
+.panel-group {
+    width: 800px; /* Ajusta el ancho según tus necesidades */
+}
+
+#contLogin {
+    width: 800px; /* Ajusta el ancho según tus necesidades */
+}

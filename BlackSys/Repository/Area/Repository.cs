@@ -17,7 +17,9 @@ namespace BlackSys.Repository.Area
         }
         public List<BlackSys.Models.Dal.Area> GetAll()
         {
-            return _dtx.Area.ToList();
+            var area = _dtx.Area.ToList();
+            area.Insert(0, new BlackSys.Models.Dal.Area { Id = 0, Descripcion = "Seleccione una opción" });
+            return area;
         }
         public BlackSys.Models.Dal.Area GetById(int id)
         {

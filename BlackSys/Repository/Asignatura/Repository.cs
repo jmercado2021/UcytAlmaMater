@@ -17,7 +17,7 @@ namespace BlackSys.Repository.Asignatura
         }
         public List<BlackSys.Models.Dal.Asignatura> GetAll()
         {
-            return _dtx.Asignatura.ToList();
+            return _dtx.Asignatura.OrderBy(t=> t.Nombre).ToList();
         }
         public BlackSys.Models.Dal.Asignatura GetById(int id)
         {

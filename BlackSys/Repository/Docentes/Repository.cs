@@ -35,7 +35,7 @@ namespace BlackSys.Repository.Docentes
         }
         public List<ViewDocenteAsignatura> LoadDocenteAsignatura(int id)
         {
-           IQueryable<ViewDocenteAsignatura> ls = _dtx.ViewDocenteAsignatura.Where(tt => tt.DocenteId==id);
+           IQueryable<ViewDocenteAsignatura> ls = _dtx.ViewDocenteAsignatura.Where(tt => tt.DocenteId==id).OrderBy(t => t.Asignatura);
             return ls.ToList();
 
         }
@@ -107,6 +107,7 @@ namespace BlackSys.Repository.Docentes
                 //a.UsuarioModifica = principal.User.Identity.GetUserName();
                 a.ValorXHoraClase = p.ValorXHoraClase;
                 a.Zona = p.Zona;
+                a.TipoDocumentoId = p.TipoDocumentoId;
                 //_dtx.SaveChanges();
                 return true;
             }
