@@ -17,7 +17,7 @@ namespace BlackSys.Repository.Titulos
         }
         public List<BlackSys.Models.Dal.Titulos> GetAll()
         {
-            var titulos = _dtx.Titulos.ToList();
+            var titulos = _dtx.Titulos.OrderBy(t => t.Descripcion).ToList();
             titulos.Insert(0, new BlackSys.Models.Dal.Titulos { Id = 0, Descripcion = "Seleccione una opción" });
             return titulos;
         }

@@ -17,7 +17,7 @@ namespace BlackSys.Repository.Recinto
         }
         public List<BlackSys.Models.Dal.Recinto> GetAll()
         {
-            var recinto = _dtx.Recinto.ToList();
+            var recinto = _dtx.Recinto.OrderBy(t => t.Descripcion).ToList();
             recinto.Insert(0, new BlackSys.Models.Dal.Recinto { Id = 0, Descripcion = "Seleccione una opción" });
             return recinto;
         }

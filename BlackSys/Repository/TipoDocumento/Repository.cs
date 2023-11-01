@@ -18,7 +18,7 @@ namespace BlackSys.Repository.TipoDocumento
         public List<BlackSys.Models.Dal.TipoDocumento> GetAll()
         {
 
-            var tipoDocumentos = _dtx.TipoDocumento.ToList();
+            var tipoDocumentos = _dtx.TipoDocumento.OrderBy(t => t.Descripcion).ToList();
             tipoDocumentos.Insert(0, new BlackSys.Models.Dal.TipoDocumento { Id = 0, Descripcion = "Seleccione una opción" });
             return tipoDocumentos;
      

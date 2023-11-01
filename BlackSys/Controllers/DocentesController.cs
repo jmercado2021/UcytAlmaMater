@@ -27,6 +27,7 @@ namespace BlackSys.Controllers
         private Repository.NivelFormacion.IRepository _nivelformacion;
         private Repository.Titulos.IRepository _titulo;
         private Repository.TipoDocumento.IRepository _tipodocumento;
+        private Repository.DocenteCategoria.IRepository _docenteCateg;
         public DocentesController()
         {
             _docenteRepositoy = new Repository.Docentes.Repository(this.ModelState);
@@ -43,6 +44,7 @@ namespace BlackSys.Controllers
             _nivelformacion = new Repository.NivelFormacion.Repository(this.ModelState);
             _titulo = new Repository.Titulos.Repository(this.ModelState);
             _tipodocumento = new Repository.TipoDocumento.Repository(this.ModelState);
+            _docenteCateg = new Repository.DocenteCategoria.Repository(this.ModelState);
         }
         // GET: Docentes
         public ActionResult Index()
@@ -95,14 +97,14 @@ namespace BlackSys.Controllers
             ViewBag.TituloV = new SelectList(_titulo.GetAll(), "Id", "Descripcion");
             ViewBag.TipoDocumentoV = new SelectList(_tipodocumento.GetAll(), "Id", "Descripcion", selectedValue: null);
             docenteView.asignaturasView = _docenteRepositoy.LoadDocenteAsignatura(id);
-          
+            ViewBag.CatDocenteV = new SelectList(_docenteCateg.GetAll(), "Id", "Descripcion");
             //ViewBag.Asignaturas = docenteView.asignaturasView;
             ViewBag.Asignaturas = new SelectList(_Asignatura.GetAll(), "Id", "Nombre");
             return View(docenteView);
             //}
         }
         [HttpPost]
-        public ActionResult Details(DocenteViewModel model)
+        public ActionResult Details(DocenteViewModel model, DateTime FechaNacP)
         {
             var enumData = from Gender e in Enum.GetValues(typeof(Gender))
                            select new

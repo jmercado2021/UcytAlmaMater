@@ -5,7 +5,7 @@ using System.Web;
 using BlackSys.Models.Dal;
 using System.Web.Mvc;
 
-namespace BlackSys.Repository.Cargo
+namespace BlackSys.Repository.DocenteCategoria
 {
     public class Repository : IRepository
     {
@@ -15,16 +15,16 @@ namespace BlackSys.Repository.Cargo
         {
             _modelstate = modelstate;
         }
-        public List<BlackSys.Models.Dal.Cargo> GetAll()
+        public List<BlackSys.Models.Dal.DocenteCategoria> GetAll()
         {
-            var cargo = _dtx.Cargo.OrderBy(t => t.Descripcion).ToList();
-            cargo.Insert(0, new BlackSys.Models.Dal.Cargo { Id = 0, Descripcion = "Seleccione una opción" });
+            var cargo = _dtx.DocenteCategoria.OrderBy(t => t.Descripcion).ToList();
+            cargo.Insert(0, new BlackSys.Models.Dal.DocenteCategoria { Id = 0, Descripcion = "Seleccione una opción" });
             return cargo;
            
         }
-        public BlackSys.Models.Dal.Cargo GetById(int id)
+        public BlackSys.Models.Dal.DocenteCategoria GetById(int id)
         {
-            return _dtx.Cargo.Where(t => t.Id == id).FirstOrDefault();
+            return _dtx.DocenteCategoria.Where(t => t.Id == id).FirstOrDefault();
         }
     }
 }

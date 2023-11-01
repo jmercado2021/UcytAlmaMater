@@ -17,7 +17,7 @@ namespace BlackSys.Repository.NivelFormacion
         }
         public List<BlackSys.Models.Dal.NivelFormacion> GetAll()
         {
-            var nivelFormacion = _dtx.NivelFormacion.ToList();
+            var nivelFormacion = _dtx.NivelFormacion.OrderBy(t => t.Descripcion).ToList();
             nivelFormacion.Insert(0, new BlackSys.Models.Dal.NivelFormacion { Id = 0, Descripcion = "Seleccione una opción" });
             return nivelFormacion;
         }

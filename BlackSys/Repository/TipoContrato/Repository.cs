@@ -17,7 +17,7 @@ namespace BlackSys.Repository.TipoContrato
         }
         public List<BlackSys.Models.Dal.TipoContrato> GetAll()
         {
-            var tipoContrato = _dtx.TipoContrato.ToList();
+            var tipoContrato = _dtx.TipoContrato.OrderBy(t => t.Descripcion).ToList();
             tipoContrato.Insert(0, new BlackSys.Models.Dal.TipoContrato { Id = 0, Descripcion = "Seleccione una opción" });
             return tipoContrato;
         }

@@ -3,10 +3,14 @@
 @model List<BlackSys.Models.Dal.Docente>
 @{ ViewBag.Title = "Listado";
                 Layout = "~/Views/Shared/_Layout.cshtml"; }
+
+
+
 <p>
-    <a class="btn btn-circle btn-primary" href=/Docentes/AgregarDocente><i class="fa fa-plus-square"></i> Agregar Nuevo</a>
+    <a type="bu" class="btn btn-circle btn-primary" href=/Docentes/AgregarDocente><i class="fa fa-plus-square"></i> Agregar Nuevo</a>
     @*<button class="btn btn-circle btn-primary" onclick="exportTableToExcel('sys-table')">Exportar Excel</button>*@
 </p>
+
 <div class="row">
 
 
@@ -15,9 +19,9 @@
 
         <div class="form-group">
             @*<label class="control-label" for="Nombre">Seleecione el Vendedor a consultar</label>*@
-            <h4>Escriba el nombre del Docente</h4>
+            <h4>Escriba el Nombre del Docente</h4>
             @*<button></button>*@
-            <input id="buscar" type="text" class="form-control" placeholder="Escriba algo para filtrar" />
+            <input id="buscar" type="text" class="form-control" placeholder="Escriba un Nombre para filtrar" />
             <div class="help-block with-errors"></div>
             <span id="span1"></span>
         </div>

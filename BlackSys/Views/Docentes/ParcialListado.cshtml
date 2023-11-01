@@ -26,6 +26,8 @@
                     <th>Id</th>
                     <th>Nombre</th>
                     <th>Profesion</th>
+                    <th>Activo</th>
+                    <th>Acciòn</th>
 
                 </tr>
             </thead>
@@ -33,33 +35,30 @@
 
                 @foreach (var item in Model)
                 {
-    <tr>
-        <td class="numero">@Html.DisplayFor(modelItem => item.Id)</td>
-        <td class="numero">@Html.DisplayFor(modelItem => item.Nombre)</td>
-        <td class="numero">@Html.DisplayFor(modelItem => item.Profesion.Descripcion)</td>
-        @*<td class="numero">@Html.DisplayFor(modelItem => item.ArticuloNombre)</td>
-        <td class="numero">@Html.DisplayFor(modelItem => item.Categoria)</td>
-        <td class="numero" hidden>@Html.DisplayFor(modelItem => item.Categoria)</td>
-        <td class="numero">@Html.DisplayFor(modelItem => item.EsSuelto)</td>*@
-        <td>
-            @*@using (Html.BeginForm("ColorDelete", "System", FormMethod.Post, new { @id = "notificationForm" }))
-                {
-                       <div class="input-group-btn">
-                           @Html.AntiForgeryToken()
-                           <a class="btn btn-default btn-sm" href="javascript:showEditDialog('ArticuloMaster','DetallarArticulo','@item.Codigo')"><span class='glyphicon glyphicon-eye-open'></span></a>
-                           <a class="btn btn-danger btn-sm" href="javascript:confirmDelete('ColorDelete','@item.ColorID')"><span class='glyphicon glyphicon-trash'></span></a>
-                       </div>
-                   }*@
-            @Html.ActionLink("Mostrar", "Details", new { Id = item.Id }) |
-        </td>
-        @*<td>
+                <tr>
+                    <td class="numero">@Html.DisplayFor(modelItem => item.Id)</td>
+                    <td class="numero">@Html.DisplayFor(modelItem => item.Nombre)</td>
+                    <td class="numero">@Html.DisplayFor(modelItem => item.Profesion.Descripcion)</td>
+                    @if (item.Activo == true)
+                    {
+                        <td class="numero">SI</td>
+                    }
+                    else
+                    {
+                            <td class="numero">No</td>
+                   }
 
-                @Html.ActionLink("Details", "DetallarArticulo", new { Codigo = item.Codigo }) |
-
-            </td>*@
+                    
 
 
-    </tr>}
+                    <td>
+
+                        @Html.ActionLink("Detalles", "Details", new { Id = item.Id }) |
+                    </td>
+
+
+
+                </tr>}
 
             </tbody>
         </table>

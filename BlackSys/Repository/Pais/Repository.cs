@@ -17,7 +17,7 @@ namespace BlackSys.Repository.Pais
         }
         public List<BlackSys.Models.Dal.Pais> GetAll()
         {
-            var pais = _dtx.Pais.ToList();
+            var pais = _dtx.Pais.OrderBy(t => t.Descripcion).ToList();
             pais.Insert(0, new BlackSys.Models.Dal.Pais { Id = 0, Descripcion = "Seleccione una opción" });
             return pais;
         }

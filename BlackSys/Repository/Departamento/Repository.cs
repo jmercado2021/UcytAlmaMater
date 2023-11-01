@@ -17,7 +17,7 @@ namespace BlackSys.Repository.Departamento
         }
         public List<BlackSys.Models.Dal.Departamento> GetAll()
         {
-            var departamento = _dtx.Departamento.ToList();
+            var departamento = _dtx.Departamento.OrderBy(t => t.Descripcion).ToList();
             departamento.Insert(0, new BlackSys.Models.Dal.Departamento { Id = 0, Descripcion = "Seleccione una opción" });
             return departamento;
         

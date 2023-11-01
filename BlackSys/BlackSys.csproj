@@ -1053,6 +1053,9 @@
     <Compile Include="Models\Dal\Area.cs">
       <DependentUpon>UcytAlmaMater.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Dal\AreaCapacitacion.cs">
+      <DependentUpon>UcytAlmaMater.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Dal\Asignatura.cs">
       <DependentUpon>UcytAlmaMater.tt</DependentUpon>
     </Compile>
@@ -1062,13 +1065,25 @@
     <Compile Include="Models\Dal\Departamento.cs">
       <DependentUpon>UcytAlmaMater.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Dal\Discapacidad.cs">
+      <DependentUpon>UcytAlmaMater.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Dal\Docente.cs">
+      <DependentUpon>UcytAlmaMater.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Dal\DocenteAreaInvestigacion.cs">
       <DependentUpon>UcytAlmaMater.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Dal\DocenteAsignatura.cs">
       <DependentUpon>UcytAlmaMater.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Dal\DocenteCategoria.cs">
+      <DependentUpon>UcytAlmaMater.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Dal\DocenteIdioma.cs">
+      <DependentUpon>UcytAlmaMater.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Dal\EjercicioDirectivo.cs">
       <DependentUpon>UcytAlmaMater.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Dal\Empresa.cs">
@@ -1162,6 +1177,8 @@
     </Compile>
     <Compile Include="Repository\Area\IRepository.cs" />
     <Compile Include="Repository\Area\Repository.cs" />
+    <Compile Include="Repository\DocenteCategoria\IRepository.cs" />
+    <Compile Include="Repository\DocenteCategoria\Repository.cs" />
     <Compile Include="Repository\Departamento\IRepository.cs" />
     <Compile Include="Repository\Departamento\Repository.cs" />
     <Compile Include="Repository\Docentes\IRepository.cs" />

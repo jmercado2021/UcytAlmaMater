@@ -1,7 +1,7 @@
 ﻿
 //$(document).ready(function () {
 
-//    $("#docente_FechaNac").datepicker({
+//    $("#FechaNacP").datepicker({
 //        dateFormat: "dd/mm/yy", // Formato de fecha deseado
 //        changeMonth: true, // Permite cambiar el mes
 //        changeYear: true, // Permite cambiar el AddSubject
@@ -10,7 +10,10 @@
 //    });
 //});
 
-/*$("#docente_FechaNac").datepicker();*/
+$(document).ready(function () {
+    $(".FechaNacP").datepicker();
+});
+//$("#FechaNacP").datepicker();
 
 function AddSubject() {
     var DtoDocenteAsignatura = {
@@ -76,9 +79,6 @@ function DeleteSubject(DocenteId, AsignaturaId) {
 }
 
 
-//function AlertDesasociarAsignatura(AsignaturaId) {
-//    console.log(AsignaturaId);
-//    var DocenteId = $('#docente_Id').val();
 
 function AlertDesasociarAsignatura(AsignaturaId) {
     console.log(AsignaturaId);
@@ -105,9 +105,6 @@ function AlertDesasociarAsignatura(AsignaturaId) {
                 'Tranquilo, no pasa nada :)',
                 'success'
             )
-            //var url = $(this).data('_AddSubjectDocente');
-            //$("#partial").load(url);
-            //$("#partial").load("Url.Action("_AddSubjectDocente","Items")")
         }
     })
 
@@ -115,13 +112,3 @@ function AlertDesasociarAsignatura(AsignaturaId) {
 
 
 
-
-//function AlertaProcesoNoCompletado() {
-
-
-//    swal({
-//        title: "Procesos ejecutados correctamente!",
-//        text: "Catalogo actualizado!",
-//        icon: "success",
-//    });
-//}

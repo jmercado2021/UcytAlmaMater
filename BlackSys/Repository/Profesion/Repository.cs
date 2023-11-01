@@ -17,7 +17,7 @@ namespace BlackSys.Repository.Profesion
         }
         public List<BlackSys.Models.Dal.Profesion> GetAll()
         {
-            var profesion = _dtx.Profesion.ToList();
+            var profesion = _dtx.Profesion.OrderBy(t => t.Descripcion).ToList();
             profesion.Insert(0, new BlackSys.Models.Dal.Profesion { Id = 0, Descripcion = "Seleccione una opción" });
             return profesion;
         }
