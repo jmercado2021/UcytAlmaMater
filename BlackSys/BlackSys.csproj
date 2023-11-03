@@ -1183,6 +1183,8 @@
     <Compile Include="Repository\Departamento\Repository.cs" />
     <Compile Include="Repository\Docentes\IRepository.cs" />
     <Compile Include="Repository\Docentes\Repository.cs" />
+    <Compile Include="Repository\EjercicioDirectivo\IRepository.cs" />
+    <Compile Include="Repository\EjercicioDirectivo\Repository.cs" />
     <Compile Include="Repository\Etnia\IRepository.cs" />
     <Compile Include="Repository\Etnia\Repository.cs" />
     <Compile Include="Repository\Asignatura\IRepository.cs" />

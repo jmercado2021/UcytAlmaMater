@@ -48,7 +48,7 @@ namespace BlackSys.Models
 
         public int AccessFailedCount { get; set; }
 
-        public int SucId { get; set; }
+       
 
         [Required]
         [StringLength(256)]

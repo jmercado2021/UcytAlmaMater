@@ -26,6 +26,22 @@ namespace BlackSys.Models.Enum
             Union_de_Hecho = 2
         }
 
+        //public enum EjercicioDirectivo
+        //{
+        //    [Display(Name = "Docente")]
+        //    Soltero = 0,
+        //    [Display(Name = "Director(a)")]
+        //    Casado = 1,      
+        //}
+        public enum Zona
+        {
+            [Display(Name = "Urbano")]
+            Urbano = 0,
+            [Display(Name = "Rural")]
+            Rural = 1,
+        
+        }
+
         //public enum Lenguages
         //{
         //    [Display(Name = "Español")]

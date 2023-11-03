@@ -142,7 +142,7 @@ namespace BlackSys.Models.Dal
         [Required(ErrorMessage = "Debe indicar si tiene discapacidad")]
         public string Discapacidad { get; set; }
 
-        [Display(Name = "Area")]
+        [Display(Name = "Area Institucional")]
         [Required(ErrorMessage = "Debe seleccionar una Area")]
         public Nullable<int> AreaId { get; set; }
 

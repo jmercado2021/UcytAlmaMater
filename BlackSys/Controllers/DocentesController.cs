@@ -28,6 +28,7 @@ namespace BlackSys.Controllers
         private Repository.Titulos.IRepository _titulo;
         private Repository.TipoDocumento.IRepository _tipodocumento;
         private Repository.DocenteCategoria.IRepository _docenteCateg;
+        private Repository.EjercicioDirectivo.IRepository _ejercDirec;
         public DocentesController()
         {
             _docenteRepositoy = new Repository.Docentes.Repository(this.ModelState);
@@ -45,6 +46,7 @@ namespace BlackSys.Controllers
             _titulo = new Repository.Titulos.Repository(this.ModelState);
             _tipodocumento = new Repository.TipoDocumento.Repository(this.ModelState);
             _docenteCateg = new Repository.DocenteCategoria.Repository(this.ModelState);
+            _ejercDirec = new Repository.EjercicioDirectivo.Repository(this.ModelState);
         }
         // GET: Docentes
         public ActionResult Index()
@@ -71,6 +73,22 @@ namespace BlackSys.Controllers
                                Id = (int)e,
                                Descripcion = e.ToString()
                            };
+
+      
+        //var lsEjercicioDirectivo = from EjercicioDirectivo e in Enum.GetValues(typeof(CivilStatus))
+        //                    select new
+        //                    {
+        //                        Id = (int)e,
+        //                        Descripcion = e.ToString()
+        //                    };
+
+
+        var lszona = from Zona e in Enum.GetValues(typeof(Zona))
+                                select new
+                                {
+                                    Id = (int)e,
+                                    Descripcion = e.ToString()
+                                };
             var lstrueFalse= from SelectTrueFalse e in Enum.GetValues(typeof(SelectTrueFalse))
                                 select new
                                 {
@@ -98,13 +116,16 @@ namespace BlackSys.Controllers
             ViewBag.TipoDocumentoV = new SelectList(_tipodocumento.GetAll(), "Id", "Descripcion", selectedValue: null);
             docenteView.asignaturasView = _docenteRepositoy.LoadDocenteAsignatura(id);
             ViewBag.CatDocenteV = new SelectList(_docenteCateg.GetAll(), "Id", "Descripcion");
+            ViewBag.ZonaV = new SelectList(lszona, "Id", "Descripcion");
+            ViewBag.EjercicioDirectivoV = new SelectList(_ejercDirec.GetAll(), "Id", "Descripcion");
+            
             //ViewBag.Asignaturas = docenteView.asignaturasView;
             ViewBag.Asignaturas = new SelectList(_Asignatura.GetAll(), "Id", "Nombre");
             return View(docenteView);
             //}
         }
         [HttpPost]
-        public ActionResult Details(DocenteViewModel model, DateTime FechaNacP)
+        public ActionResult Details(DocenteViewModel model)
         {
             var enumData = from Gender e in Enum.GetValues(typeof(Gender))
                            select new
