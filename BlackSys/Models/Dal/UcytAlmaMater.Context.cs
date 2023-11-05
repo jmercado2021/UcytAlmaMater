@@ -28,7 +28,6 @@ namespace BlackSys.Models.Dal
         public virtual DbSet<Cargo> Cargo { get; set; }
         public virtual DbSet<Departamento> Departamento { get; set; }
         public virtual DbSet<DocenteAsignatura> DocenteAsignatura { get; set; }
-        public virtual DbSet<DocenteIdioma> DocenteIdioma { get; set; }
         public virtual DbSet<Empresa> Empresa { get; set; }
         public virtual DbSet<Etnia> Etnia { get; set; }
         public virtual DbSet<Idiomas> Idiomas { get; set; }
@@ -51,5 +50,6 @@ namespace BlackSys.Models.Dal
         public virtual DbSet<DocenteAreaInvestigacion> DocenteAreaInvestigacion { get; set; }
         public virtual DbSet<EjercicioDirectivo> EjercicioDirectivo { get; set; }
         public virtual DbSet<DocenteCategoria> DocenteCategoria { get; set; }
+        public virtual DbSet<DocenteEstudios> DocenteEstudios { get; set; }
     }
 }

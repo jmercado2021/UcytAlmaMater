@@ -29,6 +29,8 @@ namespace BlackSys.Controllers
         private Repository.TipoDocumento.IRepository _tipodocumento;
         private Repository.DocenteCategoria.IRepository _docenteCateg;
         private Repository.EjercicioDirectivo.IRepository _ejercDirec;
+        private Repository.DocenteEstudios.IRepository _docEstudios;
+        private Repository.AreaCapacitacion.IRepository _areacapacitacion;
         public DocentesController()
         {
             _docenteRepositoy = new Repository.Docentes.Repository(this.ModelState);
@@ -46,7 +48,9 @@ namespace BlackSys.Controllers
             _titulo = new Repository.Titulos.Repository(this.ModelState);
             _tipodocumento = new Repository.TipoDocumento.Repository(this.ModelState);
             _docenteCateg = new Repository.DocenteCategoria.Repository(this.ModelState);
-            _ejercDirec = new Repository.EjercicioDirectivo.Repository(this.ModelState);
+            _ejercDirec =   new Repository.EjercicioDirectivo.Repository(this.ModelState);
+            _docEstudios = new Repository.DocenteEstudios.Repository(this.ModelState);
+            _areacapacitacion = new Repository.AreaCapacitacion.Repository(this.ModelState);
         }
         // GET: Docentes
         public ActionResult Index()
@@ -74,16 +78,28 @@ namespace BlackSys.Controllers
                                Descripcion = e.ToString()
                            };
 
-      
-        //var lsEjercicioDirectivo = from EjercicioDirectivo e in Enum.GetValues(typeof(CivilStatus))
-        //                    select new
-        //                    {
-        //                        Id = (int)e,
-        //                        Descripcion = e.ToString()
-        //                    };
+
+            var lsOriginBeca = from OriginBeca e in Enum.GetValues(typeof(OriginBeca))
+                                       select new
+                                       {
+                                           Id = (int)e,
+                                           Descripcion = e.ToString()
+                                       };
+            var lsTypeBeca = from TypeBeca e in Enum.GetValues(typeof(TypeBeca))
+                               select new
+                               {
+                                   Id = (int)e,
+                                   Descripcion = e.ToString()
+                               };
+            var lstrueFalseEstudios = from SelectTrueFalseEstudies e in Enum.GetValues(typeof(SelectTrueFalseEstudies))
+                              select new
+                              {
+                                  Id = (int)e,
+                                  Descripcion = e.ToString()
+                              };
 
 
-        var lszona = from Zona e in Enum.GetValues(typeof(Zona))
+            var lszona = from Zone e in Enum.GetValues(typeof(Zone))
                                 select new
                                 {
                                     Id = (int)e,
@@ -118,8 +134,11 @@ namespace BlackSys.Controllers
             ViewBag.CatDocenteV = new SelectList(_docenteCateg.GetAll(), "Id", "Descripcion");
             ViewBag.ZonaV = new SelectList(lszona, "Id", "Descripcion");
             ViewBag.EjercicioDirectivoV = new SelectList(_ejercDirec.GetAll(), "Id", "Descripcion");
-            
-            //ViewBag.Asignaturas = docenteView.asignaturasView;
+            ViewBag.DocenteEstudiosV = new SelectList(_docEstudios.GetAll(), "Id", "Descripcion");
+            ViewBag.OriginBecaV = new SelectList(lsOriginBeca ,"Id", "Descripcion");
+            ViewBag.TypeBecaV = new SelectList(lsTypeBeca, "Id", "Descripcion");
+            ViewBag.AreaCapacitacionV = new SelectList(_areacapacitacion.GetAll(), "Id", "Descripcion");
+            ViewBag.SINOAplica = new SelectList(lstrueFalseEstudios, "Id", "Descripcion");
             ViewBag.Asignaturas = new SelectList(_Asignatura.GetAll(), "Id", "Nombre");
             return View(docenteView);
             //}
@@ -127,6 +146,8 @@ namespace BlackSys.Controllers
         [HttpPost]
         public ActionResult Details(DocenteViewModel model)
         {
+
+
             var enumData = from Gender e in Enum.GetValues(typeof(Gender))
                            select new
                            {
@@ -139,14 +160,40 @@ namespace BlackSys.Controllers
                                     Id = (int)e,
                                     Descripcion = e.ToString()
                                 };
+
+
+            var lsOriginBeca = from OriginBeca e in Enum.GetValues(typeof(OriginBeca))
+                               select new
+                               {
+                                   Id = (int)e,
+                                   Descripcion = e.ToString()
+                               };
+            var lsTypeBeca = from TypeBeca e in Enum.GetValues(typeof(TypeBeca))
+                             select new
+                             {
+                                 Id = (int)e,
+                                 Descripcion = e.ToString()
+                             };
+            var lstrueFalseEstudios = from SelectTrueFalseEstudies e in Enum.GetValues(typeof(SelectTrueFalseEstudies))
+                                      select new
+                                      {
+                                          Id = (int)e,
+                                          Descripcion = e.ToString()
+                                      };
+
+
+            var lszona = from Zone e in Enum.GetValues(typeof(Zone))
+                         select new
+                         {
+                             Id = (int)e,
+                             Descripcion = e.ToString()
+                         };
             var lstrueFalse = from SelectTrueFalse e in Enum.GetValues(typeof(SelectTrueFalse))
                               select new
                               {
                                   Id = (int)e,
                                   Descripcion = e.ToString()
                               };
-
-            //model.docente.Estudia = "SI" ? model.docente.Estudia = false : model.docente.Estudia = true; 
 
             DocenteViewModel docenteView = new DocenteViewModel();
             docenteView.docente = _docenteRepositoy.GetById(model.docente.Id);
@@ -165,8 +212,16 @@ namespace BlackSys.Controllers
             ViewBag.AreaV = new SelectList(_area.GetAll(), "Id", "Descripcion");
             ViewBag.NivelFormacionV = new SelectList(_nivelformacion.GetAll(), "Id", "Descripcion");
             ViewBag.TituloV = new SelectList(_titulo.GetAll(), "Id", "Descripcion");
-            ViewBag.TipoDocumentoV = new SelectList(_tipodocumento.GetAll(), "Id", "Descripcion");
-            model.asignaturasView = _docenteRepositoy.LoadDocenteAsignatura(model.docente.Id);
+            ViewBag.TipoDocumentoV = new SelectList(_tipodocumento.GetAll(), "Id", "Descripcion", selectedValue: null);
+            docenteView.asignaturasView = _docenteRepositoy.LoadDocenteAsignatura(model.docente.Id);
+            ViewBag.CatDocenteV = new SelectList(_docenteCateg.GetAll(), "Id", "Descripcion");
+            ViewBag.ZonaV = new SelectList(lszona, "Id", "Descripcion");
+            ViewBag.EjercicioDirectivoV = new SelectList(_ejercDirec.GetAll(), "Id", "Descripcion");
+            ViewBag.DocenteEstudiosV = new SelectList(_docEstudios.GetAll(), "Id", "Descripcion");
+            ViewBag.OriginBecaV = new SelectList(lsOriginBeca, "Id", "Descripcion");
+            ViewBag.TypeBecaV = new SelectList(lsTypeBeca, "Id", "Descripcion");
+            ViewBag.AreaCapacitacionV = new SelectList(_areacapacitacion.GetAll(), "Id", "Descripcion");
+            ViewBag.SINOAplica = new SelectList(lstrueFalseEstudios, "Id", "Descripcion");
             ViewBag.Asignaturas = new SelectList(_Asignatura.GetAll(), "Id", "Nombre");
             //Validaciones
             if (model.docente.Nombre ==null)
@@ -230,6 +285,34 @@ namespace BlackSys.Controllers
                                     Id = (int)e,
                                     Descripcion = e.ToString()
                                 };
+
+
+            var lsOriginBeca = from OriginBeca e in Enum.GetValues(typeof(OriginBeca))
+                               select new
+                               {
+                                   Id = (int)e,
+                                   Descripcion = e.ToString()
+                               };
+            var lsTypeBeca = from TypeBeca e in Enum.GetValues(typeof(TypeBeca))
+                             select new
+                             {
+                                 Id = (int)e,
+                                 Descripcion = e.ToString()
+                             };
+            var lstrueFalseEstudios = from SelectTrueFalseEstudies e in Enum.GetValues(typeof(SelectTrueFalseEstudies))
+                                      select new
+                                      {
+                                          Id = (int)e,
+                                          Descripcion = e.ToString()
+                                      };
+
+
+            var lszona = from Zone e in Enum.GetValues(typeof(Zone))
+                         select new
+                         {
+                             Id = (int)e,
+                             Descripcion = e.ToString()
+                         };
             var lstrueFalse = from SelectTrueFalse e in Enum.GetValues(typeof(SelectTrueFalse))
                               select new
                               {
@@ -238,7 +321,6 @@ namespace BlackSys.Controllers
                               };
 
 
-          
 
             ViewBag.Departamento = new SelectList(_departamento.GetAll(), "Id", "Descripcion");
             ViewBag.Municipio = new SelectList(_municipio.GetAll(), "Id", "Descripcion");
@@ -252,11 +334,18 @@ namespace BlackSys.Controllers
             ViewBag.Cargo = new SelectList(_cargo.GetAll(), "Id", "Descripcion");
             ViewBag.ProfesionV = new SelectList(_profesion.GetAll(), "Id", "Descripcion");
             ViewBag.AreaV = new SelectList(_area.GetAll(), "Id", "Descripcion");
-            ViewBag.RecintoV = new SelectList(_recinto.GetAll(), "Id", "Descripcion");
             ViewBag.NivelFormacionV = new SelectList(_nivelformacion.GetAll(), "Id", "Descripcion");
             ViewBag.TituloV = new SelectList(_titulo.GetAll(), "Id", "Descripcion");
-            ViewBag.TipoDocumentoV = new SelectList(_tipodocumento.GetAll(), "Id", "Descripcion");
-            //ViewBag.Asignaturas = docenteView.asignaturasView;
+            ViewBag.TipoDocumentoV = new SelectList(_tipodocumento.GetAll(), "Id", "Descripcion", selectedValue: null);
+            ViewBag.CatDocenteV = new SelectList(_docenteCateg.GetAll(), "Id", "Descripcion");
+            ViewBag.ZonaV = new SelectList(lszona, "Id", "Descripcion");
+            ViewBag.EjercicioDirectivoV = new SelectList(_ejercDirec.GetAll(), "Id", "Descripcion");
+            ViewBag.DocenteEstudiosV = new SelectList(_docEstudios.GetAll(), "Id", "Descripcion");
+            ViewBag.OriginBecaV = new SelectList(lsOriginBeca, "Id", "Descripcion");
+            ViewBag.TypeBecaV = new SelectList(lsTypeBeca, "Id", "Descripcion");
+            ViewBag.AreaCapacitacionV = new SelectList(_areacapacitacion.GetAll(), "Id", "Descripcion");
+            ViewBag.SINOAplica = new SelectList(lstrueFalseEstudios, "Id", "Descripcion");
+            ViewBag.Asignaturas = new SelectList(_Asignatura.GetAll(), "Id", "Nombre");
 
             return View(docenteView);
 
@@ -265,12 +354,8 @@ namespace BlackSys.Controllers
         public ActionResult AgregarDocente(DocenteViewModel model)
         {
             //DocenteViewModel docenteView = new DocenteViewModel();
-          //if (model.docente.Id==0)NAddSubjectDocente
-          //  }
-                model.asignaturasView= _docenteRepositoy.LoadDocenteAsignatura(model.docente.Id);
-           
-
-            var enumData = from Gender e in Enum.GetValues(typeof(Gender))
+            //if (model.docente.Id==0)NAddSubjectDocente
+          var enumData = from Gender e in Enum.GetValues(typeof(Gender))
                            select new
                            {
                                Id = (int)e,
@@ -282,6 +367,34 @@ namespace BlackSys.Controllers
                                     Id = (int)e,
                                     Descripcion = e.ToString()
                                 };
+
+
+            var lsOriginBeca = from OriginBeca e in Enum.GetValues(typeof(OriginBeca))
+                               select new
+                               {
+                                   Id = (int)e,
+                                   Descripcion = e.ToString()
+                               };
+            var lsTypeBeca = from TypeBeca e in Enum.GetValues(typeof(TypeBeca))
+                             select new
+                             {
+                                 Id = (int)e,
+                                 Descripcion = e.ToString()
+                             };
+            var lstrueFalseEstudios = from SelectTrueFalseEstudies e in Enum.GetValues(typeof(SelectTrueFalseEstudies))
+                                      select new
+                                      {
+                                          Id = (int)e,
+                                          Descripcion = e.ToString()
+                                      };
+
+
+            var lszona = from Zone e in Enum.GetValues(typeof(Zone))
+                         select new
+                         {
+                             Id = (int)e,
+                             Descripcion = e.ToString()
+                         };
             var lstrueFalse = from SelectTrueFalse e in Enum.GetValues(typeof(SelectTrueFalse))
                               select new
                               {
@@ -303,10 +416,18 @@ namespace BlackSys.Controllers
             ViewBag.Cargo = new SelectList(_cargo.GetAll(), "Id", "Descripcion");
             ViewBag.ProfesionV = new SelectList(_profesion.GetAll(), "Id", "Descripcion");
             ViewBag.AreaV = new SelectList(_area.GetAll(), "Id", "Descripcion");
-            ViewBag.RecintoV = new SelectList(_recinto.GetAll(), "Id", "Descripcion");
             ViewBag.NivelFormacionV = new SelectList(_nivelformacion.GetAll(), "Id", "Descripcion");
             ViewBag.TituloV = new SelectList(_titulo.GetAll(), "Id", "Descripcion");
-            ViewBag.TipoDocumentoV = new SelectList(_tipodocumento.GetAll(), "Id", "Descripcion");
+            ViewBag.TipoDocumentoV = new SelectList(_tipodocumento.GetAll(), "Id", "Descripcion", selectedValue: null);
+            ViewBag.CatDocenteV = new SelectList(_docenteCateg.GetAll(), "Id", "Descripcion");
+            ViewBag.ZonaV = new SelectList(lszona, "Id", "Descripcion");
+            ViewBag.EjercicioDirectivoV = new SelectList(_ejercDirec.GetAll(), "Id", "Descripcion");
+            ViewBag.DocenteEstudiosV = new SelectList(_docEstudios.GetAll(), "Id", "Descripcion");
+            ViewBag.OriginBecaV = new SelectList(lsOriginBeca, "Id", "Descripcion");
+            ViewBag.TypeBecaV = new SelectList(lsTypeBeca, "Id", "Descripcion");
+            ViewBag.AreaCapacitacionV = new SelectList(_areacapacitacion.GetAll(), "Id", "Descripcion");
+            ViewBag.SINOAplica = new SelectList(lstrueFalseEstudios, "Id", "Descripcion");
+            ViewBag.Asignaturas = new SelectList(_Asignatura.GetAll(), "Id", "Nombre");
             //if (model.docente.Nombre == null)
             //{
             //    ModelState.AddModelError("", "Nombre no puede quedar vacio, Por favor registre el nombre del Docente ");

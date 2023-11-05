@@ -8,7 +8,6 @@
         <EntityTypeShape EntityType="UcytAlmaMaterModel.Cargo" Width="1.5" PointX="5.25" PointY="12.25" IsExpanded="true" />
         <EntityTypeShape EntityType="UcytAlmaMaterModel.Departamento" Width="1.5" PointX="3" PointY="8.875" IsExpanded="true" />
         <EntityTypeShape EntityType="UcytAlmaMaterModel.DocenteAsignatura" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="UcytAlmaMaterModel.DocenteIdioma" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="UcytAlmaMaterModel.Empresa" Width="1.5" PointX="3" PointY="17.5" IsExpanded="true" />
         <EntityTypeShape EntityType="UcytAlmaMaterModel.Etnia" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="UcytAlmaMaterModel.Idiomas" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
@@ -41,6 +40,7 @@
         <AssociationConnector Association="UcytAlmaMaterModel.FK_Docente_Municipio" />
         <AssociationConnector Association="UcytAlmaMaterModel.FK_Docente_Profesion" />
         <AssociationConnector Association="UcytAlmaMaterModel.FK_Docente_TipoContrato" />
+        <EntityTypeShape EntityType="UcytAlmaMaterModel.DocenteEstudios" Width="1.5" PointX="13.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

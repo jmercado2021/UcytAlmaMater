@@ -12,10 +12,10 @@ namespace BlackSys.Models.Dal
     using System;
     using System.Collections.Generic;
     
-    public partial class DocenteIdioma
+    public partial class DocenteEstudios
     {
         public int Id { get; set; }
-        public int DocenteId { get; set; }
-        public int IdiomaId { get; set; }
+        public string Descripcion { get; set; }
+        public bool Activo { get; set; }
     }
 }

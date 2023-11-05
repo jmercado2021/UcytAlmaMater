@@ -26,14 +26,25 @@ namespace BlackSys.Models.Enum
             Union_de_Hecho = 2
         }
 
-        //public enum EjercicioDirectivo
-        //{
-        //    [Display(Name = "Docente")]
-        //    Soltero = 0,
-        //    [Display(Name = "Director(a)")]
-        //    Casado = 1,      
-        //}
-        public enum Zona
+        public enum OriginBeca
+        {
+            [Display(Name = "Institucional")]
+            Institucional = 0,
+            [Display(Name = "No Institucional")]
+            NoInstitucional = 1,
+            [Display(Name = "No Aplica")]
+            NoAplica = 2
+        }
+        public enum TypeBeca
+        {
+            [Display(Name = "Completa")]
+            Completa = 0,
+            [Display(Name = "Parcial")]
+            Parcial = 1,
+            [Display(Name = "No Aplica")]
+            NoAplica = 2
+        }
+        public enum Zone
         {
             [Display(Name = "Urbano")]
             Urbano = 0,
@@ -62,6 +73,18 @@ namespace BlackSys.Models.Enum
             Si = 0,
             [Display(Name = "No")]
             No = 1
+
+
+        }
+
+        public enum SelectTrueFalseEstudies
+        {
+            [Display(Name = "Si")]
+            Si = 0,
+            [Display(Name = "No")]
+            No = 1,
+            [Display(Name = "No Aplica")]
+            NoAplica = 2
 
 
         }

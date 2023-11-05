@@ -161,14 +161,13 @@ advertencia 6002: La tabla o vista 'UcytAlmaMater.dbo.DocenteCategoria' no tiene
           <Property Name="Descripcion" Type="varchar" MaxLength="50" />
           <Property Name="Activo" Type="bit" />
         </EntityType>
-        <EntityType Name="DocenteIdioma">
+        <EntityType Name="DocenteEstudios">
           <Key>
-            <PropertyRef Name="DocenteId" />
-            <PropertyRef Name="IdiomaId" />
+            <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="DocenteId" Type="int" Nullable="false" />
-          <Property Name="IdiomaId" Type="int" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Activo" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="EjercicioDirectivo">
           <Key>
@@ -440,7 +439,7 @@ advertencia 6002: La tabla o vista 'UcytAlmaMater.dbo.ViewDocenteIdiomas' no tie
           <EntitySet Name="Docente" EntityType="Self.Docente" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DocenteAreaInvestigacion" EntityType="Self.DocenteAreaInvestigacion" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DocenteAsignatura" EntityType="Self.DocenteAsignatura" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="DocenteIdioma" EntityType="Self.DocenteIdioma" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DocenteEstudios" EntityType="Self.DocenteEstudios" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="EjercicioDirectivo" EntityType="Self.EjercicioDirectivo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Empresa" EntityType="Self.Empresa" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Etnia" EntityType="Self.Etnia" Schema="dbo" store:Type="Tables" />
@@ -554,15 +553,6 @@ advertencia 6002: La tabla o vista 'UcytAlmaMater.dbo.ViewDocenteIdiomas' no tie
           <Property Name="DocenteId" Type="Double" Nullable="false" />
           <Property Name="AsignaturaId" Type="Double" Nullable="false" />
           <Property Name="Activo" Type="Boolean" />
-        </EntityType>
-        <EntityType Name="DocenteIdioma">
-          <Key>
-            <PropertyRef Name="DocenteId" />
-            <PropertyRef Name="IdiomaId" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="DocenteId" Type="Int32" Nullable="false" />
-          <Property Name="IdiomaId" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="Empresa">
           <Key>
@@ -691,7 +681,6 @@ advertencia 6002: La tabla o vista 'UcytAlmaMater.dbo.ViewDocenteIdiomas' no tie
           <EntitySet Name="Cargo" EntityType="Self.Cargo" />
           <EntitySet Name="Departamento" EntityType="Self.Departamento" />
           <EntitySet Name="DocenteAsignatura" EntityType="Self.DocenteAsignatura" />
-          <EntitySet Name="DocenteIdioma" EntityType="Self.DocenteIdioma" />
           <EntitySet Name="Empresa" EntityType="Self.Empresa" />
           <EntitySet Name="Etnia" EntityType="Self.Etnia" />
           <EntitySet Name="Idiomas" EntityType="Self.Idiomas" />
@@ -754,6 +743,7 @@ advertencia 6002: La tabla o vista 'UcytAlmaMater.dbo.ViewDocenteIdiomas' no tie
             <End Role="TipoContrato" EntitySet="TipoContrato" />
             <End Role="Docente" EntitySet="Docente" />
           </AssociationSet>
+          <EntitySet Name="DocenteEstudios" EntityType="UcytAlmaMaterModel.DocenteEstudios" />
           </EntityContainer>
         <EntityType Name="Area">
           <Key>
@@ -1031,6 +1021,14 @@ advertencia 6002: La tabla o vista 'UcytAlmaMater.dbo.ViewDocenteIdiomas' no tie
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="DocenteEstudios">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Activo" Type="Boolean" Nullable="false" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1064,15 +1062,6 @@ advertencia 6002: La tabla o vista 'UcytAlmaMater.dbo.ViewDocenteIdiomas' no tie
                 <ScalarProperty Name="DocenteId" ColumnName="DocenteId" />
                 <ScalarProperty Name="AsignaturaId" ColumnName="AsignaturaId" />
                 <ScalarProperty Name="Activo" ColumnName="Activo" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="DocenteIdioma">
-            <EntityTypeMapping TypeName="UcytAlmaMaterModel.DocenteIdioma">
-              <MappingFragment StoreEntitySet="DocenteIdioma">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="DocenteId" ColumnName="DocenteId" />
-                <ScalarProperty Name="IdiomaId" ColumnName="IdiomaId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1350,6 +1339,15 @@ advertencia 6002: La tabla o vista 'UcytAlmaMater.dbo.ViewDocenteIdiomas' no tie
           <EntitySetMapping Name="DocenteCategoria">
             <EntityTypeMapping TypeName="UcytAlmaMaterModel.DocenteCategoria">
               <MappingFragment StoreEntitySet="DocenteCategoria">
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DocenteEstudios">
+            <EntityTypeMapping TypeName="UcytAlmaMaterModel.DocenteEstudios">
+              <MappingFragment StoreEntitySet="DocenteEstudios">
                 <ScalarProperty Name="Activo" ColumnName="Activo" />
                 <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
                 <ScalarProperty Name="Id" ColumnName="Id" />

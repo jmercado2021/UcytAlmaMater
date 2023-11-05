@@ -1080,7 +1080,7 @@
     <Compile Include="Models\Dal\DocenteCategoria.cs">
       <DependentUpon>UcytAlmaMater.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Dal\DocenteIdioma.cs">
+    <Compile Include="Models\Dal\DocenteEstudios.cs">
       <DependentUpon>UcytAlmaMater.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Dal\EjercicioDirectivo.cs">
@@ -1175,12 +1175,16 @@
       <DependentUpon>RptReporteCargaTraslado.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Repository\AreaCapacitacion\IRepository.cs" />
+    <Compile Include="Repository\AreaCapacitacion\Repository.cs" />
     <Compile Include="Repository\Area\IRepository.cs" />
     <Compile Include="Repository\Area\Repository.cs" />
     <Compile Include="Repository\DocenteCategoria\IRepository.cs" />
     <Compile Include="Repository\DocenteCategoria\Repository.cs" />
     <Compile Include="Repository\Departamento\IRepository.cs" />
     <Compile Include="Repository\Departamento\Repository.cs" />
+    <Compile Include="Repository\DocenteEstudios\IRepository.cs" />
+    <Compile Include="Repository\DocenteEstudios\Repository.cs" />
     <Compile Include="Repository\Docentes\IRepository.cs" />
     <Compile Include="Repository\Docentes\Repository.cs" />
     <Compile Include="Repository\EjercicioDirectivo\IRepository.cs" />

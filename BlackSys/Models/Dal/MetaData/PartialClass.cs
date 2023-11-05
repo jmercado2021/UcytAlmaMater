@@ -109,7 +109,7 @@ namespace BlackSys.Models.Dal
         [Required(ErrorMessage = "Debe Seleccionar si domina Idiomas")]
         public string DominaIdiomas { get; set; }
 
-        [Display(Name = "Idiomas")]
+        [Display(Name = "Nombre Idiomas")]
         [Required(ErrorMessage = "Debe editar el nombre de Idioma")]
         public string NombreIdioma { get; set; }
 
@@ -195,7 +195,7 @@ namespace BlackSys.Models.Dal
         [Required(ErrorMessage = "Debe seleccionar PServ RSJ")]
         public string PServ_RSJ { get; set; }
 
-        [Display(Name = "Tipo de Contrato")]
+        [Display(Name = "PServ Prepa")]
         [Required(ErrorMessage = "Debe seleccionar el tipo de contrato")]
         public string PServ_Prepa { get; set; }
 
@@ -215,7 +215,7 @@ namespace BlackSys.Models.Dal
         [Required(ErrorMessage = "Debe seleccionar si realiza investigacion")]
         public string RealizaInvestigacion { get; set; }
 
-        [Display(Name = "Investigacion")]
+        [Display(Name = "Area Investigacion")]
         [Required(ErrorMessage = "Debe seleccionar investigacion")]
         public Nullable<int> DocenteAreaInvestigacionId { get; set; }
 
@@ -250,7 +250,7 @@ namespace BlackSys.Models.Dal
         public Nullable<int> NivelFpEstudios { get; set; }
 
         [Display(Name = "Nombre Estudios")]
-        [Required(ErrorMessage = "Debe Editar Nombre Estudios")]
+        [Required(ErrorMessage = "Debe Seleccionar Nombre Estudios")]
         public string NombreEstudios { get; set; }
 
         [Display(Name = "Beca Estudios")]

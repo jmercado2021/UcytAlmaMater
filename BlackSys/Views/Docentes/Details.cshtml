@@ -41,9 +41,7 @@
                     <li>
                         <a href="#tab-4" class="tab-link"> <span class="material-icons tab-icon">build</span> <span class="tab-label">Asignaturas</span></a>
                     </li>
-                    <li>
-                        <a href="#tab-5" class="tab-link"> <span class="material-icons tab-icon">build</span> <span class="tab-label">Otros</span></a>
-                    </li>
+                
                     <li>
                         <br />
                     </li>
@@ -144,10 +142,7 @@
                                             @Html.LabelFor(model => model.docente.MunicipioId, htmlAttributes: new { @class = "control-label" })
                                             @Html.DropDownListFor(model => model.docente.MunicipioId, new SelectList(ViewBag.Municipio, "Value", "Text"), null, new { @class = "form-control" })
                                         </div>
-                                        <div id="intro" class="col-md-4">
-                                            @Html.LabelFor(model => model.docente.Zona, htmlAttributes: new { @class = "control-label" })
-                                            @Html.DropDownListFor(model => model.docente.Zona, new SelectList(ViewBag.ZonaV, "Value", "Text"), null, new { @class = "form-control" })
-                                        </div>
+
                                     </div>
                                 </div>
                                 <br />
@@ -192,7 +187,18 @@
                                     </div>
                                 </div>
                                 <br />
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div id="intro" class="col-md-4">
+                                            @Html.LabelFor(model => model.docente.Zona, htmlAttributes: new { @class = "control-label" })
+                                            @Html.DropDownListFor(model => model.docente.Zona, new SelectList(ViewBag.ZonaV, "Value", "Text"), null, new { @class = "form-control" })
+                                        </div>
 
+
+                                    </div>
+                                </div>
+                                <br />
+                               
 
                             </div>
                         </div>
@@ -245,6 +251,7 @@
 
                                     </div>
                                 </div>
+                                <br />
                                 <div class="row">
                                     <div class="col-lg-12">
 
@@ -255,13 +262,13 @@
                                         </div>
 
 
-                                        <div id="intro" class="col-md-6">
+                                        <div id="intro" class="col-md-4">
                                             @Html.LabelFor(model => model.docente.AreaId, htmlAttributes: new { @class = "control-label" })
                                             @Html.DropDownListFor(model => model.docente.AreaId, new SelectList(ViewBag.AreaV, "Value", "Text"), null, new { @class = "form-control" })
 
                                         </div>
 
-                                        <div id="intro" class="col-md-6">
+                                        <div id="intro" class="col-md-4">
                                             @Html.LabelFor(model => model.docente.Tutorias, htmlAttributes: new { @class = "control-label" })
                                             @Html.DropDownListFor(model => model.docente.Tutorias, new SelectList(ViewBag.SINO, "Value", "Text"), null, new { @class = "form-control" })
 
@@ -353,30 +360,26 @@
                                 <br />
                                 <div class="row">
                                     <div class="col-lg-12">
-                                        <div class="col-md-4">
+                                        <div id="intro" class="col-md-4">
                                             @Html.LabelFor(model => model.docente.PservUNICAM, htmlAttributes: new { @class = "control-label" })
-                                            @Html.EditorFor(model => model.docente.PservUNICAM, new { htmlAttributes = new { @class = "form-control col-lg-4" } })
-                                            @Html.ValidationMessageFor(model => model.docente.PservUNICAM, "", new { @class = "text-danger" })
+                                            @Html.DropDownListFor(model => model.docente.PservUNICAM, new SelectList(ViewBag.SINO, "Value", "Text"), null, new { @class = "form-control" })
                                         </div>
-                                        <div class="col-md-4">
+                                        <div id="intro" class="col-md-4">
                                             @Html.LabelFor(model => model.docente.PServ_UALN, htmlAttributes: new { @class = "control-label" })
-                                            @Html.EditorFor(model => model.docente.PServ_UALN, new { htmlAttributes = new { @class = "form-control col-lg-4" } })
-                                            @Html.ValidationMessageFor(model => model.docente.PServ_UALN, "", new { @class = "text-danger" })
+                                            @Html.DropDownListFor(model => model.docente.PServ_UALN, new SelectList(ViewBag.SINO, "Value", "Text"), null, new { @class = "form-control" })
                                         </div>
-                                        <div class="col-md-4">
+                                        <div id="intro" class="col-md-4">
                                             @Html.LabelFor(model => model.docente.PServ_RSJ, htmlAttributes: new { @class = "control-label" })
-                                            @Html.EditorFor(model => model.docente.PServ_RSJ, new { htmlAttributes = new { @class = "form-control col-lg-4" } })
-                                            @Html.ValidationMessageFor(model => model.docente.PServ_RSJ, "", new { @class = "text-danger" })
+                                            @Html.DropDownListFor(model => model.docente.PServ_RSJ, new SelectList(ViewBag.SINO, "Value", "Text"), null, new { @class = "form-control" })
                                         </div>
                                     </div>
                                 </div>
                                 <br />
                                 <div class="row">
                                     <div class="col-lg-12">
-                                        <div class="col-md-4">
+                                        <div id="intro" class="col-md-4">
                                             @Html.LabelFor(model => model.docente.PServ_Prepa, htmlAttributes: new { @class = "control-label" })
-                                            @Html.EditorFor(model => model.docente.PServ_Prepa, new { htmlAttributes = new { @class = "form-control col-lg-4" } })
-                                            @Html.ValidationMessageFor(model => model.docente.PServ_Prepa, "", new { @class = "text-danger" })
+                                            @Html.DropDownListFor(model => model.docente.PServ_Prepa, new SelectList(ViewBag.SINO, "Value", "Text"), null, new { @class = "form-control" })
                                         </div>
                                         <div class="col-md-4">
                                             @Html.LabelFor(model => model.docente.NoGrupos, htmlAttributes: new { @class = "control-label" })
@@ -408,66 +411,125 @@
                                             @Html.DropDownListFor(model => model.docente.DocenteAreaInvestigacionId, new SelectList(ViewBag.SINO, "Value", "Text"), null, new { @class = "form-control" })
                                         </div>
                                     </div>
-                                    <br />
-                                    <div class="row">
-                                        <div class="col-lg-12">
-                                            <div id="intro" class="col-md-4">
-                                                @Html.LabelFor(model => model.docente.Estudia, htmlAttributes: new { @class = "control-label" })
-                                                @Html.DropDownListFor(model => model.docente.Estudia, new SelectList(ViewBag.SINO, "Value", "Text"), null, new { @class = "form-control" })
-                                            </div>
-
-                                            <div id="intro" class="col-md-4">
-                                                @Html.LabelFor(model => model.docente.BecaEstudios, htmlAttributes: new { @class = "control-label" })
-                                                @Html.DropDownListFor(model => model.docente.BecaEstudios, new SelectList(ViewBag.SINO, "Value", "Text"), null, new { @class = "form-control" })
-                                            </div>
-                                            <div class="col-md-4">
-                                                @Html.LabelFor(model => model.docente.TipoBeca, htmlAttributes: new { @class = "control-label" })
-                                                @Html.EditorFor(model => model.docente.TipoBeca, new { htmlAttributes = new { @class = "form-control col-lg-4" } })
-                                                @Html.ValidationMessageFor(model => model.docente.TipoBeca, "", new { @class = "text-danger" })
-                                            </div>
-                                            <div id="intro" class="col-md-4">
-                                                @Html.LabelFor(model => model.docente.BecaEstudios, htmlAttributes: new { @class = "control-label" })
-                                                @Html.DropDownListFor(model => model.docente.EjercicioDirectivoId, new SelectList(ViewBag.EjercicioDirectivoV, "Value", "Text"), null, new { @class = "form-control" })
-                                            </div>
-
-                                            <div class="col-md-4">
-                                                @Html.LabelFor(model => model.docente.MontoBeca, htmlAttributes: new { @class = "control-label" })
-                                                @Html.EditorFor(model => model.docente.MontoBeca, new { htmlAttributes = new { @class = "form-control col-lg-4" } })
-                                                @Html.ValidationMessageFor(model => model.docente.MontoBeca, "", new { @class = "text-danger" })
-                                            </div>
-
-                                            <div id="intro" class="col-md-4">
-                                                @Html.LabelFor(model => model.docente.TieneFormacionPedagogica, htmlAttributes: new { @class = "control-label" })
-                                                @Html.DropDownListFor(model => model.docente.TieneFormacionPedagogica, new SelectList(ViewBag.SINO, "Value", "Text"), null, new { @class = "form-control" })
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <br />
-
-                                    <br />
-                                    <div class="row">
-                                        <div class="col-lg-12">
-                                            <div id="intro" class="col-md-4">
-                                                @Html.LabelFor(model => model.docente.CategoriaDocenteId, htmlAttributes: new { @class = "control-label" })
-                                                @Html.DropDownListFor(model => model.docente.CategoriaDocenteId, new SelectList(ViewBag.CatDocenteV, "Value", "Text"), null, new { @class = "form-control" })
-                                            </div>
-
-                                            <div id="intro" class="col-md-4">
-                                                @Html.LabelFor(model => model.docente.Activo, htmlAttributes: new { @class = "control-label" })
-                                                @Html.CheckBoxFor(model => model.docente.Activo)
-                                            </div>
-                                            <div class="col-md-4">
-                                                @Html.LabelFor(model => model.docente.AnioFormacionPedadogica, htmlAttributes: new { @class = "control-label" })
-                                                @Html.EditorFor(model => model.docente.AnioFormacionPedadogica, new { htmlAttributes = new { @class = "form-control col-lg-4" } })
-                                                @Html.ValidationMessageFor(model => model.docente.AnioFormacionPedadogica, "", new { @class = "text-danger" })
-                                            </div>
-                                        </div>
-                                    </div>
-
-
                                 </div>
-                            </div>
+                                    <br />
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <div id="intro" class="col-md-4">
+                                                @Html.LabelFor(model => model.docente.Tutorias, htmlAttributes: new { @class = "control-label" })
+                                                @Html.DropDownListFor(model => model.docente.Tutorias, new SelectList(ViewBag.SINO, "Value", "Text"), null, new { @class = "form-control" })
+                                            </div>
+                                            <div class="col-md-4">
+                                                @Html.LabelFor(model => model.docente.NoMTGrado, htmlAttributes: new { @class = "control-label" })
+                                                @Html.EditorFor(model => model.docente.NoMTGrado, new { htmlAttributes = new { @class = "form-control col-lg-4" } })
+                                                @Html.ValidationMessageFor(model => model.docente.NoMTGrado, "", new { @class = "text-danger" })
+                                            </div>
+                                            <div class="col-md-4">
+                                                @Html.LabelFor(model => model.docente.NoFTGrado, htmlAttributes: new { @class = "control-label" })
+                                                @Html.EditorFor(model => model.docente.NoFTGrado, new { htmlAttributes = new { @class = "form-control col-lg-4" } })
+                                                @Html.ValidationMessageFor(model => model.docente.NoFTGrado, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                        <br />
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <div class="col-md-4">
+                                                    @Html.LabelFor(model => model.docente.NoMTPosgrado, htmlAttributes: new { @class = "control-label" })
+                                                    @Html.EditorFor(model => model.docente.NoMTPosgrado, new { htmlAttributes = new { @class = "form-control col-lg-4" } })
+                                                    @Html.ValidationMessageFor(model => model.docente.NoMTPosgrado, "", new { @class = "text-danger" })
+                                                </div>
+                                                <div class="col-md-4">
+                                                    @Html.LabelFor(model => model.docente.NoFTPosgrado, htmlAttributes: new { @class = "control-label" })
+                                                    @Html.EditorFor(model => model.docente.NoFTPosgrado, new { htmlAttributes = new { @class = "form-control col-lg-4" } })
+                                                    @Html.ValidationMessageFor(model => model.docente.NoFTPosgrado, "", new { @class = "text-danger" })
+                                                </div>
+                                                <div id="intro" class="col-md-4">
+                                                    @Html.LabelFor(model => model.docente.Estudia, htmlAttributes: new { @class = "control-label" })
+                                                    @Html.DropDownListFor(model => model.docente.Estudia, new SelectList(ViewBag.SINO, "Value", "Text"), null, new { @class = "form-control" })
+                                                </div>
+                                            </div>
+                                        </div>
+                                                <br />
+                                                <div class="row">
+                                                    <div class="col-lg-12">
+                                                       
+                                                            <div id="intro" class="col-md-4">
+                                                                @Html.LabelFor(model => model.docente.NivelFpEstudios, htmlAttributes: new { @class = "control-label" })
+                                                                @Html.DropDownListFor(model => model.docente.NivelFpEstudios, new SelectList(ViewBag.NivelFormacionV, "Value", "Text"), null, new { @class = "form-control" })
+                                                            </div>
+
+                                                            <div id="intro" class="col-md-4">
+                                                                @Html.LabelFor(model => model.docente.NombreEstudios, htmlAttributes: new { @class = "control-label" })
+                                                                @Html.DropDownListFor(model => model.docente.NombreEstudios, new SelectList(ViewBag.DocenteEstudiosV, "Value", "Text"), null, new { @class = "form-control" })
+                                                            </div>
+                                                        </div>
+                                                    
+                                                </div>
+                                                        <br />
+                                                        <div class="row">
+                                                            <div class="col-lg-12">
+                                                                <div id="intro" class="col-md-4">
+                                                                    @Html.LabelFor(model => model.docente.BecaEstudios, htmlAttributes: new { @class = "control-label" })
+                                                                    @Html.DropDownListFor(model => model.docente.BecaEstudios, new SelectList(ViewBag.SINOAplica, "Value", "Text"), null, new { @class = "form-control" })
+                                                                </div>
+                                                                <div id="intro" class="col-md-4">
+                                                                    @Html.LabelFor(model => model.docente.ProcedBeca, htmlAttributes: new { @class = "control-label" })
+                                                                    @Html.DropDownListFor(model => model.docente.ProcedBeca, new SelectList(ViewBag.OriginBecaV, "Value", "Text"), null, new { @class = "form-control" })
+                                                                </div>
+                                                                <div id="intro" class="col-md-4">
+                                                                    @Html.LabelFor(model => model.docente.TipoBeca, htmlAttributes: new { @class = "control-label" })
+                                                                    @Html.DropDownListFor(model => model.docente.TipoBeca, new SelectList(ViewBag.TypeBecaV, "Value", "Text"), null, new { @class = "form-control" })
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                            <br />
+                                                            <div class="row">
+                                                                <div class="col-lg-12">
+
+                                                                    <div class="col-md-4">
+                                                                        @Html.LabelFor(model => model.docente.MontoBeca, htmlAttributes: new { @class = "control-label" })
+                                                                        @Html.EditorFor(model => model.docente.MontoBeca, new { htmlAttributes = new { @class = "form-control col-lg-4" } })
+                                                                        @Html.ValidationMessageFor(model => model.docente.MontoBeca, "", new { @class = "text-danger" })
+                                                                    </div>
+
+                                                                    <div id="intro" class="col-md-4">
+                                                                        @Html.LabelFor(model => model.docente.Capacitaciones, htmlAttributes: new { @class = "control-label" })
+                                                                        @Html.DropDownListFor(model => model.docente.Capacitaciones, new SelectList(ViewBag.SINO, "Value", "Text"), null, new { @class = "form-control" })
+
+                                                                    </div>
+                                                                    <div id="intro" class="col-md-4">
+                                                                        @Html.LabelFor(model => model.docente.AreaCapacitacionId, htmlAttributes: new { @class = "control-label" })
+                                                                        @Html.DropDownListFor(model => model.docente.AreaCapacitacionId, new SelectList(ViewBag.AreaCapacitacionV, "Value", "Text"), null, new { @class = "form-control" })
+
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <br />
+
+                                                            <br />
+                                                            @*<div class="row">
+                                                                <div class="col-lg-12">
+                                                                    <div id="intro" class="col-md-4">
+                                                                        @Html.LabelFor(model => model.docente.CategoriaDocenteId, htmlAttributes: new { @class = "control-label" })
+                                                                        @Html.DropDownListFor(model => model.docente.CategoriaDocenteId, new SelectList(ViewBag.CatDocenteV, "Value", "Text"), null, new { @class = "form-control" })
+                                                                    </div>
+
+                                                                    <div id="intro" class="col-md-4">
+                                                                        @Html.LabelFor(model => model.docente.Activo, htmlAttributes: new { @class = "control-label" })
+                                                                        @Html.CheckBoxFor(model => model.docente.Activo)
+                                                                    </div>
+                                                                    <div class="col-md-4">
+                                                                        @Html.LabelFor(model => model.docente.AnioFormacionPedadogica, htmlAttributes: new { @class = "control-label" })
+                                                                        @Html.EditorFor(model => model.docente.AnioFormacionPedadogica, new { htmlAttributes = new { @class = "form-control col-lg-4" } })
+                                                                        @Html.ValidationMessageFor(model => model.docente.AnioFormacionPedadogica, "", new { @class = "text-danger" })
+                                                                    </div>
+                                                                </div>
+                                                            </div>*@
+
+
+                                                        </div>
+                                            </div>
                     </div>
                 </section>
                 <br />
@@ -490,10 +552,7 @@
                         @Html.Action("_AddSubjectDocenteAction", Model.docente.Id)
                     </div>
                 </section>
-                <section id="tab-5" class="tab-body entry-content">
-
-                  
-                </section>
+               
             </div>
 
 
