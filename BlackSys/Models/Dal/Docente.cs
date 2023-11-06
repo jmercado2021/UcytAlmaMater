@@ -71,7 +71,6 @@ namespace BlackSys.Models.Dal
         public Nullable<decimal> MontoBeca { get; set; }
         public string Capacitaciones { get; set; }
         public Nullable<int> AreaCapacitacionId { get; set; }
-        public Nullable<int> HorasClase { get; set; }
         public string NoInss { get; set; }
         public Nullable<int> HorasClaseSemana { get; set; }
         public Nullable<decimal> ValorXHoraClase { get; set; }

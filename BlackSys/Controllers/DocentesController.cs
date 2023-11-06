@@ -66,9 +66,10 @@ namespace BlackSys.Controllers
         public ActionResult Details (int id)
         {
 
-            var enumData = from Gender e in Enum.GetValues(typeof(Gender))select new
+            var enumData = from Gender e in Enum.GetValues(typeof(Gender))
+                           select new
                            {
-                               Id = (int)e,
+                               Id = e.ToString(),
                                Descripcion = e.ToString()
                            };
             var lscivilstatus = from CivilStatus e in Enum.GetValues(typeof(CivilStatus))
@@ -151,13 +152,13 @@ namespace BlackSys.Controllers
             var enumData = from Gender e in Enum.GetValues(typeof(Gender))
                            select new
                            {
-                               Id = (int)e,
+                               Id = e.ToString(),
                                Descripcion = e.ToString()
                            };
             var lscivilstatus = from CivilStatus e in Enum.GetValues(typeof(CivilStatus))
                                 select new
                                 {
-                                    Id = (int)e,
+                                    Id = e.ToString(),
                                     Descripcion = e.ToString()
                                 };
 
@@ -165,19 +166,19 @@ namespace BlackSys.Controllers
             var lsOriginBeca = from OriginBeca e in Enum.GetValues(typeof(OriginBeca))
                                select new
                                {
-                                   Id = (int)e,
+                                   Id = e.ToString(),
                                    Descripcion = e.ToString()
                                };
             var lsTypeBeca = from TypeBeca e in Enum.GetValues(typeof(TypeBeca))
                              select new
                              {
-                                 Id = (int)e,
+                                 Id = e.ToString(),
                                  Descripcion = e.ToString()
                              };
             var lstrueFalseEstudios = from SelectTrueFalseEstudies e in Enum.GetValues(typeof(SelectTrueFalseEstudies))
                                       select new
                                       {
-                                          Id = (int)e,
+                                          Id = e.ToString(),
                                           Descripcion = e.ToString()
                                       };
 
@@ -185,13 +186,13 @@ namespace BlackSys.Controllers
             var lszona = from Zone e in Enum.GetValues(typeof(Zone))
                          select new
                          {
-                             Id = (int)e,
+                             Id = e.ToString(),
                              Descripcion = e.ToString()
                          };
             var lstrueFalse = from SelectTrueFalse e in Enum.GetValues(typeof(SelectTrueFalse))
                               select new
                               {
-                                  Id = (int)e,
+                                  Id = e.ToString(),
                                   Descripcion = e.ToString()
                               };
 
@@ -273,16 +274,17 @@ namespace BlackSys.Controllers
                 docenteView.asignaturasView = _docenteRepositoy.LoadDocenteAsignatura(0);
             }
 
+
             var enumData = from Gender e in Enum.GetValues(typeof(Gender))
                            select new
                            {
-                               Id = (int)e,
+                               Id = e.ToString(),
                                Descripcion = e.ToString()
                            };
             var lscivilstatus = from CivilStatus e in Enum.GetValues(typeof(CivilStatus))
                                 select new
                                 {
-                                    Id = (int)e,
+                                    Id = e.ToString(),
                                     Descripcion = e.ToString()
                                 };
 
@@ -290,19 +292,19 @@ namespace BlackSys.Controllers
             var lsOriginBeca = from OriginBeca e in Enum.GetValues(typeof(OriginBeca))
                                select new
                                {
-                                   Id = (int)e,
+                                   Id = e.ToString(),
                                    Descripcion = e.ToString()
                                };
             var lsTypeBeca = from TypeBeca e in Enum.GetValues(typeof(TypeBeca))
                              select new
                              {
-                                 Id = (int)e,
+                                 Id = e.ToString(),
                                  Descripcion = e.ToString()
                              };
             var lstrueFalseEstudios = from SelectTrueFalseEstudies e in Enum.GetValues(typeof(SelectTrueFalseEstudies))
                                       select new
                                       {
-                                          Id = (int)e,
+                                          Id = e.ToString(),
                                           Descripcion = e.ToString()
                                       };
 
@@ -310,13 +312,13 @@ namespace BlackSys.Controllers
             var lszona = from Zone e in Enum.GetValues(typeof(Zone))
                          select new
                          {
-                             Id = (int)e,
+                             Id = e.ToString(),
                              Descripcion = e.ToString()
                          };
             var lstrueFalse = from SelectTrueFalse e in Enum.GetValues(typeof(SelectTrueFalse))
                               select new
                               {
-                                  Id = (int)e,
+                                  Id = e.ToString(),
                                   Descripcion = e.ToString()
                               };
 
@@ -353,18 +355,18 @@ namespace BlackSys.Controllers
         [HttpPost]
         public ActionResult AgregarDocente(DocenteViewModel model)
         {
-            //DocenteViewModel docenteView = new DocenteViewModel();
-            //if (model.docente.Id==0)NAddSubjectDocente
-          var enumData = from Gender e in Enum.GetValues(typeof(Gender))
+
+
+            var enumData = from Gender e in Enum.GetValues(typeof(Gender))
                            select new
                            {
-                               Id = (int)e,
+                               Id = e.ToString(),
                                Descripcion = e.ToString()
                            };
             var lscivilstatus = from CivilStatus e in Enum.GetValues(typeof(CivilStatus))
                                 select new
                                 {
-                                    Id = (int)e,
+                                    Id = e.ToString(),
                                     Descripcion = e.ToString()
                                 };
 
@@ -372,19 +374,19 @@ namespace BlackSys.Controllers
             var lsOriginBeca = from OriginBeca e in Enum.GetValues(typeof(OriginBeca))
                                select new
                                {
-                                   Id = (int)e,
+                                   Id = e.ToString(),
                                    Descripcion = e.ToString()
                                };
             var lsTypeBeca = from TypeBeca e in Enum.GetValues(typeof(TypeBeca))
                              select new
                              {
-                                 Id = (int)e,
+                                 Id = e.ToString(),
                                  Descripcion = e.ToString()
                              };
             var lstrueFalseEstudios = from SelectTrueFalseEstudies e in Enum.GetValues(typeof(SelectTrueFalseEstudies))
                                       select new
                                       {
-                                          Id = (int)e,
+                                          Id = e.ToString(),
                                           Descripcion = e.ToString()
                                       };
 
@@ -392,16 +394,15 @@ namespace BlackSys.Controllers
             var lszona = from Zone e in Enum.GetValues(typeof(Zone))
                          select new
                          {
-                             Id = (int)e,
+                             Id = e.ToString(),
                              Descripcion = e.ToString()
                          };
             var lstrueFalse = from SelectTrueFalse e in Enum.GetValues(typeof(SelectTrueFalse))
                               select new
                               {
-                                  Id = (int)e,
+                                  Id = e.ToString(),
                                   Descripcion = e.ToString()
                               };
-
 
 
             ViewBag.Departamento = new SelectList(_departamento.GetAll(), "Id", "Descripcion");
@@ -433,7 +434,7 @@ namespace BlackSys.Controllers
             //    ModelState.AddModelError("", "Nombre no puede quedar vacio, Por favor registre el nombre del Docente ");
             //    return View(model);
             //}
-
+         
             if (!ModelState.IsValid)
             {
                 return View(model);
@@ -455,25 +456,6 @@ namespace BlackSys.Controllers
            
             //docenteView.docente = dataDocente;
             docenteView.asignaturasView = _docenteRepositoy.LoadDocenteAsignatura(Id);
-
-
-            //if (AsignaturaId.HasValue)
-            //{
-            //    var asig = _docenteRepositoy.GetSubjectDocente(dataDocente, Convert.ToInt32(AsignaturaId));
-            //    if (asig.Count > 0)
-            //    {
-            //        //ModelState.AddModelError(string.Empty,"Ya existe la asignatura asociada");
-            //        ModelState.AddModelError("docente", "Ya existe la asignatura asociada");
-
-            //        return View("_AddSubjectDocente", docenteView);
-            //    }
-            //    else
-            //    {
-            //        _docenteRepositoy.AddSubject(dataDocente, Convert.ToInt32(AsignaturaId));
-
-            //    _AddSubjectDocenteAction
-
-            //}
 
             return View("_AddSubjectDocente", docenteView);
         }
@@ -542,21 +524,7 @@ namespace BlackSys.Controllers
             return PartialView("_AsignaturasDocentes",data);
         }
 
-        // POST: Docentes/Edit/5
-        [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
+    
 
         // GET: Docentes/Delete/5
         public ActionResult Delete(int id)

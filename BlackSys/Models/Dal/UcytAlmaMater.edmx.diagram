@@ -29,10 +29,11 @@
         <EntityTypeShape EntityType="UcytAlmaMaterModel.TipoDocumento" Width="1.5" PointX="11.375" PointY="0.75" />
         <EntityTypeShape EntityType="UcytAlmaMaterModel.AreaCapacitacion" Width="1.5" PointX="11.75" PointY="3.75" />
         <EntityTypeShape EntityType="UcytAlmaMaterModel.Discapacidad" Width="1.5" PointX="10.75" PointY="11.75" />
-        <EntityTypeShape EntityType="UcytAlmaMaterModel.Docente" Width="1.5" PointX="8" PointY="8.875" />
         <EntityTypeShape EntityType="UcytAlmaMaterModel.DocenteAreaInvestigacion" Width="1.5" PointX="0.75" PointY="12.75" />
         <EntityTypeShape EntityType="UcytAlmaMaterModel.EjercicioDirectivo" Width="1.5" PointX="2.75" PointY="12.75" />
         <EntityTypeShape EntityType="UcytAlmaMaterModel.DocenteCategoria" Width="1.5" PointX="12.75" PointY="6.75" />
+        <EntityTypeShape EntityType="UcytAlmaMaterModel.DocenteEstudios" Width="1.5" PointX="13.375" PointY="0.75" />
+        <EntityTypeShape EntityType="UcytAlmaMaterModel.Docente" Width="1.5" PointX="7.625" PointY="9" />
         <AssociationConnector Association="UcytAlmaMaterModel.FK_Docente_Area" />
         <AssociationConnector Association="UcytAlmaMaterModel.FK_Docente_Cargo" />
         <AssociationConnector Association="UcytAlmaMaterModel.FK_Docente_Departamento" />
@@ -40,7 +41,6 @@
         <AssociationConnector Association="UcytAlmaMaterModel.FK_Docente_Municipio" />
         <AssociationConnector Association="UcytAlmaMaterModel.FK_Docente_Profesion" />
         <AssociationConnector Association="UcytAlmaMaterModel.FK_Docente_TipoContrato" />
-        <EntityTypeShape EntityType="UcytAlmaMaterModel.DocenteEstudios" Width="1.5" PointX="13.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

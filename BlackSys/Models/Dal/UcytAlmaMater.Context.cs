@@ -46,10 +46,10 @@ namespace BlackSys.Models.Dal
         public virtual DbSet<TipoDocumento> TipoDocumento { get; set; }
         public virtual DbSet<AreaCapacitacion> AreaCapacitacion { get; set; }
         public virtual DbSet<Discapacidad> Discapacidad { get; set; }
-        public virtual DbSet<Docente> Docente { get; set; }
         public virtual DbSet<DocenteAreaInvestigacion> DocenteAreaInvestigacion { get; set; }
         public virtual DbSet<EjercicioDirectivo> EjercicioDirectivo { get; set; }
         public virtual DbSet<DocenteCategoria> DocenteCategoria { get; set; }
         public virtual DbSet<DocenteEstudios> DocenteEstudios { get; set; }
+        public virtual DbSet<Docente> Docente { get; set; }
     }
 }

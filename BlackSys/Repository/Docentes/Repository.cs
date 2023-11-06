@@ -37,7 +37,6 @@ namespace BlackSys.Repository.Docentes
         {
            IQueryable<ViewDocenteAsignatura> ls = _dtx.ViewDocenteAsignatura.Where(tt => tt.DocenteId==id).OrderBy(t => t.Asignatura);
             return ls.ToList();
-
         }
         public bool Update(Docente p)
         {
@@ -100,6 +99,7 @@ namespace BlackSys.Repository.Docentes
                 //a.UsuarioModifica = principal.User.Identity.GetUserName();
                 a.ValorXHoraClase = p.ValorXHoraClase;
                 a.Zona = p.Zona;
+                a.HorasClaseSemana = p.HorasClaseSemana;
                 a.TipoDocumentoId = p.TipoDocumentoId;
                 _dtx.SaveChanges();
                 return true;

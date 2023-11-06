@@ -37,9 +37,12 @@ namespace BlackSys.Models.Dal
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Display(Name = "Id")]
         public int Id { get; set; }
+
+
         [Display(Name = "Recinto")]
         [Required(ErrorMessage = "Categoria Docente Requerido")]
         public int RecintoId { get; set; }
+
         [Display(Name = "Profesion")]
         [Required(ErrorMessage = "Debe Seleccionar la Profesion")]
         public Nullable<int> ProfesionId { get; set; }
@@ -154,7 +157,7 @@ namespace BlackSys.Models.Dal
         [Display(Name = "Máximo Nivel Formacion Pedadogica")]
         [Required(ErrorMessage = "Debe seleccionar el maximo nivel pedadogica")]
         public Nullable<int> MaximoNivelFpId { get; set; }
-
+        
         [Display(Name = "Nombre Titulos")]
         [Required(ErrorMessage = "Debe Editar nombre Titulo")]
         public string NombreTitulos { get; set; }
@@ -278,9 +281,9 @@ namespace BlackSys.Models.Dal
         [Required(ErrorMessage = "Debe Seleccionar Capacitaciones")]
         public Nullable<int> AreaCapacitacionId { get; set; }
 
-        [Display(Name = "Horas Clase")]
-        [Required(ErrorMessage = "Debe editar Horas clase")]
-        public Nullable<int> HorasClase { get; set; }
+        //[Display(Name = "Horas Clase")]
+        //[Required(ErrorMessage = "Debe editar Horas clase")]
+        //public Nullable<int> HorasClase { get; set; }
 
         [Display(Name = "No Inss")]
         [Required(ErrorMessage = "Debe editar el no inss Docente")]
