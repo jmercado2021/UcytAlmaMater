@@ -10,10 +10,41 @@
 //    });
 //});
 
-$(document).ready(function () {
-    $(".FechaNacP").datepicker();
-});
+//$(document).ready(function () {
+//    $(".FechaNacP").datepicker();
+//});
+
+
+//$(document).ready(function () {
+//    $(".FechaNacP").datepicker();
+//});
 //$("#FechaNacP").datepicker();
+$(document).ready(function () {
+
+jQuery("#docente_FechaNac").datepicker({
+    format: "dd/mm/yyyy",
+    language: "es",
+    autoclose: true,
+    enableOnReadonly: false
+}).on('show', function () {
+    if ($(this).attr('readonly')) {
+        $(this).datepicker('hide');
+    }
+});
+});
+
+//$("#docente_FechaNac").datepicker(
+//    {
+//        format: "dd/mm/yyyy",
+//        language: "es",
+//        autoclose: true,
+//        enableOnReadonly:false
+//    }
+//).on('show', function () {
+//    if ($(this).attr('readonly')) {
+//        $(this).datepicker('hide')
+//    }
+//});
 
 function AddSubject() {
     var DtoDocenteAsignatura = {
@@ -109,6 +140,15 @@ function AlertDesasociarAsignatura(AsignaturaId) {
     })
 
 }
+//$(document).ready(function () {
+//$('#btnguardar').on('click', function (e) {
+//    e.preventDefault(); // Evita el envío automático del formulario
 
-
+ 
+//    if ($('#docente_Sexo').val() === 'SinAsignar') {
+//        alert('Por favor seleccione el sexo');
+//        return false;
+//    }
+//});
+//});
 

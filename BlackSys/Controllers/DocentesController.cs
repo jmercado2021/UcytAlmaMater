@@ -31,6 +31,7 @@ namespace BlackSys.Controllers
         private Repository.EjercicioDirectivo.IRepository _ejercDirec;
         private Repository.DocenteEstudios.IRepository _docEstudios;
         private Repository.AreaCapacitacion.IRepository _areacapacitacion;
+        private Repository.DocenteAreaInvestigacion.IRepository _areaInvestigacion;
         public DocentesController()
         {
             _docenteRepositoy = new Repository.Docentes.Repository(this.ModelState);
@@ -51,6 +52,7 @@ namespace BlackSys.Controllers
             _ejercDirec =   new Repository.EjercicioDirectivo.Repository(this.ModelState);
             _docEstudios = new Repository.DocenteEstudios.Repository(this.ModelState);
             _areacapacitacion = new Repository.AreaCapacitacion.Repository(this.ModelState);
+            _areaInvestigacion = new Repository.DocenteAreaInvestigacion.Repository(this.ModelState);
         }
         // GET: Docentes
         public ActionResult Index()
@@ -65,7 +67,6 @@ namespace BlackSys.Controllers
         }
         public ActionResult Details (int id)
         {
-
             var enumData = from Gender e in Enum.GetValues(typeof(Gender))
                            select new
                            {
@@ -73,48 +74,49 @@ namespace BlackSys.Controllers
                                Descripcion = e.ToString()
                            };
             var lscivilstatus = from CivilStatus e in Enum.GetValues(typeof(CivilStatus))
-                           select new
-                           {
-                               Id = (int)e,
-                               Descripcion = e.ToString()
-                           };
+                                select new
+                                {
+                                    Id = e.ToString(),
+                                    Descripcion = e.ToString()
+                                };
+          
 
 
             var lsOriginBeca = from OriginBeca e in Enum.GetValues(typeof(OriginBeca))
-                                       select new
-                                       {
-                                           Id = (int)e,
-                                           Descripcion = e.ToString()
-                                       };
-            var lsTypeBeca = from TypeBeca e in Enum.GetValues(typeof(TypeBeca))
                                select new
                                {
-                                   Id = (int)e,
+                                   Id = e.ToString(),
                                    Descripcion = e.ToString()
                                };
+            var lsTypeBeca = from TypeBeca e in Enum.GetValues(typeof(TypeBeca))
+                             select new
+                             {
+                                 Id = e.ToString(),
+                                 Descripcion = e.ToString()
+                             };
             var lstrueFalseEstudios = from SelectTrueFalseEstudies e in Enum.GetValues(typeof(SelectTrueFalseEstudies))
-                              select new
-                              {
-                                  Id = (int)e,
-                                  Descripcion = e.ToString()
-                              };
+                                      select new
+                                      {
+                                          Id = e.ToString(),
+                                          Descripcion = e.ToString()
+                                      };
 
 
             var lszona = from Zone e in Enum.GetValues(typeof(Zone))
-                                select new
-                                {
-                                    Id = (int)e,
-                                    Descripcion = e.ToString()
-                                };
-            var lstrueFalse= from SelectTrueFalse e in Enum.GetValues(typeof(SelectTrueFalse))
-                                select new
-                                {
-                                    Id = (int)e,
-                                    Descripcion = e.ToString()
-                                };
+                         select new
+                         {
+                             Id = e.ToString(),
+                             Descripcion = e.ToString()
+                         };
+            var lstrueFalse = from SelectTrueFalse e in Enum.GetValues(typeof(SelectTrueFalse))
+                              select new
+                              {
+                                  Id = e.ToString(),
+                                  Descripcion = e.ToString()
+                              };
+          
 
-
-            DocenteViewModel docenteView = new DocenteViewModel();
+          DocenteViewModel docenteView = new DocenteViewModel();
             docenteView.docente = _docenteRepositoy.GetById(id);
             ViewBag.Departamento = new SelectList(_departamento.GetAll(), "Id", "Descripcion");
             ViewBag.Municipio = new SelectList(_municipio.GetAll(), "Id", "Descripcion");
@@ -141,13 +143,15 @@ namespace BlackSys.Controllers
             ViewBag.AreaCapacitacionV = new SelectList(_areacapacitacion.GetAll(), "Id", "Descripcion");
             ViewBag.SINOAplica = new SelectList(lstrueFalseEstudios, "Id", "Descripcion");
             ViewBag.Asignaturas = new SelectList(_Asignatura.GetAll(), "Id", "Nombre");
+            ViewBag.AreaInvestigacionV = new SelectList(_areaInvestigacion.GetAll(), "Id", "Descripcion");
+            
             return View(docenteView);
             //}
         }
         [HttpPost]
         public ActionResult Details(DocenteViewModel model)
         {
-
+           
 
             var enumData = from Gender e in Enum.GetValues(typeof(Gender))
                            select new
@@ -224,11 +228,94 @@ namespace BlackSys.Controllers
             ViewBag.AreaCapacitacionV = new SelectList(_areacapacitacion.GetAll(), "Id", "Descripcion");
             ViewBag.SINOAplica = new SelectList(lstrueFalseEstudios, "Id", "Descripcion");
             ViewBag.Asignaturas = new SelectList(_Asignatura.GetAll(), "Id", "Nombre");
-            //Validaciones
-            if (model.docente.Nombre ==null)
+            ViewBag.AreaInvestigacionV = new SelectList(_areaInvestigacion.GetAll(), "Id", "Descripcion");
+
+            if (model.docente.Nombre == null)
             {
                 ModelState.AddModelError("", "Nombre no puede quedar vacio, Por favor registre el nombre del Docente ");
                 return View(model);
+            }
+
+            //if (model.docente.Sexo == "SinAsignar")
+            //{
+            //    ModelState.AddModelError("", "Debe seleccionar el sexo ");
+            //    return View(model);
+            //}
+            //if (model.docente.EtniaId == 0)
+            //{
+            //    ModelState.AddModelError("", "Debe seleccionar Etnia ");
+            //    return View(model);
+            //}
+            //if (model.docente.TipoDocumentoId == 0)
+            //{
+            //    ModelState.AddModelError("", "Debe seleccionar el Tipo de documento ");
+            //    return View(model);
+            //}
+            //if (model.docente.MunicipioId == 0)
+            //{
+            //    ModelState.AddModelError("", "Debe seleccionar el Municipio ");
+            //    return View(model);
+            //}
+            //if (model.docente.PaisId == 0)
+            //{
+            //    ModelState.AddModelError("", "Debe seleccionar el Pais ");
+            //    return View(model);
+            //}
+            //if (model.docente.DepartamentoId == 0)
+            //{
+            //    ModelState.AddModelError("", "Debe seleccionar el Departamento ");
+            //    return View(model);
+            //}
+            //if (model.docente.CategoriaDocenteId == 0)
+            //{
+            //    ModelState.AddModelError("", "Debe seleccionar la categoria del docente");
+            //    return View(model);
+            //}
+            //if (model.docente.MunicipioId == 0)
+            //{
+            //    ModelState.AddModelError("", "Debe seleccionar el municipio");
+            //    return View(model);
+            //}
+            //if (model.docente.Zona == "SinAsignar")
+            //{
+            //    ModelState.AddModelError("", "Debe seleccionar la zona");
+            //    return View(model);
+            //}
+
+            // Obtén todos los atributos públicos de la clase
+            var properties = typeof(Models.Dal.Docente).GetProperties();
+
+
+
+            foreach (var property in properties)
+            {
+                var value = property.GetValue(model.docente);
+
+                // Verifica si el valor es el texto específico que deseas evitar
+                if (value != null && value.ToString() == "0")
+                {
+                    // Agrega un error al modelo usando el nombre del atributo
+                    ModelState.AddModelError(property.Name, $"Debe seleccionar  {property.Name}");
+                    return View(model);
+                }
+               
+            }
+
+
+
+            // Itera sobre los atributos y verifica si alguno tiene el valor específico
+            foreach (var property in properties)
+            {
+                var value = property.GetValue(model.docente);
+
+                // Verifica si el valor es el texto específico que deseas evitar
+                if (value != null && value.ToString() == "SinAsignar")
+                {
+                    // Agrega un error al modelo usando el nombre del atributo
+                    ModelState.AddModelError(property.Name, $"No se permite el valor SinAsignar en {property.Name}");
+                    return View(model);
+                }
+               
             }
 
             //ModelState.AddModelError("", "Existenen errores en datos ingresados, Por favor verifique los campos marcados en rojo ");

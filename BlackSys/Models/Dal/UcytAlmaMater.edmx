@@ -78,7 +78,7 @@
           <Property Name="CargoActualId" Type="int" />
           <Property Name="TipoDocumentoId" Type="int" />
           <Property Name="Cedula_Documento" Type="varchar" MaxLength="20" />
-          <Property Name="Sexo" Type="varchar" MaxLength="1" />
+          <Property Name="Sexo" Type="varchar" MaxLength="15" />
           <Property Name="FechaNac" Type="date" />
           <Property Name="EtniaId" Type="int" />
           <Property Name="PaisId" Type="int" />
@@ -107,7 +107,7 @@
           <Property Name="PServ_Prepa" Type="varchar" MaxLength="2" />
           <Property Name="NoGrupos" Type="int" />
           <Property Name="NoAsignaturas" Type="int" />
-          <Property Name="NoAsigMod" Type="varchar" MaxLength="2" />
+          <Property Name="NoAsigMod" Type="int" />
           <Property Name="RealizaInvestigacion" Type="nchar" MaxLength="10" />
           <Property Name="DocenteAreaInvestigacionId" Type="int" />
           <Property Name="Tutorias" Type="varchar" MaxLength="2" />
@@ -118,7 +118,7 @@
           <Property Name="Estudia" Type="varchar" MaxLength="2" />
           <Property Name="NivelFpEstudios" Type="int" />
           <Property Name="NombreEstudios" Type="varchar" MaxLength="50" />
-          <Property Name="BecaEstudios" Type="varchar" MaxLength="2" />
+          <Property Name="BecaEstudios" Type="varchar" MaxLength="10" />
           <Property Name="ProcedBeca" Type="varchar" MaxLength="20" />
           <Property Name="TipoBeca" Type="varchar" MaxLength="10" />
           <Property Name="MontoBeca" Type="decimal" Precision="18" Scale="2" />
@@ -882,7 +882,7 @@ advertencia 6002: La tabla o vista 'UcytAlmaMater.dbo.ViewDocenteIdiomas' no tie
           <Property Name="CargoActualId" Type="Int32" />
           <Property Name="TipoDocumentoId" Type="Int32" />
           <Property Name="Cedula_Documento" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="Sexo" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="Sexo" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
           <Property Name="FechaNac" Type="DateTime" Precision="0" />
           <Property Name="EtniaId" Type="Int32" />
           <Property Name="PaisId" Type="Int32" />
@@ -911,7 +911,7 @@ advertencia 6002: La tabla o vista 'UcytAlmaMater.dbo.ViewDocenteIdiomas' no tie
           <Property Name="PServ_Prepa" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
           <Property Name="NoGrupos" Type="Int32" />
           <Property Name="NoAsignaturas" Type="Int32" />
-          <Property Name="NoAsigMod" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="NoAsigMod" Type="Int32" />
           <Property Name="RealizaInvestigacion" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
           <Property Name="DocenteAreaInvestigacionId" Type="Int32" />
           <Property Name="Tutorias" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
@@ -922,7 +922,7 @@ advertencia 6002: La tabla o vista 'UcytAlmaMater.dbo.ViewDocenteIdiomas' no tie
           <Property Name="Estudia" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
           <Property Name="NivelFpEstudios" Type="Int32" />
           <Property Name="NombreEstudios" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="BecaEstudios" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="BecaEstudios" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="ProcedBeca" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="TipoBeca" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="MontoBeca" Type="Decimal" Precision="18" Scale="2" />

@@ -41,7 +41,7 @@
         <AssociationConnector Association="UcytAlmaMaterModel.FK_Docente_Municipio" />
         <AssociationConnector Association="UcytAlmaMaterModel.FK_Docente_Profesion" />
         <AssociationConnector Association="UcytAlmaMaterModel.FK_Docente_TipoContrato" />
-      </Diagram>
+        </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>

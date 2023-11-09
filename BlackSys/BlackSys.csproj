@@ -1179,6 +1179,8 @@
     <Compile Include="Repository\AreaCapacitacion\Repository.cs" />
     <Compile Include="Repository\Area\IRepository.cs" />
     <Compile Include="Repository\Area\Repository.cs" />
+    <Compile Include="Repository\DocenteAreaInvestigacion\IRepository.cs" />
+    <Compile Include="Repository\DocenteAreaInvestigacion\Repository.cs" />
     <Compile Include="Repository\DocenteCategoria\IRepository.cs" />
     <Compile Include="Repository\DocenteCategoria\Repository.cs" />
     <Compile Include="Repository\Departamento\IRepository.cs" />

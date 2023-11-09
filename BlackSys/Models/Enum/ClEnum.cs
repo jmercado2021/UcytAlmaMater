@@ -10,46 +10,56 @@ namespace BlackSys.Models.Enum
     {
         public enum Gender
         {
+            [Display(Name = "Seleccione una opción")]
+            SinAsignar = 0,
             [Display(Name = "Masculino")]
-            Masculino=0,
+            Masculino=1,
             [Display(Name = "Femenino")]
-            Femenino=1
+            Femenino=2
         }
 
         public enum CivilStatus
         {
+            [Display(Name = "Seleccione una opción")]
+            SinAsignar = 0,
             [Display(Name = "Soltero")]
-            Soltero = 0,
+            Soltero = 1,
             [Display(Name = "Casado")]
-            Casado = 1,
+            Casado = 2,
             [Display(Name = "Union de Hecho")]
-            Union_de_Hecho = 2
+            Union_de_Hecho = 3
         }
 
         public enum OriginBeca
         {
+            [Display(Name = "Seleccione una opción")]
+            SinAsignar = 0,
             [Display(Name = "Institucional")]
-            Institucional = 0,
+            Institucional = 1,
             [Display(Name = "No Institucional")]
-            NoInstitucional = 1,
+            NoInstitucional = 2,
             [Display(Name = "No Aplica")]
-            NoAplica = 2
+            NoAplica = 3
         }
         public enum TypeBeca
         {
+            [Display(Name = "Seleccione una opción")]
+            SinAsignar = 0,
             [Display(Name = "Completa")]
-            Completa = 0,
+            Completa = 1,
             [Display(Name = "Parcial")]
-            Parcial = 1,
+            Parcial = 2,
             [Display(Name = "No Aplica")]
-            NoAplica = 2
+            NoAplica = 3
         }
         public enum Zone
         {
+            [Display(Name = "Seleccione una opción")]
+            SinAsignar = 0,
             [Display(Name = "Urbano")]
-            Urbano = 0,
+            Urbano = 1,
             [Display(Name = "Rural")]
-            Rural = 1,
+            Rural = 2,
         
         }
 
@@ -69,22 +79,26 @@ namespace BlackSys.Models.Enum
 
         public enum SelectTrueFalse
         {
+            [Display(Name = "Seleccione una opción")]
+            SinAsignar = 0,
             [Display(Name = "Si")]
-            Si = 0,
+            Si = 1,
             [Display(Name = "No")]
-            No = 1
+            No =2
 
 
         }
 
         public enum SelectTrueFalseEstudies
         {
+            [Display(Name = "Seleccione una opción")]
+            SinAsignar = 0,
             [Display(Name = "Si")]
-            Si = 0,
+            Si =1,
             [Display(Name = "No")]
-            No = 1,
+            No = 2,
             [Display(Name = "No Aplica")]
-            NoAplica = 2
+            NoAplica = 3
 
 
         }

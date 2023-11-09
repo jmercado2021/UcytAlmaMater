@@ -96,11 +96,14 @@ namespace BlackSys.Repository.Docentes
                 a.AreaCapacitacionId = p.AreaCapacitacionId;
                 a.Activo = p.Activo;
                 a.UsuarioModifica = "user";
+                a.Email = p.Email;
                 //a.UsuarioModifica = principal.User.Identity.GetUserName();
                 a.ValorXHoraClase = p.ValorXHoraClase;
                 a.Zona = p.Zona;
                 a.HorasClaseSemana = p.HorasClaseSemana;
+                a.CargoActualId = p.CargoActualId;
                 a.TipoDocumentoId = p.TipoDocumentoId;
+                a.NoAsignaturas = p.NoAsignaturas;
                 _dtx.SaveChanges();
                 return true;
             }

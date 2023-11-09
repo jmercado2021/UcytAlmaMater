@@ -10,7 +10,7 @@ namespace BlackSys.Models.Dal
     [MetadataType(typeof(DocenteMetaData))]
     public partial class Docente
     {
-    }
+    
 
     public partial class DocenteMetaData
     {
@@ -94,8 +94,8 @@ namespace BlackSys.Models.Dal
         public string Sexo { get; set; }
 
         [Display(Name = "Fecha de Nacimiento")]
-        [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:dd/MM/YYY}", ApplyFormatInEditMode = true)]
+        //[DataType(DataType.Date)]
+        //[DisplayFormat(DataFormatString = "{0:dd/MM/YYY}", ApplyFormatInEditMode = true)]
         public Nullable<System.DateTime> FechaNac { get; set; }
 
 
@@ -308,7 +308,7 @@ namespace BlackSys.Models.Dal
         public Nullable<System.DateTime> FechaModifica { get; set; }
         public bool Activo { get; set; }
 
-
+        }
 
     }
 }

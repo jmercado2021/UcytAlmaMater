@@ -54,7 +54,7 @@ namespace BlackSys.Models.Dal
         public string PServ_Prepa { get; set; }
         public Nullable<int> NoGrupos { get; set; }
         public Nullable<int> NoAsignaturas { get; set; }
-        public string NoAsigMod { get; set; }
+        public Nullable<int> NoAsigMod { get; set; }
         public string RealizaInvestigacion { get; set; }
         public Nullable<int> DocenteAreaInvestigacionId { get; set; }
         public string Tutorias { get; set; }
