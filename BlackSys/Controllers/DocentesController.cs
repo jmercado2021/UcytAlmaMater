@@ -132,7 +132,7 @@ namespace BlackSys.Controllers
             ViewBag.AreaV = new SelectList(_area.GetAll(), "Id", "Descripcion");
             ViewBag.NivelFormacionV = new SelectList(_nivelformacion.GetAll(), "Id", "Descripcion");
             ViewBag.TituloV = new SelectList(_titulo.GetAll(), "Id", "Descripcion");
-            ViewBag.TipoDocumentoV = new SelectList(_tipodocumento.GetAll(), "Id", "Descripcion", selectedValue: null);
+            ViewBag.TipoDocumentoV = new SelectList(_tipodocumento.GetAll(), "Id", "Descripcion");
             docenteView.asignaturasView = _docenteRepositoy.LoadDocenteAsignatura(id);
             ViewBag.CatDocenteV = new SelectList(_docenteCateg.GetAll(), "Id", "Descripcion");
             ViewBag.ZonaV = new SelectList(lszona, "Id", "Descripcion");
@@ -292,7 +292,7 @@ namespace BlackSys.Controllers
                 var value = property.GetValue(model.docente);
 
                 // Verifica si el valor es el texto específico que deseas evitar
-                if (value != null && value.ToString() == "0")
+                if (value != null && value.ToString() == "0" )
                 {
                     // Agrega un error al modelo usando el nombre del atributo
                     ModelState.AddModelError(property.Name, $"Debe seleccionar  {property.Name}");

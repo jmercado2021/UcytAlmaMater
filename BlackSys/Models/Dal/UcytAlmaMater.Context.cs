@@ -12,6 +12,8 @@ namespace BlackSys.Models.Dal
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class UcytAlmaMaterEntities : DbContext
     {
@@ -51,5 +53,258 @@ namespace BlackSys.Models.Dal
         public virtual DbSet<DocenteCategoria> DocenteCategoria { get; set; }
         public virtual DbSet<DocenteEstudios> DocenteEstudios { get; set; }
         public virtual DbSet<Docente> Docente { get; set; }
+    
+        public virtual int SpDocente(Nullable<int> sp, Nullable<int> id, Nullable<int> recintoId, Nullable<int> profesionId, string nombre, string direccion, Nullable<decimal> celular, string telefono, string email, Nullable<int> cargoId, Nullable<int> tipoDocumentoId, string cedula, string sexo, Nullable<System.DateTime> fechaNac, Nullable<int> etniaId, Nullable<int> paisId, string dominaIdiomas, string nombreIdioma, string nivelAlcanzado, Nullable<int> departamentoId, Nullable<int> municipioId, string zona, string estadoCivil, Nullable<int> nohijos, string discapacidad, Nullable<int> areaId, Nullable<int> ejercicioDirectivo, Nullable<int> maximoNivelFpId, string nombreTitulos, string tieneFormacionpedadogica, string nombreformacionPedadogica, Nullable<int> anioformacionpedadogica, Nullable<int> tipoContrato, Nullable<int> categoriaDocente, string psERVunicam, string pServUaln, string pservRSJ, string pservPrepa, Nullable<int> nogrupos, Nullable<int> noAsig, Nullable<int> noAsigMod, string realizaInvestigacion, Nullable<int> docenteAreaInve, string tutorias, Nullable<int> noMTgrado, Nullable<int> noFtgrado, Nullable<int> noMTPostgrado, Nullable<int> noFTPostrado, string estudia, Nullable<int> nivelFpEstudios, string nombreEstudios, string becaEstudios, string procedBeca, string tipoBeca, Nullable<decimal> montoBeca, string capacitaciones, Nullable<int> areaCapacitacionId, string noInss, Nullable<int> horasClasesemana, Nullable<decimal> valorXHoraClase, string usuarioModifica, Nullable<bool> activo, ObjectParameter nuevoId)
+        {
+            var spParameter = sp.HasValue ?
+                new ObjectParameter("Sp", sp) :
+                new ObjectParameter("Sp", typeof(int));
+    
+            var idParameter = id.HasValue ?
+                new ObjectParameter("Id", id) :
+                new ObjectParameter("Id", typeof(int));
+    
+            var recintoIdParameter = recintoId.HasValue ?
+                new ObjectParameter("RecintoId", recintoId) :
+                new ObjectParameter("RecintoId", typeof(int));
+    
+            var profesionIdParameter = profesionId.HasValue ?
+                new ObjectParameter("ProfesionId", profesionId) :
+                new ObjectParameter("ProfesionId", typeof(int));
+    
+            var nombreParameter = nombre != null ?
+                new ObjectParameter("Nombre", nombre) :
+                new ObjectParameter("Nombre", typeof(string));
+    
+            var direccionParameter = direccion != null ?
+                new ObjectParameter("Direccion", direccion) :
+                new ObjectParameter("Direccion", typeof(string));
+    
+            var celularParameter = celular.HasValue ?
+                new ObjectParameter("Celular", celular) :
+                new ObjectParameter("Celular", typeof(decimal));
+    
+            var telefonoParameter = telefono != null ?
+                new ObjectParameter("Telefono", telefono) :
+                new ObjectParameter("Telefono", typeof(string));
+    
+            var emailParameter = email != null ?
+                new ObjectParameter("Email", email) :
+                new ObjectParameter("Email", typeof(string));
+    
+            var cargoIdParameter = cargoId.HasValue ?
+                new ObjectParameter("CargoId", cargoId) :
+                new ObjectParameter("CargoId", typeof(int));
+    
+            var tipoDocumentoIdParameter = tipoDocumentoId.HasValue ?
+                new ObjectParameter("TipoDocumentoId", tipoDocumentoId) :
+                new ObjectParameter("TipoDocumentoId", typeof(int));
+    
+            var cedulaParameter = cedula != null ?
+                new ObjectParameter("Cedula", cedula) :
+                new ObjectParameter("Cedula", typeof(string));
+    
+            var sexoParameter = sexo != null ?
+                new ObjectParameter("Sexo", sexo) :
+                new ObjectParameter("Sexo", typeof(string));
+    
+            var fechaNacParameter = fechaNac.HasValue ?
+                new ObjectParameter("FechaNac", fechaNac) :
+                new ObjectParameter("FechaNac", typeof(System.DateTime));
+    
+            var etniaIdParameter = etniaId.HasValue ?
+                new ObjectParameter("EtniaId", etniaId) :
+                new ObjectParameter("EtniaId", typeof(int));
+    
+            var paisIdParameter = paisId.HasValue ?
+                new ObjectParameter("PaisId", paisId) :
+                new ObjectParameter("PaisId", typeof(int));
+    
+            var dominaIdiomasParameter = dominaIdiomas != null ?
+                new ObjectParameter("DominaIdiomas", dominaIdiomas) :
+                new ObjectParameter("DominaIdiomas", typeof(string));
+    
+            var nombreIdiomaParameter = nombreIdioma != null ?
+                new ObjectParameter("NombreIdioma", nombreIdioma) :
+                new ObjectParameter("NombreIdioma", typeof(string));
+    
+            var nivelAlcanzadoParameter = nivelAlcanzado != null ?
+                new ObjectParameter("NivelAlcanzado", nivelAlcanzado) :
+                new ObjectParameter("NivelAlcanzado", typeof(string));
+    
+            var departamentoIdParameter = departamentoId.HasValue ?
+                new ObjectParameter("DepartamentoId", departamentoId) :
+                new ObjectParameter("DepartamentoId", typeof(int));
+    
+            var municipioIdParameter = municipioId.HasValue ?
+                new ObjectParameter("MunicipioId", municipioId) :
+                new ObjectParameter("MunicipioId", typeof(int));
+    
+            var zonaParameter = zona != null ?
+                new ObjectParameter("zona", zona) :
+                new ObjectParameter("zona", typeof(string));
+    
+            var estadoCivilParameter = estadoCivil != null ?
+                new ObjectParameter("EstadoCivil", estadoCivil) :
+                new ObjectParameter("EstadoCivil", typeof(string));
+    
+            var nohijosParameter = nohijos.HasValue ?
+                new ObjectParameter("Nohijos", nohijos) :
+                new ObjectParameter("Nohijos", typeof(int));
+    
+            var discapacidadParameter = discapacidad != null ?
+                new ObjectParameter("Discapacidad", discapacidad) :
+                new ObjectParameter("Discapacidad", typeof(string));
+    
+            var areaIdParameter = areaId.HasValue ?
+                new ObjectParameter("AreaId", areaId) :
+                new ObjectParameter("AreaId", typeof(int));
+    
+            var ejercicioDirectivoParameter = ejercicioDirectivo.HasValue ?
+                new ObjectParameter("EjercicioDirectivo", ejercicioDirectivo) :
+                new ObjectParameter("EjercicioDirectivo", typeof(int));
+    
+            var maximoNivelFpIdParameter = maximoNivelFpId.HasValue ?
+                new ObjectParameter("MaximoNivelFpId", maximoNivelFpId) :
+                new ObjectParameter("MaximoNivelFpId", typeof(int));
+    
+            var nombreTitulosParameter = nombreTitulos != null ?
+                new ObjectParameter("NombreTitulos", nombreTitulos) :
+                new ObjectParameter("NombreTitulos", typeof(string));
+    
+            var tieneFormacionpedadogicaParameter = tieneFormacionpedadogica != null ?
+                new ObjectParameter("TieneFormacionpedadogica", tieneFormacionpedadogica) :
+                new ObjectParameter("TieneFormacionpedadogica", typeof(string));
+    
+            var nombreformacionPedadogicaParameter = nombreformacionPedadogica != null ?
+                new ObjectParameter("NombreformacionPedadogica", nombreformacionPedadogica) :
+                new ObjectParameter("NombreformacionPedadogica", typeof(string));
+    
+            var anioformacionpedadogicaParameter = anioformacionpedadogica.HasValue ?
+                new ObjectParameter("anioformacionpedadogica", anioformacionpedadogica) :
+                new ObjectParameter("anioformacionpedadogica", typeof(int));
+    
+            var tipoContratoParameter = tipoContrato.HasValue ?
+                new ObjectParameter("TipoContrato", tipoContrato) :
+                new ObjectParameter("TipoContrato", typeof(int));
+    
+            var categoriaDocenteParameter = categoriaDocente.HasValue ?
+                new ObjectParameter("categoriaDocente", categoriaDocente) :
+                new ObjectParameter("categoriaDocente", typeof(int));
+    
+            var psERVunicamParameter = psERVunicam != null ?
+                new ObjectParameter("psERVunicam", psERVunicam) :
+                new ObjectParameter("psERVunicam", typeof(string));
+    
+            var pServUalnParameter = pServUaln != null ?
+                new ObjectParameter("PServUaln", pServUaln) :
+                new ObjectParameter("PServUaln", typeof(string));
+    
+            var pservRSJParameter = pservRSJ != null ?
+                new ObjectParameter("PservRSJ", pservRSJ) :
+                new ObjectParameter("PservRSJ", typeof(string));
+    
+            var pservPrepaParameter = pservPrepa != null ?
+                new ObjectParameter("PservPrepa", pservPrepa) :
+                new ObjectParameter("PservPrepa", typeof(string));
+    
+            var nogruposParameter = nogrupos.HasValue ?
+                new ObjectParameter("Nogrupos", nogrupos) :
+                new ObjectParameter("Nogrupos", typeof(int));
+    
+            var noAsigParameter = noAsig.HasValue ?
+                new ObjectParameter("NoAsig", noAsig) :
+                new ObjectParameter("NoAsig", typeof(int));
+    
+            var noAsigModParameter = noAsigMod.HasValue ?
+                new ObjectParameter("NoAsigMod", noAsigMod) :
+                new ObjectParameter("NoAsigMod", typeof(int));
+    
+            var realizaInvestigacionParameter = realizaInvestigacion != null ?
+                new ObjectParameter("RealizaInvestigacion", realizaInvestigacion) :
+                new ObjectParameter("RealizaInvestigacion", typeof(string));
+    
+            var docenteAreaInveParameter = docenteAreaInve.HasValue ?
+                new ObjectParameter("DocenteAreaInve", docenteAreaInve) :
+                new ObjectParameter("DocenteAreaInve", typeof(int));
+    
+            var tutoriasParameter = tutorias != null ?
+                new ObjectParameter("tutorias", tutorias) :
+                new ObjectParameter("tutorias", typeof(string));
+    
+            var noMTgradoParameter = noMTgrado.HasValue ?
+                new ObjectParameter("NoMTgrado", noMTgrado) :
+                new ObjectParameter("NoMTgrado", typeof(int));
+    
+            var noFtgradoParameter = noFtgrado.HasValue ?
+                new ObjectParameter("NoFtgrado", noFtgrado) :
+                new ObjectParameter("NoFtgrado", typeof(int));
+    
+            var noMTPostgradoParameter = noMTPostgrado.HasValue ?
+                new ObjectParameter("NoMTPostgrado", noMTPostgrado) :
+                new ObjectParameter("NoMTPostgrado", typeof(int));
+    
+            var noFTPostradoParameter = noFTPostrado.HasValue ?
+                new ObjectParameter("NoFTPostrado", noFTPostrado) :
+                new ObjectParameter("NoFTPostrado", typeof(int));
+    
+            var estudiaParameter = estudia != null ?
+                new ObjectParameter("estudia", estudia) :
+                new ObjectParameter("estudia", typeof(string));
+    
+            var nivelFpEstudiosParameter = nivelFpEstudios.HasValue ?
+                new ObjectParameter("NivelFpEstudios", nivelFpEstudios) :
+                new ObjectParameter("NivelFpEstudios", typeof(int));
+    
+            var nombreEstudiosParameter = nombreEstudios != null ?
+                new ObjectParameter("NombreEstudios", nombreEstudios) :
+                new ObjectParameter("NombreEstudios", typeof(string));
+    
+            var becaEstudiosParameter = becaEstudios != null ?
+                new ObjectParameter("BecaEstudios", becaEstudios) :
+                new ObjectParameter("BecaEstudios", typeof(string));
+    
+            var procedBecaParameter = procedBeca != null ?
+                new ObjectParameter("ProcedBeca", procedBeca) :
+                new ObjectParameter("ProcedBeca", typeof(string));
+    
+            var tipoBecaParameter = tipoBeca != null ?
+                new ObjectParameter("TipoBeca", tipoBeca) :
+                new ObjectParameter("TipoBeca", typeof(string));
+    
+            var montoBecaParameter = montoBeca.HasValue ?
+                new ObjectParameter("MontoBeca", montoBeca) :
+                new ObjectParameter("MontoBeca", typeof(decimal));
+    
+            var capacitacionesParameter = capacitaciones != null ?
+                new ObjectParameter("capacitaciones", capacitaciones) :
+                new ObjectParameter("capacitaciones", typeof(string));
+    
+            var areaCapacitacionIdParameter = areaCapacitacionId.HasValue ?
+                new ObjectParameter("AreaCapacitacionId", areaCapacitacionId) :
+                new ObjectParameter("AreaCapacitacionId", typeof(int));
+    
+            var noInssParameter = noInss != null ?
+                new ObjectParameter("NoInss", noInss) :
+                new ObjectParameter("NoInss", typeof(string));
+    
+            var horasClasesemanaParameter = horasClasesemana.HasValue ?
+                new ObjectParameter("HorasClasesemana", horasClasesemana) :
+                new ObjectParameter("HorasClasesemana", typeof(int));
+    
+            var valorXHoraClaseParameter = valorXHoraClase.HasValue ?
+                new ObjectParameter("valorXHoraClase", valorXHoraClase) :
+                new ObjectParameter("valorXHoraClase", typeof(decimal));
+    
+            var usuarioModificaParameter = usuarioModifica != null ?
+                new ObjectParameter("usuarioModifica", usuarioModifica) :
+                new ObjectParameter("usuarioModifica", typeof(string));
+    
+            var activoParameter = activo.HasValue ?
+                new ObjectParameter("activo", activo) :
+                new ObjectParameter("activo", typeof(bool));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SpDocente", spParameter, idParameter, recintoIdParameter, profesionIdParameter, nombreParameter, direccionParameter, celularParameter, telefonoParameter, emailParameter, cargoIdParameter, tipoDocumentoIdParameter, cedulaParameter, sexoParameter, fechaNacParameter, etniaIdParameter, paisIdParameter, dominaIdiomasParameter, nombreIdiomaParameter, nivelAlcanzadoParameter, departamentoIdParameter, municipioIdParameter, zonaParameter, estadoCivilParameter, nohijosParameter, discapacidadParameter, areaIdParameter, ejercicioDirectivoParameter, maximoNivelFpIdParameter, nombreTitulosParameter, tieneFormacionpedadogicaParameter, nombreformacionPedadogicaParameter, anioformacionpedadogicaParameter, tipoContratoParameter, categoriaDocenteParameter, psERVunicamParameter, pServUalnParameter, pservRSJParameter, pservPrepaParameter, nogruposParameter, noAsigParameter, noAsigModParameter, realizaInvestigacionParameter, docenteAreaInveParameter, tutoriasParameter, noMTgradoParameter, noFtgradoParameter, noMTPostgradoParameter, noFTPostradoParameter, estudiaParameter, nivelFpEstudiosParameter, nombreEstudiosParameter, becaEstudiosParameter, procedBecaParameter, tipoBecaParameter, montoBecaParameter, capacitacionesParameter, areaCapacitacionIdParameter, noInssParameter, horasClasesemanaParameter, valorXHoraClaseParameter, usuarioModificaParameter, activoParameter, nuevoId);
+        }
     }
 }

@@ -108,7 +108,7 @@
           <Property Name="NoGrupos" Type="int" />
           <Property Name="NoAsignaturas" Type="int" />
           <Property Name="NoAsigMod" Type="int" />
-          <Property Name="RealizaInvestigacion" Type="nchar" MaxLength="10" />
+          <Property Name="RealizaInvestigacion" Type="varchar" MaxLength="2" />
           <Property Name="DocenteAreaInvestigacionId" Type="int" />
           <Property Name="Tutorias" Type="varchar" MaxLength="2" />
           <Property Name="NoMTGrado" Type="int" />
@@ -428,6 +428,71 @@ advertencia 6002: La tabla o vista 'UcytAlmaMater.dbo.ViewDocenteIdiomas' no tie
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="SpDocente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Sp" Type="int" Mode="In" />
+          <Parameter Name="Id" Type="int" Mode="In" />
+          <Parameter Name="RecintoId" Type="int" Mode="In" />
+          <Parameter Name="ProfesionId" Type="int" Mode="In" />
+          <Parameter Name="Nombre" Type="varchar" Mode="In" />
+          <Parameter Name="Direccion" Type="varchar" Mode="In" />
+          <Parameter Name="Celular" Type="numeric" Mode="In" />
+          <Parameter Name="Telefono" Type="varchar" Mode="In" />
+          <Parameter Name="Email" Type="varchar" Mode="In" />
+          <Parameter Name="CargoId" Type="int" Mode="In" />
+          <Parameter Name="TipoDocumentoId" Type="int" Mode="In" />
+          <Parameter Name="Cedula" Type="varchar" Mode="In" />
+          <Parameter Name="Sexo" Type="varchar" Mode="In" />
+          <Parameter Name="FechaNac" Type="date" Mode="In" />
+          <Parameter Name="EtniaId" Type="int" Mode="In" />
+          <Parameter Name="PaisId" Type="int" Mode="In" />
+          <Parameter Name="DominaIdiomas" Type="varchar" Mode="In" />
+          <Parameter Name="NombreIdioma" Type="varchar" Mode="In" />
+          <Parameter Name="NivelAlcanzado" Type="varchar" Mode="In" />
+          <Parameter Name="DepartamentoId" Type="int" Mode="In" />
+          <Parameter Name="MunicipioId" Type="int" Mode="In" />
+          <Parameter Name="zona" Type="varchar" Mode="In" />
+          <Parameter Name="EstadoCivil" Type="varchar" Mode="In" />
+          <Parameter Name="Nohijos" Type="int" Mode="In" />
+          <Parameter Name="Discapacidad" Type="varchar" Mode="In" />
+          <Parameter Name="AreaId" Type="int" Mode="In" />
+          <Parameter Name="EjercicioDirectivo" Type="int" Mode="In" />
+          <Parameter Name="MaximoNivelFpId" Type="int" Mode="In" />
+          <Parameter Name="NombreTitulos" Type="varchar" Mode="In" />
+          <Parameter Name="TieneFormacionpedadogica" Type="varchar" Mode="In" />
+          <Parameter Name="NombreformacionPedadogica" Type="varchar" Mode="In" />
+          <Parameter Name="anioformacionpedadogica" Type="int" Mode="In" />
+          <Parameter Name="TipoContrato" Type="int" Mode="In" />
+          <Parameter Name="categoriaDocente" Type="int" Mode="In" />
+          <Parameter Name="psERVunicam" Type="varchar" Mode="In" />
+          <Parameter Name="PServUaln" Type="varchar" Mode="In" />
+          <Parameter Name="PservRSJ" Type="varchar" Mode="In" />
+          <Parameter Name="PservPrepa" Type="varchar" Mode="In" />
+          <Parameter Name="Nogrupos" Type="int" Mode="In" />
+          <Parameter Name="NoAsig" Type="int" Mode="In" />
+          <Parameter Name="NoAsigMod" Type="int" Mode="In" />
+          <Parameter Name="RealizaInvestigacion" Type="varchar" Mode="In" />
+          <Parameter Name="DocenteAreaInve" Type="int" Mode="In" />
+          <Parameter Name="tutorias" Type="varchar" Mode="In" />
+          <Parameter Name="NoMTgrado" Type="int" Mode="In" />
+          <Parameter Name="NoFtgrado" Type="int" Mode="In" />
+          <Parameter Name="NoMTPostgrado" Type="int" Mode="In" />
+          <Parameter Name="NoFTPostrado" Type="int" Mode="In" />
+          <Parameter Name="estudia" Type="varchar" Mode="In" />
+          <Parameter Name="NivelFpEstudios" Type="int" Mode="In" />
+          <Parameter Name="NombreEstudios" Type="varchar" Mode="In" />
+          <Parameter Name="BecaEstudios" Type="varchar" Mode="In" />
+          <Parameter Name="ProcedBeca" Type="varchar" Mode="In" />
+          <Parameter Name="TipoBeca" Type="varchar" Mode="In" />
+          <Parameter Name="MontoBeca" Type="decimal" Mode="In" />
+          <Parameter Name="capacitaciones" Type="varchar" Mode="In" />
+          <Parameter Name="AreaCapacitacionId" Type="int" Mode="In" />
+          <Parameter Name="NoInss" Type="varchar" Mode="In" />
+          <Parameter Name="HorasClasesemana" Type="int" Mode="In" />
+          <Parameter Name="valorXHoraClase" Type="money" Mode="In" />
+          <Parameter Name="usuarioModifica" Type="varchar" Mode="In" />
+          <Parameter Name="activo" Type="bit" Mode="In" />
+          <Parameter Name="NuevoId" Type="int" Mode="InOut" />
+        </Function>
         <EntityContainer Name="UcytAlmaMaterModelStoreContainer">
           <EntitySet Name="Area" EntityType="Self.Area" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AreaCapacitacion" EntityType="Self.AreaCapacitacion" Schema="dbo" store:Type="Tables" />
@@ -743,6 +808,71 @@ advertencia 6002: La tabla o vista 'UcytAlmaMater.dbo.ViewDocenteIdiomas' no tie
             <End Role="TipoContrato" EntitySet="TipoContrato" />
             <End Role="Docente" EntitySet="Docente" />
           </AssociationSet>
+          <FunctionImport Name="SpDocente">
+            <Parameter Name="Sp" Mode="In" Type="Int32" />
+            <Parameter Name="Id" Mode="In" Type="Int32" />
+            <Parameter Name="RecintoId" Mode="In" Type="Int32" />
+            <Parameter Name="ProfesionId" Mode="In" Type="Int32" />
+            <Parameter Name="Nombre" Mode="In" Type="String" />
+            <Parameter Name="Direccion" Mode="In" Type="String" />
+            <Parameter Name="Celular" Mode="In" Type="Decimal" />
+            <Parameter Name="Telefono" Mode="In" Type="String" />
+            <Parameter Name="Email" Mode="In" Type="String" />
+            <Parameter Name="CargoId" Mode="In" Type="Int32" />
+            <Parameter Name="TipoDocumentoId" Mode="In" Type="Int32" />
+            <Parameter Name="Cedula" Mode="In" Type="String" />
+            <Parameter Name="Sexo" Mode="In" Type="String" />
+            <Parameter Name="FechaNac" Mode="In" Type="DateTime" />
+            <Parameter Name="EtniaId" Mode="In" Type="Int32" />
+            <Parameter Name="PaisId" Mode="In" Type="Int32" />
+            <Parameter Name="DominaIdiomas" Mode="In" Type="String" />
+            <Parameter Name="NombreIdioma" Mode="In" Type="String" />
+            <Parameter Name="NivelAlcanzado" Mode="In" Type="String" />
+            <Parameter Name="DepartamentoId" Mode="In" Type="Int32" />
+            <Parameter Name="MunicipioId" Mode="In" Type="Int32" />
+            <Parameter Name="zona" Mode="In" Type="String" />
+            <Parameter Name="EstadoCivil" Mode="In" Type="String" />
+            <Parameter Name="Nohijos" Mode="In" Type="Int32" />
+            <Parameter Name="Discapacidad" Mode="In" Type="String" />
+            <Parameter Name="AreaId" Mode="In" Type="Int32" />
+            <Parameter Name="EjercicioDirectivo" Mode="In" Type="Int32" />
+            <Parameter Name="MaximoNivelFpId" Mode="In" Type="Int32" />
+            <Parameter Name="NombreTitulos" Mode="In" Type="String" />
+            <Parameter Name="TieneFormacionpedadogica" Mode="In" Type="String" />
+            <Parameter Name="NombreformacionPedadogica" Mode="In" Type="String" />
+            <Parameter Name="anioformacionpedadogica" Mode="In" Type="Int32" />
+            <Parameter Name="TipoContrato" Mode="In" Type="Int32" />
+            <Parameter Name="categoriaDocente" Mode="In" Type="Int32" />
+            <Parameter Name="psERVunicam" Mode="In" Type="String" />
+            <Parameter Name="PServUaln" Mode="In" Type="String" />
+            <Parameter Name="PservRSJ" Mode="In" Type="String" />
+            <Parameter Name="PservPrepa" Mode="In" Type="String" />
+            <Parameter Name="Nogrupos" Mode="In" Type="Int32" />
+            <Parameter Name="NoAsig" Mode="In" Type="Int32" />
+            <Parameter Name="NoAsigMod" Mode="In" Type="Int32" />
+            <Parameter Name="RealizaInvestigacion" Mode="In" Type="String" />
+            <Parameter Name="DocenteAreaInve" Mode="In" Type="Int32" />
+            <Parameter Name="tutorias" Mode="In" Type="String" />
+            <Parameter Name="NoMTgrado" Mode="In" Type="Int32" />
+            <Parameter Name="NoFtgrado" Mode="In" Type="Int32" />
+            <Parameter Name="NoMTPostgrado" Mode="In" Type="Int32" />
+            <Parameter Name="NoFTPostrado" Mode="In" Type="Int32" />
+            <Parameter Name="estudia" Mode="In" Type="String" />
+            <Parameter Name="NivelFpEstudios" Mode="In" Type="Int32" />
+            <Parameter Name="NombreEstudios" Mode="In" Type="String" />
+            <Parameter Name="BecaEstudios" Mode="In" Type="String" />
+            <Parameter Name="ProcedBeca" Mode="In" Type="String" />
+            <Parameter Name="TipoBeca" Mode="In" Type="String" />
+            <Parameter Name="MontoBeca" Mode="In" Type="Decimal" />
+            <Parameter Name="capacitaciones" Mode="In" Type="String" />
+            <Parameter Name="AreaCapacitacionId" Mode="In" Type="Int32" />
+            <Parameter Name="NoInss" Mode="In" Type="String" />
+            <Parameter Name="HorasClasesemana" Mode="In" Type="Int32" />
+            <Parameter Name="valorXHoraClase" Mode="In" Type="Decimal" />
+            <Parameter Name="usuarioModifica" Mode="In" Type="String" />
+            <Parameter Name="activo" Mode="In" Type="Boolean" />
+            <Parameter Name="NuevoId" Mode="InOut" Type="Int32" />
+          </FunctionImport>
           </EntityContainer>
         <EntityType Name="Area">
           <Key>
@@ -912,7 +1042,7 @@ advertencia 6002: La tabla o vista 'UcytAlmaMater.dbo.ViewDocenteIdiomas' no tie
           <Property Name="NoGrupos" Type="Int32" />
           <Property Name="NoAsignaturas" Type="Int32" />
           <Property Name="NoAsigMod" Type="Int32" />
-          <Property Name="RealizaInvestigacion" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="RealizaInvestigacion" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
           <Property Name="DocenteAreaInvestigacionId" Type="Int32" />
           <Property Name="Tutorias" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
           <Property Name="NoMTGrado" Type="Int32" />
@@ -1351,6 +1481,7 @@ advertencia 6002: La tabla o vista 'UcytAlmaMater.dbo.ViewDocenteIdiomas' no tie
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="SpDocente" FunctionName="UcytAlmaMaterModel.Store.SpDocente" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
