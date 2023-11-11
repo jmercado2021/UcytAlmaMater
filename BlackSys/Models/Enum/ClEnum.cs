@@ -76,6 +76,16 @@ namespace BlackSys.Models.Enum
         //    [Display(Name = "Portugues")]
         //    Portugues = 4
         //}
+        public enum Activo
+        {
+            
+            [Display(Name = "SI")]
+            Si = 0,
+            [Display(Name = "No")]
+            No = 1
+
+
+        }
 
         public enum SelectTrueFalse
         {

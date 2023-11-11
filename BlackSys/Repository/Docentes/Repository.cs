@@ -57,7 +57,7 @@ namespace BlackSys.Repository.Docentes
                     p.NoGrupos, p.NoAsignaturas, p.NoAsigMod, p.RealizaInvestigacion, p.DocenteAreaInvestigacionId, p.Tutorias,
                     p.NoMTGrado, p.NoFTGrado, p.NoMTPosgrado, p.NoFTPosgrado, p.Estudia, p.NivelFpEstudios,
                     p.NombreEstudios, p.BecaEstudios, p.ProcedBeca, p.TipoBeca, p.MontoBeca, p.Capacitaciones,
-                    p.AreaCapacitacionId, p.NoInss, p.HorasClaseSemana, p.ValorXHoraClase, p.UsuarioModifica, p.Activo, paramId);
+                    p.AreaCapacitacionId, p.NoInss, p.HorasClaseSemana, p.ValorXHoraClase, p.UsuarioModifica, p.Activo,p.RecintoId, paramId);
                 //Models.Dal.Docente a = GetById(p.Id);
                 //a.Nombre = p.Nombre;
                 //a.NoInss = p.NoInss;
@@ -150,7 +150,7 @@ namespace BlackSys.Repository.Docentes
                     p.NoGrupos, p.NoAsignaturas, p.NoAsigMod, p.RealizaInvestigacion, p.DocenteAreaInvestigacionId, p.Tutorias,
                     p.NoMTGrado, p.NoFTGrado, p.NoMTPosgrado, p.NoFTPosgrado, p.Estudia, p.NivelFpEstudios,
                     p.NombreEstudios, p.BecaEstudios, p.ProcedBeca, p.TipoBeca, p.MontoBeca, p.Capacitaciones,
-                    p.AreaCapacitacionId, p.NoInss, p.HorasClaseSemana, p.ValorXHoraClase, p.UsuarioModifica, p.Activo, paramId);
+                    p.AreaCapacitacionId, p.NoInss, p.HorasClaseSemana, p.ValorXHoraClase, p.UsuarioModifica, p.Activo,p.RecintoId, paramId);
                 //_dtx.Docente.Add(model);
                 //_dtx.SaveChanges();
                 int nuevoId = (int)paramId.Value;

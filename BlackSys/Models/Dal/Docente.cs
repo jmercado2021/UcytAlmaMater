@@ -77,7 +77,7 @@ namespace BlackSys.Models.Dal
         public string UsuarioModifica { get; set; }
         public Nullable<System.DateTime> FechaRegistro { get; set; }
         public Nullable<System.DateTime> FechaModifica { get; set; }
-        public bool Activo { get; set; }
+        public string Activo { get; set; }
     
         public virtual Area Area { get; set; }
         public virtual Cargo Cargo { get; set; }

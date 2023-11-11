@@ -306,7 +306,7 @@ namespace BlackSys.Models.Dal
 
         [Display(Name = "Fecha Modificado")]
         public Nullable<System.DateTime> FechaModifica { get; set; }
-        public bool Activo { get; set; }
+        public string Activo { get; set; }
 
         }
 

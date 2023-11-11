@@ -39,16 +39,17 @@
                     <td class="numero">@Html.DisplayFor(modelItem => item.Id)</td>
                     <td class="numero">@Html.DisplayFor(modelItem => item.Nombre)</td>
                     <td class="numero">@Html.DisplayFor(modelItem => item.Profesion.Descripcion)</td>
-                    @if (item.Activo == true)
-                    {
-                        <td class="numero">SI</td>
-                    }
-                    else
-                    {
-                            <td class="numero">No</td>
-                   }
+                    <td class="numero">@Html.DisplayFor(modelItem => item.Activo)</td>
+                    @*@if (item.Activo == true)
+         {
+             <td class="numero">SI</td>
+         }
+         else
+         {
+                 <td class="numero">No</td>
+        }*@
 
-                    
+
 
 
                     <td>

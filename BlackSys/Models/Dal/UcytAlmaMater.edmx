@@ -130,7 +130,7 @@
           <Property Name="UsuarioModifica" Type="varchar" MaxLength="20" />
           <Property Name="FechaRegistro" Type="datetime" />
           <Property Name="FechaModifica" Type="datetime" />
-          <Property Name="Activo" Type="bit" Nullable="false" />
+          <Property Name="Activo" Type="varchar" MaxLength="2" Nullable="false" />
         </EntityType>
         <EntityType Name="DocenteAreaInvestigacion">
           <Key>
@@ -490,7 +490,8 @@ advertencia 6002: La tabla o vista 'UcytAlmaMater.dbo.ViewDocenteIdiomas' no tie
           <Parameter Name="HorasClasesemana" Type="int" Mode="In" />
           <Parameter Name="valorXHoraClase" Type="money" Mode="In" />
           <Parameter Name="usuarioModifica" Type="varchar" Mode="In" />
-          <Parameter Name="activo" Type="bit" Mode="In" />
+          <Parameter Name="activo" Type="varchar" Mode="In" />
+          <Parameter Name="aniosAntiguedad" Type="int" Mode="In" />
           <Parameter Name="NuevoId" Type="int" Mode="InOut" />
         </Function>
         <EntityContainer Name="UcytAlmaMaterModelStoreContainer">
@@ -779,35 +780,6 @@ advertencia 6002: La tabla o vista 'UcytAlmaMater.dbo.ViewDocenteIdiomas' no tie
           <EntitySet Name="EjercicioDirectivo" EntityType="UcytAlmaMaterModel.EjercicioDirectivo" />
           <EntitySet Name="DocenteCategoria" EntityType="UcytAlmaMaterModel.DocenteCategoria" />
           <EntitySet Name="DocenteEstudios" EntityType="UcytAlmaMaterModel.DocenteEstudios" />
-          <EntitySet Name="Docente" EntityType="UcytAlmaMaterModel.Docente" />
-          <AssociationSet Name="FK_Docente_Area" Association="UcytAlmaMaterModel.FK_Docente_Area">
-            <End Role="Area" EntitySet="Area" />
-            <End Role="Docente" EntitySet="Docente" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Docente_Cargo" Association="UcytAlmaMaterModel.FK_Docente_Cargo">
-            <End Role="Cargo" EntitySet="Cargo" />
-            <End Role="Docente" EntitySet="Docente" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Docente_Departamento" Association="UcytAlmaMaterModel.FK_Docente_Departamento">
-            <End Role="Departamento" EntitySet="Departamento" />
-            <End Role="Docente" EntitySet="Docente" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Docente_Docente" Association="UcytAlmaMaterModel.FK_Docente_Docente">
-            <End Role="Recinto" EntitySet="Recinto" />
-            <End Role="Docente" EntitySet="Docente" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Docente_Municipio" Association="UcytAlmaMaterModel.FK_Docente_Municipio">
-            <End Role="Municipio" EntitySet="Municipio" />
-            <End Role="Docente" EntitySet="Docente" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Docente_Profesion" Association="UcytAlmaMaterModel.FK_Docente_Profesion">
-            <End Role="Profesion" EntitySet="Profesion" />
-            <End Role="Docente" EntitySet="Docente" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Docente_TipoContrato" Association="UcytAlmaMaterModel.FK_Docente_TipoContrato">
-            <End Role="TipoContrato" EntitySet="TipoContrato" />
-            <End Role="Docente" EntitySet="Docente" />
-          </AssociationSet>
           <FunctionImport Name="SpDocente">
             <Parameter Name="Sp" Mode="In" Type="Int32" />
             <Parameter Name="Id" Mode="In" Type="Int32" />
@@ -870,9 +842,39 @@ advertencia 6002: La tabla o vista 'UcytAlmaMater.dbo.ViewDocenteIdiomas' no tie
             <Parameter Name="HorasClasesemana" Mode="In" Type="Int32" />
             <Parameter Name="valorXHoraClase" Mode="In" Type="Decimal" />
             <Parameter Name="usuarioModifica" Mode="In" Type="String" />
-            <Parameter Name="activo" Mode="In" Type="Boolean" />
+            <Parameter Name="activo" Mode="In" Type="String" />
+            <Parameter Name="aniosAntiguedad" Mode="In" Type="Int32" />
             <Parameter Name="NuevoId" Mode="InOut" Type="Int32" />
           </FunctionImport>
+          <EntitySet Name="Docente" EntityType="UcytAlmaMaterModel.Docente" />
+          <AssociationSet Name="FK_Docente_Area" Association="UcytAlmaMaterModel.FK_Docente_Area">
+            <End Role="Area" EntitySet="Area" />
+            <End Role="Docente" EntitySet="Docente" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Docente_Cargo" Association="UcytAlmaMaterModel.FK_Docente_Cargo">
+            <End Role="Cargo" EntitySet="Cargo" />
+            <End Role="Docente" EntitySet="Docente" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Docente_Departamento" Association="UcytAlmaMaterModel.FK_Docente_Departamento">
+            <End Role="Departamento" EntitySet="Departamento" />
+            <End Role="Docente" EntitySet="Docente" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Docente_Docente" Association="UcytAlmaMaterModel.FK_Docente_Docente">
+            <End Role="Recinto" EntitySet="Recinto" />
+            <End Role="Docente" EntitySet="Docente" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Docente_Municipio" Association="UcytAlmaMaterModel.FK_Docente_Municipio">
+            <End Role="Municipio" EntitySet="Municipio" />
+            <End Role="Docente" EntitySet="Docente" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Docente_Profesion" Association="UcytAlmaMaterModel.FK_Docente_Profesion">
+            <End Role="Profesion" EntitySet="Profesion" />
+            <End Role="Docente" EntitySet="Docente" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Docente_TipoContrato" Association="UcytAlmaMaterModel.FK_Docente_TipoContrato">
+            <End Role="TipoContrato" EntitySet="TipoContrato" />
+            <End Role="Docente" EntitySet="Docente" />
+          </AssociationSet>
           </EntityContainer>
         <EntityType Name="Area">
           <Key>
@@ -1064,7 +1066,7 @@ advertencia 6002: La tabla o vista 'UcytAlmaMater.dbo.ViewDocenteIdiomas' no tie
           <Property Name="UsuarioModifica" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="FechaRegistro" Type="DateTime" Precision="3" />
           <Property Name="FechaModifica" Type="DateTime" Precision="3" />
-          <Property Name="Activo" Type="Boolean" Nullable="false" />
+          <Property Name="Activo" Type="String" Nullable="false" MaxLength="2" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Area" Relationship="UcytAlmaMaterModel.FK_Docente_Area" FromRole="Docente" ToRole="Area" />
           <NavigationProperty Name="Cargo" Relationship="UcytAlmaMaterModel.FK_Docente_Cargo" FromRole="Docente" ToRole="Cargo" />
           <NavigationProperty Name="Departamento" Relationship="UcytAlmaMaterModel.FK_Docente_Departamento" FromRole="Docente" ToRole="Departamento" />
@@ -1411,6 +1413,7 @@ advertencia 6002: La tabla o vista 'UcytAlmaMater.dbo.ViewDocenteIdiomas' no tie
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="SpDocente" FunctionName="UcytAlmaMaterModel.Store.SpDocente" />
           <EntitySetMapping Name="Docente">
             <EntityTypeMapping TypeName="UcytAlmaMaterModel.Docente">
               <MappingFragment StoreEntitySet="Docente">
@@ -1481,7 +1484,6 @@ advertencia 6002: La tabla o vista 'UcytAlmaMater.dbo.ViewDocenteIdiomas' no tie
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="SpDocente" FunctionName="UcytAlmaMaterModel.Store.SpDocente" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

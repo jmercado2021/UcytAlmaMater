@@ -67,6 +67,16 @@
 
                                 <div class="row">
                                     <div class="col-lg-12">
+                                        <div id="intro" class="col-md-6">
+                                            @Html.LabelFor(model => model.docente.RecintoId, htmlAttributes: new { @class = "control-label" })
+                                            @Html.DropDownListFor(model => model.docente.RecintoId, new SelectList(ViewBag.RecintoV, "Value", "Text"), null, new { @class = "form-control" })
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-12">
                                         <div class="col-md-2">
                                             @Html.LabelFor(model => model.docente.Id, htmlAttributes: new { @class = "control-label" })
 
@@ -205,6 +215,10 @@
                                         <div id="intro" class="col-md-4">
                                             @Html.LabelFor(model => model.docente.CategoriaDocenteId, htmlAttributes: new { @class = "control-label" })
                                             @Html.DropDownListFor(model => model.docente.CategoriaDocenteId, new SelectList(ViewBag.CatDocenteV, "Value", "Text"), null, new { @class = "form-control" })
+                                        </div>
+                                        <div id="intro" class="col-md-4">
+                                            @Html.LabelFor(model => model.docente.Activo, htmlAttributes: new { @class = "control-label" })
+                                            @Html.DropDownListFor(model => model.docente.Activo, new SelectList(ViewBag.JustSINO, "Value", "Text"), null, new { @class = "form-control" })
                                         </div>
 
                                     </div>

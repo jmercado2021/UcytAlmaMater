@@ -23,6 +23,7 @@ namespace BlackSys.Controllers
         {
             UserManager = userManager;
             RoleManager = roleManager;
+         
         }
 
         private ApplicationUserManager _userManager;
@@ -204,46 +205,69 @@ namespace BlackSys.Controllers
         // POST: /Users/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "Email,Id,Address,City,State,PostalCode,PasswordHash")] EditUserViewModel editUser, params string[] selectedRole)
+        public async Task<ActionResult> Edit([Bind(Include = "Email,Id,Address,City,State,PostalCode,Password")] EditUserViewModel editUser, params string[] selectedRole)
         {
-            if (ModelState.IsValid)
+            var user = await UserManager.FindByIdAsync(editUser.Id);
+            //user.PasswordHash = "Admin1.0";
+            if (user == null)
             {
-                var user = await UserManager.FindByIdAsync(editUser.Id);
-                if (user == null)
-                {
-                    return HttpNotFound();
-                }
-
-                user.UserName = editUser.Email;
-                user.Email = editUser.Email;
-                user.Address = editUser.Address;
-                user.City = editUser.City;
-                user.State = editUser.State;
-                user.PostalCode = editUser.PostalCode;
-                user.PasswordHash = editUser.PasswordHash;
-
-                var userRoles = await UserManager.GetRolesAsync(user.Id);
-
-                selectedRole = selectedRole ?? new string[] { };
-
-                var result = await UserManager.AddToRolesAsync(user.Id, selectedRole.Except(userRoles).ToArray<string>());
-
-                if (!result.Succeeded)
-                {
-                    ModelState.AddModelError("", result.Errors.First());
-                    return View();
-                }
-                result = await UserManager.RemoveFromRolesAsync(user.Id, userRoles.Except(selectedRole).ToArray<string>());
-
-                if (!result.Succeeded)
-                {
-                    ModelState.AddModelError("", result.Errors.First());
-                    return View();
-                }
-                return RedirectToAction("Index");
+                // El usuario no existe, manejar según sea necesario
+                return HttpNotFound();
             }
-            ModelState.AddModelError("", "Something failed.");
-            return View();
+            //_userManager = userManager;
+
+            var token = await UserManager.GeneratePasswordResetTokenAsync(user.Id);
+            var result = await UserManager.ResetPasswordAsync(editUser.Id, token, editUser.Password);
+
+            if (result.Succeeded)
+            {
+                // La contraseña se cambió exitosamente, puedes realizar acciones adicionales si es necesario
+                return RedirectToAction("Index", "Home");
+            }
+            else
+            {
+                // Ocurrió un error al cambiar la contraseña, manejar según sea necesario
+                ModelState.AddModelError(string.Empty, "Error al cambiar la contraseña");
+                return View(); // Puedes redirigir a la vista que desees
+            }
+            //if (ModelState.IsValid)
+            //{
+            //    var user = await UserManager.FindByIdAsync(editUser.Id);
+            //    if (user == null)
+            //    {
+            //        return HttpNotFound();
+            //    }
+
+            //    user.UserName = editUser.Email;
+            //    user.Email = editUser.Email;
+            //    user.Address = editUser.Address;
+            //    user.City = editUser.City;
+            //    user.State = editUser.State;
+            //    user.PostalCode = editUser.PostalCode;
+            //    //user.PasswordHash = editUser.PasswordHash;
+
+            //    var userRoles = await UserManager.GetRolesAsync(user.Id);
+            //    //IdentityResult result = await this.AppUserManager.ChangePasswordAsync(User.Identity.GetUserId(), model.OldPassword, model.NewPassword);
+            //    selectedRole = selectedRole ?? new string[] { };
+
+            //    var result = await UserManager.AddToRolesAsync(user.Id, selectedRole.Except(userRoles).ToArray<string>());
+
+            //    if (!result.Succeeded)
+            //    {
+            //        ModelState.AddModelError("", result.Errors.First());
+            //        return View();
+            //    }
+            //    result = await UserManager.RemoveFromRolesAsync(user.Id, userRoles.Except(selectedRole).ToArray<string>());
+
+            //    if (!result.Succeeded)
+            //    {
+            //        ModelState.AddModelError("", result.Errors.First());
+            //        return View();
+            //    }
+            //    return RedirectToAction("Index");
+            //}
+            //ModelState.AddModelError("", "Something failed.");
+            //return View();
         }
 
         //
