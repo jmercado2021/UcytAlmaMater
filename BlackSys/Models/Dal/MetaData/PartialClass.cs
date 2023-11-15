@@ -71,7 +71,8 @@ namespace BlackSys.Models.Dal
 
         [Display(Name = "Correo electrónico")]
         [DataType(DataType.EmailAddress)]
-        [EmailAddress]
+            [MaxLength(20, ErrorMessage = "Email maximo 50 caracteres")]
+            [EmailAddress]
         public string Email { get; set; }
 
         [Display(Name = "Cargo")]

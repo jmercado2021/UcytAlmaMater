@@ -9,81 +9,24 @@ namespace BlackSys.Controllers
     public class AsignaturaController : Controller
     {
         // GET: Asignatura
-        public ActionResult Index()
-        {
-            return View();
-        }
+        private Repository.Asignatura.IRepository _subject;
 
-        // GET: Asignatura/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
-
-        // GET: Asignatura/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: Asignatura/Create
-        [HttpPost]
-        public ActionResult Create(FormCollection collection)
-        {
-            try
+        public AsignaturaController()
             {
-                // TODO: Add insert logic here
+                    _subject = new Repository.Asignatura.Repository(this.ModelState);
 
-                return RedirectToAction("Index");
             }
-            catch
-            {
-                return View();
-            }
-        }
 
-        // GET: Asignatura/Edit/5
-        public ActionResult Edit(int id)
+         public ActionResult Index()
         {
-            return View();
-        }
 
-        // POST: Asignatura/Edit/5
-        [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+            return View(_subject.GetAll());
+        }
+        public ActionResult ParcialListado(string Nombre)
         {
-            try
-            {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            return PartialView(_subject.FindByName(Nombre));
         }
 
-        // GET: Asignatura/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: Asignatura/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
+      
     }
 }

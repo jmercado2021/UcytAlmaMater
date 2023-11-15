@@ -23,7 +23,6 @@
         <EntityTypeShape EntityType="UcytAlmaMaterModel.Area" Width="1.5" PointX="5.375" PointY="6.875" />
         <EntityTypeShape EntityType="UcytAlmaMaterModel.ViewDocenteAsignatura" Width="1.5" PointX="7.375" PointY="0.75" />
         <EntityTypeShape EntityType="UcytAlmaMaterModel.ViewDocenteIdiomas" Width="1.5" PointX="7.375" PointY="4.75" />
-        <EntityTypeShape EntityType="UcytAlmaMaterModel.Asignatura" Width="1.5" PointX="9.375" PointY="0.75" />
         <EntityTypeShape EntityType="UcytAlmaMaterModel.NivelFormacion" Width="1.5" PointX="9.375" PointY="5.75" />
         <EntityTypeShape EntityType="UcytAlmaMaterModel.Titulos" Width="1.5" PointX="10.375" PointY="8.75" />
         <EntityTypeShape EntityType="UcytAlmaMaterModel.TipoDocumento" Width="1.5" PointX="11.375" PointY="0.75" />
@@ -41,6 +40,7 @@
         <AssociationConnector Association="UcytAlmaMaterModel.FK_Docente_Municipio" />
         <AssociationConnector Association="UcytAlmaMaterModel.FK_Docente_Profesion" />
         <AssociationConnector Association="UcytAlmaMaterModel.FK_Docente_TipoContrato" />
+        <EntityTypeShape EntityType="UcytAlmaMaterModel.Asignatura" Width="1.5" PointX="13.375" PointY="9.75" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

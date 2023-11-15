@@ -1032,6 +1032,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ComponentCategoryController.cs" />
     <Compile Include="Controllers\PermissionsController.cs" />
+    <Compile Include="Controllers\SubjectsController.cs" />
     <Compile Include="Controllers\SuppliersController.cs" />
     <Compile Include="Controllers\SystemController.cs" />
     <Compile Include="Global.asax.cs">
@@ -1319,6 +1320,8 @@
     <Content Include="SweetAlert2\mixins.scss" />
     <Content Include="SweetAlert2\animations.scss" />
     <Content Include="Views\Docentes\AgregarDocente.cshtml" />
+    <Content Include="Views\Asignatura\ParcialListado.cshtml" />
+    <Content Include="Views\Asignatura\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -1338,10 +1341,11 @@
     <Folder Include="Content\plugins\select2\css\" />
     <Folder Include="Content\plugins\select2\sass\" />
     <Folder Include="Reports\" />
+    <Folder Include="Repository\NewFolder1\" />
     <Folder Include="Tools\" />
-    <Folder Include="Views\Asignatura\" />
     <Folder Include="Views\Docente\" />
     <Folder Include="Views\Reportes\" />
+    <Folder Include="Views\Subjects\" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Antlr3.Runtime">

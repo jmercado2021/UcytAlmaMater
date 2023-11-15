@@ -1,6 +1,12 @@
-﻿
+﻿@model List<BlackSys.Models.Dal.Asignatura>
+@{
+    ViewBag.Title = "Index";
+   
+}
 
-@model List<BlackSys.Models.Dal.Docente>
+
+
+
 
 <head>
     <meta charset="utf-8">
@@ -11,7 +17,7 @@
 
     <link href="~/Content/DynaTables/jquery.dynatable.css" rel="stylesheet" />
 
-  
+
     @*<script src="~/Content/DynaTables/jquery.dynatable.js"></script>*@
 </head>
 
@@ -24,42 +30,28 @@
             <thead>
                 <tr>
                     <th>Id</th>
+                    <th>Identificador</th>
                     <th>Nombre</th>
-                    <th>Profesion</th>
+                    <th>Ult Modificacion</th>
                     <th>Activo</th>
-                    <th>Acciòn</th>
-
+                    <th>Acción</th>
                 </tr>
             </thead>
             <tbody>
-
                 @foreach (var item in Model)
                 {
                 <tr>
                     <td class="numero">@Html.DisplayFor(modelItem => item.Id)</td>
+                    <td class="numero">@Html.DisplayFor(modelItem => item.Identificador)</td>
                     <td class="numero">@Html.DisplayFor(modelItem => item.Nombre)</td>
-                    <td class="numero">@Html.DisplayFor(modelItem => item.Profesion.Descripcion)</td>
+                    <td class="numero">@Html.DisplayFor(modelItem => item.FechaModifica)</td>
                     <td class="numero">@Html.DisplayFor(modelItem => item.Activo)</td>
-                    @*@if (item.Activo == true)
-         {
-             <td class="numero">SI</td>
-         }
-         else
-         {
-                 <td class="numero">No</td>
-        }*@
-
-
-
-
                     <td>
 
                         @Html.ActionLink("Detalles", "Details", new { Id = item.Id }) 
                     </td>
-
-
-
-                </tr>}
+                </tr>
+                }
 
             </tbody>
         </table>
@@ -69,7 +61,8 @@
 </div>
 
 
-<script>document.querySelector("#buscar").onkeyup = function () {
+<script>
+    document.querySelector("#buscar").onkeyup = function () {
         $TableFilter("#my-tableDino23", this.value);
     }
 
@@ -96,24 +89,28 @@
     }</script>
 
 
-<script>$('#my-tableDino23').dynatable({
-            table: {
-                defaultColumnIdStyle: 'dashed'
-            }
-        });</script>
-<style>
-    .loader {
-        position: fixed;
-        left: 0px;
-        top: 0px;
-        width: 100%;
-        height: 100%;
-        z-index: 9999;
-        background: url('images/pageLoader.gif') 50% 50% no-repeat rgb(249,249,249);
-        opacity: .8;
-    }
-</style>
+<script>
+    $('#my-tableDino23').dynatable({
+                table: {
+                    defaultColumnIdStyle: 'dashed'
+                }
+            });</script>
+    <style>
+        .loader {
+            position: fixed;
+            left: 0px;
+            top: 0px;
+            width: 100%;
+            height: 100%;
+            z-index: 9999;
+            background: url('images/pageLoader.gif') 50% 50% no-repeat rgb(249,249,249);
+            opacity: .8;
+        }
+    </style>
 
-<script type="text/javascript">$(window).load(function() {
-    $(".loader").fadeOut("slow");
-});</script>
+<script type="text/javascript">
+    $(window).load(function() {
+        $(".loader").fadeOut("slow");
+    });</script>
+
+

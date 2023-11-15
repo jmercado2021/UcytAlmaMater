@@ -35,7 +35,7 @@
           <Property Name="NotaMinTutoria" Type="float" Nullable="false" />
           <Property Name="FechaModifica" Type="datetime" Nullable="false" />
           <Property Name="UsuarioModifica" Type="varchar" MaxLength="20" Nullable="false" />
-          <Property Name="Estado" Type="bit" Nullable="false" />
+          <Property Name="Activo" Type="varchar" MaxLength="2" Nullable="false" />
           <Property Name="Identificador" Type="varchar" MaxLength="7" Nullable="false" />
         </EntityType>
         <EntityType Name="Cargo">
@@ -74,7 +74,7 @@
           <Property Name="Direccion" Type="varchar" MaxLength="200" />
           <Property Name="Celular" Type="varchar" MaxLength="10" />
           <Property Name="Telefono" Type="varchar" MaxLength="10" />
-          <Property Name="Email" Type="varchar" MaxLength="20" />
+          <Property Name="Email" Type="varchar" MaxLength="50" />
           <Property Name="CargoActualId" Type="int" />
           <Property Name="TipoDocumentoId" Type="int" />
           <Property Name="Cedula_Documento" Type="varchar" MaxLength="20" />
@@ -770,7 +770,6 @@ advertencia 6002: La tabla o vista 'UcytAlmaMater.dbo.ViewDocenteIdiomas' no tie
           <EntitySet Name="Area" EntityType="UcytAlmaMaterModel.Area" />
           <EntitySet Name="ViewDocenteAsignatura" EntityType="UcytAlmaMaterModel.ViewDocenteAsignatura" />
           <EntitySet Name="ViewDocenteIdiomas" EntityType="UcytAlmaMaterModel.ViewDocenteIdiomas" />
-          <EntitySet Name="Asignatura" EntityType="UcytAlmaMaterModel.Asignatura" />
           <EntitySet Name="NivelFormacion" EntityType="UcytAlmaMaterModel.NivelFormacion" />
           <EntitySet Name="Titulos" EntityType="UcytAlmaMaterModel.Titulos" />
           <EntitySet Name="TipoDocumento" EntityType="UcytAlmaMaterModel.TipoDocumento" />
@@ -875,6 +874,7 @@ advertencia 6002: La tabla o vista 'UcytAlmaMater.dbo.ViewDocenteIdiomas' no tie
             <End Role="TipoContrato" EntitySet="TipoContrato" />
             <End Role="Docente" EntitySet="Docente" />
           </AssociationSet>
+          <EntitySet Name="Asignatura" EntityType="UcytAlmaMaterModel.Asignatura" />
           </EntityContainer>
         <EntityType Name="Area">
           <Key>
@@ -909,23 +909,6 @@ advertencia 6002: La tabla o vista 'UcytAlmaMater.dbo.ViewDocenteIdiomas' no tie
           <Property Name="Idioma" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="DocenteId" Type="Int32" Nullable="false" />
           <Property Name="DocenteNombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-        </EntityType>
-        <EntityType Name="Asignatura">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
-          <Property Name="NotaMinRegular" Type="Double" Nullable="false" />
-          <Property Name="NotaMinExtraDerecho" Type="Double" Nullable="false" />
-          <Property Name="NotaMaxExtraDerecho" Type="Double" Nullable="false" />
-          <Property Name="NotaMinConvalidacion" Type="Double" Nullable="false" />
-          <Property Name="NotaMinSuficiencia" Type="Double" Nullable="false" />
-          <Property Name="NotaMinTutoria" Type="Double" Nullable="false" />
-          <Property Name="FechaModifica" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="UsuarioModifica" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="Estado" Type="Boolean" Nullable="false" />
-          <Property Name="Identificador" Type="String" Nullable="false" MaxLength="7" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="NivelFormacion">
           <Key>
@@ -1010,7 +993,7 @@ advertencia 6002: La tabla o vista 'UcytAlmaMater.dbo.ViewDocenteIdiomas' no tie
           <Property Name="Direccion" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="Celular" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="Telefono" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="Email" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="CargoActualId" Type="Int32" />
           <Property Name="TipoDocumentoId" Type="Int32" />
           <Property Name="Cedula_Documento" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
@@ -1159,6 +1142,23 @@ advertencia 6002: La tabla o vista 'UcytAlmaMater.dbo.ViewDocenteIdiomas' no tie
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Asignatura">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="NotaMinRegular" Type="Double" Nullable="false" />
+          <Property Name="NotaMinExtraDerecho" Type="Double" Nullable="false" />
+          <Property Name="NotaMaxExtraDerecho" Type="Double" Nullable="false" />
+          <Property Name="NotaMinConvalidacion" Type="Double" Nullable="false" />
+          <Property Name="NotaMinSuficiencia" Type="Double" Nullable="false" />
+          <Property Name="NotaMinTutoria" Type="Double" Nullable="false" />
+          <Property Name="FechaModifica" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UsuarioModifica" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Activo" Type="String" Nullable="false" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="Identificador" Type="String" Nullable="false" MaxLength="7" FixedLength="false" Unicode="false" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1314,24 +1314,6 @@ advertencia 6002: La tabla o vista 'UcytAlmaMater.dbo.ViewDocenteIdiomas' no tie
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Asignatura">
-            <EntityTypeMapping TypeName="UcytAlmaMaterModel.Asignatura">
-              <MappingFragment StoreEntitySet="Asignatura">
-                <ScalarProperty Name="Identificador" ColumnName="Identificador" />
-                <ScalarProperty Name="Estado" ColumnName="Estado" />
-                <ScalarProperty Name="UsuarioModifica" ColumnName="UsuarioModifica" />
-                <ScalarProperty Name="FechaModifica" ColumnName="FechaModifica" />
-                <ScalarProperty Name="NotaMinTutoria" ColumnName="NotaMinTutoria" />
-                <ScalarProperty Name="NotaMinSuficiencia" ColumnName="NotaMinSuficiencia" />
-                <ScalarProperty Name="NotaMinConvalidacion" ColumnName="NotaMinConvalidacion" />
-                <ScalarProperty Name="NotaMaxExtraDerecho" ColumnName="NotaMaxExtraDerecho" />
-                <ScalarProperty Name="NotaMinExtraDerecho" ColumnName="NotaMinExtraDerecho" />
-                <ScalarProperty Name="NotaMinRegular" ColumnName="NotaMinRegular" />
-                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="NivelFormacion">
             <EntityTypeMapping TypeName="UcytAlmaMaterModel.NivelFormacion">
               <MappingFragment StoreEntitySet="NivelFormacion">
@@ -1480,6 +1462,24 @@ advertencia 6002: La tabla o vista 'UcytAlmaMater.dbo.ViewDocenteIdiomas' no tie
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
                 <ScalarProperty Name="ProfesionId" ColumnName="ProfesionId" />
                 <ScalarProperty Name="RecintoId" ColumnName="RecintoId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Asignatura">
+            <EntityTypeMapping TypeName="UcytAlmaMaterModel.Asignatura">
+              <MappingFragment StoreEntitySet="Asignatura">
+                <ScalarProperty Name="Identificador" ColumnName="Identificador" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="UsuarioModifica" ColumnName="UsuarioModifica" />
+                <ScalarProperty Name="FechaModifica" ColumnName="FechaModifica" />
+                <ScalarProperty Name="NotaMinTutoria" ColumnName="NotaMinTutoria" />
+                <ScalarProperty Name="NotaMinSuficiencia" ColumnName="NotaMinSuficiencia" />
+                <ScalarProperty Name="NotaMinConvalidacion" ColumnName="NotaMinConvalidacion" />
+                <ScalarProperty Name="NotaMaxExtraDerecho" ColumnName="NotaMaxExtraDerecho" />
+                <ScalarProperty Name="NotaMinExtraDerecho" ColumnName="NotaMinExtraDerecho" />
+                <ScalarProperty Name="NotaMinRegular" ColumnName="NotaMinRegular" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

@@ -23,5 +23,9 @@ namespace BlackSys.Repository.Asignatura
         {
             return _dtx.Asignatura.Where(t => t.Id == id).FirstOrDefault();
         }
+        public List<BlackSys.Models.Dal.Asignatura> FindByName(string Nombre)
+        {
+            return _dtx.Asignatura.Where(x => x.Nombre.Contains("Nombre")).ToList();
+        }
     }
 }

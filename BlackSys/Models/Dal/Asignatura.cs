@@ -24,7 +24,7 @@ namespace BlackSys.Models.Dal
         public double NotaMinTutoria { get; set; }
         public System.DateTime FechaModifica { get; set; }
         public string UsuarioModifica { get; set; }
-        public bool Estado { get; set; }
+        public string Activo { get; set; }
         public string Identificador { get; set; }
     }
 }

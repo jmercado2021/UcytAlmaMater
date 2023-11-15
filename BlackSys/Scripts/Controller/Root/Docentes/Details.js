@@ -31,6 +31,9 @@ jQuery("#docente_FechaNac").datepicker({
         $(this).datepicker('hide');
     }
 });
+
+
+
 });
 
 //$("#docente_FechaNac").datepicker(

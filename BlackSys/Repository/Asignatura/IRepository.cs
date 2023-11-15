@@ -10,6 +10,7 @@ namespace BlackSys.Repository.Asignatura
     {
         List<BlackSys.Models.Dal.Asignatura> GetAll();
         BlackSys.Models.Dal.Asignatura GetById(int id);
+        List<BlackSys.Models.Dal.Asignatura> FindByName(string Nombre);
 
     }
 }

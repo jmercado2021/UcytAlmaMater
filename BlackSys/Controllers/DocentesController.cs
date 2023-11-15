@@ -210,7 +210,7 @@ namespace BlackSys.Controllers
             var JustTrueFalse = from Activo e in Enum.GetValues(typeof(Activo))
                                 select new
                                 {
-                                    Id = (int)e,
+                                    Id = e.ToString(),
                                     Descripcion = e.ToString()
                                 };
 
@@ -306,10 +306,12 @@ namespace BlackSys.Controllers
 
             if (_docenteRepositoy.Update(model.docente))
                 {
-                    _docenteRepositoy.Save();
-                }
-                //_docenteRepositoy.Update(docente);
+                // Éxito
            
+                _docenteRepositoy.Save();
+                }
+            //_docenteRepositoy.Update(docente);
+            TempData["Mensaje"] = "Actualizacion exitosa";
             return View(model);
             //return View();
             //}
@@ -549,6 +551,7 @@ namespace BlackSys.Controllers
             int id = _docenteRepositoy.Add(model.docente);
             if (id > 0)
             {
+                TempData["Mensaje"] = "Creacion exitosa";
                 return RedirectToAction("Details", new { id = id });
             }
  

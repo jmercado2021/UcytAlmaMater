@@ -42,7 +42,6 @@ namespace BlackSys.Models.Dal
         public virtual DbSet<Area> Area { get; set; }
         public virtual DbSet<ViewDocenteAsignatura> ViewDocenteAsignatura { get; set; }
         public virtual DbSet<ViewDocenteIdiomas> ViewDocenteIdiomas { get; set; }
-        public virtual DbSet<Asignatura> Asignatura { get; set; }
         public virtual DbSet<NivelFormacion> NivelFormacion { get; set; }
         public virtual DbSet<Titulos> Titulos { get; set; }
         public virtual DbSet<TipoDocumento> TipoDocumento { get; set; }
@@ -53,6 +52,7 @@ namespace BlackSys.Models.Dal
         public virtual DbSet<DocenteCategoria> DocenteCategoria { get; set; }
         public virtual DbSet<DocenteEstudios> DocenteEstudios { get; set; }
         public virtual DbSet<Docente> Docente { get; set; }
+        public virtual DbSet<Asignatura> Asignatura { get; set; }
     
         public virtual int SpDocente(Nullable<int> sp, Nullable<int> id, Nullable<int> recintoId, Nullable<int> profesionId, string nombre, string direccion, Nullable<decimal> celular, string telefono, string email, Nullable<int> cargoId, Nullable<int> tipoDocumentoId, string cedula, string sexo, Nullable<System.DateTime> fechaNac, Nullable<int> etniaId, Nullable<int> paisId, string dominaIdiomas, string nombreIdioma, string nivelAlcanzado, Nullable<int> departamentoId, Nullable<int> municipioId, string zona, string estadoCivil, Nullable<int> nohijos, string discapacidad, Nullable<int> areaId, Nullable<int> ejercicioDirectivo, Nullable<int> maximoNivelFpId, string nombreTitulos, string tieneFormacionpedadogica, string nombreformacionPedadogica, Nullable<int> anioformacionpedadogica, Nullable<int> tipoContrato, Nullable<int> categoriaDocente, string psERVunicam, string pServUaln, string pservRSJ, string pservPrepa, Nullable<int> nogrupos, Nullable<int> noAsig, Nullable<int> noAsigMod, string realizaInvestigacion, Nullable<int> docenteAreaInve, string tutorias, Nullable<int> noMTgrado, Nullable<int> noFtgrado, Nullable<int> noMTPostgrado, Nullable<int> noFTPostrado, string estudia, Nullable<int> nivelFpEstudios, string nombreEstudios, string becaEstudios, string procedBeca, string tipoBeca, Nullable<decimal> montoBeca, string capacitaciones, Nullable<int> areaCapacitacionId, string noInss, Nullable<int> horasClasesemana, Nullable<decimal> valorXHoraClase, string usuarioModifica, string activo, Nullable<int> aniosAntiguedad, ObjectParameter nuevoId)
         {
