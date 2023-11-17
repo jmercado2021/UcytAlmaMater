@@ -26,7 +26,11 @@ namespace BlackSys.Controllers
         {
             return PartialView(_subject.FindByName(Nombre));
         }
-
-      
+        public ActionResult Details(int Id)
+        {
+            Models.Dal.Asignatura data = new Models.Dal.Asignatura();
+            data = _subject.GetById(Id);
+            return View(data);
+        }
     }
 }

@@ -833,6 +833,8 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\Chart.js" />
     <Content Include="Scripts\Chart.min.js" />
+    <Content Include="Scripts\Controller\Root\Asignatura\Details.js" />
+    <Content Include="Scripts\Controller\Root\Asignatura\ParicalListado.js" />
     <Content Include="Scripts\Controller\Root\Docentes\AgregarDocente.js" />
     <Content Include="Scripts\Controller\Root\Docentes\Details.js" />
     <Content Include="Scripts\DataTables-1.10.18\css\Buttons.css" />
@@ -1322,6 +1324,7 @@
     <Content Include="Views\Docentes\AgregarDocente.cshtml" />
     <Content Include="Views\Asignatura\ParcialListado.cshtml" />
     <Content Include="Views\Asignatura\Index.cshtml" />
+    <Content Include="Views\Asignatura\Details.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

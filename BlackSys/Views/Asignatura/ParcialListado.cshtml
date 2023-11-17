@@ -1,12 +1,8 @@
 ﻿@model List<BlackSys.Models.Dal.Asignatura>
 @{
     ViewBag.Title = "Index";
-   
+
 }
-
-
-
-
 
 <head>
     <meta charset="utf-8">
@@ -16,7 +12,7 @@
     <link href="~/assets/Exportar Js/tableexport.css" rel="stylesheet" />
 
     <link href="~/Content/DynaTables/jquery.dynatable.css" rel="stylesheet" />
-
+    <script src="~/Scripts/Controller/Root/Asignatura/ParicalListado.js"></script>
 
     @*<script src="~/Content/DynaTables/jquery.dynatable.js"></script>*@
 </head>
@@ -40,17 +36,17 @@
             <tbody>
                 @foreach (var item in Model)
                 {
-                <tr>
-                    <td class="numero">@Html.DisplayFor(modelItem => item.Id)</td>
-                    <td class="numero">@Html.DisplayFor(modelItem => item.Identificador)</td>
-                    <td class="numero">@Html.DisplayFor(modelItem => item.Nombre)</td>
-                    <td class="numero">@Html.DisplayFor(modelItem => item.FechaModifica)</td>
-                    <td class="numero">@Html.DisplayFor(modelItem => item.Activo)</td>
-                    <td>
+                    <tr>
+                        <td class="numero">@Html.DisplayFor(modelItem => item.Id)</td>
+                        <td class="numero">@Html.DisplayFor(modelItem => item.Identificador)</td>
+                        <td class="numero">@Html.DisplayFor(modelItem => item.Nombre)</td>
+                        <td class="numero">@Html.DisplayFor(modelItem => item.FechaModifica)</td>
+                        <td class="numero">@Html.DisplayFor(modelItem => item.Activo)</td>
+                        <td>
 
-                        @Html.ActionLink("Detalles", "Details", new { Id = item.Id }) 
-                    </td>
-                </tr>
+                            @Html.ActionLink("Detalles", "Details", new { Id = item.Id }, new { @class = "btn btn-primary details-link", data_toggle = "modal", data_target = "#myModal" })
+                        </td>
+                    </tr>
                 }
 
             </tbody>
@@ -59,7 +55,34 @@
 
     </div>
 </div>
+<!-- Contenido de la ventana modal -->
+<div class="modal fade custom-modal" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- Puedes cargar tu vista modal aquí -->
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Título de la Ventana Modal</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <!-- Contenido de tu vista modal -->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <!-- Puedes agregar más botones según sea necesario -->
+            </div>
+        </div>
+    </div>
+</div>
 
+<!-- Agrega este script después de incluir Bootstrap -->
+<script>
+    // Llama a esta función para mostrar la ventana modal
+    function openModal() {
+        var myModal = new bootstrap.Modal(document.getElementById('myModal'));
+        myModal.show();
+    }
+</script>
 
 <script>
     document.querySelector("#buscar").onkeyup = function () {
@@ -91,26 +114,32 @@
 
 <script>
     $('#my-tableDino23').dynatable({
-                table: {
-                    defaultColumnIdStyle: 'dashed'
-                }
-            });</script>
-    <style>
-        .loader {
-            position: fixed;
-            left: 0px;
-            top: 0px;
-            width: 100%;
-            height: 100%;
-            z-index: 9999;
-            background: url('images/pageLoader.gif') 50% 50% no-repeat rgb(249,249,249);
-            opacity: .8;
+        table: {
+            defaultColumnIdStyle: 'dashed'
         }
-    </style>
+    });</script>
+<style>
+    .loader {
+        position: fixed;
+        left: 0px;
+        top: 0px;
+        width: 100%;
+        height: 100%;
+        z-index: 9999;
+        background: url('images/pageLoader.gif') 50% 50% no-repeat rgb(249,249,249);
+        opacity: .8;
+    }
+</style>
 
 <script type="text/javascript">
-    $(window).load(function() {
+    $(window).load(function () {
         $(".loader").fadeOut("slow");
     });</script>
 
 
+<style>
+    .custom-modal {
+        max-width: 100%; /* Personaliza según tus necesidades .custom-modal*/
+        margin: 0 auto; /* Centra el modal horizontalmente 
+    }
+</style>
