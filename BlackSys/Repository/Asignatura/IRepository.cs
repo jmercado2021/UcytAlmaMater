@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using BlackSys.Models.Dal;
 
 namespace BlackSys.Repository.Asignatura
 {
@@ -11,6 +12,8 @@ namespace BlackSys.Repository.Asignatura
         List<BlackSys.Models.Dal.Asignatura> GetAll();
         BlackSys.Models.Dal.Asignatura GetById(int id);
         List<BlackSys.Models.Dal.Asignatura> FindByName(string Nombre);
+        void Update(Models.Dal.Asignatura model);
+        void Add(Models.Dal.Asignatura model);
 
     }
 }

@@ -1151,6 +1151,7 @@
     <Compile Include="Models\Enum\ClEnum.cs" />
     <Compile Include="Models\Fabric.cs" />
     <Compile Include="Models\FabricCategory.cs" />
+    <Compile Include="Models\Helper.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Menu.cs" />
@@ -1325,6 +1326,7 @@
     <Content Include="Views\Asignatura\ParcialListado.cshtml" />
     <Content Include="Views\Asignatura\Index.cshtml" />
     <Content Include="Views\Asignatura\Details.cshtml" />
+    <Content Include="Views\Asignatura\Add.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
