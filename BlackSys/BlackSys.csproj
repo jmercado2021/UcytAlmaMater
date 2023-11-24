@@ -1101,6 +1101,7 @@
     <Compile Include="Models\Dal\Institucion.cs">
       <DependentUpon>UcytAlmaMater.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Dal\MetaData\AsignaturaMetadata.cs" />
     <Compile Include="Models\Dal\MetaData\PartialClass.cs" />
     <Compile Include="Models\Dal\Municipio.cs">
       <DependentUpon>UcytAlmaMater.tt</DependentUpon>
@@ -1326,7 +1327,7 @@
     <Content Include="Views\Asignatura\ParcialListado.cshtml" />
     <Content Include="Views\Asignatura\Index.cshtml" />
     <Content Include="Views\Asignatura\Details.cshtml" />
-    <Content Include="Views\Asignatura\Add.cshtml" />
+    <Content Include="Views\Asignatura\Nuevo.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

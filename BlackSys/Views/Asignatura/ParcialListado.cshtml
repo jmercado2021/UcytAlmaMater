@@ -140,6 +140,18 @@
 <style>
     .custom-modal {
         max-width: 100%; /* Personaliza según tus necesidades .custom-modal*/
-        margin: 0 auto; /* Centra el modal horizontalmente 
+        margin: 0 auto; /* Centra el modal horizontalmente
     }
 </style>
+
+
+@if (TempData["Mensaje"] != null)
+{
+    <script>
+             var msg = @Html.Raw(Json.Encode(TempData["Mensaje"]));
+            alertify.success(msg);
+
+
+            @*alert('@TempData["Mensaje"]');*@
+    </script>
+}

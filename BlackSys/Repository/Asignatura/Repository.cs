@@ -50,7 +50,7 @@ namespace BlackSys.Repository.Asignatura
         }
         public void Add(BlackSys.Models.Dal.Asignatura model)
         {
-            BlackSys.Models.Dal.Asignatura data = GetById(model.Id);
+            BlackSys.Models.Dal.Asignatura data = new Models.Dal.Asignatura(); 
             data.Nombre = model.Nombre;
             data.NotaMaxExtraDerecho = model.NotaMaxExtraDerecho;
             data.NotaMinConvalidacion = model.NotaMinConvalidacion;
@@ -61,7 +61,9 @@ namespace BlackSys.Repository.Asignatura
             data.FechaModifica = DateTime.Now;
             data.Activo = model.Activo;
             data.UsuarioModifica = _helper.GetUserName();
+            data.Identificador = model.Identificador;
             _dtx.Asignatura.Add(data);
+            _dtx.SaveChanges();
 
         }
     }

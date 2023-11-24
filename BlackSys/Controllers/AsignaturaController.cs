@@ -69,7 +69,7 @@ namespace BlackSys.Controllers
             }
 
         }
-        public ActionResult Add(int Id)
+        public ActionResult Nuevo()
         {
             var JustTrueFalse = from Activo e in Enum.GetValues(typeof(Activo))
                                 select new
@@ -82,7 +82,7 @@ namespace BlackSys.Controllers
             return View(data);
         }
         [HttpPost]
-        public ActionResult Add(Models.Dal.Asignatura model)
+        public ActionResult Nuevo(Models.Dal.Asignatura model)
         {
             try
             {
@@ -98,7 +98,7 @@ namespace BlackSys.Controllers
                 TempData["Mensaje"] = "Registro exitoso";
                 return RedirectToAction("Index");
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 TempData["Mensaje"] = "Ocurrio un Error al actualizar el registro";
                 return View(model);

@@ -1,15 +1,18 @@
 ﻿
 @model BlackSys.Models.Dal.Asignatura
+@{ ViewBag.Title = "Listado";
+    Layout = "~/Views/Shared/_Layout.cshtml"; }
 
 @using (Html.BeginForm())
 {
     Html.AntiForgeryToken();
     @Html.ValidationSummary(true, "", new { @class = "alert alert-danger" })
 
+
     <div class="panel-group">
         <div class="panel panel-heading">
             <div class="panel-heading"><h4>Datos generales</h4></div>
-            <div class="panel-body">
+            <div class="panel-body" id="FormVal">
 
 
                 <div class="row">
@@ -29,14 +32,14 @@
                         <div class="col-md-2">
                             @Html.LabelFor(model => model.Identificador, htmlAttributes: new { @class = "control-label" })
 
-                            @Html.EditorFor(model => model.Identificador, new { htmlAttributes = new { @class = "form-control col-md-3", @readonly = "true" } })
+                            @Html.EditorFor(model => model.Identificador, new { htmlAttributes = new { @class = "form-control col-md-3", required = "required" } })
                             @Html.ValidationMessageFor(model => model.Identificador, "", new { @class = "text-danger" })
                         </div>
 
                         <div class="col-md-10">
 
                             @Html.LabelFor(model => model.Nombre, htmlAttributes: new { @class = "control-label" })
-                            @Html.EditorFor(model => model.Nombre, new { htmlAttributes = new { @class = "form-control col-md-4" } })
+                            @Html.EditorFor(model => model.Nombre, new { htmlAttributes = new { @class = "form-control col-md-4", required = "required", } })
                             @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
                         </div>
 
@@ -49,18 +52,18 @@
 
                         <div class="col-lg-4">
                             @Html.LabelFor(model => model.NotaMaxExtraDerecho, htmlAttributes: new { @class = "control-label" })
-                            @Html.EditorFor(model => model.NotaMaxExtraDerecho, new { htmlAttributes = new { @class = "form-control col-lg-12" } })
+                            @Html.EditorFor(model => model.NotaMaxExtraDerecho, new { htmlAttributes = new { @class = "form-control col-lg-12", required = "required", pattern = "^[0-9]+$" } })
                             @Html.ValidationMessageFor(model => model.NotaMaxExtraDerecho, "", new { @class = "text-danger" })
                         </div>
 
                         <div class="col-lg-4">
                             @Html.LabelFor(model => model.NotaMinConvalidacion, htmlAttributes: new { @class = "control-label" })
-                            @Html.EditorFor(model => model.NotaMinConvalidacion, new { htmlAttributes = new { @class = "form-control col-lg-12" } })
+                            @Html.EditorFor(model => model.NotaMinConvalidacion, new { htmlAttributes = new { @class = "form-control col-lg-12", required = "required", pattern = "^[0-9]+$" } })
                             @Html.ValidationMessageFor(model => model.NotaMinConvalidacion, "", new { @class = "text-danger" })
                         </div>
                         <div class="col-lg-4">
                             @Html.LabelFor(model => model.NotaMinExtraDerecho, htmlAttributes: new { @class = "control-label" })
-                            @Html.EditorFor(model => model.NotaMinExtraDerecho, new { htmlAttributes = new { @class = "form-control col-lg-12" } })
+                            @Html.EditorFor(model => model.NotaMinExtraDerecho, new { htmlAttributes = new { @class = "form-control col-lg-12", required = "required", pattern = "^[0-9]+$" } })
                             @Html.ValidationMessageFor(model => model.NotaMinExtraDerecho, "", new { @class = "text-danger" })
                         </div>
 
@@ -71,24 +74,35 @@
                     <div class="col-md-12">
                         <div class="col-lg-4">
                             @Html.LabelFor(model => model.NotaMinRegular, htmlAttributes: new { @class = "control-label" })
-                            @Html.EditorFor(model => model.NotaMinRegular, new { htmlAttributes = new { @class = "form-control col-lg-12" } })
+                            @Html.EditorFor(model => model.NotaMinRegular, new { htmlAttributes = new { @class = "form-control col-lg-12", required = "required", pattern = "^[0-9]+$" } })
                             @Html.ValidationMessageFor(model => model.NotaMinRegular, "", new { @class = "text-danger" })
                         </div>
 
                         <div class="col-md-4">
                             @Html.LabelFor(model => model.NotaMinSuficiencia, htmlAttributes: new { @class = "control-label" })
-                            @Html.EditorFor(model => model.NotaMinSuficiencia, new { htmlAttributes = new { @class = "form-control col-md-4" } })
+                            @Html.EditorFor(model => model.NotaMinSuficiencia, new { htmlAttributes = new { @class = "form-control col-lg-12", required = "required", pattern = "^[0-9]+$" } })
                             @Html.ValidationMessageFor(model => model.NotaMinSuficiencia, "", new { @class = "text-danger" })
                         </div>
 
                         <div class="col-md-4">
                             @Html.LabelFor(model => model.NotaMinTutoria, htmlAttributes: new { @class = "control-label" })
-                            @Html.EditorFor(model => model.NotaMinTutoria, new { htmlAttributes = new { @class = "form-control col-md-4" } })
+                            @Html.EditorFor(model => model.NotaMinTutoria, new { htmlAttributes = new { @class = "form-control col-lg-12", required = "required", pattern = "^[0-9]+$" } })
                             @Html.ValidationMessageFor(model => model.NotaMinTutoria, "", new { @class = "text-danger" })
                         </div>
 
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col-md-12">
+
+                        <div id="intro" class="col-md-4">
+                            @Html.LabelFor(model => model.Activo, htmlAttributes: new { @class = "control-label" })
+                            @Html.DropDownListFor(model => model.Activo, new SelectList(ViewBag.SINO, "Value", "Text"), null, new { @class = "form-control" })
+                        </div>
+
+                    </div>
+                </div>
+
 
                 <div class="form-group">
                     <button type="submit" class="btn btn-circle  btn-primary "><i class="fa fa-clipboard"></i> Guardar</button>
@@ -100,4 +114,16 @@
 
 
 
+
+}
+
+@if (TempData["Mensaje"] != null)
+{
+    <script>
+             var msg = @Html.Raw(Json.Encode(TempData["Mensaje"]));
+            alertify.success(msg);
+
+
+            @*alert('@TempData["Mensaje"]');*@
+    </script>
 }
