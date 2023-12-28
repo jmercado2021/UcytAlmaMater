@@ -32,6 +32,7 @@ namespace BlackSys.Controllers
         private Repository.DocenteEstudios.IRepository _docEstudios;
         private Repository.AreaCapacitacion.IRepository _areacapacitacion;
         private Repository.DocenteAreaInvestigacion.IRepository _areaInvestigacion;
+        private Repository.Discapacidad.IRepository _discapacidad;
         public DocentesController()
         {
             _docenteRepositoy = new Repository.Docentes.Repository(this.ModelState);
@@ -53,8 +54,9 @@ namespace BlackSys.Controllers
             _docEstudios = new Repository.DocenteEstudios.Repository(this.ModelState);
             _areacapacitacion = new Repository.AreaCapacitacion.Repository(this.ModelState);
             _areaInvestigacion = new Repository.DocenteAreaInvestigacion.Repository(this.ModelState);
+            _discapacidad = new Repository.Discapacidad.Repository(this.ModelState);
 
-      
+
         }
         // GET: Docentes
         public ActionResult Index()
@@ -126,7 +128,7 @@ namespace BlackSys.Controllers
           DocenteViewModel docenteView = new DocenteViewModel();
             docenteView.docente = _docenteRepositoy.GetById(id);
             ViewBag.Departamento = new SelectList(_departamento.GetAll(), "Id", "Descripcion");
-            ViewBag.Municipio = new SelectList(_municipio.GetAll(), "Id", "Descripcion");
+            ViewBag.Municipio = new SelectList(_municipio.GetByDepId((int)docenteView.docente.DepartamentoId), "Id", "Descripcion");
             ViewBag.Etnia = new SelectList(_etnia.GetAll(), "Id", "Descripcion");
             ViewBag.Pais = new SelectList(_pais.GetAll(), "Id", "Descripcion");
             ViewBag.Sexo = new SelectList(enumData, "Id", "Descripcion");
@@ -153,6 +155,7 @@ namespace BlackSys.Controllers
             ViewBag.Asignaturas = new SelectList(_Asignatura.GetAll(), "Id", "Nombre");
             ViewBag.AreaInvestigacionV = new SelectList(_areaInvestigacion.GetAll(), "Id", "Descripcion");
             ViewBag.RecintoV = new SelectList(_recinto.GetAll(), "Id", "Descripcion");
+            ViewBag.discapacidad = new SelectList(_discapacidad.GetAll(), "Id", "Descripcion");
             return View(docenteView);
             //}
         }
@@ -219,7 +222,7 @@ namespace BlackSys.Controllers
             //docenteView.docente.Activo = Convert.ToInt32(model.docente.Activo) == 0 ? true : false;
 
             ViewBag.Departamento = new SelectList(_departamento.GetAll(), "Id", "Descripcion");
-            ViewBag.Municipio = new SelectList(_municipio.GetAll(), "Id", "Descripcion");
+            ViewBag.Municipio = new SelectList(_municipio.GetByDepId((int)model.docente.DepartamentoId), "Id", "Descripcion");
             ViewBag.Etnia = new SelectList(_etnia.GetAll(), "Id", "Descripcion");
             ViewBag.Pais = new SelectList(_pais.GetAll(), "Id", "Descripcion");
             ViewBag.Sexo = new SelectList(enumData, "Id", "Descripcion");
@@ -247,6 +250,7 @@ namespace BlackSys.Controllers
             ViewBag.Asignaturas = new SelectList(_Asignatura.GetAll(), "Id", "Nombre");
             ViewBag.AreaInvestigacionV = new SelectList(_areaInvestigacion.GetAll(), "Id", "Descripcion");
             ViewBag.RecintoV = new SelectList(_recinto.GetAll(), "Id", "Descripcion");
+            ViewBag.discapacidad = new SelectList(_discapacidad.GetAll(), "Id", "Descripcion");
 
             if (model.docente.Nombre == null)
             {
@@ -311,8 +315,10 @@ namespace BlackSys.Controllers
                 _docenteRepositoy.Save();
                 }
             //_docenteRepositoy.Update(docente);
+            DocenteViewModel docenteViewRes = new DocenteViewModel();
+            docenteViewRes.docente = _docenteRepositoy.GetById(model.docente.Id);
             TempData["Mensaje"] = "Actualizacion exitosa";
-            return View(model);
+            return View(docenteViewRes);
             //return View();
             //}
         }
@@ -424,6 +430,7 @@ namespace BlackSys.Controllers
             ViewBag.Asignaturas = new SelectList(_Asignatura.GetAll(), "Id", "Nombre");
             ViewBag.AreaInvestigacionV = new SelectList(_areaInvestigacion.GetAll(), "Id", "Descripcion");
             ViewBag.RecintoV = new SelectList(_recinto.GetAll(), "Id", "Descripcion");
+            ViewBag.discapacidad = new SelectList(_discapacidad.GetAll(), "Id", "Descripcion");
             return View(docenteView);
 
         }
@@ -508,6 +515,7 @@ namespace BlackSys.Controllers
             ViewBag.Asignaturas = new SelectList(_Asignatura.GetAll(), "Id", "Nombre");
             ViewBag.AreaInvestigacionV = new SelectList(_areaInvestigacion.GetAll(), "Id", "Descripcion");
             ViewBag.RecintoV = new SelectList(_recinto.GetAll(), "Id", "Descripcion");
+            ViewBag.discapacidad = new SelectList(_discapacidad.GetAll(), "Id", "Descripcion");
 
             var properties = typeof(Models.Dal.Docente).GetProperties();
             

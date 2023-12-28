@@ -10,6 +10,7 @@ namespace BlackSys.Repository.Municipio
     {
         List<BlackSys.Models.Dal.Municipio> GetAll();
         BlackSys.Models.Dal.Municipio GetById(int id);
+        List<BlackSys.Models.Dal.Municipio> GetByDepId(int id);
 
     }
 }

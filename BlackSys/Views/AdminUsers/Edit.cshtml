@@ -22,71 +22,72 @@
             <div class="portlet-body form">
                @using (Html.BeginForm("Edit", "AdminUsers", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
             {
-                    <div class="form-body">
-                        @Html.AntiForgeryToken()
+                <div class="form-body">
+                    @Html.AntiForgeryToken()
 
-                        <div class="alert alert-danger display-hide">
-                            <button class="close" data-close="alert"></button>@Html.ValidationSummary("", new { @class = "text-error" })
-                        </div>
+                    @Html.ValidationSummary(false, "", new { @class = "alert alert-danger" })
+                    @*<div class="alert alert-danger display-hide">
+                        <button class="close" data-close="alert"></button>@Html.ValidationSummary("", new { @class = "text-error" })
+                    </div>*@
 
-                        <div class="form-group form-md-line-input has-info">
-                            @Html.LabelFor(m => m.Email, null, new { @class = "col-md-2 control-label", @placeholder = "myemail@mywebsite.com" })
-                            <div class="col-md-4">
-                                @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
-                                <div class="form-control-focus"> </div>
-                            </div>
-                        </div>
-                           <div class="form-group form-md-line-input has-info">
-                            @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
-                            <div class="col-md-4">
-                                @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
-                                <div class="form-control-focus"> </div>
-                            </div>
-                        </div>
-                        @*<div class="form-group form-md-line-input has-info">
-                            @Html.LabelFor(model => model.Address, null, new { @class = "control-label col-md-2", @placeholder = "password" })
-                            <div class="col-md-4">
-                                @Html.TextBoxFor(m => m.Address, new { @class = "form-control" })
-                                <div class="form-control-focus"> </div>
-                            </div>
-                        </div>*@
-                        @*<div class="form-group  form-md-line-input has-info">
-                            @Html.LabelFor(model => model.State, new { @class = "control-label col-md-2" })
-                            <div class="col-md-4">
-                                @Html.TextBoxFor(m => m.State, new { @class = "form-control" })
-                                <div class="form-control-focus"> </div>
-                            </div>
-                        </div>*@
-                        @*<div class="form-group form-md-line-input has-info">
-                            @Html.LabelFor(model => model.PostalCode, new { @class = "control-label col-md-2" })
-                            <div class="col-md-4">
-                                @Html.TextBoxFor(m => m.PostalCode, new { @class = "form-control" })
-                                <div class="form-control-focus"> </div>
-                            </div>
-                        </div>*@
-
-                        @*<div class="form-group form-md-line-input has-info">
-                            @Html.LabelFor(model => model.PasswordHash, new { @class = "control-label col-md-2" })
-                            <div class="col-md-4">
-                                @Html.TextBoxFor(m => m.PasswordHash, new { @class = "form-control" })
-                                <div class="form-control-focus"> </div>
-                            </div>
-                        </div>*@
-                       
-                        <div class="form-group form-md-line-input has-info">
-                            <label class="col-md-2 control-label">
-                                Seleccione los Roles
-                            </label>
-                            <div class="col-md-10">
-                               @foreach (var item in Model.RolesList)
-                               {
-                                    <input type="radio" name="selectedRole" value="@item.Value" checked="@item.Selected" class="icheck" 
-                                           data-checkbox="icheckbox_square-blue" />
-                                    @Html.Label(item.Value, new { @class = "control-label" });
-                                }
-                            </div>
+                    <div class="form-group form-md-line-input has-info">
+                        @Html.LabelFor(m => m.Email, null, new { @class = "col-md-2 control-label", @placeholder = "myemail@mywebsite.com" })
+                        <div class="col-md-4">
+                            @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                            <div class="form-control-focus"> </div>
                         </div>
                     </div>
+                    <div class="form-group form-md-line-input has-info">
+                        @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
+                        <div class="col-md-4">
+                            @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                            <div class="form-control-focus"> </div>
+                        </div>
+                    </div>
+                    @*<div class="form-group form-md-line-input has-info">
+            @Html.LabelFor(model => model.Address, null, new { @class = "control-label col-md-2", @placeholder = "password" })
+            <div class="col-md-4">
+                @Html.TextBoxFor(m => m.Address, new { @class = "form-control" })
+                <div class="form-control-focus"> </div>
+            </div>
+        </div>*@
+                    @*<div class="form-group  form-md-line-input has-info">
+            @Html.LabelFor(model => model.State, new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                @Html.TextBoxFor(m => m.State, new { @class = "form-control" })
+                <div class="form-control-focus"> </div>
+            </div>
+        </div>*@
+                    @*<div class="form-group form-md-line-input has-info">
+            @Html.LabelFor(model => model.PostalCode, new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                @Html.TextBoxFor(m => m.PostalCode, new { @class = "form-control" })
+                <div class="form-control-focus"> </div>
+            </div>
+        </div>*@
+
+                    @*<div class="form-group form-md-line-input has-info">
+            @Html.LabelFor(model => model.PasswordHash, new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                @Html.TextBoxFor(m => m.PasswordHash, new { @class = "form-control" })
+                <div class="form-control-focus"> </div>
+            </div>
+        </div>*@
+
+                    <div class="form-group form-md-line-input has-info">
+                        <label class="col-md-2 control-label">
+                            Seleccione los Roles
+                        </label>
+                        <div class="col-md-10">
+                            @foreach (var item in Model.RolesList)
+                            {
+                <input type="radio" name="selectedRole" value="@item.Value" checked="@item.Selected" class="icheck"
+                       data-checkbox="icheckbox_square-blue" />
+                                    @Html.Label(item.Value, new { @class = "control-label" });
+                                }
+                        </div>
+                    </div>
+                </div>
                     <div class="form-actions">
                         <div class="row">
                             <div class="col-md-offset-2 col-md-10">

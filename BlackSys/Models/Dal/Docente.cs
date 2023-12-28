@@ -81,9 +81,7 @@ namespace BlackSys.Models.Dal
     
         public virtual Area Area { get; set; }
         public virtual Cargo Cargo { get; set; }
-        public virtual Departamento Departamento { get; set; }
         public virtual Recinto Recinto { get; set; }
-        public virtual Municipio Municipio { get; set; }
         public virtual Profesion Profesion { get; set; }
         public virtual TipoContrato TipoContrato { get; set; }
     }

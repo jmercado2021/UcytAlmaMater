@@ -123,7 +123,7 @@ namespace BlackSys.Models.Dal
             [Required(ErrorMessage = "Debe indicar numero de hijos")]
             public Nullable<int> NHijos { get; set; }
 
-            [Display(Name = "Tiene Discapacidad?")]
+            [Display(Name = "Discapacidad")]
             [Required(ErrorMessage = "Debe indicar si tiene discapacidad")]
             public string Discapacidad { get; set; }
 

@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using Newtonsoft.Json;
+using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 
@@ -11,6 +12,12 @@ namespace BlackSys
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+            JsonConvert.DefaultSettings = () => new JsonSerializerSettings
+            {
+                Formatting = Newtonsoft.Json.Formatting.Indented,
+                ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+            };
         }
         //void Application_Error(object sender, EventArgs e)
         //{

@@ -28,14 +28,11 @@ namespace BlackSys.Models.Dal
         }
     
         public virtual DbSet<Cargo> Cargo { get; set; }
-        public virtual DbSet<Departamento> Departamento { get; set; }
         public virtual DbSet<DocenteAsignatura> DocenteAsignatura { get; set; }
         public virtual DbSet<Empresa> Empresa { get; set; }
         public virtual DbSet<Etnia> Etnia { get; set; }
         public virtual DbSet<Idiomas> Idiomas { get; set; }
         public virtual DbSet<Institucion> Institucion { get; set; }
-        public virtual DbSet<Municipio> Municipio { get; set; }
-        public virtual DbSet<Pais> Pais { get; set; }
         public virtual DbSet<Profesion> Profesion { get; set; }
         public virtual DbSet<Recinto> Recinto { get; set; }
         public virtual DbSet<TipoContrato> TipoContrato { get; set; }
@@ -53,6 +50,9 @@ namespace BlackSys.Models.Dal
         public virtual DbSet<DocenteEstudios> DocenteEstudios { get; set; }
         public virtual DbSet<Docente> Docente { get; set; }
         public virtual DbSet<Asignatura> Asignatura { get; set; }
+        public virtual DbSet<Departamento> Departamento { get; set; }
+        public virtual DbSet<Municipio> Municipio { get; set; }
+        public virtual DbSet<Pais> Pais { get; set; }
     
         public virtual int SpDocente(Nullable<int> sp, Nullable<int> id, Nullable<int> recintoId, Nullable<int> profesionId, string nombre, string direccion, Nullable<decimal> celular, string telefono, string email, Nullable<int> cargoId, Nullable<int> tipoDocumentoId, string cedula, string sexo, Nullable<System.DateTime> fechaNac, Nullable<int> etniaId, Nullable<int> paisId, string dominaIdiomas, string nombreIdioma, string nivelAlcanzado, Nullable<int> departamentoId, Nullable<int> municipioId, string zona, string estadoCivil, Nullable<int> nohijos, string discapacidad, Nullable<int> areaId, Nullable<int> ejercicioDirectivo, Nullable<int> maximoNivelFpId, string nombreTitulos, string tieneFormacionpedadogica, string nombreformacionPedadogica, Nullable<int> anioformacionpedadogica, Nullable<int> tipoContrato, Nullable<int> categoriaDocente, string psERVunicam, string pServUaln, string pservRSJ, string pservPrepa, Nullable<int> nogrupos, Nullable<int> noAsig, Nullable<int> noAsigMod, string realizaInvestigacion, Nullable<int> docenteAreaInve, string tutorias, Nullable<int> noMTgrado, Nullable<int> noFtgrado, Nullable<int> noMTPostgrado, Nullable<int> noFTPostrado, string estudia, Nullable<int> nivelFpEstudios, string nombreEstudios, string becaEstudios, string procedBeca, string tipoBeca, Nullable<decimal> montoBeca, string capacitaciones, Nullable<int> areaCapacitacionId, string noInss, Nullable<int> horasClasesemana, Nullable<decimal> valorXHoraClase, string usuarioModifica, string activo, Nullable<int> aniosAntiguedad, ObjectParameter nuevoId)
         {

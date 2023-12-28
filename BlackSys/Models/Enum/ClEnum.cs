@@ -26,7 +26,7 @@ namespace BlackSys.Models.Enum
             Soltero = 1,
             [Display(Name = "Casado")]
             Casado = 2,
-            [Display(Name = "Union de Hecho")]
+            [Display(Name = "Unión de hecho")]
             Union_de_Hecho = 3
         }
 

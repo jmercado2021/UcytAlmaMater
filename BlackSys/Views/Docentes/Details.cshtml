@@ -202,7 +202,7 @@
                                             </div>
                                             <div id="intro" class="col-md-4">
                                                 @Html.LabelFor(model => model.docente.Discapacidad, htmlAttributes: new { @class = "control-label" })
-                                                @Html.DropDownListFor(model => model.docente.Discapacidad, new SelectList(ViewBag.SINO, "Value", "Text"), null, new { @class = "form-control" })
+                                                @Html.DropDownListFor(model => model.docente.Discapacidad, new SelectList(ViewBag.discapacidad, "Value", "Text"), null, new { @class = "form-control" })
                                             </div>
                                         </div>
                                     </div>

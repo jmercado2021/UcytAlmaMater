@@ -110,15 +110,33 @@ function AlertDesasociarAsignatura(AsignaturaId) {
     })
 
 }
-//$(document).ready(function () {
-//$('#btnguardar').on('click', function (e) {
-//    e.preventDefault(); // Evita el envío automático del formulario
+$(function () {
 
- 
-//    if ($('#docente_Sexo').val() === 'SinAsignar') {
-//        alert('Por favor seleccione el sexo');
-//        return false;
-//    }
-//});
-//});
+    var loc = window.location;
+    var basePatch = loc.protocol + "//" + loc.hostname + (loc.port ? ":" + loc.port : "") + "/";
+   
+    $(document).on('change', '#docente_DepartamentoId', function () {
+        $.get(basePatch + "Region/GetMunicioByDepId", { Id: $(this).val() }, function (data, textStatus, jqXHR) {
+            if (textStatus === "success") {
+                if ($('#docente_MunicipioId').data('select2')) {
+                    $('#docente_MunicipioId').select2('destroy');
+                }
+                $('#docente_MunicipioId').empty();
+                $.each(data, function (i, item) {
+                    $('#docente_MunicipioId').append($('<option>', {
+                        value: item.Id,
+                        text: item.Descripcion
+                    }));
+                });
+                $('#docente_MunicipioId').prepend($("<option value='' selected='selected'></option>"));
+            }
+            $('#docente_MunicipioId').select2({
+                placeholder: "",
+                width: "100%",
+                allowClear: true
+            });
+        }, "json");
+    });
+});
+
 

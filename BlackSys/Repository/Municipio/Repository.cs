@@ -25,5 +25,9 @@ namespace BlackSys.Repository.Municipio
         {
             return _dtx.Municipio.Where(t => t.Id == id).FirstOrDefault();
         }
+        public  List<BlackSys.Models.Dal.Municipio> GetByDepId(int id)
+        {
+            return _dtx.Municipio.Where(t => t.DepartamentoId == id).ToList();
+        }
     }
 }

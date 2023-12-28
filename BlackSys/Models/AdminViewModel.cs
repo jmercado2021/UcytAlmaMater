@@ -22,7 +22,7 @@ namespace BlackSys.Models
 
         [Required(AllowEmptyStrings = false)]
         [Display(Name = "Email")]
-        [EmailAddress]
+        //[EmailAddress]
         public string Email { get; set; }
 
         // Add the Address Info:

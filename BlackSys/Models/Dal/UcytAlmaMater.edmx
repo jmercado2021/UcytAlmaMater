@@ -308,18 +308,6 @@ advertencia 6002: La tabla o vista 'UcytAlmaMater.dbo.ViewDocenteIdiomas' no tie
           <Property Name="DocenteId" Type="int" Nullable="false" />
           <Property Name="DocenteNombre" Type="varchar" MaxLength="100" />
         </EntityType>
-        <Association Name="FK_Departamento_Pais">
-          <End Role="Pais" Type="Self.Pais" Multiplicity="0..1" />
-          <End Role="Departamento" Type="Self.Departamento" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Pais">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Departamento">
-              <PropertyRef Name="PaisId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Docente_Area">
           <End Role="Area" Type="Self.Area" Multiplicity="0..1" />
           <End Role="Docente" Type="Self.Docente" Multiplicity="*" />
@@ -344,18 +332,6 @@ advertencia 6002: La tabla o vista 'UcytAlmaMater.dbo.ViewDocenteIdiomas' no tie
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Docente_Departamento">
-          <End Role="Departamento" Type="Self.Departamento" Multiplicity="0..1" />
-          <End Role="Docente" Type="Self.Docente" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Departamento">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Docente">
-              <PropertyRef Name="DepartamentoId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Docente_Docente">
           <End Role="Recinto" Type="Self.Recinto" Multiplicity="1" />
           <End Role="Docente" Type="Self.Docente" Multiplicity="*" />
@@ -365,18 +341,6 @@ advertencia 6002: La tabla o vista 'UcytAlmaMater.dbo.ViewDocenteIdiomas' no tie
             </Principal>
             <Dependent Role="Docente">
               <PropertyRef Name="RecintoId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Docente_Municipio">
-          <End Role="Municipio" Type="Self.Municipio" Multiplicity="0..1" />
-          <End Role="Docente" Type="Self.Docente" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Municipio">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Docente">
-              <PropertyRef Name="MunicipioId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -401,18 +365,6 @@ advertencia 6002: La tabla o vista 'UcytAlmaMater.dbo.ViewDocenteIdiomas' no tie
             </Principal>
             <Dependent Role="Docente">
               <PropertyRef Name="TipoContratoId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Municipio_Departamento">
-          <End Role="Departamento" Type="Self.Departamento" Multiplicity="0..1" />
-          <End Role="Municipio" Type="Self.Municipio" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Departamento">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Municipio">
-              <PropertyRef Name="DepartamentoId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -543,10 +495,6 @@ advertencia 6002: La tabla o vista 'UcytAlmaMater.dbo.ViewDocenteIdiomas' no tie
     [ViewDocenteIdiomas].[DocenteNombre] AS [DocenteNombre]
     FROM [dbo].[ViewDocenteIdiomas] AS [ViewDocenteIdiomas]</DefiningQuery>
           </EntitySet>
-          <AssociationSet Name="FK_Departamento_Pais" Association="Self.FK_Departamento_Pais">
-            <End Role="Pais" EntitySet="Pais" />
-            <End Role="Departamento" EntitySet="Departamento" />
-          </AssociationSet>
           <AssociationSet Name="FK_Docente_Area" Association="Self.FK_Docente_Area">
             <End Role="Area" EntitySet="Area" />
             <End Role="Docente" EntitySet="Docente" />
@@ -555,16 +503,8 @@ advertencia 6002: La tabla o vista 'UcytAlmaMater.dbo.ViewDocenteIdiomas' no tie
             <End Role="Cargo" EntitySet="Cargo" />
             <End Role="Docente" EntitySet="Docente" />
           </AssociationSet>
-          <AssociationSet Name="FK_Docente_Departamento" Association="Self.FK_Docente_Departamento">
-            <End Role="Departamento" EntitySet="Departamento" />
-            <End Role="Docente" EntitySet="Docente" />
-          </AssociationSet>
           <AssociationSet Name="FK_Docente_Docente" Association="Self.FK_Docente_Docente">
             <End Role="Recinto" EntitySet="Recinto" />
-            <End Role="Docente" EntitySet="Docente" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Docente_Municipio" Association="Self.FK_Docente_Municipio">
-            <End Role="Municipio" EntitySet="Municipio" />
             <End Role="Docente" EntitySet="Docente" />
           </AssociationSet>
           <AssociationSet Name="FK_Docente_Profesion" Association="Self.FK_Docente_Profesion">
@@ -574,10 +514,6 @@ advertencia 6002: La tabla o vista 'UcytAlmaMater.dbo.ViewDocenteIdiomas' no tie
           <AssociationSet Name="FK_Docente_TipoContrato" Association="Self.FK_Docente_TipoContrato">
             <End Role="TipoContrato" EntitySet="TipoContrato" />
             <End Role="Docente" EntitySet="Docente" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Municipio_Departamento" Association="Self.FK_Municipio_Departamento">
-            <End Role="Departamento" EntitySet="Departamento" />
-            <End Role="Municipio" EntitySet="Municipio" />
           </AssociationSet>
           <AssociationSet Name="FK_Recinto_Empresa" Association="Self.FK_Recinto_Empresa">
             <End Role="Empresa" EntitySet="Empresa" />
@@ -596,18 +532,6 @@ advertencia 6002: La tabla o vista 'UcytAlmaMater.dbo.ViewDocenteIdiomas' no tie
           <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Activo" Type="Boolean" />
           <NavigationProperty Name="Docente" Relationship="UcytAlmaMaterModel.FK_Docente_Cargo" FromRole="Cargo" ToRole="Docente" />
-        </EntityType>
-        <EntityType Name="Departamento">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="PaisId" Type="Int32" />
-          <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Activo" Type="Boolean" />
-          <NavigationProperty Name="Pais" Relationship="Self.FK_Departamento_Pais" FromRole="Departamento" ToRole="Pais" />
-          <NavigationProperty Name="Municipio" Relationship="Self.FK_Municipio_Departamento" FromRole="Departamento" ToRole="Municipio" />
-          <NavigationProperty Name="Docente" Relationship="UcytAlmaMaterModel.FK_Docente_Departamento" FromRole="Departamento" ToRole="Docente" />
         </EntityType>
         <EntityType Name="DocenteAsignatura">
           <Key>
@@ -655,26 +579,6 @@ advertencia 6002: La tabla o vista 'UcytAlmaMater.dbo.ViewDocenteIdiomas' no tie
           <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Activo" Type="Boolean" />
         </EntityType>
-        <EntityType Name="Municipio">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="DepartamentoId" Type="Int32" />
-          <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Activo" Type="Boolean" />
-          <NavigationProperty Name="Departamento" Relationship="Self.FK_Municipio_Departamento" FromRole="Municipio" ToRole="Departamento" />
-          <NavigationProperty Name="Docente" Relationship="UcytAlmaMaterModel.FK_Docente_Municipio" FromRole="Municipio" ToRole="Docente" />
-        </EntityType>
-        <EntityType Name="Pais">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Activo" Type="Boolean" />
-          <NavigationProperty Name="Departamento" Relationship="Self.FK_Departamento_Pais" FromRole="Pais" ToRole="Departamento" />
-        </EntityType>
         <EntityType Name="Profesion">
           <Key>
             <PropertyRef Name="Id" />
@@ -706,30 +610,6 @@ advertencia 6002: La tabla o vista 'UcytAlmaMater.dbo.ViewDocenteIdiomas' no tie
           <Property Name="Activo" Type="Boolean" />
           <NavigationProperty Name="Docente" Relationship="UcytAlmaMaterModel.FK_Docente_TipoContrato" FromRole="TipoContrato" ToRole="Docente" />
         </EntityType>
-        <Association Name="FK_Departamento_Pais">
-          <End Role="Pais" Type="Self.Pais" Multiplicity="0..1" />
-          <End Role="Departamento" Type="Self.Departamento" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Pais">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Departamento">
-              <PropertyRef Name="PaisId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Municipio_Departamento">
-          <End Role="Departamento" Type="Self.Departamento" Multiplicity="0..1" />
-          <End Role="Municipio" Type="Self.Municipio" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Departamento">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Municipio">
-              <PropertyRef Name="DepartamentoId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Recinto_Empresa">
           <End Role="Empresa" Type="Self.Empresa" Multiplicity="1" />
           <End Role="Recinto" Type="Self.Recinto" Multiplicity="*" />
@@ -744,25 +624,14 @@ advertencia 6002: La tabla o vista 'UcytAlmaMater.dbo.ViewDocenteIdiomas' no tie
         </Association>
         <EntityContainer Name="UcytAlmaMaterEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Cargo" EntityType="Self.Cargo" />
-          <EntitySet Name="Departamento" EntityType="Self.Departamento" />
           <EntitySet Name="DocenteAsignatura" EntityType="Self.DocenteAsignatura" />
           <EntitySet Name="Empresa" EntityType="Self.Empresa" />
           <EntitySet Name="Etnia" EntityType="Self.Etnia" />
           <EntitySet Name="Idiomas" EntityType="Self.Idiomas" />
           <EntitySet Name="Institucion" EntityType="Self.Institucion" />
-          <EntitySet Name="Municipio" EntityType="Self.Municipio" />
-          <EntitySet Name="Pais" EntityType="Self.Pais" />
           <EntitySet Name="Profesion" EntityType="Self.Profesion" />
           <EntitySet Name="Recinto" EntityType="Self.Recinto" />
           <EntitySet Name="TipoContrato" EntityType="Self.TipoContrato" />
-          <AssociationSet Name="FK_Departamento_Pais" Association="Self.FK_Departamento_Pais">
-            <End Role="Pais" EntitySet="Pais" />
-            <End Role="Departamento" EntitySet="Departamento" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Municipio_Departamento" Association="Self.FK_Municipio_Departamento">
-            <End Role="Departamento" EntitySet="Departamento" />
-            <End Role="Municipio" EntitySet="Municipio" />
-          </AssociationSet>
           <AssociationSet Name="FK_Recinto_Empresa" Association="Self.FK_Recinto_Empresa">
             <End Role="Empresa" EntitySet="Empresa" />
             <End Role="Recinto" EntitySet="Recinto" />
@@ -854,16 +723,8 @@ advertencia 6002: La tabla o vista 'UcytAlmaMater.dbo.ViewDocenteIdiomas' no tie
             <End Role="Cargo" EntitySet="Cargo" />
             <End Role="Docente" EntitySet="Docente" />
           </AssociationSet>
-          <AssociationSet Name="FK_Docente_Departamento" Association="UcytAlmaMaterModel.FK_Docente_Departamento">
-            <End Role="Departamento" EntitySet="Departamento" />
-            <End Role="Docente" EntitySet="Docente" />
-          </AssociationSet>
           <AssociationSet Name="FK_Docente_Docente" Association="UcytAlmaMaterModel.FK_Docente_Docente">
             <End Role="Recinto" EntitySet="Recinto" />
-            <End Role="Docente" EntitySet="Docente" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Docente_Municipio" Association="UcytAlmaMaterModel.FK_Docente_Municipio">
-            <End Role="Municipio" EntitySet="Municipio" />
             <End Role="Docente" EntitySet="Docente" />
           </AssociationSet>
           <AssociationSet Name="FK_Docente_Profesion" Association="UcytAlmaMaterModel.FK_Docente_Profesion">
@@ -875,6 +736,9 @@ advertencia 6002: La tabla o vista 'UcytAlmaMater.dbo.ViewDocenteIdiomas' no tie
             <End Role="Docente" EntitySet="Docente" />
           </AssociationSet>
           <EntitySet Name="Asignatura" EntityType="UcytAlmaMaterModel.Asignatura" />
+          <EntitySet Name="Departamento" EntityType="UcytAlmaMaterModel.Departamento" />
+          <EntitySet Name="Municipio" EntityType="UcytAlmaMaterModel.Municipio" />
+          <EntitySet Name="Pais" EntityType="UcytAlmaMaterModel.Pais" />
           </EntityContainer>
         <EntityType Name="Area">
           <Key>
@@ -1052,9 +916,7 @@ advertencia 6002: La tabla o vista 'UcytAlmaMater.dbo.ViewDocenteIdiomas' no tie
           <Property Name="Activo" Type="String" Nullable="false" MaxLength="2" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Area" Relationship="UcytAlmaMaterModel.FK_Docente_Area" FromRole="Docente" ToRole="Area" />
           <NavigationProperty Name="Cargo" Relationship="UcytAlmaMaterModel.FK_Docente_Cargo" FromRole="Docente" ToRole="Cargo" />
-          <NavigationProperty Name="Departamento" Relationship="UcytAlmaMaterModel.FK_Docente_Departamento" FromRole="Docente" ToRole="Departamento" />
           <NavigationProperty Name="Recinto" Relationship="UcytAlmaMaterModel.FK_Docente_Docente" FromRole="Docente" ToRole="Recinto" />
-          <NavigationProperty Name="Municipio" Relationship="UcytAlmaMaterModel.FK_Docente_Municipio" FromRole="Docente" ToRole="Municipio" />
           <NavigationProperty Name="Profesion" Relationship="UcytAlmaMaterModel.FK_Docente_Profesion" FromRole="Docente" ToRole="Profesion" />
           <NavigationProperty Name="TipoContrato" Relationship="UcytAlmaMaterModel.FK_Docente_TipoContrato" FromRole="Docente" ToRole="TipoContrato" />
         </EntityType>
@@ -1082,18 +944,6 @@ advertencia 6002: La tabla o vista 'UcytAlmaMater.dbo.ViewDocenteIdiomas' no tie
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Docente_Departamento">
-          <End Type="UcytAlmaMaterModel.Departamento" Role="Departamento" Multiplicity="0..1" />
-          <End Type="UcytAlmaMaterModel.Docente" Role="Docente" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Departamento">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Docente">
-              <PropertyRef Name="DepartamentoId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Docente_Docente">
           <End Type="UcytAlmaMaterModel.Recinto" Role="Recinto" Multiplicity="1" />
           <End Type="UcytAlmaMaterModel.Docente" Role="Docente" Multiplicity="*" />
@@ -1103,18 +953,6 @@ advertencia 6002: La tabla o vista 'UcytAlmaMater.dbo.ViewDocenteIdiomas' no tie
             </Principal>
             <Dependent Role="Docente">
               <PropertyRef Name="RecintoId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Docente_Municipio">
-          <End Type="UcytAlmaMaterModel.Municipio" Role="Municipio" Multiplicity="0..1" />
-          <End Type="UcytAlmaMaterModel.Docente" Role="Docente" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Municipio">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Docente">
-              <PropertyRef Name="MunicipioId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1159,6 +997,32 @@ advertencia 6002: La tabla o vista 'UcytAlmaMater.dbo.ViewDocenteIdiomas' no tie
           <Property Name="Activo" Type="String" Nullable="false" MaxLength="2" FixedLength="false" Unicode="false" />
           <Property Name="Identificador" Type="String" Nullable="false" MaxLength="7" FixedLength="false" Unicode="false" />
         </EntityType>
+        <EntityType Name="Departamento">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PaisId" Type="Int32" />
+          <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Activo" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="Municipio">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DepartamentoId" Type="Int32" />
+          <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Activo" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="Pais">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Activo" Type="Boolean" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1169,16 +1033,6 @@ advertencia 6002: La tabla o vista 'UcytAlmaMater.dbo.ViewDocenteIdiomas' no tie
             <EntityTypeMapping TypeName="UcytAlmaMaterModel.Cargo">
               <MappingFragment StoreEntitySet="Cargo">
                 <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
-                <ScalarProperty Name="Activo" ColumnName="Activo" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Departamento">
-            <EntityTypeMapping TypeName="UcytAlmaMaterModel.Departamento">
-              <MappingFragment StoreEntitySet="Departamento">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="PaisId" ColumnName="PaisId" />
                 <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
                 <ScalarProperty Name="Activo" ColumnName="Activo" />
               </MappingFragment>
@@ -1228,25 +1082,6 @@ advertencia 6002: La tabla o vista 'UcytAlmaMater.dbo.ViewDocenteIdiomas' no tie
           <EntitySetMapping Name="Institucion">
             <EntityTypeMapping TypeName="UcytAlmaMaterModel.Institucion">
               <MappingFragment StoreEntitySet="Institucion">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
-                <ScalarProperty Name="Activo" ColumnName="Activo" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Municipio">
-            <EntityTypeMapping TypeName="UcytAlmaMaterModel.Municipio">
-              <MappingFragment StoreEntitySet="Municipio">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="DepartamentoId" ColumnName="DepartamentoId" />
-                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
-                <ScalarProperty Name="Activo" ColumnName="Activo" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Pais">
-            <EntityTypeMapping TypeName="UcytAlmaMaterModel.Pais">
-              <MappingFragment StoreEntitySet="Pais">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
                 <ScalarProperty Name="Activo" ColumnName="Activo" />
@@ -1480,6 +1315,35 @@ advertencia 6002: La tabla o vista 'UcytAlmaMater.dbo.ViewDocenteIdiomas' no tie
                 <ScalarProperty Name="NotaMinExtraDerecho" ColumnName="NotaMinExtraDerecho" />
                 <ScalarProperty Name="NotaMinRegular" ColumnName="NotaMinRegular" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Departamento">
+            <EntityTypeMapping TypeName="UcytAlmaMaterModel.Departamento">
+              <MappingFragment StoreEntitySet="Departamento">
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="PaisId" ColumnName="PaisId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Municipio">
+            <EntityTypeMapping TypeName="UcytAlmaMaterModel.Municipio">
+              <MappingFragment StoreEntitySet="Municipio">
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="DepartamentoId" ColumnName="DepartamentoId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pais">
+            <EntityTypeMapping TypeName="UcytAlmaMaterModel.Pais">
+              <MappingFragment StoreEntitySet="Pais">
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

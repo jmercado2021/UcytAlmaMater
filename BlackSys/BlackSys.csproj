@@ -1034,6 +1034,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ComponentCategoryController.cs" />
     <Compile Include="Controllers\PermissionsController.cs" />
+    <Compile Include="Controllers\RegionController.cs" />
     <Compile Include="Controllers\SubjectsController.cs" />
     <Compile Include="Controllers\SuppliersController.cs" />
     <Compile Include="Controllers\SystemController.cs" />
@@ -1184,6 +1185,8 @@
     <Compile Include="Repository\AreaCapacitacion\Repository.cs" />
     <Compile Include="Repository\Area\IRepository.cs" />
     <Compile Include="Repository\Area\Repository.cs" />
+    <Compile Include="Repository\Discapacidad\IRepository.cs" />
+    <Compile Include="Repository\Discapacidad\Repository.cs" />
     <Compile Include="Repository\DocenteAreaInvestigacion\IRepository.cs" />
     <Compile Include="Repository\DocenteAreaInvestigacion\Repository.cs" />
     <Compile Include="Repository\DocenteCategoria\IRepository.cs" />
@@ -1212,6 +1215,8 @@
     <Compile Include="Repository\Profesion\Repository.cs" />
     <Compile Include="Repository\Recinto\IRepository.cs" />
     <Compile Include="Repository\Recinto\Repository.cs" />
+    <Compile Include="Repository\Region\IRepository.cs" />
+    <Compile Include="Repository\Region\Repository.cs" />
     <Compile Include="Repository\TipoContrato\IRepository.cs" />
     <Compile Include="Repository\TipoContrato\Repository.cs" />
     <Compile Include="Repository\TipoDocumento\IRepository.cs" />
@@ -1347,9 +1352,9 @@
     <Folder Include="Content\plugins\select2\css\" />
     <Folder Include="Content\plugins\select2\sass\" />
     <Folder Include="Reports\" />
-    <Folder Include="Repository\NewFolder1\" />
     <Folder Include="Tools\" />
     <Folder Include="Views\Docente\" />
+    <Folder Include="Views\Region\" />
     <Folder Include="Views\Reportes\" />
     <Folder Include="Views\Subjects\" />
   </ItemGroup>

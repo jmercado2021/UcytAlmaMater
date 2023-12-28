@@ -218,17 +218,36 @@ namespace BlackSys.Controllers
 
             var token = await UserManager.GeneratePasswordResetTokenAsync(user.Id);
             var result = await UserManager.ResetPasswordAsync(editUser.Id, token, editUser.Password);
-
+           
+        
             if (result.Succeeded)
             {
                 // La contraseña se cambió exitosamente, puedes realizar acciones adicionales si es necesario
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Index", "AdminUsers");
             }
             else
             {
                 // Ocurrió un error al cambiar la contraseña, manejar según sea necesario
-                ModelState.AddModelError(string.Empty, "Error al cambiar la contraseña");
-                return View(); // Puedes redirigir a la vista que desees
+                var userRoles = await UserManager.GetRolesAsync(user.Id);  
+                ModelState.AddModelError(string.Empty, "Error al cambiar la contraseña" + result.Errors.FirstOrDefault()) ;
+                return View(new EditUserViewModel()
+                {
+                    Id = user.Id,
+                    Email = user.Email,
+                    Password=editUser.Password,
+                    // Include the Addresss info:
+                    Address = user.Address,
+                    City = user.City,
+                    State = user.State,
+                    PostalCode = user.PostalCode,
+                    RolesList = RoleManager.Roles.ToList().Select(x => new SelectListItem()
+
+                    {
+                        Selected = userRoles.Contains(x.Name),
+                        Text = x.Name,
+                        Value = x.Name
+                    })
+                });
             }
             //if (ModelState.IsValid)
             //{
