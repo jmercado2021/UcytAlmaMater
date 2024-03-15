@@ -27,9 +27,9 @@ namespace BlackSys.Controllers
         public ActionResult LoadMenu()
         {
             string user = User.Identity.GetUserId();
-  
+
             var lista = db.MenuTemp.SqlQuery(
-      "SELECT *FROM dbo.MenuTemp where UserId like '%" + user + "%'").ToList();
+                        "SELECT *FROM dbo.MenuTemp where UserId like '%" + user + "%'").ToList();
             return View(lista);
         }
 

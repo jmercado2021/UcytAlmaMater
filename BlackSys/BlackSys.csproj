@@ -827,6 +827,16 @@
       <DependentUpon>UcytAlmaMater.edmx</DependentUpon>
       <LastGenOutput>UcytAlmaMater.cs</LastGenOutput>
     </Content>
+    <Content Include="Models\Expediente\AlumnosRepositorio.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>AlumnosRepositorio.edmx</DependentUpon>
+      <LastGenOutput>AlumnosRepositorio.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\Expediente\AlumnosRepositorio.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>AlumnosRepositorio.edmx</DependentUpon>
+      <LastGenOutput>AlumnosRepositorio.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -900,6 +910,13 @@
     </EntityDeploy>
     <Content Include="Models\Dal\UcytAlmaMater.edmx.diagram">
       <DependentUpon>UcytAlmaMater.edmx</DependentUpon>
+    </Content>
+    <EntityDeploy Include="Models\Expediente\AlumnosRepositorio.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>AlumnosRepositorio.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\Expediente\AlumnosRepositorio.edmx.diagram">
+      <DependentUpon>AlumnosRepositorio.edmx</DependentUpon>
     </Content>
     <None Include="Properties\PublishProfiles\Local.pubxml" />
     <None Include="Scripts\jquery-3.6.0.intellisense.js" />
@@ -1026,11 +1043,11 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminRolesController.cs" />
     <Compile Include="Controllers\AdminUsersController.cs" />
-    <Compile Include="Controllers\Articulos\ArticuloMasterController.cs" />
     <Compile Include="Controllers\AsignaturaController.cs" />
     <Compile Include="Controllers\ComponentsController.cs" />
     <Compile Include="Controllers\CustomersController.cs" />
     <Compile Include="Controllers\DocentesController.cs" />
+    <Compile Include="Controllers\ExpedienteAlumnosController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ComponentCategoryController.cs" />
     <Compile Include="Controllers\PermissionsController.cs" />
@@ -1151,6 +1168,30 @@
     </Compile>
     <Compile Include="Models\Dto\DtoDocenteAsignatura.cs" />
     <Compile Include="Models\Enum\ClEnum.cs" />
+    <Compile Include="Models\Expediente\Alumno.cs">
+      <DependentUpon>AlumnosRepositorio.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Expediente\AlumnoDocumento.cs">
+      <DependentUpon>AlumnosRepositorio.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Expediente\AlumnosRepositorio.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AlumnosRepositorio.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Expediente\AlumnosRepositorio.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AlumnosRepositorio.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Expediente\AlumnosRepositorio.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AlumnosRepositorio.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Expediente\UsuariosTokens.cs">
+      <DependentUpon>AlumnosRepositorio.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Fabric.cs" />
     <Compile Include="Models\FabricCategory.cs" />
     <Compile Include="Models\Helper.cs" />
@@ -1354,6 +1395,7 @@
     <Folder Include="Reports\" />
     <Folder Include="Tools\" />
     <Folder Include="Views\Docente\" />
+    <Folder Include="Views\ExpedienteAlumnos\" />
     <Folder Include="Views\Region\" />
     <Folder Include="Views\Reportes\" />
     <Folder Include="Views\Subjects\" />
